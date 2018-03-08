@@ -869,6 +869,43 @@ Windows, Linux, Unix, OS-X
 [[private-contact-detail]] Private contact detail::
 A contact detail that is not meant to be shared with others
 
+[[ui]] User interface::
+The visible interface that the user will be seeing when using the application
+
+[[logic]] Logic::
+The set of commands that can be executed by the application
+
+[[model]] Model::
+The internal memory used when application is running
+
+[[storage]] Storage::
+The set of instructions to store specific states and data of the application when application is not running so that it
+can be loaded back into the application when application is started again.
+
+[[feature]] Feature::
+A specific function of the program
+
+[[parser]] Parser::
+A converting function or class that takes in raw input and separates it into its usable components for other methods
+
+[[tasks]] Tasks::
+A command to be executed
+
+[[deadline]] Deadline::
+The date for which certain tasks are due to be done
+
+[[tags]] Tags::
+Keywords tied to categories og people
+
+[[to-do-list]]To-do list::
+A list of things to do
+
+[[import]] Import::
+Bring into the application from an external source
+
+User -
+ Developer -
+
 [appendix]
 == Product Survey
 
