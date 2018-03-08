@@ -780,15 +780,16 @@ See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-
 [appendix]
 == Product Scope
 
-*Target user profile*:
+*Target user profile*: Tech-Savvy University Teachers/Tutors
 
-* has a need to manage a significant number of contacts
+* have the need to manage a significant number of contacts
 * prefer desktop apps over other types
 * can type fast
-* prefers typing over mouse input
-* is reasonably comfortable using CLI apps
+* prefer typing over mouse input
+* are reasonably comfortable using CLI apps
 
-*Value proposition*: manage contacts faster than a typical mouse/GUI driven app
+*Value proposition*: manage contacts faster than a typical mouse/GUI driven app, includes to-do
+    list features (with prioritization, etc.) and scheduling (with calendar and reminders)
 
 [appendix]
 == User Stories
@@ -800,15 +801,41 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |Priority |As a ... |I want to ... |So that I can...
 |`* * *` |new user |see usage instructions |refer to instructions when I forget how to use the App
 
-|`* * *` |user |add a new person |
+|`* * *` |new user |get error messages/prompts |better adapt to commands to use them properly
+
+|`* * *` |user |add a new person |better manage all my contacts at one go
 
 |`* * *` |user |delete a person |remove entries that I no longer need
 
 |`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
 
+|`* * *` |user |find a person by matriculation number/email |identify people easily
+
+|`* * *` |user |sort contacts based on name/address/email/tags |work with specific groups of people
+
+|`* * *` |user |assign a to-do list to each person in address book |know what I need to do for them
+
+|`* * *` |user |add individual items to the to-do lists |update additional tasks
+
+|`* * *` |user |remove entire to-do lists or items in it |remove completed tasks
+
+|`* * *` |user |add events to the schedule |better manage work/students
+
+|`* * *` |user |add a deadline to tasks/items |know what needs to be done and by when
+
+|`* * *` |user |prioritize tasks/items |efficiently get tasks/items done on time
+
 |`* *` |user |hide <<private-contact-detail,private contact details>> by default |minimize chance of someone else seeing them by accident
 
-|`*` |user with many persons in the address book |sort persons by name |locate a person easily
+|`* *` |user |import students/people from a text file |it is easier to enter large numbers of people
+
+|`* *` |user |add profile pictures |know who the people I am working with are
+
+|`* *` |user |mass email students/people based on a tag |easily email/inform a class of students of announcements
+
+|`* *` |user |set reminders for certain events |have an email sent to me before the actual event so that I don't forget
+
+|`*` |user with many persons in the address book |combine groups/tags |better work with people who have similar interests/work
 |=======================================================================
 
 _{More to be added}_
