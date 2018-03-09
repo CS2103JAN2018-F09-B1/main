@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -57,6 +58,22 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     public void setTags(Set<Tag> tags) {
         this.tags.setTags(tags);
+    }
+
+    /**
+     * Lists all the current tags that are used.
+     * @return a continuous String of tags in UniqueTagList separated by a nextline between each tag.
+     */
+    public String listTags() {
+        String tagString = "";
+
+        Iterator it = tags.iterator();
+        while (it.hasNext()) { 
+            Tag nextTag = (Tag) it.next();
+            tagString += (nextTag.toString() + "\n");
+        }
+
+        return tagString;
     }
 
     /**
