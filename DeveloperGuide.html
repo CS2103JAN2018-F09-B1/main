@@ -1995,23 +1995,23 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is the <code>AddressBook</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
-<h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
+<h3 id="use-case-delete-student" class="discrete">Use case: Delete student</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list persons</p>
+<p>User requests to list students</p>
 </li>
 <li>
-<p>AddressBook shows a list of persons</p>
+<p>AddressBook shows a list of students</p>
 </li>
 <li>
-<p>User requests to delete a specific person in the list</p>
+<p>User requests to delete a specific student in the list</p>
 </li>
 <li>
-<p>AddressBook deletes the person</p>
+<p>AddressBook deletes the student and all related entries (if any)</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2037,6 +2037,166 @@ for <code>RemarkCommandParser</code>.</p>
 <p>3a1. AddressBook shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-find-a-student-by-name" class="discrete">Use case: Find a student by name</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to find a student by name</p>
+</li>
+<li>
+<p>AddressBook shows a list of students that match the search query</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-add-event-to-schedule" class="discrete">Use case: Add event to schedule</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to add an event to a day</p>
+</li>
+<li>
+<p>AddressBook shows the current schedule for the day</p>
+</li>
+<li>
+<p>User requests to add the event to a timeslot for that day</p>
+</li>
+<li>
+<p>AddressBook confirms the addition to the timeslot</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The schedule for the day is full.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. AddressBook will display an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a. User tries to add it to a non-empty timeslot</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. AddressBook will display an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-edit-lesson-for-a-student" class="discrete">Use case: Edit lesson for a student</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to edit lesson for a student.</p>
+</li>
+<li>
+<p>AddressBook shows the current lessons for a student in a list.</p>
+</li>
+<li>
+<p>User enters the index of lesson to edit.</p>
+</li>
+<li>
+<p>AddressBook prompts the user to enter the new entry.</p>
+</li>
+<li>
+<p>User inputs the new entry.</p>
+</li>
+<li>
+<p>AddressBook confirms with user on the edit.</p>
+</li>
+<li>
+<p>User confirms.</p>
+</li>
+<li>
+<p>AddressBook replaces the old entry with the new entry.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. There are no lessons for the student.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+<li>
+<p>3a. User enters an invalid index</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. AddressBook will display an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 3.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>5a. User does not enter a valid lesson entry</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>5a1. AddressBook will display an error message.</p>
+<div class="paragraph">
+<p>User case resumes at step 5.</p>
 </div>
 </li>
 </ul>
@@ -2252,7 +2412,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-09 01:59:10 UTC
+Last updated 2018-03-09 01:59:58 UTC
 </div>
 </div>
 </body>
