@@ -34,7 +34,7 @@ This app will not work with earlier versions of Java 8.
 image::Ui.png[width="790"]
 +
 .  Type the command in the command box and press kbd:[Enter] to execute it. +
-e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
+e.g. typing *`help`* and pressing kbd:[Enter] will list all possible commands and their formats.
 .  Some example commands you can try:
 
 * *`list`* : lists all contacts

@@ -230,6 +230,13 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+=== Help feature
+==== Current Implementation
+
+The help command displays a list of all the possible commands the user can make, followed by an example on its use.
+
+[This section is to be expanded when the help command is reworked into the help window.]
+
 // tag::undoredo[]
 === Undo/Redo feature
 ==== Current Implementation
