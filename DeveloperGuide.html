@@ -81,7 +81,11 @@
 <li><a href="#GetStartedProgramming-RemarkCommand">A.2. Creating a new command: <code>remark</code></a></li>
 </ul>
 </li>
-<li><a href="#product-scope">Appendix B: Product Scope</a></li>
+<li><a href="#product-scope">Appendix B: Product Scope</a>
+<ul class="sectlevel2">
+<li><a href="#feature-contribution">B.1. Feature contribution</a></li>
+</ul>
+</li>
 <li><a href="#user-stories">Appendix C: User Stories</a></li>
 <li><a href="#use-cases">Appendix D: Use Cases</a></li>
 <li><a href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></li>
@@ -459,6 +463,9 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </li>
 <li>
 <p>Responds to events raised from various parts of the App and updates the UI accordingly.</p>
+</li>
+<li>
+<p>Default tags have background colours to identify them as of v1.2.</p>
 </li>
 </ul>
 </div>
@@ -1945,6 +1952,193 @@ for <code>RemarkCommandParser</code>.</p>
 <p><strong>Value proposition</strong>: manage contacts faster than a typical mouse/GUI driven app, includes to-do
     list features (with prioritization, etc.) and scheduling (with calendar and reminders)</p>
 </div>
+<div class="sect2">
+<h3 id="feature-contribution"><a class="link" href="#feature-contribution">B.1. Feature contribution</a></h3>
+<div class="paragraph">
+<p><strong>Wu Di</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major</strong>: Implement the todo list</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Support adding, editing and deleting of tasks</p>
+</li>
+<li>
+<p>Works with undo/redo functions</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This enables the tutor to view all tasks in one glance so that he/she is able to stay organized and productive.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Minor</strong>: Import feature to migrate data from an external file</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Imports data anywhere in any OS</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This helps the tutor work on different devices with the unique data set.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Minor</strong>: add the alias feature to some of the commands</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Support majority of commands</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This helps the tutor remember the commands intuitively and type them more efficiently.</p>
+</div>
+<div class="paragraph">
+<p><strong>Daniel</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major</strong>: Calendar and Scheduler for user</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Supports adding of new tasks that will be slotted into the calendar(if it has a deadline)</p>
+</li>
+<li>
+<p>Also assigns a priority value to each task based on parameters keyed in when task is added</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This helps the tutor to keep track of what needs to be done and which task to focus on.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Minor</strong>: Person has new parameter - Matriculation number</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Person now stores matriculation number of the person</p>
+</li>
+<li>
+<p>Add command supports adding person with matriculation number(compulsory parameter)</p>
+</li>
+<li>
+<p>Find command supports search by matriculation number</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This helps the tutor to easily search for a certain student by their unique matriculation number instead of just
+their names (e.g. easier than searching for a common name such as Daniel).</p>
+</div>
+<div class="paragraph">
+<p><strong>Pearlissa</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major</strong>: Login feature</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Implements new User package</p>
+</li>
+<li>
+<p>[Not confirmed] Encryption of data files containing usernames and passwords</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This allows multiple tutors to store their data in separate accounts, which can only be accessed by them.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Minor</strong>: Sorting of contacts based on selected parameters</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Any number of parameters (at least 1), and in order of priority</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This allows tutors to be better able to go through their lists of students.</p>
+</div>
+<div class="paragraph">
+<p><strong>Ellery</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major</strong>: Display picture for all students entered</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Support adding, editing and deleting of picture</p>
+</li>
+<li>
+<p>Also works with the redo/undo function</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This helps the tutor keep track of his students, and be able to easily remember them better.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Minor</strong>: Email feature to email students</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Email multiple students quickly</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This helps the tutor to quickly bring up an email client to send an email to a student.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -2562,7 +2756,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-16 22:18:22 UTC
+Last updated 2018-03-19 15:38:29 UTC
 </div>
 </div>
 </body>
