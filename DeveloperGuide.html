@@ -141,6 +141,21 @@ Do not disable them. If you have disabled them, go to <code>File</code> &gt; <co
 </table>
 </div>
 </li>
+<li>
+<p>Sufficient <strong>Java</strong> and <strong>Javafx</strong> knowledge</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This application is written in Java and Javafx. A good amount of experience with the language (about 10k lines of code written in <strong>Java</strong> and <strong>Javafx</strong>) is required to understand and work in the application.
+</td>
+</tr>
+</table>
+</div>
+</li>
 </ol>
 </div>
 </div>
@@ -149,35 +164,35 @@ Do not disable them. If you have disabled them, go to <code>File</code> &gt; <co
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Fork this repo, and clone the fork to your computer</p>
+<p>Fork this repository, and clone the fork to your computer.</p>
 </li>
 <li>
-<p>Open IntelliJ (if you are not in the welcome screen, click <code>File</code> &gt; <code>Close Project</code> to close the existing project dialog first)</p>
+<p>Open IntelliJ (if you are not in the welcome screen, click <code>File</code> &gt; <code>Close Project</code> to close the existing project dialog first).</p>
 </li>
 <li>
-<p>Set up the correct JDK version for Gradle</p>
+<p>Set up the correct JDK version for Gradle.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Click <code>Configure</code> &gt; <code>Project Defaults</code> &gt; <code>Project Structure</code></p>
+<p>Click <code>Configure</code> &gt; <code>Project Defaults</code> &gt; <code>Project Structure</code>.</p>
 </li>
 <li>
-<p>Click <code>New&#8230;&#8203;</code> and find the directory of the JDK</p>
+<p>Click <code>New&#8230;&#8203;</code> and find the directory of the JDK.</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>Click <code>Import Project</code></p>
+<p>Click <code>Import Project</code>.</p>
 </li>
 <li>
-<p>Locate the <code>build.gradle</code> file and select it. Click <code>OK</code></p>
+<p>Locate the <code>build.gradle</code> file and select it. Click <code>OK</code>.</p>
 </li>
 <li>
-<p>Click <code>Open as Project</code></p>
+<p>Click <code>Open as Project</code>.</p>
 </li>
 <li>
-<p>Click <code>OK</code> to accept the default settings</p>
+<p>Click <code>OK</code> to accept the default settings.</p>
 </li>
 <li>
 <p>Open a console and run the command <code>gradlew processResources</code> (Mac/Linux: <code>./gradlew processResources</code>). It should finish with the <code>BUILD SUCCESSFUL</code> message.<br>
@@ -236,7 +251,7 @@ This will generate all resources required by the application and tests.</p>
 <div class="sect3">
 <h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">1.4.2. Updating documentation to match your fork</a></h4>
 <div class="paragraph">
-<p>After forking the repo, links in the documentation will still point to the <code>se-edu/addressbook-level4</code> repo. If you plan to develop this as a separate product (i.e. instead of contributing to the <code>se-edu/addressbook-level4</code>) , you should replace the URL in the variable <code>repoURL</code> in <code>DeveloperGuide.adoc</code> and <code>UserGuide.adoc</code> with the URL of your fork.</p>
+<p>After forking the repo, links in the documentation will still point to the <code>CS2103JAN2018-F09-B1/main</code> repository. If you plan to develop this as a separate product (i.e. instead of contributing to the <code>CS2103JAN2018-F09-B1/main</code>) , you should replace the URL in the variable <code>repoURL</code> in <code>DeveloperGuide.adoc</code> and <code>UserGuide.adoc</code> with the URL of your fork.</p>
 </div>
 </div>
 <div class="sect3">
@@ -475,10 +490,113 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>CalendarView</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component loads the layout of each part from the <code>.fxml</code> file and then does the bindings to various variables in the address book model in the corresponding <code>.java</code> file.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+It may be difficult to edit the <code>.fxml</code> file directly. <strong>Javafx</strong> "Scene Builder" is recommended to be used to edit or creat new <code>.fxml</code> files.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UiDisplay.png" alt="UiDisplay" width="800">
+</div>
+<div class="title">Figure 7. Layout of the UI</div>
+</div>
+<div class="paragraph">
+<p>As seen from the layout in figure 6, from top to bottom:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>MenuBar, <code>File</code> and <code>Help</code> are dropdown menus that perform their usual functions. As seen in Figure 7 below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/MenuBar.png" alt="MenuBar" width="800">
+</div>
+<div class="title">Figure 8. Menu bar of the UI</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Down to the left, is the list of people in the address book. As seen in Figure 8 below.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It implements the <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/ui/PersonListPanel.java"><code>PersonListPanel</code></a> class whose layout is specified in <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/resources/view/PersonListPanel.fxml"><code>PersonListPanel.fxml</code></a>.</p>
+</li>
+<li>
+<p>The individual person cards implements the <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> class whose layout is specified in <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/resources/view/PersonCard.fxml"><code>PersonCard.fxml</code></a>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PersonList.png" alt="PersonList" width="350">
+</div>
+<div class="title">Figure 9. Person list of the UI</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To the right, is the calendar of the address book, in V2.0 task can be scheduled into this calendar. As seen in Figure 9 below.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It implements the <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/ui/CalendarView.java"><code>CalendarView</code></a> class whose layout is specified in <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/resources/view/CalendarView.fxml"><code>CalendarView.fxml</code></a>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Calendar.png" alt="Calendar" width="800">
+</div>
+<div class="title">Figure 10. Calendar of the UI</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>At the bottom are the command line and results panel. This command line is where the user would type in the commands for the application to execute, and the results of the command will be displayed below in the result panel. as seen in Figure 10 below.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The command line implements the <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/ui/CommandBox.java"><code>CommandBox</code></a> class whose layout is specified in <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/resources/view/CommandBox.fxml"><code>CommandBox.fxml</code></a>.</p>
+</li>
+<li>
+<p>The results panel implements the <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay</code></a> class whose layout is specified in <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/resources/view/ResultDisplay.fxml"><code>ResultDisplay.fxml</code></a>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CommandLine.png" alt="CommandLine" width="800">
+</div>
+<div class="title">Figure 11. Command line of the UI</div>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -497,6 +615,12 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <li>
 <p>Default tags have background colours to identify them as of v1.2.</p>
 </li>
+<li>
+<p>Calendar added as of v1.3.</p>
+</li>
+<li>
+<p>Calendar responds to events raised by the App in V2.0.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -506,13 +630,13 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
 </div>
-<div class="title">Figure 7. Structure of the Logic Component</div>
+<div class="title">Figure 12. Structure of the Logic Component</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
 </div>
-<div class="title">Figure 8. Structure of Commands in the Logic Component. This diagram shows finer details concerning <code>XYZCommand</code> and <code>Command</code> in <a href="#fig-LogicClassDiagram">Figure 7, &#8220;Structure of the Logic Component&#8221;</a></div>
+<div class="title">Figure 13. Structure of Commands in the Logic Component. This diagram shows finer details concerning <code>XYZCommand</code> and <code>Command</code> in <a href="#fig-LogicClassDiagram">Figure 12, &#8220;Structure of the Logic Component&#8221;</a></div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
@@ -541,15 +665,16 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="content">
 <img src="images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
 </div>
-<div class="title">Figure 9. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 14. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="Design-Model"><a class="link" href="#Design-Model">2.5. Model component</a></h3>
-<div class="paragraph">
-<p>(needs new image here that includes MatriculationNumber in person)
-.Structure of the Model Component
-image::ModelClassDiagram.png[width="800"]</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
+</div>
+<div class="title">Figure 15. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
@@ -669,7 +794,7 @@ For every <code>Person</code> object, there can be multiple (or zero) tags.
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
 </div>
-<div class="title">Figure 10. Structure of the Storage Component</div>
+<div class="title">Figure 16. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
@@ -1114,7 +1239,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 11. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 17. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -2862,7 +2987,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-22 17:11:07 UTC
+Last updated 2018-03-22 17:14:21 UTC
 </div>
 </div>
 </body>
