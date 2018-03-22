@@ -492,7 +492,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>CalendarView</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>TodoListPanel</code>, <code>StatusBarFooter</code>, <code>CalendarView</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -537,14 +537,14 @@ It may be difficult to edit the <code>.fxml</code> file directly. <strong>Javafx
 <div class="ulist">
 <ul>
 <li>
-<p>Down to the left, is the list of people in the address book. As seen in Figure 8 below.</p>
+<p>Down to the left, is the tab consisting list of people in the address book. As seen in Figure 9 below.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>It implements the <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/ui/PersonListPanel.java"><code>PersonListPanel</code></a> class whose layout is specified in <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/resources/view/PersonListPanel.fxml"><code>PersonListPanel.fxml</code></a>.</p>
 </li>
 <li>
-<p>The individual person cards implements the <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> class whose layout is specified in <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/resources/view/PersonCard.fxml"><code>PersonCard.fxml</code></a>.</p>
+<p>The individual person card implements the <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> class whose layout is specified in <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/resources/view/PersonListCard.fxml"><code>PersonCard.fxml</code></a>.</p>
 </li>
 </ul>
 </div>
@@ -560,7 +560,30 @@ It may be difficult to edit the <code>.fxml</code> file directly. <strong>Javafx
 <div class="ulist">
 <ul>
 <li>
-<p>To the right, is the calendar of the address book, in V2.0 task can be scheduled into this calendar. As seen in Figure 9 below.</p>
+<p>The tab to the right of Person List is a list of todo tasks in the addressbook. As seen in Figure 10 below. (Not yet completed)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It implements the <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/ui/TodoListPanel.java"><code>TodoListPanel</code></a> class whose layout is specified in <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/resources/view/TodoListPanel.fxml"><code>TodoListPanel.fxml</code></a>.</p>
+</li>
+<li>
+<p>The individual todo card implements the <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/ui/TodoCard.java"><code>PersonCard</code></a> class whose layout is specified in <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/resources/view/TodoListCard.fxml"><code>PersonCard.fxml</code></a>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TodoList.png" alt="TodoList" width="350">
+</div>
+<div class="title">Figure 10. Todo list of the UI</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To the right, is the calendar of the address book, in V2.0 task can be scheduled into this calendar. As seen in Figure 11 below.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -575,7 +598,7 @@ It may be difficult to edit the <code>.fxml</code> file directly. <strong>Javafx
 <div class="content">
 <img src="images/Calendar.png" alt="Calendar" width="800">
 </div>
-<div class="title">Figure 10. Calendar of the UI</div>
+<div class="title">Figure 11. Calendar of the UI</div>
 </div>
 <div class="ulist">
 <ul>
@@ -598,7 +621,7 @@ It may be difficult to edit the <code>.fxml</code> file directly. <strong>Javafx
 <div class="content">
 <img src="images/CommandLine.png" alt="CommandLine" width="800">
 </div>
-<div class="title">Figure 11. Command line of the UI</div>
+<div class="title">Figure 12. Command line of the UI</div>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -632,13 +655,13 @@ It may be difficult to edit the <code>.fxml</code> file directly. <strong>Javafx
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
 </div>
-<div class="title">Figure 12. Structure of the Logic Component</div>
+<div class="title">Figure 13. Structure of the Logic Component</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
 </div>
-<div class="title">Figure 13. Structure of Commands in the Logic Component. This diagram shows finer details concerning <code>XYZCommand</code> and <code>Command</code> in <a href="#fig-LogicClassDiagram">Figure 12, &#8220;Structure of the Logic Component&#8221;</a></div>
+<div class="title">Figure 14. Structure of Commands in the Logic Component. This diagram shows finer details concerning <code>XYZCommand</code> and <code>Command</code> in <a href="#fig-LogicClassDiagram">Figure 13, &#8220;Structure of the Logic Component&#8221;</a></div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
@@ -667,7 +690,7 @@ It may be difficult to edit the <code>.fxml</code> file directly. <strong>Javafx
 <div class="content">
 <img src="images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
 </div>
-<div class="title">Figure 14. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 15. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
 </div>
 </div>
 <div class="sect2">
@@ -676,7 +699,7 @@ It may be difficult to edit the <code>.fxml</code> file directly. <strong>Javafx
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
 </div>
-<div class="title">Figure 15. Structure of the Model Component</div>
+<div class="title">Figure 16. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
@@ -796,7 +819,7 @@ For every <code>Person</code> object, there can be multiple (or zero) tags.
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
 </div>
-<div class="title">Figure 16. Structure of the Storage Component</div>
+<div class="title">Figure 17. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
@@ -1370,7 +1393,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 17. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 18. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -3118,7 +3141,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-22 17:34:09 UTC
+Last updated 2018-03-22 18:19:54 UTC
 </div>
 </div>
 </body>
