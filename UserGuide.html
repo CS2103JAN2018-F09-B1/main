@@ -47,8 +47,14 @@
 <li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.17. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
-<li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a></li>
+<li><a href="#additional-information-on-features">4. Additional Information on Features</a>
+<ul class="sectlevel2">
+<li><a href="#add-command">4.1. Add Command</a></li>
+<li><a href="#undo-command">4.2. Undo Command</a></li>
+</ul>
+</li>
+<li><a href="#faq">5. FAQ</a></li>
+<li><a href="#command-summary">6. Command Summary</a></li>
 </ul>
 </div>
 </div>
@@ -56,7 +62,10 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook Level 4 (AB4) is for those who <strong>prefer to use a desktop app for managing contacts</strong>. More importantly, AB4 is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB4 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p><strong>Your TA</strong> is for those who <strong>prefer to use a desktop app for managing contacts</strong>.
+More importantly, it is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI).<br>
+If you can type fast, it can get your contact management tasks done faster than traditional GUI applications.<br>
+Once you&#8217;re ready, jump to <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
 </div>
 </div>
 </div>
@@ -66,7 +75,7 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Ensure you have Java version <code>1.8.0_60</code> or later installed in your Computer.</p>
+<p>Ensure that you have Java version <code>1.8.0_60</code> or later installed in your Computer.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -82,39 +91,39 @@ This app will not work with earlier versions of Java 8.
 </div>
 </li>
 <li>
-<p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/CS2103JAN2018-F09-B1/main/releases">here</a>.</p>
+<p>Download the latest <code>YourTA.jar</code> <a href="https://github.com/CS2103JAN2018-F09-B1/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
+<p>Copy the file to the folder you want to use as the home folder for your application.</p>
 </li>
 <li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
+<p>Double-click the file to start the application. The GUI should appear in a few seconds, as shown in Figure 1 below.</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/UiDisplay.png" alt="UiDisplay" width="800">
+<img src="images/UiInitial.png" alt="UiInitial" width="800">
 </div>
-<div class="title">Figure 1. The GUI you see when you start the application</div>
+<div class="title">Figure 1. The GUI upon Starting Up.</div>
 </div>
 </li>
 <li>
-<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
-e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will list all possible commands and their formats.</p>
+<p>The command box is where you type in commands followed by pressing <kbd>Enter</kbd> to execute it.<br>
+e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window for the application.</p>
 </li>
 <li>
 <p>Some example commands you can try:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>list</code></strong> : lists all contacts</p>
+<p><strong><code>list</code></strong> : lists all contacts.</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
+<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the application.</p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
+<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list.</p>
 </li>
 <li>
-<p><strong><code>exit</code></strong> : exits the app</p>
+<p><strong><code>exit</code></strong> : exits the application.</p>
 </li>
 </ul>
 </div>
@@ -137,16 +146,20 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>There are some equivalent shortcut commands known as alias with fewer alphabetic letters or a sign e.g. to add a person to the addressbook, you can type 'add n/John Doe', 'a n/John Doe' or '+ n/John Doe'</p>
+<p>There are some equivalent shortcut commands known as aliases with fewer alphabetic letters or a sign.<br>
+e.g. to add a person to the addressbook, you can type 'add n/John Doe', 'a n/John Doe' or '+ n/John Doe'.</p>
 </li>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user.<br>
+e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are optional.<br>
+e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
+<p>Items with <code>…</code>​ after them can be used multiple times (including zero).<br>
+e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>t/friend</code>, <code>t/friend t/family</code>, or even not used at all.</p>
 </li>
 <li>
 <p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
@@ -161,11 +174,23 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>Alias: <code>?</code><br>
 Format: <code>help</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This opens a help window which explains what commands can be used, and how to use them.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></h3>
 <div class="paragraph">
-<p>Adds a person to the address book<br>
+<p>Adds a person to the address book.<br>
 Alias: <code>a</code> and <code>+</code><br>
 Format: <code>add n/NAME m/MATRICULATION NUMBER p/PHONE_NUMBER e/EMAIL a/ADDRESS dp/[IMAGE PATH] [t/TAG]&#8230;&#8203;</code></p>
 </div>
@@ -176,19 +201,7 @@ Format: <code>add n/NAME m/MATRICULATION NUMBER p/PHONE_NUMBER e/EMAIL a/ADDRESS
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-A person can have any number of tags (including 0)
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-You can choose not to enter <code>dp/</code> if you do not have picture.
+Both the display picture and tags fields are optional, and a person can have any number of tags (including zero).
 </td>
 </tr>
 </table>
@@ -209,31 +222,35 @@ The tags "lecturer", "TA" "student" and "T1" will appear red, yellow, blue and g
 <p>Examples:</p>
 </div>
 <div class="paragraph">
-<p>The address book initially starts with default inputs:</p>
+<p>The address book initially starts with default inputs as displayed in Figure 2:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiInitial.png" alt="UiInitial" width="800">
 </div>
-<div class="title">Figure 2. Initial address book state<br></div>
+<div class="title">Figure 2. Initial Address Book State<br></div>
 </div>
 <div class="paragraph">
-<p>Command: <code>add n/John Doe m/A0111111X p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code>:</p>
+<p>Command entered:<br>
+<code>add n/John Doe m/A0111111X p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code>:<br>
+This will add a person, 'John Doe' into the list with his respective details into the application (Figure 3).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiAfterFirst.png" alt="UiAfterFirst" width="800">
 </div>
-<div class="title">Figure 3. Application after first person is added<br></div>
+<div class="title">Figure 3. Application after John Doe has been Added<br></div>
 </div>
 <div class="paragraph">
-<p>Command: <code>add n/Betsy Crowe t/friend m/A1234567C e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code>:</p>
+<p>Command entered:<br>
+<code>add n/Betsy Crowe t/friend m/A1234567C e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code>:<br>
+This will add a person, 'Betsy Crowe' into the list with her respective details into the application (Figure 4).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiAfterSecond.png" alt="UiAfterSecond" width="800">
 </div>
-<div class="title">Figure 4. Application after second person is added<br></div>
+<div class="title">Figure 4. Application after Betsy Crowe has been added<br></div>
 </div>
 </div>
 <div class="sect2">
@@ -244,26 +261,26 @@ Or, finds a person whose matriculation number corresponds to the given keyword.<
 </div>
 <div class="paragraph">
 <p>Alias: <code>f</code><br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+Format: <code>find KEYWORD [MORE_KEYWORDS]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code>.</p>
 </li>
 <li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
+<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code>.</p>
 </li>
 <li>
 <p>Only the name and the matriculation number is searched.</p>
 </li>
 <li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
+<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code>.</p>
 </li>
 <li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code>.</p>
 </li>
 </ul>
 </div>
@@ -273,40 +290,46 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 <p>Examples:</p>
 </div>
 <div class="paragraph">
-<p>Before finding:</p>
+<p>Address book starts with the following as shown in Figure 5:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiAfterSecond.png" alt="UiAfterSecond" width="800">
 </div>
-<div class="title">Figure 5. Application before find command<br></div>
+<div class="title">Figure 5. Application before People are Added.<br></div>
 </div>
 <div class="paragraph">
-<p>Command: <code>find John</code>:</p>
+<p>Command entered:<br>
+<code>find John</code>:<br>
+The application searches for the keyword 'John' and returns 1 result (Figure 6).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/FindJohn.png" alt="FindJohn" width="800">
 </div>
-<div class="title">Figure 6. Returns <code>john</code> and <code>John Doe</code><br></div>
+<div class="title">Figure 6. Returns <code>John Doe</code>.<br></div>
 </div>
 <div class="paragraph">
-<p>Command <code>find Betsy Tim John</code>:</p>
+<p>Command entered:<br>
+<code>find Betsy Tim John</code>:<br>
+The application searches for the keywords 'Betsy', 'Tim' and 'John' and returns 2 results (Figure 7).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/FindBTJ.png" alt="FindBTJ" width="800">
 </div>
-<div class="title">Figure 7. Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code><br></div>
+<div class="title">Figure 7. Returns <code>John Doe</code> and <code>Betsy Crowe</code>.<br></div>
 </div>
 <div class="paragraph">
-<p>Command <code>find A0111111X</code>:</p>
+<p>Command entered:<br>
+<code>find A0111111X</code>:<br>
+The application searches for the person with the matriculation number as shown and returns 1 result (Figure 8).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/FindMatric.png" alt="FindMatric" width="800">
 </div>
-<div class="title">Figure 8. Returns John Doe having the matriculation number A0111111X<br></div>
+<div class="title">Figure 8. Returns <code>John Doe</code>, with Matriculation Number A0111111X.<br></div>
 </div>
 </div>
 <div class="sect2">
@@ -320,13 +343,15 @@ Format: <code>list</code></p>
 <p>Example:</p>
 </div>
 <div class="paragraph">
-<p>Command: 'list':</p>
+<p>Command entered:<br>
+<code>list</code>:<br>
+Application lists all persons who have been added up until this point (Figure 9).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/AllListed.png" alt="AllListed" width="800">
 </div>
-<div class="title">Figure 9. All people in the application listed<br></div>
+<div class="title">Figure 9. All People Listed.<br></div>
 </div>
 </div>
 <div class="sect2">
@@ -363,31 +388,36 @@ Format: <code>edit INDEX [n/NAME] [m/MATRICULATION NUMBER] [p/PHONE] [e/EMAIL] [
 <p>Examples:</p>
 </div>
 <div class="paragraph">
-<p>Before edit:</p>
+<p>Address book starts with the following as shown in Figure 10:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/AllListed.png" alt="AllListed" width="800">
 </div>
-<div class="title">Figure 10. Application before edit<br></div>
+<div class="title">Figure 10. Application Before Edit.<br></div>
 </div>
 <div class="paragraph">
-<p>Command: <code>edit 3 p/91234567 e/johndoe@example.com</code>:</p>
+<p>Command entered:<br>
+<code>edit 3 p/91234567 e/johndoe@example.com</code>:<br>
+This changes the details of the person with index 3 (John Doe), in this case, his phone number and email address and writes over his original saved details (Figure 11).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/FirstEdit.png" alt="FirstEdit" width="800">
 </div>
-<div class="title">Figure 11. Phone number and email of 3rd person (John Doe) edited<br></div>
+<div class="title">Figure 11. Phone Number and Email of 3rd Person (John Doe) Edited.<br></div>
 </div>
 <div class="paragraph">
-<p>Command: <code>edit 4 n/Betsy Crower t/</code>:</p>
+<p>Command entered:<br>
+<code>edit 4 n/Betsy Crower t/</code>:<br>
+This changed the details of the person with index 3 (originally Betsy Crowe), in this case, her name and tags.<br>
+Her tags are also cleared (Figure 12).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/SecondEdit.png" alt="SecondEdit" width="800">
 </div>
-<div class="title">Figure 12. Name changed to "Betsy Crower" and all tags cleared on 4th person (Betsy Crowe)<br></div>
+<div class="title">Figure 12. Name changed to "Betsy Crower" and All Tags Cleared.<br></div>
 </div>
 </div>
 <div class="sect2">
@@ -416,19 +446,19 @@ Format: <code>email INDEX</code></p>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
+<div class="paragraph">
+<p>Command(s) entered:<br>
+<code>list</code><br>
+Lists all people in the address book. Followed by:<br>
 <code>email 2</code><br>
 Emails the 2nd person in the address book.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
+</div>
+<div class="paragraph">
+<p>Command(s) entered:<br>
+<code>find Betsy</code><br>
+Returns Betsy as a result. Followed by:<br>
 <code>email 1</code><br>
-Emails the 1st person in the results of the <code>find</code> command.</p>
-</li>
-</ul>
+Emails the 1st person in the results of the <code>find</code> command, in this case, Betsy.</p>
 </div>
 </div>
 <div class="sect2">
@@ -459,31 +489,35 @@ Format: <code>delete INDEX</code></p>
 <p>Examples:</p>
 </div>
 <div class="paragraph">
-<p>Before delete:</p>
+<p>Address book starts with the following as shown in Figure 13:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/SecondEdit.png" alt="SecondEdit" width=""800'">
 </div>
-<div class="title">Figure 13. Application before delete<br></div>
+<div class="title">Figure 13. Application before Delete.<br></div>
 </div>
 <div class="paragraph">
-<p>Command: <code>list</code>, <code>delete 3</code>:</p>
+<p>Command(s) entered:<br>
+<code>list</code>, <code>delete 3</code>:<br>
+The 3rd person listed in the address book is deleted (Figure 14).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/FirstDelete.png" alt="FirstDelete" width="800">
 </div>
-<div class="title">Figure 14. Deletes the 3rd person in the address book<br></div>
+<div class="title">Figure 14. 3rd Person Deleted.<br></div>
 </div>
 <div class="paragraph">
-<p>Command: <code>find Betsy</code>,<code>delete 1</code>:</p>
+<p>Command(s) entered:<br>
+<code>find Betsy</code>,<code>delete 1</code>:<br>
+The 1st person in the results of the <code>find</code> command is deleted, in this case, Betsy is deleted (Figure 15).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/SecondDelete.png" alt="SecondDelete" width="800">
 </div>
-<div class="title">Figure 15. Deletes the 1st person in the results of the <code>find</code> command<br></div>
+<div class="title">Figure 15. 1st Person from <code>find</code> Command Deleted.<br></div>
 </div>
 </div>
 <div class="sect2">
@@ -514,31 +548,35 @@ Format: <code>select INDEX</code></p>
 <p>Examples:</p>
 </div>
 <div class="paragraph">
-<p>Before selecting:</p>
+<p>Address book starts with the following as shown in Figure 16:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiInitial.png" alt="UiInitial" width="800">
 </div>
-<div class="title">Figure 16. Application before select<br></div>
+<div class="title">Figure 16. Application before Select.<br></div>
 </div>
 <div class="paragraph">
-<p>Command: <code>list</code>, <code>select 1</code>:</p>
+<p>Command(s) entered:<br>
+<code>list</code>, <code>select 1</code>:<br>
+Lists all people in address book and selects the 1st person (Figure 17).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/FirstSelect.png" alt="FirstSelect" width="800">
 </div>
-<div class="title">Figure 17. Selects the 2nd person in the address book<br></div>
+<div class="title">Figure 17. Selects 1st Person Listed.<br></div>
 </div>
 <div class="paragraph">
-<p>Command: <code>find Elle</code>, <code>select 1</code>:</p>
+<p>Command(s) entered:<br>
+<code>find Timothy</code>, <code>select 1</code>:<br>
+The 1st person in the results of the <code>find</code> command is selected, in this case, Timothy is selected (Figure 18).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/SecondSelect.png" alt="SecondSelect" width="800">
 </div>
-<div class="title">Figure 18. Selects the 1st person in the results of the <code>find</code> command<br></div>
+<div class="title">Figure 18. 1st Person from <code>find</code> Command Selected.<br></div>
 </div>
 </div>
 <div class="sect2">
@@ -588,31 +626,31 @@ Format: <code>undo</code></p>
 <p>Examples:</p>
 </div>
 <div class="paragraph">
-<p>Before any commands or undos:</p>
+<p>Address book starts with the following as shown in Figure 19:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiInitial.png" alt="UiInitial" width="800">
 </div>
-<div class="title">Figure 19. Application before any tampering<br></div>
+<div class="title">Figure 19. Application before any Commands<br></div>
 </div>
 <div class="paragraph">
-<p>Command: <code>delete 1</code>, <code>list</code>, <code>undo</code>:</p>
+<p>Command(s) entered:<br>
+<code>delete 1</code>, <code>list</code>, <code>undo</code>:<br>
+The <code>delete 1</code> command will be reversed.<br>
+End result should look the same as Figure 19.</p>
 </div>
 <div class="paragraph">
-<p>The <code>delete 1</code> command will be reversed. End result should look the same as Figure 18.</p>
+<p>Command(s) entered:<br>
+<code>select 1</code>, <code>list</code>, <code>undo</code>:<br>
+The <code>undo</code> command fails as there are no undoable commands executed previously.<br>
+End result should look the same as Figure 19.</p>
 </div>
 <div class="paragraph">
-<p>Command: <code>select 1</code>, <code>list</code>, <code>undo</code>:</p>
-</div>
-<div class="paragraph">
-<p>The <code>undo</code> command fails as there are no undoable commands executed previously. End result should look the same as Figure 18.</p>
-</div>
-<div class="paragraph">
-<p>Command: <code>delete 1</code>, <code>clear</code>, <code>undo</code>, <code>undo</code>:</p>
-</div>
-<div class="paragraph">
-<p>Both commands reversed. End result should look the same as Figure 18.</p>
+<p>Command(s) entered:<br>
+<code>delete 1</code>, <code>clear</code>, <code>undo</code>, <code>undo</code>:<br>
+Both commands reversed.<br>
+End result should look the same as Figure 19.</p>
 </div>
 </div>
 <div class="sect2">
@@ -626,28 +664,36 @@ Format: <code>redo</code></p>
 <p>Examples:</p>
 </div>
 <div class="paragraph">
-<p>Command: <code>delete 1</code>, <code>undo</code>, <code>redo</code>:</p>
+<p>Address book starts with the same one in Figure 19.</p>
+</div>
+<div class="paragraph">
+<p>Command(s) entered:<br>
+<code>delete 1</code>, <code>undo</code>, <code>redo</code>:<br>
+The delete command is reversed, then reapplied (Figure 20).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/FirstRedo.png" alt="FirstRedo" width="800">
 </div>
-<div class="title">Figure 20. Delete command reapplied<br></div>
+<div class="title">Figure 20. <code>delete</code> Command Reapplied<br></div>
 </div>
 <div class="paragraph">
-<p>Command: <code>delete 1</code>, <code>redo</code>:</p>
+<p>Command(s) entered:<br>
+<code>delete 1</code>, <code>redo</code>:<br>
+The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.<br>
+End result should look the same as in Figure 19.</p>
 </div>
 <div class="paragraph">
-<p>The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously. End result should look the same as Figure 19.</p>
-</div>
-<div class="paragraph">
-<p>Command: <code>delete 1</code>, <code>clear</code>, <code>undo</code> (reverses the <code>clear</code> command), <code>undo</code> (reverses the <code>delete 1</code> command), <code>redo</code> (reapplies the <code>delete 1</code> command), <code>redo</code> (reapplies the <code>clear</code> command):</p>
+<p>Command(s) entered:<br>
+<code>delete 1</code>, <code>clear</code>, <code>undo</code>, <code>redo</code>:<br>
+<code>clear</code> command and <code>delete</code> command are reversed.<br>
+<code>clear</code> command and <code>delete</code> command are subsequently reapplied (Figure 21).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/SecondRedo.png" alt="SecondRedo" width="800">
 </div>
-<div class="title">Figure 21. Both commands reapplied, application is cleared<br></div>
+<div class="title">Figure 21. Both Commands Reversed, Reapplied. Application Cleared.<br></div>
 </div>
 </div>
 <div class="sect2">
@@ -668,18 +714,15 @@ Format: <code>import FILEPATH</code></p>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>import ~/download/NewData.xml</code></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Command entered:<br>
+<code>import ~/download/NewData.xml</code></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="sorting-all-entries-code-sort-code-code-coming-in-v2-0-code"><a class="link" href="#sorting-all-entries-code-sort-code-code-coming-in-v2-0-code">3.14. Sorting all entries : <code>sort</code> <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
-<p>Sorts all entries from the address book in alphebatical order based on name.<br>
+<p>Sorts all entries from the address book in alphabetical order based on name.<br>
 Alias: <code>s</code><br>
 Format: <code>sort</code></p>
 </div>
@@ -701,28 +744,112 @@ There is no need to save manually.</p>
 <div class="sect2">
 <h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.17. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p><em>{Placeholder: to be revised when encryption code is added}</em></p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
+<h2 id="additional-information-on-features"><a class="link" href="#additional-information-on-features">4. Additional Information on Features</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section goes more in depth for some of the features mentioned in the above chapter.</p>
+</div>
+<div class="sect2">
+<h3 id="add-command"><a class="link" href="#add-command">4.1. Add Command</a></h3>
+<div class="paragraph">
+<p>The <code>add</code> command adds a person into the application.<br>
+This command have specific compulsory (must-have) and non-compulsory fields.<br></p>
+</div>
+<div class="paragraph">
+<p>Compulsory fields:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name</p>
+</li>
+<li>
+<p>Matriculation Number</p>
+</li>
+<li>
+<p>Phone Number</p>
+</li>
+<li>
+<p>Email Address</p>
+</li>
+<li>
+<p>Address</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Non-Compulsory field(s):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Tags</p>
+</li>
+<li>
+<p>Display Picture</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each individual field has a specific format requirement.<br>
+e.g the NAME field must only contain letters.</p>
+</div>
+<div class="paragraph">
+<p>If the wrong format is detected, the application will prompt you of the correct input format in the results display panel right underneath the command input line.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undo-command"><a class="link" href="#undo-command">4.2. Undo Command</a></h3>
+<div class="paragraph">
+<p>As stated in chapter 3.10, certain commands (not all) can be undone.</p>
+</div>
+<div class="paragraph">
+<p>Commands that cannot be undone:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code></p>
+</li>
+<li>
+<p><code>find</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq"><a class="link" href="#faq">5. FAQ</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Your TA folder.</p>
+</div>
+<div class="paragraph">
+<p><strong>Q</strong>: What is the calendar for?<br>
+<strong>A</strong>: The calendar is there for a task scheduling feature that is coming in v2.0 of the application.</p>
+</div>
+<div class="paragraph">
+<p><strong>Q</strong>: How do i keep my information safe?<br>
+<strong>A</strong>: A login feature will be coming in v2.0.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p><strong>Add</strong> <code>add n/NAME m/MATRICULATION_NUMBER p/PHONE_NUMBER e/EMAIL a/ADDRESS dp/DISPLAY_PICTURE [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>add n/James Ho m/A2345678J p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
 </li>
 <li>
 <p><strong>Clear</strong> : <code>clear</code></p>
@@ -732,11 +859,11 @@ e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1
 e.g. <code>delete 3</code></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
+<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [m/MATRICULATION_NUMBER] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [dp/DISPLAY_PICTURE] [t/TAG]&#8230;&#8203;</code><br>
 e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
+<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]&#8230;&#8203;</code><br>
 e.g. <code>find James Jake</code></p>
 </li>
 <li>
@@ -765,7 +892,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-30 17:25:21 UTC
+Last updated 2018-03-30 17:25:48 UTC
 </div>
 </div>
 </body>

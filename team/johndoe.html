@@ -176,31 +176,31 @@ Format: <code>undo</code></p>
 <p>Examples:</p>
 </div>
 <div class="paragraph">
-<p>Before any commands or undos:</p>
+<p>Address book starts with the following as shown in Figure 19:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/UiInitial.png" alt="UiInitial" width="800">
 </div>
-<div class="title">Figure 1. Application before any tampering<br></div>
+<div class="title">Figure 1. Application before any Commands<br></div>
 </div>
 <div class="paragraph">
-<p>Command: <code>delete 1</code>, <code>list</code>, <code>undo</code>:</p>
+<p>Command(s) entered:<br>
+<code>delete 1</code>, <code>list</code>, <code>undo</code>:<br>
+The <code>delete 1</code> command will be reversed.<br>
+End result should look the same as Figure 19.</p>
 </div>
 <div class="paragraph">
-<p>The <code>delete 1</code> command will be reversed. End result should look the same as Figure 18.</p>
+<p>Command(s) entered:<br>
+<code>select 1</code>, <code>list</code>, <code>undo</code>:<br>
+The <code>undo</code> command fails as there are no undoable commands executed previously.<br>
+End result should look the same as Figure 19.</p>
 </div>
 <div class="paragraph">
-<p>Command: <code>select 1</code>, <code>list</code>, <code>undo</code>:</p>
-</div>
-<div class="paragraph">
-<p>The <code>undo</code> command fails as there are no undoable commands executed previously. End result should look the same as Figure 18.</p>
-</div>
-<div class="paragraph">
-<p>Command: <code>delete 1</code>, <code>clear</code>, <code>undo</code>, <code>undo</code>:</p>
-</div>
-<div class="paragraph">
-<p>Both commands reversed. End result should look the same as Figure 18.</p>
+<p>Command(s) entered:<br>
+<code>delete 1</code>, <code>clear</code>, <code>undo</code>, <code>undo</code>:<br>
+Both commands reversed.<br>
+End result should look the same as Figure 19.</p>
 </div>
 </div>
 <div class="sect2">
@@ -214,28 +214,36 @@ Format: <code>redo</code></p>
 <p>Examples:</p>
 </div>
 <div class="paragraph">
-<p>Command: <code>delete 1</code>, <code>undo</code>, <code>redo</code>:</p>
+<p>Address book starts with the same one in Figure 19.</p>
+</div>
+<div class="paragraph">
+<p>Command(s) entered:<br>
+<code>delete 1</code>, <code>undo</code>, <code>redo</code>:<br>
+The delete command is reversed, then reapplied (Figure 20).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/FirstRedo.png" alt="FirstRedo" width="800">
 </div>
-<div class="title">Figure 2. Delete command reapplied<br></div>
+<div class="title">Figure 2. <code>delete</code> Command Reapplied<br></div>
 </div>
 <div class="paragraph">
-<p>Command: <code>delete 1</code>, <code>redo</code>:</p>
+<p>Command(s) entered:<br>
+<code>delete 1</code>, <code>redo</code>:<br>
+The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.<br>
+End result should look the same as in Figure 19.</p>
 </div>
 <div class="paragraph">
-<p>The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously. End result should look the same as Figure 19.</p>
-</div>
-<div class="paragraph">
-<p>Command: <code>delete 1</code>, <code>clear</code>, <code>undo</code> (reverses the <code>clear</code> command), <code>undo</code> (reverses the <code>delete 1</code> command), <code>redo</code> (reapplies the <code>delete 1</code> command), <code>redo</code> (reapplies the <code>clear</code> command):</p>
+<p>Command(s) entered:<br>
+<code>delete 1</code>, <code>clear</code>, <code>undo</code>, <code>redo</code>:<br>
+<code>clear</code> command and <code>delete</code> command are reversed.<br>
+<code>clear</code> command and <code>delete</code> command are subsequently reapplied (Figure 21).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/SecondRedo.png" alt="SecondRedo" width="800">
 </div>
-<div class="title">Figure 3. Both commands reapplied, application is cleared<br></div>
+<div class="title">Figure 3. Both Commands Reversed, Reapplied. Application Cleared.<br></div>
 </div>
 </div>
 <div class="sect2">
@@ -256,18 +264,15 @@ Format: <code>import FILEPATH</code></p>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>import ~/download/NewData.xml</code></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Command entered:<br>
+<code>import ~/download/NewData.xml</code></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="sorting-all-entries-code-sort-code-code-coming-in-v2-0-code"><a class="link" href="#sorting-all-entries-code-sort-code-code-coming-in-v2-0-code">Sorting all entries : <code>sort</code> <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
-<p>Sorts all entries from the address book in alphebatical order based on name.<br>
+<p>Sorts all entries from the address book in alphabetical order based on name.<br>
 Alias: <code>s</code><br>
 Format: <code>sort</code></p>
 </div>
@@ -289,7 +294,83 @@ There is no need to save manually.</p>
 <div class="sect2">
 <h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p><em>{Placeholder: to be revised when encryption code is added}</em></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="additional-information-on-features"><a class="link" href="#additional-information-on-features">Additional Information on Features</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section goes more in depth for some of the features mentioned in the above chapter.</p>
+</div>
+<div class="sect2">
+<h3 id="add-command"><a class="link" href="#add-command">Add Command</a></h3>
+<div class="paragraph">
+<p>The <code>add</code> command adds a person into the application.<br>
+This command have specific compulsory (must-have) and non-compulsory fields.<br></p>
+</div>
+<div class="paragraph">
+<p>Compulsory fields:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name</p>
+</li>
+<li>
+<p>Matriculation Number</p>
+</li>
+<li>
+<p>Phone Number</p>
+</li>
+<li>
+<p>Email Address</p>
+</li>
+<li>
+<p>Address</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Non-Compulsory field(s):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Tags</p>
+</li>
+<li>
+<p>Display Picture</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each individual field has a specific format requirement.<br>
+e.g the NAME field must only contain letters.</p>
+</div>
+<div class="paragraph">
+<p>If the wrong format is detected, the application will prompt you of the correct input format in the results display panel right underneath the command input line.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undo-command"><a class="link" href="#undo-command">Undo Command</a></h3>
+<div class="paragraph">
+<p>As stated in chapter 3.10, certain commands (not all) can be undone.</p>
+</div>
+<div class="paragraph">
+<p>Commands that cannot be undone:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code></p>
+</li>
+<li>
+<p><code>find</code></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -299,7 +380,15 @@ There is no need to save manually.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Your TA folder.</p>
+</div>
+<div class="paragraph">
+<p><strong>Q</strong>: What is the calendar for?<br>
+<strong>A</strong>: The calendar is there for a task scheduling feature that is coming in v2.0 of the application.</p>
+</div>
+<div class="paragraph">
+<p><strong>Q</strong>: How do i keep my information safe?<br>
+<strong>A</strong>: A login feature will be coming in v2.0.</p>
 </div>
 </div>
 </div>
@@ -309,8 +398,8 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p><strong>Add</strong> <code>add n/NAME m/MATRICULATION_NUMBER p/PHONE_NUMBER e/EMAIL a/ADDRESS dp/DISPLAY_PICTURE [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>add n/James Ho m/A2345678J p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
 </li>
 <li>
 <p><strong>Clear</strong> : <code>clear</code></p>
@@ -320,11 +409,11 @@ e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1
 e.g. <code>delete 3</code></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
+<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [m/MATRICULATION_NUMBER] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [dp/DISPLAY_PICTURE] [t/TAG]&#8230;&#8203;</code><br>
 e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
+<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]&#8230;&#8203;</code><br>
 e.g. <code>find James Jake</code></p>
 </li>
 <li>
@@ -351,7 +440,7 @@ e.g.<code>select 2</code></p>
 <div class="sect2">
 <h3 id="encrypting-data-files-code-coming-in-v2-0-code-2"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code-2">Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p><em>{Placeholder: to be revised when encryption code is added}</em></p>
 </div>
 </div>
 </div>
@@ -681,7 +770,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-30 17:25:21 UTC
+Last updated 2018-03-30 17:25:48 UTC
 </div>
 </div>
 </body>
