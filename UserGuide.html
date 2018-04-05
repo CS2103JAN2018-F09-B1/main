@@ -26,7 +26,7 @@
 <ul class="sectlevel1">
 <li><a href="#introduction">1. Introduction</a></li>
 <li><a href="#quick-start">2. Quick Start</a></li>
-<li><a href="#Features">3. Features</a>
+<li><a href="#Features">3. Contact Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
 <li><a href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></li>
@@ -43,18 +43,30 @@
 <li><a href="#importing-data-from-another-file-code-import-code">3.13. Importing data from another file : <code>import</code></a></li>
 <li><a href="#sorting-all-entries-code-sort-code-code-coming-in-v2-0-code">3.14. Sorting all entries : <code>sort</code> <code>[coming in v2.0]</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.15. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.16. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.17. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
-<li><a href="#additional-information-on-features">4. Additional Information on Features</a>
+<li><a href="#task-to-do-list-and-calendar-features">4. Task, To-do list and Calendar Features</a>
 <ul class="sectlevel2">
-<li><a href="#add-command">4.1. Add Command</a></li>
-<li><a href="#undo-command">4.2. Undo Command</a></li>
+<li><a href="#adding-a-task-code-addtask-code">4.1. Adding a task: <code>addTask</code></a></li>
+<li><a href="#editing-a-task-code-edittask-code">4.2. Editing a task: <code>editTask</code></a></li>
+<li><a href="#removing-a-task-code-removetask-code">4.3. Removing a task: <code>removeTask</code></a></li>
+<li><a href="#saving-the-data">4.4. Saving the data</a></li>
 </ul>
 </li>
-<li><a href="#faq">5. FAQ</a></li>
-<li><a href="#command-summary">6. Command Summary</a></li>
+<li><a href="#additional-information-on-contact-features">5. Additional Information on Contact Features</a>
+<ul class="sectlevel2">
+<li><a href="#add-command">5.1. Add Command</a></li>
+<li><a href="#undo-command">5.2. Undo Command</a></li>
+</ul>
+</li>
+<li><a href="#faq">6. FAQ</a></li>
+<li><a href="#command-summary">7. Command Summary</a>
+<ul class="sectlevel2">
+<li><a href="#contact-commands">7.1. Contact commands</a></li>
+<li><a href="#tasks-to-do-list-and-calendar-commands">7.2. Tasks, To-do list and Calendar commands</a></li>
+<li><a href="#miscellaneous-tasks">7.3. Miscellaneous Tasks</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -62,10 +74,9 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Your TA</strong> is for those who <strong>prefer to use a desktop app for managing contacts</strong>.
+<p><strong>Your TA</strong> is for university teaching assistants who prefer to use a desktop application to manage student contacts and plan your schedule.
 More importantly, it is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI).<br>
-If you can type fast, it can get your contact management tasks done faster than traditional GUI applications.<br>
-Once you&#8217;re ready, jump to <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+If you can type fast, it can get your contact management and tasks scheduling done faster than traditional GUI applications.<br></p>
 </div>
 </div>
 </div>
@@ -129,14 +140,14 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </li>
 <li>
-<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
+<p>Refer to <a href="#Features">Section 3, &#8220;Contact Features&#8221;</a> for details of each command.</p>
 </li>
 </ol>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
+<h2 id="Features"><a class="link" href="#Features">3. Contact Features</a></h2>
 <div class="sectionbody">
 <div class="exampleblock">
 <div class="content">
@@ -734,29 +745,81 @@ Format: <code>sort</code></p>
 Format: <code>exit</code></p>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="task-to-do-list-and-calendar-features"><a class="link" href="#task-to-do-list-and-calendar-features">4. Task, To-do list and Calendar Features</a></h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.16. Saving the data</a></h3>
+<h3 id="adding-a-task-code-addtask-code"><a class="link" href="#adding-a-task-code-addtask-code">4.1. Adding a task: <code>addTask</code></a></h3>
+<div class="paragraph">
+<p>Adds a person to the address book.<br>
+Format: <code>addTask desc/TASK DESCRIPTION by/DEADLINE priority/PRIORITY</code></p>
+</div>
+<div class="paragraph">
+<p>New tasks will be added into the <strong>To-do list</strong> and <strong>Calendar</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>Current date: 03-04-2018<br>
+The application initially starts with no tasks as displayed in Figure 2:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UiInitial.png" alt="UiInitial" width="800">
+</div>
+<div class="title">Figure 22. Initial Address Book State<br></div>
+</div>
+<div class="paragraph">
+<p>Command entered:<br>
+<code>addTask desc/Grade mid-terms by/04-04-2018 priority/2</code>:<br>
+This will add a task, 'Grade mid-terms' into the list with his respective details into the application (Figure ).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AfterFirstTask.png" alt="AfterFirstTask" width="800">
+</div>
+<div class="title">Figure 23. Application after first task has been added<br></div>
+</div>
+<div class="paragraph">
+<p>Command entered:<br>
+<code>addTask desc/Submit tutorial attendance by/05-04-2018 priority/3</code>:<br>
+This will add a task, 'Submit tutorial attendance' into the calendar and to-do list with the respective details into the application (Figure ).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AfterSecondTask.png" alt="AfterSecondTask" width="800">
+</div>
+<div class="title">Figure 24. Application after second task has been added<br></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-task-code-edittask-code"><a class="link" href="#editing-a-task-code-edittask-code">4.2. Editing a task: <code>editTask</code></a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="removing-a-task-code-removetask-code"><a class="link" href="#removing-a-task-code-removetask-code">4.3. Removing a task: <code>removeTask</code></a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">4.4. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.17. Encrypting data files <code>[coming in v2.0]</code></a></h3>
-<div class="paragraph">
-<p><em>{Placeholder: to be revised when encryption code is added}</em></p>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="additional-information-on-features"><a class="link" href="#additional-information-on-features">4. Additional Information on Features</a></h2>
+<h2 id="additional-information-on-contact-features"><a class="link" href="#additional-information-on-contact-features">5. Additional Information on Contact Features</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section goes more in depth for some of the features mentioned in the above chapter.</p>
 </div>
 <div class="sect2">
-<h3 id="add-command"><a class="link" href="#add-command">4.1. Add Command</a></h3>
+<h3 id="add-command"><a class="link" href="#add-command">5.1. Add Command</a></h3>
 <div class="paragraph">
 <p>The <code>add</code> command adds a person into the application.<br>
 This command have specific compulsory (must-have) and non-compulsory fields.<br></p>
@@ -805,7 +868,7 @@ e.g the NAME field must only contain letters.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-command"><a class="link" href="#undo-command">4.2. Undo Command</a></h3>
+<h3 id="undo-command"><a class="link" href="#undo-command">5.2. Undo Command</a></h3>
 <div class="paragraph">
 <p>As stated in chapter 3.10, certain commands (not all) can be undone.</p>
 </div>
@@ -826,7 +889,7 @@ e.g the NAME field must only contain letters.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">5. FAQ</a></h2>
+<h2 id="faq"><a class="link" href="#faq">6. FAQ</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
@@ -843,8 +906,10 @@ e.g the NAME field must only contain letters.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">7. Command Summary</a></h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="contact-commands"><a class="link" href="#contact-commands">7.1. Contact commands</a></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -870,11 +935,26 @@ e.g. <code>find James Jake</code></p>
 <p><strong>List</strong> : <code>list</code></p>
 </li>
 <li>
-<p><strong>Help</strong> : <code>help</code></p>
-</li>
-<li>
 <p><strong>Select</strong> : <code>select INDEX</code><br>
 e.g.<code>select 2</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tasks-to-do-list-and-calendar-commands"><a class="link" href="#tasks-to-do-list-and-calendar-commands">7.2. Tasks, To-do list and Calendar commands</a></h3>
+<div class="paragraph">
+<p><strong>Add Task</strong> <code>addTask desc/TASK DESCRIPTION by/DEADLINE priority/PRIORITY</code>
+<strong>Edit Task</strong>
+<strong>Remove Task</strong></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="miscellaneous-tasks"><a class="link" href="#miscellaneous-tasks">7.3. Miscellaneous Tasks</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Help</strong> : <code>help</code></p>
 </li>
 <li>
 <p><strong>History</strong> : <code>history</code></p>
@@ -890,9 +970,10 @@ e.g.<code>select 2</code></p>
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-30 17:26:12 UTC
+Last updated 2018-04-05 20:39:45 UTC
 </div>
 </div>
 </body>

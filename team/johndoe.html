@@ -284,6 +284,64 @@ Format: <code>sort</code></p>
 Format: <code>exit</code></p>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="task-to-do-list-and-calendar-features"><a class="link" href="#task-to-do-list-and-calendar-features">Task, To-do list and Calendar Features</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="adding-a-task-code-addtask-code"><a class="link" href="#adding-a-task-code-addtask-code">Adding a task: <code>addTask</code></a></h3>
+<div class="paragraph">
+<p>Adds a person to the address book.<br>
+Format: <code>addTask desc/TASK DESCRIPTION by/DEADLINE priority/PRIORITY</code></p>
+</div>
+<div class="paragraph">
+<p>New tasks will be added into the <strong>To-do list</strong> and <strong>Calendar</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>Current date: 03-04-2018<br>
+The application initially starts with no tasks as displayed in Figure 2:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UiInitial.png" alt="UiInitial" width="800">
+</div>
+<div class="title">Figure 4. Initial Address Book State<br></div>
+</div>
+<div class="paragraph">
+<p>Command entered:<br>
+<code>addTask desc/Grade mid-terms by/04-04-2018 priority/2</code>:<br>
+This will add a task, 'Grade mid-terms' into the list with his respective details into the application (Figure ).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AfterFirstTask.png" alt="AfterFirstTask" width="800">
+</div>
+<div class="title">Figure 5. Application after first task has been added<br></div>
+</div>
+<div class="paragraph">
+<p>Command entered:<br>
+<code>addTask desc/Submit tutorial attendance by/05-04-2018 priority/3</code>:<br>
+This will add a task, 'Submit tutorial attendance' into the calendar and to-do list with the respective details into the application (Figure ).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AfterSecondTask.png" alt="AfterSecondTask" width="800">
+</div>
+<div class="title">Figure 6. Application after second task has been added<br></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-task-code-edittask-code"><a class="link" href="#editing-a-task-code-edittask-code">Editing a task: <code>editTask</code></a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="removing-a-task-code-removetask-code"><a class="link" href="#removing-a-task-code-removetask-code">Removing a task: <code>removeTask</code></a></h3>
+
+</div>
 <div class="sect2">
 <h3 id="saving-the-data"><a class="link" href="#saving-the-data">Saving the data</a></h3>
 <div class="paragraph">
@@ -291,16 +349,10 @@ Format: <code>exit</code></p>
 There is no need to save manually.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">Encrypting data files <code>[coming in v2.0]</code></a></h3>
-<div class="paragraph">
-<p><em>{Placeholder: to be revised when encryption code is added}</em></p>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="additional-information-on-features"><a class="link" href="#additional-information-on-features">Additional Information on Features</a></h2>
+<h2 id="additional-information-on-contact-features"><a class="link" href="#additional-information-on-contact-features">Additional Information on Contact Features</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section goes more in depth for some of the features mentioned in the above chapter.</p>
@@ -395,6 +447,8 @@ e.g the NAME field must only contain letters.</p>
 <div class="sect1">
 <h2 id="command-summary"><a class="link" href="#command-summary">Command Summary</a></h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="contact-commands"><a class="link" href="#contact-commands">Contact commands</a></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -420,11 +474,26 @@ e.g. <code>find James Jake</code></p>
 <p><strong>List</strong> : <code>list</code></p>
 </li>
 <li>
-<p><strong>Help</strong> : <code>help</code></p>
-</li>
-<li>
 <p><strong>Select</strong> : <code>select INDEX</code><br>
 e.g.<code>select 2</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tasks-to-do-list-and-calendar-commands"><a class="link" href="#tasks-to-do-list-and-calendar-commands">Tasks, To-do list and Calendar commands</a></h3>
+<div class="paragraph">
+<p><strong>Add Task</strong> <code>addTask desc/TASK DESCRIPTION by/DEADLINE priority/PRIORITY</code>
+<strong>Edit Task</strong>
+<strong>Remove Task</strong></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="miscellaneous-tasks"><a class="link" href="#miscellaneous-tasks">Miscellaneous Tasks</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Help</strong> : <code>help</code></p>
 </li>
 <li>
 <p><strong>History</strong> : <code>history</code></p>
@@ -436,11 +505,6 @@ e.g.<code>select 2</code></p>
 <p><strong>Redo</strong> : <code>redo</code></p>
 </li>
 </ul>
-</div>
-<div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code-2"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code-2">Encrypting data files <code>[coming in v2.0]</code></a></h3>
-<div class="paragraph">
-<p><em>{Placeholder: to be revised when encryption code is added}</em></p>
 </div>
 </div>
 </div>
@@ -771,7 +835,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-30 17:26:12 UTC
+Last updated 2018-04-05 20:39:45 UTC
 </div>
 </div>
 </body>

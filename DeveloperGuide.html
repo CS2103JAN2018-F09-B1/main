@@ -766,6 +766,67 @@ For every <code>Person</code> object, there can be multiple (or zero) tags.
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>The <code>Task</code> Class:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Stores the information of a specific task in the AddressBook</p>
+</li>
+<li>
+<p>Information includes: Task Description, Deadline, Priority.</p>
+</li>
+<li>
+<p>Implements <code>UniqueTaskList</code> that enforces uniqueness of its elements and disallows nulls.</p>
+</li>
+<li>
+<p><code>Task Description</code>: Object that stores the task description of the <code>Task</code> Object.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Task&#8217;s name can contain any alphanumeric characters, but should not be null.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><code>Deadline</code>: Object that stores the deadline of the <code>Task</code> Object.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Deadline should not be dates of the past and should only be in the format dd-mm-yyyy.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><code>Priority</code>: Object that stores the priority of the <code>Task</code> Object.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Priority should only be a value from 1 to 3, 1 being the lowest and 3 being the highest.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">4.6. Storage component</a></h3>
@@ -2415,7 +2476,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-30 17:26:12 UTC
+Last updated 2018-04-05 20:39:45 UTC
 </div>
 </div>
 </body>
