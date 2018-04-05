@@ -56,9 +56,10 @@
 <li><a href="#undo-redo-feature">5.2. Undo/Redo feature</a></li>
 <li><a href="#proposed-data-encryption-coming-in-v2-0">5.3. [Proposed] Data Encryption (Coming in v2.0)</a></li>
 <li><a href="#email-since-v1-1">5.4. Email (Since v1.1)</a></li>
-<li><a href="#display-picture-since-v1-2">5.5. Display Picture (Since v1.2)</a></li>
-<li><a href="#logging">5.6. Logging</a></li>
-<li><a href="#Implementation-Configuration">5.7. Configuration</a></li>
+<li><a href="#participation-marks-since-v1-4">5.5. Participation Marks (Since v1.4)</a></li>
+<li><a href="#display-picture-since-v1-2">5.6. Display Picture (Since v1.2)</a></li>
+<li><a href="#logging">5.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">5.8. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">6. Documentation</a>
@@ -1232,21 +1233,71 @@ call the Java <code>Desktop</code> class to launch the user&#8217;s default mail
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="future-enhancements-coming-in-v1-3"><a class="link" href="#future-enhancements-coming-in-v1-3">5.4.3. Future enhancements (Coming in v1.3)</a></h4>
+</div>
+<div class="sect2">
+<h3 id="participation-marks-since-v1-4"><a class="link" href="#participation-marks-since-v1-4">5.5. Participation Marks (Since v1.4)</a></h3>
 <div class="paragraph">
-<p>Support for writing the subject title in the application as well by adding an extra parameter such as <code>email 1 s/ [SUBJECT]</code>.</p>
+<p>This feature allows the user to add marks to the <code>Participation</code> atttribute of a <code>Person</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">5.5.1. Current implementation</a></h4>
+<div class="paragraph">
+<p>The user will enter a command <code>markPart INDEX marks/DIGITS</code> to the application. The application will then rely on <code>AddressBookparser</code> and <code>MarkCommandParser</code> to
+parse the argument. The argument will be passed into the MarkCommand to be executed. From there, it will create a new <code>Person</code> object with the updated
+<code>Participation</code> object attribute.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">5.5.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-update-the-marks"><a class="link" href="#aspect-how-to-update-the-marks">Aspect: How to update the marks</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Create an entire new <code>Person</code> object</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: It is similar to the rest of the <code>Logic</code> commands.</p>
+</li>
+<li>
+<p>Cons: Longer number of steps.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Make <code>Participation</code> editable</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to update the data.</p>
+</li>
+<li>
+<p>Cons: Does not follow the scheme of the application.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="future-enhancements-coming-in-v2-0"><a class="link" href="#future-enhancements-coming-in-v2-0">5.5.3. Future enhancements (Coming in v2.0)</a></h4>
+<div class="paragraph">
+<p>Support for setting a threshold and easily seeing how many students made the cut over the threshold.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="display-picture-since-v1-2"><a class="link" href="#display-picture-since-v1-2">5.5. Display Picture (Since v1.2)</a></h3>
+<h3 id="display-picture-since-v1-2"><a class="link" href="#display-picture-since-v1-2">5.6. Display Picture (Since v1.2)</a></h3>
 <div class="paragraph">
 <p>This feature allows the user to enter a path to their selected image file and copies the image into the <code>images\displayPic</code> folder. This image
 will be shown in the application next to the details of the person.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">5.5.1. Current implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">5.6.1. Current implementation</a></h4>
 <div class="paragraph">
 <p>The application will take in the argument through <code>dp/ [PATH TO IMAGE]</code>. If this is empty, the application will default to using the default profile picture
 which is in <code>src\resources\images\displayPic</code>. If an valid path to an image is provided, the image will be processed and copied over to the <code>data</code> folder where the
@@ -1272,7 +1323,7 @@ of image files such as to facilitate the <code>undo</code> command.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">5.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">5.6.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-filepath-to-the-image"><a class="link" href="#aspect-filepath-to-the-image">Aspect: Filepath to the image</a></h5>
 <div class="ulist">
@@ -1341,7 +1392,7 @@ of image files such as to facilitate the <code>undo</code> command.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="future-enhancements"><a class="link" href="#future-enhancements">5.5.3. Future enhancements</a></h4>
+<h4 id="future-enhancements"><a class="link" href="#future-enhancements">5.6.3. Future enhancements</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1355,14 +1406,14 @@ of image files such as to facilitate the <code>undo</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">5.6. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">5.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file. (See <a href="#Implementation-Configuration">Section 5.7, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file. (See <a href="#Implementation-Configuration">Section 5.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level.</p>
@@ -1393,7 +1444,7 @@ of image files such as to facilitate the <code>undo</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.7. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2476,7 +2527,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-05 21:00:28 UTC
+Last updated 2018-04-05 23:15:42 UTC
 </div>
 </div>
 </body>
