@@ -384,7 +384,7 @@ Examples:
 Command entered: +
 `import ~/download/NewData.xml`
 
-=== Sorting all entries : `sort` `[coming in v2.0]`
+=== Sorting all entries : `sort`
 
 Sorts all entries from the address book in alphabetical order based on name. +
 Alias: `s` +
