@@ -1,6 +1,6 @@
 = Your TA - User Guide
 :toc:
-:toc-title: Table of Content
+:toc-title:
 :toc-placement: preamble
 :sectnums:
 :imagesDir: images

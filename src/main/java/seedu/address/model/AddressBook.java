@@ -20,7 +20,6 @@ import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
-import seedu.address.model.task.exceptions.TaskNotFoundException;
 
 /**
  * Wraps all data at the address-book level
@@ -84,8 +83,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         List<Person> syncedPersonList = newData.getPersonList().stream()
                 .map(this::syncWithMasterTagList)
                 .collect(Collectors.toList());
-        List< Task > syncedTaskList = newData.getTaskList().stream()
-                .collect(Collectors.toList());
 
         try {
             setPersons(syncedPersonList);
@@ -146,20 +143,17 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Replaces the given person {@code target} in the list with {@code editedPerson}.
-     * {@code AddressBook}'s tag list will be updated with the tags of {@code editedPerson}.
-     *
-     * @throws DuplicatePersonException if updating the person's details causes the person to be equivalent to
-     *      another existing person in the list.
-     * @throws PersonNotFoundException if {@code target} could not be found in the list.
-     *
-     * @see #syncWithMasterTagList(Person)
+     * Adds an item to be scheduled to be deleted to the address book.
      */
-    public void updateTask(Task target, Task editedTask)
-            throws TaskNotFoundException {
-        requireNonNull(editedTask);
+    public void addDeleteItem(String filepath) {
+        itemList.add(filepath);
+    }
 
-        tasks.setTask(target, editedTask);
+    /**
+     * Removes all items to be scheduled to be deleted to the address book.
+     */
+    public void clearItems() {
+        itemList.clear();
     }
 
     /**
@@ -194,18 +188,6 @@ public class AddressBook implements ReadOnlyAddressBook {
             return true;
         } else {
             throw new PersonNotFoundException();
-        }
-    }
-
-    /**
-     * Removes {@code key} from this {@code AddressBook}.
-     * @throws TaskNotFoundException if the {@code key} is not in this {@code AddressBook}.
-     */
-    public boolean removeTask(Task key) throws TaskNotFoundException {
-        if (tasks.remove(key)) {
-            return true;
-        } else {
-            throw new TaskNotFoundException();
         }
     }
 

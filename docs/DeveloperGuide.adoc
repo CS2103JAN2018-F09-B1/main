@@ -1,6 +1,6 @@
 = Your TA - Developer Guide
 :toc:
-:toc-title: Table of Contents
+:toc-title:
 :toc-placement: preamble
 :sectnums:
 :imagesDir: images
@@ -25,10 +25,10 @@ attendance and participation as well.
 
 === New Developers
 
-You may wish to refer to the https://github.com/CS2103JAN2018-F09-B1/main/blob/master/docs/DeveloperGuide.adoc#setting-up[set up] portion
+You may wish to refer to the <<Setting up, setting up>> portion
 to set up the Your TA project file.
 
-Read through the rest of the guide to familiarise yourself with how Your TA components function together.
+Read through the rest of the guide to familiarise yourself with how Your TA components functions together.
 
 Try making some enhancements or edits to a component and make a Pull Request (PR) to our repo! We will take a look at your PR and
 give you some feedback or even merge your code if it's great.
@@ -277,7 +277,7 @@ The `Model`:
 
 * Stores a `UserPref` object that represents the user's preferences.
 * Stores the Address Book data.
-* Exposes unmodifiable `ObservableList<Person>` and ObservableList<Task> that can be 'observed' e.g. the UI can be bound to these lists so that the UI automatically updates when the data in the lists change.
+* Exposes an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * Does not depend on any of the other three components.
 
 The `Person` Class:
@@ -490,7 +490,7 @@ This feature allows the user to call their desktop mail application from the app
 image::EmailComponentFlow.png[width="800"]
 pass:[<div align="center"><b>Figure 3.3.1: Email Implementation</b></div>]
 
-The user will enter a command `email 1` to the application. The application will then rely on `AddressBookParser` and `EmailCommandParser` to
+The user will enter a command `email 1` to the application. The application will then rely on `AddressBookparser` and `EmailCommandParser` to
 parse the argument. The argument will be passed into the EmailCommand when it will be checked on whether the argument is valid. From there, it will
 call the Java `Desktop` class to launch the user's default mail application.
 
@@ -575,51 +575,6 @@ The current delete uses Java's `deleteOnExit` method. It will be updated later o
 
 * Support for photo frames and undo for delete (Coming in v1.4)
 * Support for frame color to highlight student status (Coming in v1.5)
-
-=== Task List (Since v1.2)
-
-This feature allows the user to schedule their tasks by entering command inputs in the CLI. Tasks scheduled in this App will be displayed in the Todo List and Calender.
-
-==== Current Implementation
-
-The Task List is a set of task data stored in `addressbook.xml`. The user will manipulate the Task List data in `addressbook.xml` by using commands.
-These commands inherit `UndoableCommand`, thus, they support undoing and redoing of commands as well.
-
-The displayed tasks in the `Todo List` and `Calendar View` are unmodifiable view of Task List which is synchronized to addressbook.xml if any changes are made.
-
-===== Adding a task
-
-The `AddressBookParser` will be called by the application and parses arguments to `AddTaskCommandParser`.
-This parser will process and validate the arguments as well as
-execute `AddTaskCommand` with the task specified by the arguments.
-
-===== Deleting a task
-
-Task index is the only unique indicator that `DeleteTaskCommand` can make use of.
-The task index is displayable in `Todo List` which assists the user to decide which task to delete.
-`DeleteTaskCommandParser` validates the index parsed in and calls `DeleteTaskCommand` to delete the corresponding task.
-
-===== Editing a task
-
-Editing a task, in fact, is implemented through both deleting a task and adding a task.
-The task to be edited is specified by the task index parsed into `EditTaskCommand`.
-The rest of arguments specify the detail of task fields the user would like to change.
-`EditTaskCommand` encapsulates a new `Task` Object with the modified fields.
-The `ModelManager` is then called up to delete the original task and add a new task.
-[NOTE]
-The edited task will appear to be the last item in the Task List because it is actually a newly added task.
-
-==== Design Considerations
-
-===== Aspect: Edit a task
-
-* **Alternative 1 (Current Choice):** Make a new task after deleting the original task.
-** Pros: It is easy to implement as you do not need to implement a individual deadline change mechanism corresponding to the cells of `Calendar View`.
-** Cons: The Task List order may not be maintained, the edited task will be added to the last item in the Task List.
-
-* **Alternative 2:** Edit on the fields of original task.
-** Pros: The Task List order will be maintained, as it accesses and modifies the item in the Task List.
-** Cons: It adds more complex to the feature as it requires a new mechanism to refresh the cells of `Calendar View`.
 
 === Logging
 
