@@ -285,7 +285,7 @@ Format: <code>import FILEPATH</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sorting-all-entries-code-sort-code-code-coming-in-v2-0-code"><a class="link" href="#sorting-all-entries-code-sort-code-code-coming-in-v2-0-code">Sorting all entries : <code>sort</code> <code>[coming in v2.0]</code></a></h3>
+<h3 id="sorting-all-entries-code-sort-code"><a class="link" href="#sorting-all-entries-code-sort-code">Sorting all entries : <code>sort</code></a></h3>
 <div class="paragraph">
 <p>Sorts all entries from the address book in alphabetical order based on name.<br>
 Alias: <code>s</code><br>
@@ -307,7 +307,7 @@ Format: <code>exit</code></p>
 <div class="sect2">
 <h3 id="adding-a-task-code-addtask-code"><a class="link" href="#adding-a-task-code-addtask-code">Adding a task: <code>addTask</code></a></h3>
 <div class="paragraph">
-<p>Adds a person to the address book.<br>
+<p>Adds a task to the address book.<br>
 Format: <code>addTask desc/TASK DESCRIPTION by/DEADLINE priority/PRIORITY</code></p>
 </div>
 <div class="paragraph">
@@ -320,42 +320,53 @@ Format: <code>addTask desc/TASK DESCRIPTION by/DEADLINE priority/PRIORITY</code>
 <p>Current date: 03-04-2018<br>
 The application initially starts with no tasks as displayed in Figure 2:</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UiInitial.png" alt="UiInitial" width="800">
-</div>
-<div class="title">Figure 4. Initial Address Book State<br></div>
-</div>
 <div class="paragraph">
 <p>Command entered:<br>
 <code>addTask desc/Grade mid-terms by/04-04-2018 priority/2</code>:<br>
 This will add a task, 'Grade mid-terms' into the list with his respective details into the application (Figure ).</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/AfterFirstTask.png" alt="AfterFirstTask" width="800">
-</div>
-<div class="title">Figure 5. Application after first task has been added<br></div>
 </div>
 <div class="paragraph">
 <p>Command entered:<br>
 <code>addTask desc/Submit tutorial attendance by/05-04-2018 priority/3</code>:<br>
 This will add a task, 'Submit tutorial attendance' into the calendar and to-do list with the respective details into the application (Figure ).</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/AfterSecondTask.png" alt="AfterSecondTask" width="800">
-</div>
-<div class="title">Figure 6. Application after second task has been added<br></div>
-</div>
 </div>
 <div class="sect2">
 <h3 id="editing-a-task-code-edittask-code"><a class="link" href="#editing-a-task-code-edittask-code">Editing a task: <code>editTask</code></a></h3>
-
+<div class="paragraph">
+<p>Edits a task to the address book.<br>
+Format: <code>editTask INDEX title [/TASK TITLE] [desc/TASK DESCRIPTION] [by/DEADLINE] [priority/PRIORITY</code>]</p>
+</div>
+<div class="paragraph">
+<p>The specified tasks will be edited in the <strong>To-do list</strong> and <strong>Calendar</strong>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The index refers to the index number shown in the last task listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="removing-a-task-code-removetask-code"><a class="link" href="#removing-a-task-code-removetask-code">Removing a task: <code>removeTask</code></a></h3>
-
+<h3 id="removing-a-task-code-deletetask-code"><a class="link" href="#removing-a-task-code-deletetask-code">Removing a task: <code>deleteTask</code></a></h3>
+<div class="paragraph">
+<p>Deletes a task in the address book.<br>
+Format: `deleteTask INDEX</p>
+</div>
+<div class="paragraph">
+<p>The specified tasks will be deleted from the <strong>To-do list</strong> and <strong>Calendar</strong>.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="saving-the-data"><a class="link" href="#saving-the-data">Saving the data</a></h3>
@@ -850,7 +861,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-06 05:29:35 UTC
+Last updated 2018-04-06 07:49:14 UTC
 </div>
 </div>
 </body>
