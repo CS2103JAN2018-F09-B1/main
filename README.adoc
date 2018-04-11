@@ -12,11 +12,11 @@ image::docs/images/UiInitial.png[width="600"]
 endif::[]
 
 ifndef::env-github[]
-image::images/UiInitial.png[width="600"]
+image::images/UiDisplay.png[width="600"]
 endif::[]
 
 * This is a desktop "Your TA" application. It has a GUI but most of the user interactions happen using a CLI (Command Line Interface).
-* It is an address book cum scheduler targeted at making tracking students for NUS student teaching assistants' easier.
+* It is an address book cum scheduler targeted at making tracking students for NUS lecturer's easier.
 * It is a Java sample application intended for students learning Software Engineering while using Java as the main programming language.
 * It is *written in OOP fashion*. It provides a *reasonably well-written* code example that is *significantly bigger* (around 6 KLoC)than what students usually write in beginner-level SE modules.
 

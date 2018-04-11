@@ -21,7 +21,7 @@
   <scene>
     <Scene>
       <stylesheets>
-        <URL value="@NewTheme.css" />
+        <URL value="@DarkTheme.css" />
         <URL value="@Extensions.css" />
       </stylesheets>
 
