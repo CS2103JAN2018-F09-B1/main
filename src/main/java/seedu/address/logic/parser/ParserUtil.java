@@ -269,6 +269,7 @@ public class ParserUtil {
 
     //@@author Wu Di
     /**
+<<<<<<< HEAD
      * Parses a {@code String taskTitle} into a {@code TaskTitle}.
      * Leading and trailing whitespaces will be trimmed.
      *

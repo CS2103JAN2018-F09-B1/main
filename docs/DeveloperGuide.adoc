@@ -303,21 +303,6 @@ The `Tag` Class,
 [TIP]
 For every `Person` object, there can be multiple (or zero) tags.
 
-The `Task` Class:
-
-* Stores the information of a specific task in the AddressBook
-* Information includes: Task Description, Deadline, Priority.
-* Implements `UniqueTaskList` that enforces uniqueness of its elements and disallows nulls.
-* `Task Description`: Object that stores the task description of the `Task` Object.
-[NOTE]
-Task's name can contain any alphanumeric characters, but should not be null.
-* `Deadline`: Object that stores the deadline of the `Task` Object.
-[NOTE]
-Deadline should not be dates of the past and should only be in the format dd-mm-yyyy.
-* `Priority`: Object that stores the priority of the `Task` Object.
-[NOTE]
-Priority should only be a value from 1 to 3, 1 being the lowest and 3 being the highest.
-
 [[Design-Storage]]
 === Storage component
 
@@ -505,30 +490,9 @@ call the Java `Desktop` class to launch the user's default mail application.
 ** Pros: Higher level of compatibility, means it can be used with a wider range of operating systems.
 ** Cons: Clunky as users may use different web mail services. The API would also differ based on the email they use as well.
 
-=== Participation Marks (Since v1.4)
+==== Future enhancements (Coming in v1.3)
 
-This feature allows the user to add marks to the `Participation` atttribute of a `Person`.
-
-==== Current implementation
-
-The user will enter a command `markPart INDEX marks/DIGITS` to the application. The application will then rely on `AddressBookparser` and `MarkCommandParser` to
-parse the argument. The argument will be passed into the MarkCommand to be executed. From there, it will create a new `Person` object with the updated
-`Participation` object attribute.
-
-==== Design Considerations
-
-===== Aspect: How to update the marks
-
-* **Alternative 1 (current choice):** Create an entire new `Person` object
-** Pros: It is similar to the rest of the `Logic` commands.
-** Cons: Longer number of steps.
-* **Alternative 2:** Make `Participation` editable
-** Pros: Easier to update the data.
-** Cons: Does not follow the scheme of the application.
-
-==== Future enhancements (Coming in v2.0)
-
-Support for setting a threshold and easily seeing how many students made the cut over the threshold.
+Support for writing the subject title in the application as well by adding an extra parameter such as `email 1 s/ [SUBJECT]`.
 
 === Display Picture (Since v1.2)
 

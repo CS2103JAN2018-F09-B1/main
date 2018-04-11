@@ -21,16 +21,6 @@ public class CalendarTaskCard extends UiPart<Region> {
         super(FXML);
         this.task = task;
         desc.setText(task.getTaskDesc().shortDesc);
-        if (task.getPriority().value == 1) {
-            desc.getStyleClass().clear();
-            desc.getStyleClass().add("label-small-green");
-        } else if (task.getPriority().value == 2) {
-            desc.getStyleClass().clear();
-            desc.getStyleClass().add("label-small-yellow");
-        } else {
-            desc.getStyleClass().clear();
-            desc.getStyleClass().add("label-small-red");
-        }
     }
 
     @Override

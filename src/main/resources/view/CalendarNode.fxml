@@ -4,27 +4,18 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane prefHeight="95.0" prefWidth="147.0" styleClass="pane-with-border" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="146.0">
-         <children>
-            <Label fx:id="date" text="Label" styleClass="label-date" >
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <ListView fx:id="tasks" prefHeight="20.0" prefWidth="70.0" styleClass="list-view-calendar" VBox.vgrow="ALWAYS">
-               <VBox.margin>
-                  <Insets bottom="1.0" left="2.0" right="1.0" top="1.0" />
-               </VBox.margin>
-            </ListView>
-         </children>
-      </VBox>
+      <Label fx:id="date" text="Label">
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <ListView fx:id="tasks" prefHeight="70.0" prefWidth="90.0" />
    </children>
-</Pane>
+</VBox>

@@ -5,56 +5,28 @@
 
 .label {
     -fx-font-size: 11pt;
-    -fx-font-family: "Verdana";
+    -fx-font-family: "Segoe UI Semibold";
     -fx-text-fill: #555555;
     -fx-opacity: 0.9;
 }
 
-.label-date {
-    -fx-text-fill: white;
-}
-
-.label-small {
-    -fx-font-size: 9pt;
-    -fx-text-fill: black;
-    -fx-background-color: darkgrey;
-}
-
-.label-small-red {
-    -fx-font-size: 9pt;
-    -fx-text-fill: black;
-    -fx-background-color: derive(#d26a6a, 20%);
-}
-
-.label-small-yellow {
-    -fx-font-size: 9pt;
-    -fx-text-fill: black;
-    -fx-background-color: derive(#e4d858, 20%);
-}
-
-.label-small-green {
-    -fx-font-size: 9pt;
-    -fx-text-fill: black;
-    -fx-background-color: derive(#8ac973, 20%);
-}
-
 .label-bright {
     -fx-font-size: 11pt;
-    -fx-font-family: "Verdana";
+    -fx-font-family: "Segoe UI Semibold";
     -fx-text-fill: white;
     -fx-opacity: 1;
 }
 
 .label-header {
     -fx-font-size: 32pt;
-    -fx-font-family: "Verdana";
+    -fx-font-family: "Segoe UI Light";
     -fx-text-fill: white;
     -fx-opacity: 1;
 }
 
 .text-field {
     -fx-font-size: 12pt;
-    -fx-font-family: "Verdana";
+    -fx-font-family: "Segoe UI Semibold";
 }
 
 .tab-pane {
@@ -115,18 +87,6 @@
     -fx-background-color: derive(#1d1d1d, 20%);
 }
 
-.list-view-calendar {
-    -fx-background-insets: 0;
-    -fx-padding: 0;
-    -fx-background-color: derive(#1d1d1d, 20%);
-}
-
-.list-view-calendar .scroll-bar:horizontal ,
-.list-view-calendar  .scroll-bar:vertical{
-    -fx-background-color:transparent;
-
-}
-
 .list-view {
     -fx-background-insets: 0;
     -fx-padding: 0;
@@ -161,31 +121,31 @@
 }
 
 .cell_big_label {
-    -fx-font-family: "Verdana";
+    -fx-font-family: "Segoe UI Semibold";
     -fx-font-size: 16px;
     -fx-text-fill: #010504;
 }
 
 .cell_small_label {
-    -fx-font-family: "Verdana";
+    -fx-font-family: "Segoe UI";
     -fx-font-size: 13px;
     -fx-text-fill: #010504;
 }
 
 .calendar_text {
-    -fx-font-family: "Verdana";
+    -fx-font-family: "Segoe UI Semibold";
     -fx-font-size: 16px;
     -fx-text-fill: white;
 }
 
 .calendar_title {
-    -fx-font-family: "Verdana";
+    -fx-font-family: "Segoe UI Semibold";
     -fx-font-size: 20px;
     -fx-text-fill: white;
 }
 
 .calendar-grid-pane {
-    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-background-color: darkgrey;
 }
 
 .anchor-pane {
@@ -194,7 +154,7 @@
 
 .pane-with-border {
      -fx-background-color: derive(#1d1d1d, 20%);
-     -fx-border-color: darkgrey;
+     -fx-border-color: derive(#1d1d1d, 10%);
      -fx-border-top-width: 1px;
 }
 
@@ -205,7 +165,7 @@
 
 .result-display {
     -fx-background-color: transparent;
-    -fx-font-family: "Verdana";
+    -fx-font-family: "Segoe UI Light";
     -fx-font-size: 13pt;
     -fx-text-fill: white;
 }
@@ -215,7 +175,7 @@
 }
 
 .status-bar .label {
-    -fx-font-family: "Verdana";
+    -fx-font-family: "Segoe UI Light";
     -fx-text-fill: white;
 }
 
@@ -253,7 +213,7 @@
 
 .menu-bar .label {
     -fx-font-size: 14pt;
-    -fx-font-family: "Verdana";
+    -fx-font-family: "Segoe UI Light";
     -fx-text-fill: white;
     -fx-opacity: 0.9;
 }
@@ -272,7 +232,7 @@
     -fx-border-color: grey, grey;
     -fx-background-radius: 0;
     -fx-background-color: grey;
-    -fx-font-family: "Verdana";
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 11pt;
     -fx-text-fill: #d8d8d8;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
@@ -374,7 +334,7 @@
     -fx-border-color: #383838 #383838 #ffffff #383838;
     -fx-border-insets: 0;
     -fx-border-width: 1;
-    -fx-font-family: "Verdana";
+    -fx-font-family: "Segoe UI Light";
     -fx-font-size: 13pt;
     -fx-text-fill: white;
 }
