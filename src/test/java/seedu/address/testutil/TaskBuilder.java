@@ -1,5 +1,9 @@
 package seedu.address.testutil;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Priority;
 import seedu.address.model.task.Task;
@@ -14,8 +18,11 @@ public class TaskBuilder {
 
     public static final String DEFAULT_TITLE = "Dance";
     public static final String DEFAULT_DESC = "Dance till I drop";
-    public static final String DEFAULT_DEALINE = "03-08-2018";
     public static final String DEFAULT_PRIORITY = "3";
+
+    private static LocalDate now = LocalDate.now();
+    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    public static final String DEFAULT_DEADLINE = now.format(formatter);
 
     private Title title;
     private TaskDescription desc;
@@ -25,7 +32,7 @@ public class TaskBuilder {
     public TaskBuilder() {
         title = new Title(DEFAULT_TITLE);
         desc = new TaskDescription(DEFAULT_DESC);
-        deadline = new Deadline(DEFAULT_DEALINE);
+        deadline = new Deadline(DEFAULT_DEADLINE);
         priority = new Priority(DEFAULT_PRIORITY);
     }
 
