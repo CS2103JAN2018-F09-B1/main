@@ -13,6 +13,7 @@ public class MainWindowHandle extends StageHandle {
     private final StatusBarFooterHandle statusBarFooter;
     private final MainMenuHandle mainMenu;
     private final CalendarViewHandle calendarView;
+    private final TodoListPanelHandle todoListPanel;
 
     public MainWindowHandle(Stage stage) {
         super(stage);
@@ -23,6 +24,7 @@ public class MainWindowHandle extends StageHandle {
         statusBarFooter = new StatusBarFooterHandle(getChildNode(StatusBarFooterHandle.STATUS_BAR_PLACEHOLDER));
         mainMenu = new MainMenuHandle(getChildNode(MainMenuHandle.MENU_BAR_ID));
         calendarView = new CalendarViewHandle(getChildNode(CalendarViewHandle.CALENDAR_TITLE_ID));
+        todoListPanel = new TodoListPanelHandle(getChildNode(TodoListPanelHandle.TODO_LIST_VIEW_ID));
     }
 
     public PersonListPanelHandle getPersonListPanel() {
@@ -45,6 +47,9 @@ public class MainWindowHandle extends StageHandle {
         return mainMenu;
     }
 
+    public TodoListPanelHandle getTodoListPanel() {
+        return todoListPanel;
+    }
     public CalendarViewHandle getCalendarView() {
         return calendarView;
     }

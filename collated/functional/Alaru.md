@@ -35,6 +35,90 @@ public class DeleteUtil {
 ```
 ###### \java\seedu\address\commons\util\FileUtil.java
 ``` java
+/**
+ * Writes and reads files
+ */
+public class FileUtil {
+
+    private static final String CHARSET = "UTF-8";
+
+    public static boolean isFileExists(File file) {
+        return file.exists() && file.isFile();
+    }
+
+    /**
+     * Creates a file if it does not exist along with its missing parent directories.
+     * @throws IOException if the file or directory cannot be created.
+     */
+    public static void createIfMissing(File file) throws IOException {
+        if (!isFileExists(file)) {
+            createFile(file);
+        }
+    }
+
+    /**
+     * Creates a file if it does not exist along with its missing parent directories
+     *
+     * @return true if file is created, false if file already exists
+     */
+    public static boolean createFile(File file) throws IOException {
+        if (file.exists()) {
+            return false;
+        }
+
+        createParentDirsOfFile(file);
+
+        return file.createNewFile();
+    }
+
+    /**
+     * Creates the given directory along with its parent directories
+     *
+     * @param dir the directory to be created; assumed not null
+     * @throws IOException if the directory or a parent directory cannot be created
+     */
+    public static void createDirs(File dir) throws IOException {
+        if (!dir.exists() && !dir.mkdirs()) {
+            throw new IOException("Failed to make directories of " + dir.getName());
+        }
+    }
+
+    /**
+     * Creates parent directories of file if it has a parent directory
+     */
+    public static void createParentDirsOfFile(File file) throws IOException {
+        File parentDir = file.getParentFile();
+
+        if (parentDir != null) {
+            createDirs(parentDir);
+        }
+    }
+
+    /**
+     * Assumes file exists
+     */
+    public static String readFromFile(File file) throws IOException {
+        return new String(Files.readAllBytes(file.toPath()), CHARSET);
+    }
+
+    /**
+     * Writes given string to a file.
+     * Will create the file if it does not exist yet.
+     */
+    public static void writeToFile(File file, String content) throws IOException {
+        Files.write(file.toPath(), content.getBytes(CHARSET));
+    }
+
+    /**
+     * Converts a string to a platform-specific file path
+     * @param pathWithForwardSlash A String representing a file path but using '/' as the separator
+     * @return {@code pathWithForwardSlash} but '/' replaced with {@code File.separator}
+     */
+    public static String getPath(String pathWithForwardSlash) {
+        checkArgument(pathWithForwardSlash.contains("/"));
+        return pathWithForwardSlash.replace("/", File.separator);
+    }
+
     public static String getFileType(String filePath) throws IllegalValueException {
         requireNonNull(filePath);
         String trimmedFilePath = filePath.trim();
@@ -167,7 +251,6 @@ public class MarkCommand extends UndoableCommand {
     public MarkCommand(Index index, Integer marks) {
         requireNonNull(index);
         requireNonNull(marks);
-
         this.targetIndex = index;
         this.marks = marks;
     }
@@ -209,6 +292,8 @@ public class MarkCommand extends UndoableCommand {
 
         Integer newMarks = marks + personToMark.getParticipation().getMarks();
 
+        newMarks = (newMarks > 100) ? 100 : newMarks;
+
         Participation updatedPart = new Participation(newMarks);
 
         return new Person(personToMark.getName(), personToMark.getMatricNumber(),
@@ -224,27 +309,6 @@ public class MarkCommand extends UndoableCommand {
                 && targetIndex.equals(((MarkCommand) other).targetIndex)
                 && marks.equals(((MarkCommand) other).marks));
     }
-}
-```
-###### \java\seedu\address\logic\parser\EmailCommandParser.java
-``` java
-public class EmailCommandParser implements Parser<EmailCommand> {
-
-    /**
-     * Parses the given {@code String} of arguments in the context of the EmailCommand
-     * and returns an EmailCommand object for execution.
-     * @throws ParseException if the user input does not conform the expected format
-     */
-    public EmailCommand parse(String args) throws ParseException {
-        try {
-            Index index = ParserUtil.parseIndex(args);
-            return new EmailCommand(index);
-        } catch (IllegalValueException ive) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, EmailCommand.MESSAGE_USAGE));
-        }
-    }
-
 }
 ```
 ###### \java\seedu\address\logic\parser\MarkCommandParser.java
@@ -271,9 +335,11 @@ public class MarkCommandParser implements Parser<MarkCommand> {
 
         try {
             Integer marks = ParserUtil.parseMarks(argMultimap.getValue(PREFIX_MARK_PARTICIPATION)).get();
+            checkArgument(Participation.isValidParticipation(Integer.toString(marks)),
+                    Participation.MESSAGE_PARTICPATION_CONSTRAINTS);
             return new MarkCommand(index, marks);
-        } catch (IllegalValueException ive) {
-            throw new ParseException(ive.getMessage(), ive);
+        } catch (IllegalArgumentException | IllegalValueException ie) {
+            throw new ParseException(ie.getMessage(), ie);
         }
 
 
@@ -410,7 +476,6 @@ public class DisplayPic {
         } catch (IllegalValueException ive) {
             assert false;
         }
-
     }
 
     public boolean isDefault() {
@@ -441,6 +506,7 @@ public class DisplayPic {
 public class Participation {
 
     public static final String MESSAGE_PARTICPATION_CONSTRAINTS = "Participation marks cannot be negative or over 100!";
+    public static final String UI_DISPLAY_HEADER = "Participation marks: ";
 
     public final Integer threshold;
     private Integer value;
@@ -477,6 +543,10 @@ public class Participation {
 
     public static boolean isValidParticipation(String value) {
         return Integer.parseInt(value) <= 100 && Integer.parseInt(value) > -1;
+    }
+
+    public String toDisplay() {
+        return UI_DISPLAY_HEADER + Integer.toString(value);
     }
 
     @Override
@@ -642,9 +712,9 @@ public class XmlAdaptedItem {
 ```
 ###### \resources\view\PersonListCard.fxml
 ``` fxml
-  <ImageView fx:id="displayPic" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-      <HBox.margin>
-         <Insets left="15.0" />
-      </HBox.margin>
-   </ImageView>
+  <ImageView fx:id="displayPic" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio= "false">
+    <HBox.margin>
+      <Insets left="15.0" />
+    </HBox.margin>
+  </ImageView>
 ```

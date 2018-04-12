@@ -59,7 +59,7 @@ public class Task implements Comparable<Task> {
             return true;
         }
 
-        if (!(other instanceof seedu.address.model.person.Person)) {
+        if (!(other instanceof seedu.address.model.task.Task)) {
             return false;
         }
 

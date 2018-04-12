@@ -12,7 +12,7 @@ import seedu.address.model.task.TaskDescription;
 import seedu.address.model.task.Title;
 
 /**
- * JAXB-friendly version of the Person.
+ * JAXB-friendly version of the Task.
  */
 public class XmlAdaptedTask {
 
@@ -48,7 +48,7 @@ public class XmlAdaptedTask {
      * @param source future changes to this will not affect the created XmlAdaptedPerson
      */
     public XmlAdaptedTask (Task source) {
-        title = source.getTitle().toString();
+        title = source.getTitle().value;
         taskDescription = source.getTaskDesc().value;
         deadline = source.getDeadline().dateString;
         priority = source.getPriority().priority;
@@ -63,9 +63,8 @@ public class XmlAdaptedTask {
 
         if (this.title == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    Title.class.getSimpleName()));
+                Title.class.getSimpleName()));
         }
-
         if (!Title.isValidTitle(this.title)) {
             throw new IllegalValueException(Title.MESSAGE_TITLE_CONSTRAINTS);
         }

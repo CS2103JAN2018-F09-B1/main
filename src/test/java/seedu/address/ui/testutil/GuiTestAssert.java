@@ -9,7 +9,10 @@ import java.util.stream.Collectors;
 import guitests.guihandles.PersonCardHandle;
 import guitests.guihandles.PersonListPanelHandle;
 import guitests.guihandles.ResultDisplayHandle;
+import guitests.guihandles.TodoCardHandle;
+import guitests.guihandles.TodoListPanelHandle;
 import seedu.address.model.person.Person;
+import seedu.address.model.task.Task;
 import seedu.address.ui.PersonCard;
 
 /**
@@ -44,6 +47,16 @@ public class GuiTestAssert {
         assertEquals(expectedPerson.getAddress().value, actualCard.getAddress());
 
         assertTagsEqual(expectedPerson, actualCard);
+    }
+
+    /**
+     * Asserts that {@code actualCard} displays the details of {@code expectedPerson}.
+     */
+    public static void assertCardDisplaysTask(Task expectedTask, TodoCardHandle actualCard) {
+        assertEquals(expectedTask.getTitle().value, actualCard.getTitle());
+        assertEquals(expectedTask.getTaskDesc().value, actualCard.getDescription());
+        assertEquals(expectedTask.getDeadline().value, actualCard.getDeadline());
+        assertEquals(expectedTask.getPriority().toString(), actualCard.getPriority());
     }
 
     /**
@@ -98,8 +111,26 @@ public class GuiTestAssert {
      * Asserts that the list in {@code personListPanelHandle} displays the details of {@code persons} correctly and
      * in the correct order.
      */
+    public static void assertListMatching(TodoListPanelHandle todoListPanelHandle, Task... tasks) {
+        for (int i = 0; i < tasks.length; i++) {
+            assertCardDisplaysTask(tasks[i], todoListPanelHandle.getTodoCardHandle(i));
+        }
+    }
+
+    /**
+     * Asserts that the list in {@code personListPanelHandle} displays the details of {@code persons} correctly and
+     * in the correct order.
+     */
     public static void assertListMatching(PersonListPanelHandle personListPanelHandle, List<Person> persons) {
         assertListMatching(personListPanelHandle, persons.toArray(new Person[0]));
+    }
+
+    /**
+     * Asserts that the list in {@code todoListPanelHandle} displays the details of {@code tasks} correctly and
+     * in the correct order.
+     */
+    public static void assertListMatching(TodoListPanelHandle todoListPanelHandle, List<Task> tasks) {
+        assertListMatching(todoListPanelHandle, tasks.toArray(new Task[0]));
     }
 
     /**
@@ -108,6 +139,14 @@ public class GuiTestAssert {
     public static void assertListSize(PersonListPanelHandle personListPanelHandle, int size) {
         int numberOfPeople = personListPanelHandle.getListSize();
         assertEquals(size, numberOfPeople);
+    }
+
+    /**
+     * Asserts the size of the list in {@code todoListPanelHandle} equals to {@code size}.
+     */
+    public static void assertListSize(TodoListPanelHandle todoListPanelHandle, int size) {
+        int numberOfTask = todoListPanelHandle.getListSize();
+        assertEquals(size, numberOfTask);
     }
 
     /**
