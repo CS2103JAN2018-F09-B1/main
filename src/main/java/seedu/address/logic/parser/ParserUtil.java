@@ -180,7 +180,7 @@ public class ParserUtil {
      */
     public static DisplayPic parseDisplayPic(String displayPic)
             throws IllegalValueException {
-        if (displayPic == null) {
+        if (displayPic.equals("")) {
             return new DisplayPic();
         } else {
             String trimmedDisplayPath = displayPic.trim();
