@@ -52,14 +52,14 @@
 </li>
 <li><a href="#implementation">5. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#help-feature">5.1. Help feature</a></li>
-<li><a href="#undo-redo-feature">5.2. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption-coming-in-v2-0">5.3. [Proposed] Data Encryption (Coming in v2.0)</a></li>
-<li><a href="#email-since-v1-1">5.4. Email (Since v1.1)</a></li>
-<li><a href="#participation-marks-since-v1-4">5.5. Participation Marks (Since v1.4)</a></li>
-<li><a href="#display-picture-since-v1-2">5.6. Display Picture (Since v1.2)</a></li>
-<li><a href="#logging">5.7. Logging</a></li>
-<li><a href="#Implementation-Configuration">5.8. Configuration</a></li>
+<li><a href="#login-feature">5.1. Login feature</a></li>
+<li><a href="#help-feature">5.2. Help feature</a></li>
+<li><a href="#undo-redo-feature">5.3. Undo/Redo feature</a></li>
+<li><a href="#participation">5.4. Participation</a></li>
+<li><a href="#display-picture">5.5. Display Picture</a></li>
+<li><a href="#logging">5.6. Logging</a></li>
+<li><a href="#Implementation-Configuration">5.7. Configuration</a></li>
+<li><a href="#data-encryption-coming-in-v2-0">5.8. Data Encryption (Coming in v2.0)</a></li>
 </ul>
 </li>
 <li><a href="#documentation">6. Documentation</a>
@@ -95,12 +95,11 @@
 <li><a href="#use-cases">Appendix C: Use Cases</a></li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
-<li><a href="#product-survey">Appendix F: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
+<li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">G.2. Deleting a person</a></li>
-<li><a href="#saving-data">G.3. Saving data</a></li>
+<li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
+<li><a href="#deleting-a-person">F.2. Deleting a person</a></li>
+<li><a href="#saving-data">F.3. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -123,8 +122,8 @@ attendance and participation as well.</p>
 <div class="sect2">
 <h3 id="new-developers"><a class="link" href="#new-developers">2.1. New Developers</a></h3>
 <div class="paragraph">
-<p>You may wish to refer to the <a href="#setting-up">setting up</a> portion
-to set up the Your TA project file.</p>
+<p>You may wish to refer to the Section 3: <a href="#setting-up">Setting up</a>
+to properly set up the Your TA project file.</p>
 </div>
 <div class="paragraph">
 <p>Read through the rest of the guide to familiarise yourself with how Your TA components functions together.</p>
@@ -147,6 +146,9 @@ welcome any suggestions or feedback to improve Your TA.</p>
 <div class="sect1">
 <h2 id="setting-up"><a class="link" href="#setting-up">3. Setting up</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section contains the steps needed to properly set up the required files to work on the program source code and to ensure the application runs properly.</p>
+</div>
 <div class="sect2">
 <h3 id="prerequisites"><a class="link" href="#prerequisites">3.1. Prerequisites</a></h3>
 <div class="paragraph">
@@ -381,7 +383,7 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <div class="title">Figure 1. Architecture Diagram</div>
 </div>
 <div class="paragraph">
-<p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App. Given below is a quick overview of each component.</p>
+<p>The <strong><em>Architecture Diagram</em></strong> given above (Figure 1) explains the high-level design of the App. Given below is a quick overview of each component.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -457,7 +459,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </ul>
 </div>
 <div class="paragraph">
-<p>For example, the <code>Logic</code> component (see the class diagram given below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
+<p>For example, the <code>Logic</code> component (see Figure 2 given below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -467,7 +469,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </div>
 <h4 id="events-driven-nature-of-the-design" class="discrete">Events-Driven nature of the design</h4>
 <div class="paragraph">
-<p>The <em>Sequence Diagram</em> below shows how the components interact for the scenario where the user issues the command <code>delete 1</code>.</p>
+<p>The <em>Sequence Diagram</em> (Figure 3) below shows how the components interact for the scenario where the user issues the command <code>delete 1</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -488,7 +490,7 @@ Note how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</c
 </table>
 </div>
 <div class="paragraph">
-<p>The diagram below shows how the <code>EventsCenter</code> reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.</p>
+<p>Figure 4 below shows how the <code>EventsCenter</code> reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -521,7 +523,8 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="title">Figure 5. Interactions for Login Component</div>
 </div>
 <div class="paragraph">
-<p>Upon launching the app, the Login component takes in two inputs from the user: <code>Username</code> and <code>Password</code>, then stores the user&#8217;s login credentials into a <code>.xml</code> file.
+<p>Upon launching the app, the Login component takes in two inputs from the user: <code>Username</code> and <code>Password</code>, creates an account, then stores the user&#8217;s login credentials into a <code>.xml</code> file.<br>
+If that <code>.xml</code> file already exists (<code>Username</code> entered is existing <code>Username</code>), it authenticates the User then loads in data previously saved by that User.<br>
 [Optional] <code>.xml</code> file is encrypted.</p>
 </div>
 <div class="ulist">
@@ -531,6 +534,18 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </li>
 <li>
 <p>The same username and password have to be used every time the user wishes to access the app.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>Username</code> and <code>Password</code> are case-sensitive.
+</td>
+</tr>
+</table>
+</div>
 </li>
 <li>
 <p>Only upon successful authentication will the app load data from the <code>Storage</code> Component.</p>
@@ -550,7 +565,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>TodoListPanel</code>, <code>StatusBarFooter</code>, <code>CalendarView</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>As seen in Figure 6, the UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>TodoListPanel</code>, <code>StatusBarFooter</code>, <code>CalendarView</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -559,7 +574,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="title">Figure 7. Layout of the UI</div>
 </div>
 <div class="paragraph">
-<p>As seen above is the current layout of the UI.</p>
+<p>As seen above in Figure 7 is the current layout of the UI of the program.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -599,7 +614,7 @@ It may be difficult to edit the <code>.fxml</code> file directly. <strong>Javafx
 <div class="sect2">
 <h3 id="Design-Logic"><a class="link" href="#Design-Logic">4.4. Logic component</a></h3>
 <div class="paragraph">
-<p>The diagram below shows how the <code>LogicManager</code> functions in the application.</p>
+<p>Figure 8 below shows how the <code>LogicManager</code> functions in the application.</p>
 </div>
 <div id="fig-LogicClassDiagram" class="imageblock">
 <div class="content">
@@ -608,12 +623,13 @@ It may be difficult to edit the <code>.fxml</code> file directly. <strong>Javafx
 <div class="title">Figure 8. Structure of the Logic Component</div>
 </div>
 <div class="paragraph">
-<p>The diagram below shows finer details concerning <code>XYZCommand</code> and <code>Command</code> in <a href="#fig-LogicClassDiagram">Figure 8, &#8220;Structure of the Logic Component&#8221;</a></p>
+<p>Figure 9 below shows finer details concerning <code>XYZCommand</code> and <code>Command</code> in <a href="#fig-LogicClassDiagram">Figure 8, &#8220;Structure of the Logic Component&#8221;</a></p>
 </div>
-<div class="imageblock">
+<div id="fig-LogicCommandClassDiagram" class="imageblock">
 <div class="content">
 <img src="images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
 </div>
+<div class="title">Figure 9. Logic Command Class Diagram</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
@@ -636,25 +652,25 @@ It may be difficult to edit the <code>.fxml</code> file directly. <strong>Javafx
 </ol>
 </div>
 <div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+<p>Figure 10 below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
 </div>
-<div class="title">Figure 9. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 10. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="Design-Model"><a class="link" href="#Design-Model">4.5. Model component</a></h3>
 <div class="paragraph">
-<p>The diagram below shows the different components and interfaces that make up the <code>Model</code> component.</p>
+<p>Figure 11 shows the different components and interfaces that make up the <code>Model</code> component.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
 </div>
-<div class="title">Figure 10. Structure of the Model Component</div>
+<div class="title">Figure 11. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
@@ -735,6 +751,52 @@ Matriculation number should start with either 'A' or 'U', followed by 7 digits a
 </td>
 <td class="content">
 Email address should be of the format <em>local-part@domain</em>.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code>User</code> Class:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Stores the information of a specific user (TA/Lecturer/Professor) in the application.</p>
+</li>
+<li>
+<p>Information includes: Username and Password.</p>
+</li>
+<li>
+<p>Implements <code>UniqueUserList</code> that enforces uniqueness of its elements and disallows nulls.</p>
+</li>
+<li>
+<p><code>Username</code>: Object that stores the username of the <code>User</code> Object and contains the regex requirements for a valid username.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+User&#8217;s username should only contain alphanumeric characters, be between 3 and 15 characters long and should not be null.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><code>Password</code>: Object that stores the password of the <code>User</code> Object and contains the regex requirements for a valid password.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+User&#8217;s password should only contain alphanumeric characters, be between 8 and 30 characters long and should not be null.
 </td>
 </tr>
 </table>
@@ -828,6 +890,67 @@ Priority should only be a value from 1 to 3, 1 being the lowest and 3 being the 
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>The <code>Task</code> Class:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Stores the information of a specific Task in Your TA.</p>
+</li>
+<li>
+<p>Information includes: Title, Description, Deadline, Priority.</p>
+</li>
+<li>
+<p>Implements <code>UniqueTaskList</code> that enforces uniqueness of its elements and disallows nulls.</p>
+</li>
+<li>
+<p><code>Title</code> &amp; <code>TaskDescription</code>: Object that stores the title and description of the <code>Task</code> Object.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Tasks title and description should only contain alphanumeric characters, and should not be null.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><code>Deadline</code>: Object that stores the deadline of the <code>Task</code> Object.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Deadline should be a valid date that exists and in the format dd-mm-yyyy. Tasks cannot be scheduled in the past. And can only be scheduled at most 6 months in advance. (Based on months: tasks cannot be scheduled on 1st August 2018 if the current date is 31st January 2018).
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><code>Priority</code>: Object that stores the priority of the <code>Task</code> Object.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Priority value input can only be a value from 1 to 3. 1 being lowest priority and 3 being highest.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">4.6. Storage component</a></h3>
@@ -835,7 +958,7 @@ Priority should only be a value from 1 to 3, 1 being the lowest and 3 being the 
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
 </div>
-<div class="title">Figure 11. Structure of the Storage Component</div>
+<div class="title">Figure 12. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-F09-B1/main/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
@@ -850,6 +973,12 @@ Priority should only be a value from 1 to 3, 1 being the lowest and 3 being the 
 </li>
 <li>
 <p>can save the Address Book data in xml format and read it back.</p>
+</li>
+<li>
+<p>can save the user data in xml format and read it back.</p>
+</li>
+<li>
+<p>can save list of <code>User</code> objects for login authentication.</p>
 </li>
 </ul>
 </div>
@@ -869,18 +998,237 @@ Priority should only be a value from 1 to 3, 1 being the lowest and 3 being the 
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="help-feature"><a class="link" href="#help-feature">5.1. Help feature</a></h3>
+<h3 id="login-feature"><a class="link" href="#login-feature">5.1. Login feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">5.1.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The login feature is initialized upon startup of the application, through <code>LoginStorage</code> and <code>LoginManager</code> and is facilitated by the <code>LoginUi</code>.<br>
+It supports multiple accounts whereby one user cannot access the application content of another user by creating multiple <code>.xml</code> storage files.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LoginDiagram.png" alt="LoginDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>As seen from the diagram, upon opening the application, the user is prompted to enter their <code>Username</code> and <code>Password</code>. The <code>LoginManager</code> fetches the data of existing <code>User</code> objects, before putting them into a Hashmap&lt;Username, User&gt; as shown below.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="directive">synchronized</span> <span class="type">void</span> addUser(<span class="predefined-type">String</span> username, <span class="predefined-type">String</span> password) <span class="directive">throws</span> DuplicateUserException {
+        <span class="keyword">if</span> (!userList.getUserList().containsKey(username)) {
+            Username addUsername = <span class="keyword">new</span> Username(username);
+            Password addPassword = <span class="keyword">new</span> Password(password);
+            User toAdd = <span class="keyword">new</span> User(addUsername, addPassword);
+            userList.add(toAdd);
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>Username</code> and <code>Password</code> are case-sensitive.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The credentials entered by the user are then checked against the HashMap to authenticate the account. Upon successful login, the user&#8217;s file is retrieved from the <code>Storage</code> component and is loaded up with the application.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> authenticate(<span class="predefined-type">String</span> username, <span class="predefined-type">String</span> password) <span class="directive">throws</span> DuplicateUserException {
+
+        logger.fine(<span class="string"><span class="delimiter">&quot;</span><span class="content">Authenticating user: </span><span class="delimiter">&quot;</span></span> + username);
+        <span class="predefined-type">String</span> filepath = username + <span class="string"><span class="delimiter">&quot;</span><span class="content">.xml</span><span class="delimiter">&quot;</span></span>;
+        <span class="keyword">if</span> (userList.getUserList().containsKey(username)) {
+            <span class="keyword">if</span> (userList.getUserList().get(username).getPassword().getPassword().equals(password)) {
+                loginUser(filepath);
+            } <span class="keyword">else</span> {
+                <span class="keyword">throw</span> <span class="keyword">new</span> DuplicateUserException();
+            }
+        } <span class="keyword">else</span> {
+            addUser(username, password);
+            <span class="keyword">try</span> {
+                <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">data/login/</span><span class="delimiter">&quot;</span></span> + filepath);
+                file.createNewFile();
+            } <span class="keyword">catch</span> (<span class="exception">IOException</span> e) {
+                <span class="keyword">throw</span> <span class="keyword">new</span> DuplicateUserException();
+            }
+            loginUser(filepath);
+        }
+
+    }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the user is a new (username does not exist), they should simply enter their desired <code>Username</code> and <code>Password</code> into the respective fields, and the account will be created with the default data of the application.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">5.1.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementing-new-code-user-code"><a class="link" href="#aspect-implementing-new-code-user-code">Aspect: Implementing new <code>User</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: Using same login window, create new <code>User</code> if <code>Username</code> entered does not exist</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Use of only 1 window, no need to implement additional UI functionalities.</p>
+</li>
+<li>
+<p>Cons: Not the most user-friendly or the most conventional way a login works.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: Create a registration button, which brings the user to a registration UI for the creation of <code>User</code> object</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More user-friendly, able to implement a username field, along with a password field and, especially a field for password confirmation.</p>
+</li>
+<li>
+<p>Cons: Need to further add onto UI.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-code-user-code-identification"><a class="link" href="#aspect-code-user-code-identification">Aspect: <code>User</code> identification</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: <code>Username</code> is case-sensitive</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: "Johndoe" and "johndoe" are different usernames and different accounts with the same name can be created.</p>
+</li>
+<li>
+<p>Cons: If a user makes a typo in the <code>Username</code> field, another account is created instead of correctly logging on to their account.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: <code>Username</code> to be made case-insensitive</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Users will not have to worry about whether they signed up with a different <code>Username</code>.</p>
+</li>
+<li>
+<p>Cons: Less usernames are available.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-code-username-code-and-code-password-code-representation"><a class="link" href="#aspect-code-username-code-and-code-password-code-representation">Aspect: <code>Username</code> and <code>Password</code> Representation</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: <code>Username</code> and <code>Password</code> only allow alphanumeric characters</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy authentication, no need to worry about corner cases.</p>
+</li>
+<li>
+<p>Cons: Less room for different usernames and passwords, not as secure.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: Include special characters in <code>Username</code> and <code>Password</code> Regex</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More secure, less prone to security issues.</p>
+</li>
+<li>
+<p>Cons: Need for more rigorous testing to ensure no corner cases are left out.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-salting-passwords-encryption-of-files"><a class="link" href="#aspect-salting-passwords-encryption-of-files">Aspect: Salting Passwords/Encryption of Files</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: No encryption/salting implemented</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Ease of editing information by administrator.</p>
+</li>
+<li>
+<p>Cons: Security issues, easy to find data path and retrieve files.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: Encrypt files and salt passwords before encryption</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Increases security of software, less prone to be used for malicious purposes.</p>
+</li>
+<li>
+<p>Cons: Large amount of coding and implementation required, prerequisites also include knowledge of security issues and safeguards.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="help-feature"><a class="link" href="#help-feature">5.2. Help feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">5.2.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The help command opens a new window, opening the user guide.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">5.2. Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">5.3. Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">5.2.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">5.3.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the address book (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
 </div>
@@ -1034,7 +1382,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">5.2.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">5.3.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-code-undoablecommand-code"><a class="link" href="#aspect-implementation-of-code-undoablecommand-code">Aspect: Implementation of <code>UndoableCommand</code></a></h5>
 <div class="ulist">
@@ -1171,84 +1519,49 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption-coming-in-v2-0"><a class="link" href="#proposed-data-encryption-coming-in-v2-0">5.3. [Proposed] Data Encryption (Coming in v2.0)</a></h3>
+<h3 id="participation"><a class="link" href="#participation">5.4. Participation</a></h3>
 <div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="email-since-v1-1"><a class="link" href="#email-since-v1-1">5.4. Email (Since v1.1)</a></h3>
-<div class="paragraph">
-<p>This feature allows the user to call their desktop mail application from the application itself, with the mailTo: field already populated with the user input.</p>
+<p>This feature allows the user to keep track of participation marks of a <code>Person</code>. A new class, <code>Participation</code>, is created and is associated to the <code>Person</code> class.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">5.4.1. Current implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">5.4.1. Current implementation</a></h4>
+<div class="paragraph">
+<p>The user uses this feature by inputting a command, <code>markPart INDEX marks/DIGITS</code>, to the application.</p>
+</div>
+<div class="paragraph">
+<p>The following figure 13 and paragraph below shows the sequence of how the <code>MarkCommand</code> command functions:</p>
+</div>
 <div class="imageblock">
 <div class="content">
-<img src="images/EmailComponentFlow.png" alt="EmailComponentFlow" width="800">
+<img src="images/MarkCommandSequenceDiagram.png" alt="MarkCommandSequenceDiagram" width="800">
 </div>
+<div class="title">Figure 13. MarkCommand Sequence Diagram</div>
 </div>
-<div class="paragraph">
-<p><div align="center"><b>Figure 3.3.1: Email Implementation</b></div></p>
-</div>
-<div class="paragraph">
-<p>The user will enter a command <code>email 1</code> to the application. The application will then rely on <code>AddressBookparser</code> and <code>EmailCommandParser</code> to
-parse the argument. The argument will be passed into the EmailCommand when it will be checked on whether the argument is valid. From there, it will
-call the Java <code>Desktop</code> class to launch the user&#8217;s default mail application.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user will enter the command <code>markPart INDEX marks/DIGITS</code> to the application.</p>
+</li>
+<li>
+<p>The application will then pass the arguments to <code>AddressBookParser</code> which in turns passes it to  <code>MarkCommandParser</code> to parse the argument.</p>
+</li>
+<li>
+<p>The <code>MarkCommandParser</code> would then create a <code>MarkCommand</code> with the data from the arguments.</p>
+</li>
+<li>
+<p>The <code>LogicManager</code> will then execute the <code>preprocessUndoableCommand()</code> in <code>MarkCommand</code>.</p>
+</li>
+<li>
+<p>The <code>preprocessUndoableCommand()</code> will then execute the <code>createUpdatedPerson()</code> to create a new <code>Person</code> object with a new <code>Participation</code> object containing the new total marks.</p>
+</li>
+<li>
+<p>Finally, this new <code>Person</code> object created in step 3 will replace the original <code>Person</code> object with the old <code>Participation</code> object stored in the <code>Model</code> through the <code>updatePerson()</code> method.</p>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">5.4.2. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-the-email-is-sent"><a class="link" href="#aspect-how-the-email-is-sent">Aspect: How the email is sent</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use the Java <code>Desktop</code> class to open the default mail app</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: It is fast and works with supported Desktop and OS.</p>
-</li>
-<li>
-<p>Cons: Does not work on systems wihtout a default Desktop mail application.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use the in-built browser</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Higher level of compatibility, means it can be used with a wider range of operating systems.</p>
-</li>
-<li>
-<p>Cons: Clunky as users may use different web mail services. The API would also differ based on the email they use as well.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="participation-marks-since-v1-4"><a class="link" href="#participation-marks-since-v1-4">5.5. Participation Marks (Since v1.4)</a></h3>
-<div class="paragraph">
-<p>This feature allows the user to add marks to the <code>Participation</code> atttribute of a <code>Person</code>.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">5.5.1. Current implementation</a></h4>
-<div class="paragraph">
-<p>The user will enter a command <code>markPart INDEX marks/DIGITS</code> to the application. The application will then rely on <code>AddressBookparser</code> and <code>MarkCommandParser</code> to
-parse the argument. The argument will be passed into the MarkCommand to be executed. From there, it will create a new <code>Person</code> object with the updated
-<code>Participation</code> object attribute.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">5.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">5.4.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-update-the-marks"><a class="link" href="#aspect-how-to-update-the-marks">Aspect: How to update the marks</a></h5>
 <div class="ulist">
@@ -1261,20 +1574,20 @@ parse the argument. The argument will be passed into the MarkCommand to be execu
 <p>Pros: It is similar to the rest of the <code>Logic</code> commands.</p>
 </li>
 <li>
-<p>Cons: Longer number of steps.</p>
+<p>Cons: This uses more memory when executing.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Make <code>Participation</code> editable</p>
+<p><strong>Alternative 2:</strong> Make the <code>value</code> in the <code>Participation</code> class editable</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easier to update the data.</p>
+<p>Pros: It uses less memory, and only the value has to be updated.</p>
 </li>
 <li>
-<p>Cons: Does not follow the scheme of the application.</p>
+<p>Cons: This will involve writing more methods, and the existing methods can be easily used for the implementation.</p>
 </li>
 </ul>
 </div>
@@ -1284,52 +1597,247 @@ parse the argument. The argument will be passed into the MarkCommand to be execu
 </div>
 </div>
 <div class="sect3">
-<h4 id="future-enhancements-coming-in-v2-0"><a class="link" href="#future-enhancements-coming-in-v2-0">5.5.3. Future enhancements (Coming in v2.0)</a></h4>
-<div class="paragraph">
+<h4 id="future-enhancements-coming-in-v2-0"><a class="link" href="#future-enhancements-coming-in-v2-0">5.4.3. Future enhancements (Coming in v2.0)</a></h4>
+<div class="ulist">
+<ul>
+<li>
 <p>Support for setting a threshold and easily seeing how many students made the cut over the threshold.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="display-picture-since-v1-2"><a class="link" href="#display-picture-since-v1-2">5.6. Display Picture (Since v1.2)</a></h3>
+<h3 id="display-picture"><a class="link" href="#display-picture">5.5. Display Picture</a></h3>
 <div class="paragraph">
-<p>This feature allows the user to enter a path to their selected image file and copies the image into the <code>images\displayPic</code> folder. This image
-will be shown in the application next to the details of the person.</p>
+<p>Users are able to add a display picture for any person within the application. The user can utilise 3 different commands (<code>add</code>, <code>edit</code> and <code>updateDP</code>) to create and specify a display image for the person.
+It fully supports the <code>undo</code> and <code>redo</code> commands as well. It adds a drop shadow around the frame to indicate the level of participation (see above section 5.3) of the person.</p>
+</div>
+<div class="paragraph">
+<p>This feature allows the user to enter a path to their selected image file when entering any of the above 3 commands and copies the image into the <code>images/displayPic</code> folder.</p>
+</div>
+<div class="paragraph">
+<p>It utilises the <code>DisplayPicStorage</code> class to handle all image storage related operations.</p>
+</div>
+<div class="paragraph">
+<p>It also makes use of the <code>Participation</code> feature to display a colored shadow around the display picture. This image will be shown in the application next to the details of the person as seen in figure 14 below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/displaypic_personcard.PNG" alt="displaypic personcard" width="350">
+</div>
+<div class="title">Figure 14. Display Picture example</div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">5.6.1. Current implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">5.5.1. Current implementation</a></h4>
 <div class="paragraph">
-<p>The application will take in the argument through <code>dp/ [PATH TO IMAGE]</code>. If this is empty, the application will default to using the default profile picture
-which is in <code>src\resources\images\displayPic</code>. If an valid path to an image is provided, the image will be processed and copied over to the <code>data</code> folder where the
-<code>addressbook.xml</code> is stored as well.</p>
+<p>An additional class, <code>DisplayPic</code>, is added to the <code>Person</code> class. This class contains the filepath to the stored image file.
+It uses validation checks to ensure that the image meets the following requirements.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It is a file that exists and has a file extension.</p>
+</li>
+<li>
+<p>It is a valid image file that can be opened as an image.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>The image copied over will be stored with a SHA-256 hash name. This hash is calculated over the <code>Person</code> object&#8217;s details to ensure a unique filename.
-The <code>DisplayPic</code> object will store the relative filepath to this new duplicated image. If there is no image or a valid filepath, the <code>DisplayPic</code> object will contain the
-relative filepath to the default display picture.</p>
+<p>If it passes the checks, then a new <code>DisplayPic</code> object will be created with the filepath to the image stored as its value.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When the <code>DisplayPic</code> object is first created, it stores the <em>original</em> filepath of the image file provided by the user. This will later be updated by the 3 commands mentioned earlier to the duplicated image filepath.
+</td>
+</tr>
+</table>
 </div>
 <div class="sect4">
-<h5 id="editing-a-display-picture"><a class="link" href="#editing-a-display-picture">Editing a Display Picture</a></h5>
+<h5 id="adding-a-display-picture-when-creating-a-new-person"><a class="link" href="#adding-a-display-picture-when-creating-a-new-person">Adding a display picture when creating a new person</a></h5>
 <div class="paragraph">
-<p>The application will read in the new image to edit and use the <code>filepath</code> of the original image to generate a new unique hash name. This is to prevent the overwriting
-of image files such as to facilitate the <code>undo</code> command.</p>
+<p>The <code>add</code> command supports a new field <code>dp/</code>, where the user will provide the filepath of the image and the newly created <code>Person</code> will have that specified image as the display picture.</p>
+</div>
+<div class="paragraph">
+<p>For persons that were not specified a <code>dp/</code> during the <code>add</code> command, the <code>DisplayPic</code> object associated to them would contain the value of the default display picture.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="deleting-a-display-picture"><a class="link" href="#deleting-a-display-picture">Deleting a Display Picture</a></h5>
+<h5 id="editing-a-display-picture"><a class="link" href="#editing-a-display-picture">Editing a display picture</a></h5>
 <div class="paragraph">
-<p>The current delete uses Java&#8217;s <code>deleteOnExit</code> method. It will be updated later on in v1.4 to ensure that files are only deleted when they will definitely not be used.</p>
+<p>The display picture can also be changed by using the <code>edit</code> or <code>updateDP</code> commands.
+The implementation of the UpdateDisplayCommand (<code>updateDP</code>) command closely follows the <code>edit</code> command, hence we will only showcase the implementation of the <code>UpdateDP</code> command.</p>
+</div>
+<div class="paragraph">
+<p>The following figure 15 is the sequence diagram of the <code>updateDP</code> command to show how it functions:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UpdateDisplayCommandSequenceDiagram.png" alt="UpdateDisplayCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 15. UpdateDisplayCommand Sequence Diagram</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user input will be passed in and parsed by the <code>AddressBookParser</code> and <code>UpdateDisplayCommandParser</code>.</p>
+</li>
+<li>
+<p>The <code>UpdateDisplayCommandParser</code> then creates a new <code>UpdateDisplayCommand</code> where the <code>LogicManager</code> executes the <code>preprocessUndoableCommand()</code>.</p>
+</li>
+<li>
+<p>The <code>preprocessUndoableCommand()</code> will execute the <code>createUpdatedPerson()</code> to create a new <code>Person</code> object with the updated <code>DisplayPicture</code> object which contains the new filepath.</p>
+</li>
+<li>
+<p>Finally, this new <code>Person</code> object created in step 3 will replace the original <code>Person</code> object with the old <code>DisplayPic</code> object stored in the <code>Model</code> through the <code>updatePerson()</code> method.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="deleting-a-display-picture"><a class="link" href="#deleting-a-display-picture">Deleting a display picture</a></h5>
+<div class="paragraph">
+<p>To fully support the <code>undo</code> and <code>redo</code> commands, image files cannot be immediately deleted when it is not in use by the <code>UI</code>.</p>
+</div>
+<div class="paragraph">
+<p>To work around this, a new class <code>UniqueItemList</code> was added to the model of the <code>AddressBook</code> as seen below in Figure 16.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddressBookClass.png" alt="AddressBookClass" width="600">
+</div>
+<div class="title">Figure 16. AddressBook Class Diagram</div>
+</div>
+<div class="paragraph">
+<p>The <code>UniqueItemList</code> consists of an <code>ArrayList</code> of <code>String</code> objects. These <code>String</code> objects represent the filepaths of all images that have been added to application during its runtime.</p>
+</div>
+<div class="paragraph">
+<p>Upon every launch of the application, during the initialization of the <code>LogicManager</code> class, it will run through the <code>UniqueItemList</code> and delete
+any unused image files from the <code>data</code> folder. It does this by looping through the <code>UniquePersonList</code> as well and checks if the image file is used. If it is not used, it will be deleted.
+The following code fragment shows the deletion process:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> clearImageFiles(<span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; itemsToDelete, ObservableList&lt;Person&gt; persons) {
+    <span class="keyword">for</span> (<span class="predefined-type">String</span> item : itemsToDelete) {
+        <span class="type">boolean</span> notUsed = <span class="predefined-constant">true</span>;
+        <span class="keyword">for</span> (Person p : persons) {
+            <span class="keyword">if</span> (p.getDisplayPic().toString().equals(item) || p.getDisplayPic().isDefault()) {
+                notUsed = <span class="predefined-constant">false</span>;
+                <span class="keyword">break</span>;
+            }
+        }
+        <span class="keyword">if</span> (notUsed) {
+            deleteFile(item);
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The list is then cleared for the next usage of the application.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="storing-the-image-file-for-the-display-picture"><a class="link" href="#storing-the-image-file-for-the-display-picture">Storing the image file for the display picture</a></h5>
+<div class="paragraph">
+<p>The application will take in an argument for the 3 commands mentioned above through <code>dp/ [PATH TO IMAGE]</code>. The <code>[PATH TO IMAGE]</code> can be the absolute or relative path to the image file.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+An example of a <code>[PATH TO IMAGE]</code> would be C:\Users\Desktop\Image.jpg for Windows.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If this is empty, the application will default to using the default profile picture
+which is stored in <code>src/resources/images/displayPic</code> as <code>default.png</code>.
+If a valid path to an image is provided, the image will be processed and copied over to the <code>data</code> folder where the</p>
+</div>
+<div class="paragraph">
+<p><code>addressbook.xml</code> is stored as well.</p>
+</div>
+<div class="paragraph">
+<p>The image copied over will be stored with a SHA-256 hash name. This hash is calculated over the <code>Person</code> object&#8217;s details (i.e Name, Phone and Email) to ensure a unique filename.
+The following activity diagram in Figure 15 shows how the files are saved:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/StoreDisplayPictureActivityDiagram.png" alt="StoreDisplayPictureActivityDiagram" width="800">
+</div>
+<div class="title">Figure 17. Activity diagram for storing image files</div>
+</div>
+<div class="paragraph">
+<p>Due to the possibility that display pictures for a <code>Person</code> can be updated, this could lead to clashing of the same file names. In order to prevent overwriting of files, the new image filename
+will be the SHA-256 hash of the previous image filename.</p>
+</div>
+<div class="paragraph">
+<p>The code utilised to duplicate the image file copies the file byte for byte, ensuring that they are binary equivalent. The code used is implemented as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> copyFile(<span class="predefined-type">String</span> origFile, <span class="predefined-type">File</span> outputFile) <span class="directive">throws</span> <span class="exception">IOException</span> {
+        <span class="comment">//initialize buffer</span>
+        <span class="comment">//open bis/bos as the buffered input and output streams respectively</span>
+
+        <span class="type">int</span> fileBytes = bis.read(buffer);
+        <span class="keyword">while</span> (fileBytes != -<span class="integer">1</span>) {
+            bos.write(buffer, <span class="integer">0</span>, fileBytes);
+            fileBytes = bis.read(buffer);
+        }
+        <span class="comment">//close IO streams</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally, the <code>DisplayPic</code> object will then be updated to store the relative filepath to this new duplicated image. The following code fragment shows how the filename of the image is returned and stored as the new value.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> saveDisplay(<span class="predefined-type">String</span> personDetails) <span class="directive">throws</span> IllegalValueException {
+    <span class="comment">//declaring and initializing variables</span>
+    <span class="predefined-type">String</span> uniqueFileName = DisplayPicStorage.saveDisplayPic(personDetails, value, fileType);
+    <span class="local-variable">this</span>.value = DEFAULT_IMAGE_LOCATION + uniqueFileName + <span class="string"><span class="delimiter">'</span><span class="content">.</span><span class="delimiter">'</span></span> + fileType;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="fetching-and-displaying-the-image-file"><a class="link" href="#fetching-and-displaying-the-image-file">Fetching and displaying the image file</a></h5>
+<div class="paragraph">
+<p>The following activity diagram shows the flow of how an image file is retrieved to be displayed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FetchDisplayPictureActivityDiagram.png" alt="FetchDisplayPictureActivityDiagram" width="800">
+</div>
+<div class="title">Figure 18. Activity diagram for fetching image files</div>
+</div>
+<div class="paragraph">
+<p>The image file will then be utilized by JavaFX and displayed on the UI. The drop shadow of the image is determined by the <code>Participation</code> of the <code>Person</code>.</p>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">5.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">5.5.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-filepath-to-the-image"><a class="link" href="#aspect-filepath-to-the-image">Aspect: Filepath to the image</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Copy the image file over to a designated location</p>
+<p><strong>Alternative 1 (current choice):</strong> Copy the image file over to a designated location.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1342,14 +1850,14 @@ of image files such as to facilitate the <code>undo</code> command.</p>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use the location of the file the user put in</p>
+<p><strong>Alternative 2:</strong> Use the location of the file the user enters into the application.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Potentially less space utilized.</p>
+<p>Pros: This would mean that there would always be only one copy of the image, hence less space used.</p>
 </li>
 <li>
-<p>Cons: User needs to ensure the file is not moved or deleted.</p>
+<p>Cons: The user needs to ensure the original image file is not moved or deleted.</p>
 </li>
 </ul>
 </div>
@@ -1382,7 +1890,40 @@ of image files such as to facilitate the <code>undo</code> command.</p>
 <p>Pros: Image files can be easily identified separately and easy to implement.</p>
 </li>
 <li>
-<p>Cons: Could lead to potential image files overwriting each other without additional checks.</p>
+<p>Cons: This could lead to potential image files overwriting each other without additional checks.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-deletion-of-the-image"><a class="link" href="#aspect-deletion-of-the-image">Aspect: Deletion of the image</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Store the filepath in the <code>AddressBook</code> and delete it afterwards.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Fully supports <code>undo</code> and <code>redo</code> even if the user moves or deletes the original image file.</p>
+</li>
+<li>
+<p>Cons: It is difficult to manually check which <code>Person</code> the image file belongs to.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Delete the image file immediately when the associated <code>Person</code> is removed</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This allows a simple implementation of immediately deleting the image file.</p>
+</li>
+<li>
+<p>Cons: The image file could be lost forever if the user moves or deletes the original image file, thus causing <code>undo</code> and <code>redo</code> to malfunction.</p>
 </li>
 </ul>
 </div>
@@ -1392,28 +1933,25 @@ of image files such as to facilitate the <code>undo</code> command.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="future-enhancements"><a class="link" href="#future-enhancements">5.6.3. Future enhancements</a></h4>
+<h4 id="future-enhancements-coming-in-v2-0-2"><a class="link" href="#future-enhancements-coming-in-v2-0-2">5.5.3. Future enhancements (Coming in v2.0)</a></h4>
 <div class="ulist">
 <ul>
 <li>
-<p>Support for photo frames and undo for delete (Coming in v1.4)</p>
-</li>
-<li>
-<p>Support for frame color to highlight student status (Coming in v1.5)</p>
+<p>Support for online URLs to download images</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">5.7. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">5.6. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file. (See <a href="#Implementation-Configuration">Section 5.8, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file. (See <a href="#Implementation-Configuration">Section 5.7, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level.</p>
@@ -1444,9 +1982,15 @@ of image files such as to facilitate the <code>undo</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.8. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.7. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="data-encryption-coming-in-v2-0"><a class="link" href="#data-encryption-coming-in-v2-0">5.8. Data Encryption (Coming in v2.0)</a></h3>
+<div class="paragraph">
+<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 </div>
@@ -1510,7 +2054,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 12. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 19. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -1837,6 +2381,23 @@ b. Require developers to download those libraries manually (this creates extra w
 <p>This helps the tutor to easily search for a certain student by their unique matriculation number instead of just
 their names (e.g. easier than searching for a common name such as Daniel).</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Minor</strong>: Toggle between dark and light theme</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The app can now be toggled between 2 different themes.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This allows the tutor to customise their GUI so that they do not have to be restricted to 1 set layout throughout the entire time they use the app.</p>
+</div>
 <div class="paragraph">
 <p><strong>Pearlissa</strong></p>
 </div>
@@ -1848,9 +2409,6 @@ their names (e.g. easier than searching for a common name such as Daniel).</p>
 <ul>
 <li>
 <p>Implements new User package</p>
-</li>
-<li>
-<p>[Not confirmed] Encryption of data files containing usernames and passwords</p>
 </li>
 </ul>
 </div>
@@ -1890,6 +2448,9 @@ their names (e.g. easier than searching for a common name such as Daniel).</p>
 <p>Support adding, editing and deleting of picture</p>
 </li>
 <li>
+<p>Also shows a quick glance on student&#8217;s participation (related to minor)</p>
+</li>
+<li>
 <p>Also works with the redo/undo function</p>
 </li>
 </ul>
@@ -1903,11 +2464,11 @@ their names (e.g. easier than searching for a common name such as Daniel).</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Minor</strong>: Email feature to email students</p>
+<p><strong>Minor</strong>: Participation marks to keep track of student participation</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Email multiple students quickly</p>
+<p>Add and keep track of participation marks for the student</p>
 </li>
 </ul>
 </div>
@@ -1915,7 +2476,7 @@ their names (e.g. easier than searching for a common name such as Daniel).</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>This helps the tutor to quickly bring up an email client to send an email to a student.</p>
+<p>This helps the tutor to keep track of the student&#8217;s participation.</p>
 </div>
 </div>
 </div>
@@ -2378,44 +2939,7 @@ SHA-256 generates an almost-unique 256-bit (32-byte) signature for a text.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Product Name</strong></p>
-</div>
-<div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
-</div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
@@ -2433,7 +2957,7 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">G.1. Launch and Shutdown</a></h3>
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">F.1. Launch and Shutdown</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2471,7 +2995,7 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">G.2. Deleting a person</a></h3>
+<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">F.2. Deleting a person</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2503,7 +3027,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving data</a></h3>
+<h3 id="saving-data"><a class="link" href="#saving-data">F.3. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2527,7 +3051,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-06 07:49:14 UTC
+Last updated 2018-04-12 22:34:40 UTC
 </div>
 </div>
 </body>

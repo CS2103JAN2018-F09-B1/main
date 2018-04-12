@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Pearlissa Taim Qi Yah - Project Portfolio</title>
+<link rel="stylesheet" href="./gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Pearlissa Taim Qi Yah - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-your-ta"><a class="link" href="#project-your-ta">Project: Your TA</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Your TA is a desktop contact, calendar and task manager application that caters to tech-savvy university Teaching Assistants and/or Professors/Lecturers.<br>
+It allows the user to manage their deadlines, as well as keep track of their students.<br>
+The user is mostly required to interact with the application through a Command Line Interface (CLI), along with minimal Graphical User Interface (GUI) features created with JavaFX. It is written in Java, and has about 15 kLoC.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of Contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major feature</strong>: Implemented a <strong>login</strong> system</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Requires users to log in to their accounts (and create accounts for first-time users) with a username and password to access their personal data.</p>
+</li>
+<li>
+<p>Justification: This feature makes the software much more accessible to multiple users as it ensures that each user only has access to their own personal information, and not those of other users.</p>
+</li>
+<li>
+<p>Highlights: This feature precedes all the other functionalities upon starting up the application. It is the first attempt at improving data security of the software. It required an in-depth analysis of the <code>Model</code> and <code>Storage</code> components. The implementation too was challenging as it called for the creation of new model classes and storage classes from scratch.</p>
+</li>
+<li>
+<p>Credits: The code was adapted from the study of the <code>Model</code> and <code>Storage</code> components, together with all their classes.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor feature</strong>: Added <strong>sort</strong> which sorts the contacts alphanumerically by their name</p>
+</li>
+<li>
+<p><strong>Minor feature</strong>: Added a new <strong>theme</strong> for the application</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: <a href="https://github.com/CS2103JAN2018-F09-B1/main/collated/functional/Pearlissa.md">functional</a>, <a href="https://github.com/CS2103JAN2018-F09-B1/main/collated/test/Pearlissa.md">test</a>.</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>: <em>TO BE FILLED IN</em></p>
+</li>
+</ul>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sorting-all-entries-code-sort-code"><a class="link" href="#sorting-all-entries-code-sort-code">Sorting all entries : <code>sort</code></a></h3>
+<div class="paragraph">
+<p>Sorts all entries from the address book in alphabetical order based on name.<br>
+Alias: <code>s</code><br>
+Format: <code>sort</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="login-feature"><a class="link" href="#login-feature">Login Feature</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before you are able to access the application, login is required.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Enter your <code>Username</code> and <code>Password</code> in the respective fields.<br></p>
+</li>
+<li>
+<p>Click on the <code>login</code> button.</p>
+</li>
+<li>
+<p>If you have entered either of those incorrectly, the text "Wrong username or password entered" will be displayed. You have an unlimited number of tries to log in.<br></p>
+</li>
+<li>
+<p>Upon successful login, the application will load with your previously saved data.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Both <code>Username</code> and <code>Password</code> fields are case-sensitive.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you are a first-time user, create an account by entering your desired <code>Username</code> and <code>Password</code> in the username and password text fields respectively.<br>
+Then, click on the <code>Login</code> button.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer guide</a></h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>User</code> Class:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Stores the information of a specific user (TA/Lecturer/Professor) in the application.</p>
+</li>
+<li>
+<p>Information includes: Username and Password.</p>
+</li>
+<li>
+<p>Implements <code>UniqueUserList</code> that enforces uniqueness of its elements and disallows nulls.</p>
+</li>
+<li>
+<p><code>Username</code>: Object that stores the username of the <code>User</code> Object and contains the regex requirements for a valid username.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+User&#8217;s username should only contain alphanumeric characters, be between 3 and 15 characters long and should not be null.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><code>Password</code>: Object that stores the password of the <code>User</code> Object and contains the regex requirements for a valid password.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+User&#8217;s password should only contain alphanumeric characters, be between 8 and 30 characters long and should not be null.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code>Storage</code> component:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Can save the user data in xml format and read it back.</p>
+</li>
+<li>
+<p>can save list of <code>User</code> objects for login authentication.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="login-feature-2"><a class="link" href="#login-feature-2">Login feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The login feature is initialized upon startup of the application, through <code>LoginStorage</code> and <code>LoginManager</code> and is facilitated by the <code>LoginUi</code>.<br>
+It supports multiple accounts whereby one user cannot access the application content of another user by creating multiple <code>.xml</code> storage files.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="LoginDiagram.png" alt="LoginDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>As seen from the diagram, upon opening the application, the user is prompted to enter their <code>Username</code> and <code>Password</code>. The <code>LoginManager</code> fetches the data of existing <code>User</code> objects, before putting them into a Hashmap&lt;Username, User&gt; as shown below.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="directive">synchronized</span> <span class="type">void</span> addUser(<span class="predefined-type">String</span> username, <span class="predefined-type">String</span> password) <span class="directive">throws</span> DuplicateUserException {
+        <span class="keyword">if</span> (!userList.getUserList().containsKey(username)) {
+            Username addUsername = <span class="keyword">new</span> Username(username);
+            Password addPassword = <span class="keyword">new</span> Password(password);
+            User toAdd = <span class="keyword">new</span> User(addUsername, addPassword);
+            userList.add(toAdd);
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>Username</code> and <code>Password</code> are case-sensitive.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The credentials entered by the user are then checked against the HashMap to authenticate the account. Upon successful login, the user&#8217;s file is retrieved from the <code>Storage</code> component and is loaded up with the application.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> authenticate(<span class="predefined-type">String</span> username, <span class="predefined-type">String</span> password) <span class="directive">throws</span> DuplicateUserException {
+
+        logger.fine(<span class="string"><span class="delimiter">&quot;</span><span class="content">Authenticating user: </span><span class="delimiter">&quot;</span></span> + username);
+        <span class="predefined-type">String</span> filepath = username + <span class="string"><span class="delimiter">&quot;</span><span class="content">.xml</span><span class="delimiter">&quot;</span></span>;
+        <span class="keyword">if</span> (userList.getUserList().containsKey(username)) {
+            <span class="keyword">if</span> (userList.getUserList().get(username).getPassword().getPassword().equals(password)) {
+                loginUser(filepath);
+            } <span class="keyword">else</span> {
+                <span class="keyword">throw</span> <span class="keyword">new</span> DuplicateUserException();
+            }
+        } <span class="keyword">else</span> {
+            addUser(username, password);
+            <span class="keyword">try</span> {
+                <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">data/login/</span><span class="delimiter">&quot;</span></span> + filepath);
+                file.createNewFile();
+            } <span class="keyword">catch</span> (<span class="exception">IOException</span> e) {
+                <span class="keyword">throw</span> <span class="keyword">new</span> DuplicateUserException();
+            }
+            loginUser(filepath);
+        }
+
+    }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the user is a new (username does not exist), they should simply enter their desired <code>Username</code> and <code>Password</code> into the respective fields, and the account will be created with the default data of the application.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementing-new-code-user-code"><a class="link" href="#aspect-implementing-new-code-user-code">Aspect: Implementing new <code>User</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: Using same login window, create new <code>User</code> if <code>Username</code> entered does not exist</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Use of only 1 window, no need to implement additional UI functionalities.</p>
+</li>
+<li>
+<p>Cons: Not the most user-friendly or the most conventional way a login works.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: Create a registration button, which brings the user to a registration UI for the creation of <code>User</code> object</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More user-friendly, able to implement a username field, along with a password field and, especially a field for password confirmation.</p>
+</li>
+<li>
+<p>Cons: Need to further add onto UI.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-code-user-code-identification"><a class="link" href="#aspect-code-user-code-identification">Aspect: <code>User</code> identification</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: <code>Username</code> is case-sensitive</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: "Johndoe" and "johndoe" are different usernames and different accounts with the same name can be created.</p>
+</li>
+<li>
+<p>Cons: If a user makes a typo in the <code>Username</code> field, another account is created instead of correctly logging on to their account.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: <code>Username</code> to be made case-insensitive</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Users will not have to worry about whether they signed up with a different <code>Username</code>.</p>
+</li>
+<li>
+<p>Cons: Less usernames are available.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-code-username-code-and-code-password-code-representation"><a class="link" href="#aspect-code-username-code-and-code-password-code-representation">Aspect: <code>Username</code> and <code>Password</code> Representation</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: <code>Username</code> and <code>Password</code> only allow alphanumeric characters</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy authentication, no need to worry about corner cases.</p>
+</li>
+<li>
+<p>Cons: Less room for different usernames and passwords, not as secure.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: Include special characters in <code>Username</code> and <code>Password</code> Regex</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More secure, less prone to security issues.</p>
+</li>
+<li>
+<p>Cons: Need for more rigorous testing to ensure no corner cases are left out.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-salting-passwords-encryption-of-files"><a class="link" href="#aspect-salting-passwords-encryption-of-files">Aspect: Salting Passwords/Encryption of Files</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: No encryption/salting implemented</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Ease of editing information by administrator.</p>
+</li>
+<li>
+<p>Cons: Security issues, easy to find data path and retrieve files.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: Encrypt files and salt passwords before encryption</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Increases security of software, less prone to be used for malicious purposes.</p>
+</li>
+<li>
+<p>Cons: Large amount of coding and implementation required, prerequisites also include knowledge of security issues and safeguards.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-12 22:34:40 UTC
+</div>
+</div>
+</body>
+</html>

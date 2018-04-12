@@ -5,18 +5,18 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>John Doe - Project Portfolio</title>
+<title>Wu Di - Project Portfolio</title>
 <link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
 </head>
 <body class="article">
 <div id="header">
-<h1>John Doe - Project Portfolio</h1>
+<h1>Wu Di - Project Portfolio</h1>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="project-addressbook-level-4"><a class="link" href="#project-addressbook-level-4">PROJECT: AddressBook - Level 4</a></h2>
+<h2 id="project-your-ta"><a class="link" href="#project-your-ta">PROJECT: Your TA</a></h2>
 <div class="sectionbody">
 <hr>
 </div>
@@ -25,7 +25,10 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>Your TA is a desktop application designed to meet the needs of university tutors. It helps them to keep track of their students and schedule their tasks that they have to do.
+Your TA uses a graphical user interface built using JavaFX and the user interacts with the application mostly through a command line interface.
+Your TA is written in Java and has about 10 kLoC.
+Your TA is build upon <a href="https://github.com/se-edu/addressbook-level4">AddressBook - Level 4</a>.</p>
 </div>
 </div>
 </div>
@@ -35,29 +38,34 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: Added Todo List that displays tasks in a list view in the application.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: It allows users to schedule tasks that they need to do and take a glance of what they need to do in the application.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
-</li>
+<p>Justification: This feature provides the tutor with a visual stimulus on how many tasks they had in hand. This way, the tutors would be able to do their time management in a easier way.</p>
+<div class="ulist">
+<ul>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Additionally, it can also assist the teaching of tutors to arrange help with the more needy students.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p>Highlights: This enhancement fully supports the implemented undo and redo feature.
+The existing commands were also updated to support the adding, deleting and editing tasks.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Minor enhancement</strong>: added a import command that enhances the mobility of users' data. Thus, with the data along it can be used anywhere with the application downloaded.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-F09-B1/main/blob/master/collated/functional/Wu.md">Functional code</a>][<a href="https://github.com/CS2103JAN2018-F09-B1/main/blob/master/collated/test/Wu.md">Test code</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -68,20 +76,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
-</li>
-</ul>
-</div>
+<p>Managed releases <code>v1.1</code> - <code>v1.2</code> (2 releases) on GitHub</p>
 </li>
 <li>
-<p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Manage and set up the organization repo, assigned issues and mange Pull Requests.</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Set up Coverall for the organization repo.</p>
 </li>
 </ul>
 </div>
@@ -91,7 +92,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Updated the screenshots used in the User Guide: <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/57">#57</a></p>
 </li>
 </ul>
 </div>
@@ -101,29 +102,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/CS2103JAN2018-F12-B2/main/issues/83">1</a>, <a href="https://github.com/CS2103JAN2018-F12-B2/main/issues/80">2</a>, <a href="https://github.com/CS2103JAN2018-F12-B2/main/issues/76">3</a>)</p>
 </li>
 </ul>
 </div>
@@ -132,9 +111,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
