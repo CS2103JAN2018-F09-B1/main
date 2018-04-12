@@ -25,8 +25,8 @@ attendance and participation as well.
 
 === New Developers
 
-You may wish to refer to the <<Setting up, setting up>> portion
-to set up the Your TA project file.
+You may wish to refer to the Section 3: <<Setting up, Setting up>>
+to properly set up the Your TA project file.
 
 Read through the rest of the guide to familiarise yourself with how Your TA components functions together.
 
@@ -40,6 +40,8 @@ is implemented and how it interacts with the different models. We would greatly 
 welcome any suggestions or feedback to improve Your TA.
 
 == Setting up
+
+This section contains the steps needed to properly set up the required files to work on the program source code and to ensure the application runs properly.
 
 === Prerequisites
 
@@ -141,7 +143,7 @@ This section will present to you the high-level design view of Your TA.
 .Architecture Diagram
 image::Architecture.png[width="600"]
 
-The *_Architecture Diagram_* given above explains the high-level design of the App. Given below is a quick overview of each component.
+The *_Architecture Diagram_* given above (Figure 1) explains the high-level design of the App. Given below is a quick overview of each component.
 
 [TIP]
 The `.pptx` files used to create diagrams in this document can be found in the link:{repoURL}/docs/diagrams/[diagrams] folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose `Save as picture`.
@@ -169,7 +171,7 @@ Each of the last four components
 * Defines its _API_ in an `interface` with the same name as the Component.
 * Exposes its functionality using a `{Component Name}Manager` class.
 
-For example, the `Logic` component (see the class diagram given below) defines it's API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class.
+For example, the `Logic` component (see Figure 2 given below) defines it's API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class.
 
 .Class Diagram of the Logic Component
 image::LogicClassDiagram.png[width="800"]
@@ -177,7 +179,7 @@ image::LogicClassDiagram.png[width="800"]
 [discrete]
 ==== Events-Driven nature of the design
 
-The _Sequence Diagram_ below shows how the components interact for the scenario where the user issues the command `delete 1`.
+The _Sequence Diagram_ (Figure 3) below shows how the components interact for the scenario where the user issues the command `delete 1`.
 
 .Component interactions for `delete 1` command (part 1)
 image::SDforDeletePerson.png[width="800"]
@@ -185,7 +187,7 @@ image::SDforDeletePerson.png[width="800"]
 [NOTE]
 Note how the `Model` simply raises a `AddressBookChangedEvent` when the Address Book data are changed, instead of asking the `Storage` to save the updates to the hard disk.
 
-The diagram below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
+Figure 4 below shows how the `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
 
 .Component interactions for `delete 1` command (part 2)
 image::SDforDeletePersonEventHandling.png[width="800"]
@@ -200,7 +202,7 @@ The sections below give more details of each component.
 .Interactions for Login Component
 image::Login.png[width="800"]
 
-Upon launching the app, the Login component takes in two inputs from the user: `Username` and `Password`, then stores the user's login credentials into a `.xml` file.
+Upon launching the app, the Login component (as seen in Figure 5) takes in two inputs from the user: `Username` and `Password`, then stores the user's login credentials into a `.xml` file.
 [Optional] `.xml` file is encrypted.
 
 * The login credentials are therefore immutable (cannot be changed).
@@ -215,13 +217,13 @@ image::UiClassDiagram.png[width="800"]
 
 *API* : link:{repoURL}/src/main/java/seedu/address/ui/Ui.java[`Ui.java`]
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `TodoListPanel`, `StatusBarFooter`, `CalendarView` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+As seen in Figure 6, the UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `TodoListPanel`, `StatusBarFooter`, `CalendarView` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 
 .Layout of the UI
 image::UiLayout.png[width="800"]
 
-As seen above is the current layout of the UI.
+As seen above in Figure 7 is the current layout of the UI of the program.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the link:{repoURL}/src/main/java/seedu/address/ui/MainWindow.java[`MainWindow`] is specified in link:{repoURL}/src/main/resources/view/MainWindow.fxml[`MainWindow.fxml`]
 
@@ -240,14 +242,16 @@ The `UI` component:
 [[Design-Logic]]
 === Logic component
 
-The diagram below shows how the `LogicManager` functions in the application.
+Figure 8 below shows how the `LogicManager` functions in the application.
 
 [[fig-LogicClassDiagram]]
 .Structure of the Logic Component
 image::LogicClassDiagram.png[width="800"]
 
-The diagram below shows finer details concerning `XYZCommand` and `Command` in <<fig-LogicClassDiagram>>
+Figure 9 below shows finer details concerning `XYZCommand` and `Command` in <<fig-LogicClassDiagram>>
 
+[[fig-LogicCommandClassDiagram]]
+.Logic Command Class Diagram
 image::LogicCommandClassDiagram.png[width="800"]
 
 *API* :
@@ -258,7 +262,7 @@ link:{repoURL}/src/main/java/seedu/address/logic/Logic.java[`Logic.java`]
 .  The command execution can affect the `Model` (e.g. adding a person) and/or raise events.
 .  The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
+Figure 10 below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
 .Interactions Inside the Logic Component for the `delete 1` Command
 image::DeletePersonSdForLogic.png[width="800"]
@@ -266,7 +270,7 @@ image::DeletePersonSdForLogic.png[width="800"]
 [[Design-Model]]
 === Model component
 
-The diagram below shows the different components and interfaces that make up the `Model` component.
+Figure 11 shows the different components and interfaces that make up the `Model` component.
 
 .Structure of the Model Component
 image::ModelClassDiagram.png[width="800"]
@@ -490,7 +494,11 @@ This feature allows the user to call their desktop mail application from the app
 image::EmailComponentFlow.png[width="800"]
 pass:[<div align="center"><b>Figure 3.3.1: Email Implementation</b></div>]
 
-The user will enter a command `email 1` to the application. The application will then rely on `AddressBookparser` and `EmailCommandParser` to
+The user will enter a command `email 1` to the application where the application displays a list of the students entered.
+The value `1` represents the first person in the list, `2` would be the second person and so on. It will then send the student's email address
+which is stored inside the application to the default mail application such as to populate the mailTo: field.
+
+The application will then rely on `AddressBookparser` and `EmailCommandParser` to
 parse the argument. The argument will be passed into the EmailCommand when it will be checked on whether the argument is valid. From there, it will
 call the Java `Desktop` class to launch the user's default mail application.
 
@@ -533,11 +541,15 @@ Support for setting a threshold and easily seeing how many students made the cut
 === Display Picture (Since v1.2)
 
 This feature allows the user to enter a path to their selected image file and copies the image into the `images\displayPic` folder. This image
-will be shown in the application next to the details of the person.
+will be shown in the application next to the details of the person. This uses the `add` command with the addition of a `dp/` parameter.
 
 ==== Current implementation
 
-The application will take in the argument through `dp/ [PATH TO IMAGE]`. If this is empty, the application will default to using the default profile picture
+The application will take in the argument through `dp/ [PATH TO IMAGE]`.
+[NOTE]
+An example of a `[PATH TO IMAGE]` would be C:\Users\Desktop\Image.jpg
+
+If this is empty, the application will default to using the default profile picture
 which is in `src\resources\images\displayPic`. If an valid path to an image is provided, the image will be processed and copied over to the `data` folder where the
 `addressbook.xml` is stored as well.
 
@@ -547,6 +559,7 @@ relative filepath to the default display picture.
 
 ===== Editing a Display Picture
 
+The image can be edited by using the `edit` command with the additional parameter of `dp/`.
 The application will read in the new image to edit and use the `filepath` of the original image to generate a new unique hash name. This is to prevent the overwriting
 of image files such as to facilitate the `undo` command.
 
@@ -1012,22 +1025,6 @@ A list of things to do
 Bring into the application from an external source
 
 
-[appendix]
-== Product Survey
-
-*Product Name*
-
-Author: ...
-
-Pros:
-
-* ...
-* ...
-
-Cons:
-
-* ...
-* ...
 
 [appendix]
 == Instructions for Manual Testing

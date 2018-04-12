@@ -16,7 +16,8 @@ import seedu.address.model.person.Person;
 /**
  * Emails a person identified using it's last displayed index from the address book.
  */
-//@@author Alaru
+//@@author Alaru-unused
+//Code not used as EmailCommand was removed
 public class EmailCommand extends Command {
 
     public static final String COMMAND_WORD = "email";

@@ -1,5 +1,5 @@
 # Alaru-reused
-###### \java\seedu\address\commons\util\NamingUtil.java
+###### \java\seedu\address\commons\util\HashUtil.java
 ``` java
     private static String toHex(byte[] hashValue) {
         StringBuilder sb = new StringBuilder();

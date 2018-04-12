@@ -44,7 +44,6 @@ public class DeleteCommand extends UndoableCommand {
         } catch (PersonNotFoundException pnfe) {
             throw new AssertionError("The target person cannot be missing");
         }
-        model.addDeleteItem(personToDelete.getDisplayPic().toString());
         return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, personToDelete));
     }
 

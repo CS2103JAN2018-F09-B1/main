@@ -5,6 +5,8 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MARK_PARTICIPATION;
 
+import java.util.NoSuchElementException;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.MarkCommand;
@@ -12,7 +14,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Participation;
 
 /**
- * Parses input arguments and creates a new AddTaskCommand object
+ * Parses input arguments and creates a new MarkCommand object
  */
 //@@author Alaru
 public class MarkCommandParser implements Parser<MarkCommand> {
@@ -36,15 +38,15 @@ public class MarkCommandParser implements Parser<MarkCommand> {
         }
 
         try {
-            Integer marks = ParserUtil.parseMarks(argMultimap.getValue(PREFIX_MARK_PARTICIPATION)).get();
+            Integer marks = ParserUtil.parseMarks(argMultimap.getValue(PREFIX_MARK_PARTICIPATION).get());
             checkArgument(Participation.isValidParticipation(Integer.toString(marks)),
-                    Participation.MESSAGE_PARTICPATION_CONSTRAINTS);
+                    Participation.MESSAGE_PARTICIPATION_CONSTRAINTS);
             return new MarkCommand(index, marks);
         } catch (IllegalArgumentException | IllegalValueException ie) {
-            throw new ParseException(ie.getMessage(), ie);
+            throw new ParseException(MarkCommand.MESSAGE_INVALID_PARAMETER_VALUE);
+        } catch (NoSuchElementException nsee) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MarkCommand.MESSAGE_USAGE));
         }
-
-
     }
 
 }

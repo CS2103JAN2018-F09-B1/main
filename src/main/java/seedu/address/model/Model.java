@@ -46,12 +46,8 @@ public interface Model {
     /** Updates the given task */
     void updateTask(Task target, Task editedTask) throws TaskNotFoundException;
 
-    /** Adds an item to be deleted */
-    void addDeleteItem(String filepath);
-
     /** Clears the list of items to be deleted */
     void clearDeleteItems();
-
 
     /**
      * Replaces the given person {@code target} with {@code editedPerson}.

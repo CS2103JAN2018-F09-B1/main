@@ -134,7 +134,7 @@ public class XmlAdaptedPersonTest {
     public void toModelType_invalidParticipation_throwsIllegalValueException() {
         XmlAdaptedPerson person = new XmlAdaptedPerson(VALID_NAME, VALID_MATRIC_NUMBER,
                 VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_DISPLAY_PIC, INVALID_PARTICIPATION, VALID_TAGS);
-        String expectedMessage = Participation.MESSAGE_PARTICPATION_CONSTRAINTS;
+        String expectedMessage = Participation.MESSAGE_PARTICIPATION_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
 

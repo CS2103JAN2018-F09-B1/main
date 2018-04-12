@@ -1,12 +1,17 @@
 package seedu.address.model.person;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
+
+import seedu.address.model.person.exceptions.IllegalMarksException;
+
 /**
  * Represents a Person's tutorial participation in the address book.
  */
 //@@author Alaru
 public class Participation {
 
-    public static final String MESSAGE_PARTICPATION_CONSTRAINTS = "Participation marks cannot be negative or over 100!";
+    public static final String MESSAGE_PARTICIPATION_CONSTRAINTS = "Participation marks cannot be negative or over 100!";
     public static final String UI_DISPLAY_HEADER = "Participation marks: ";
 
     public final Integer threshold;
@@ -21,17 +26,17 @@ public class Participation {
     }
 
     public Participation(String value) {
+        requireNonNull(value);
+        checkArgument(isValidParticipation(value), MESSAGE_PARTICIPATION_CONSTRAINTS);
         this.value = Integer.parseInt(value);
         threshold = 50;
     }
 
     public Participation(Integer value) {
+        requireNonNull(value);
+        checkArgument(isValidParticipation(Integer.toString(value)), MESSAGE_PARTICIPATION_CONSTRAINTS);
         this.value = value;
         threshold = 50;
-    }
-
-    public void addParticipation(int marks) {
-        value = (value + marks) % 101;
     }
 
     public Integer getMarks() {
@@ -39,11 +44,16 @@ public class Participation {
     }
 
     public boolean overThreshold() {
-        return (value > threshold);
+        return (value >= threshold);
     }
 
     public static boolean isValidParticipation(String value) {
-        return Integer.parseInt(value) <= 100 && Integer.parseInt(value) > -1;
+        requireNonNull(value);
+        try {
+            return Integer.parseInt(value) <= 100 && Integer.parseInt(value) > -1;
+        } catch (NumberFormatException nfe) {
+            throw new IllegalMarksException();
+        }
     }
 
     public String toDisplay() {

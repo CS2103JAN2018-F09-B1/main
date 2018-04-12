@@ -10,6 +10,8 @@ import seedu.address.logic.parser.exceptions.ParseException;
 /**
  * Parses input arguments and creates a new EmailCommand object
  */
+//@@author Alaru-unused
+//Code not used as EmailCommand was removed
 public class EmailCommandParser implements Parser<EmailCommand> {
 
     /**

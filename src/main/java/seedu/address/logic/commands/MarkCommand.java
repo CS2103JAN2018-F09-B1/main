@@ -3,7 +3,6 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.commands.EditCommand.MESSAGE_DUPLICATE_PERSON;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MARK_PARTICIPATION;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
 
@@ -29,6 +28,8 @@ public class MarkCommand extends UndoableCommand {
             + "Example: " + COMMAND_WORD + " 1 " + PREFIX_MARK_PARTICIPATION + "50";
 
     public static final String MESSAGE_SUCCESS = "Participation marked for %1$s!";
+    public static final String MESSAGE_INVALID_PARAMETER_VALUE =
+            "The marks/ field cannot be empty and it must be an integer from 0 to 100 inclusive";
 
     private final Index targetIndex;
     private final Integer marks;
@@ -52,12 +53,11 @@ public class MarkCommand extends UndoableCommand {
         try {
             model.updatePerson(personToMark, updatedPerson);
         } catch (DuplicatePersonException dpe) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            throw new AssertionError("There cannot be a duplicate when adding participation");
         } catch (PersonNotFoundException pnfe) {
             throw new AssertionError("The target person cannot be missing");
         }
 
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_SUCCESS, personToMark.getName().toString()));
 
     }
@@ -72,11 +72,12 @@ public class MarkCommand extends UndoableCommand {
 
         personToMark = lastShownList.get(targetIndex.getZeroBased());
         updatedPerson = createUpdatedPerson(personToMark);
+
     }
 
     /**
-     * Creates and returns a {@code Person} with the details of {@code personToEdit}
-     * edited with {@code editPersonDescriptor}.
+     * Creates and returns a {@code Person} with the details of {@code personToMark}
+     * edited with the new marks.
      */
     private Person createUpdatedPerson(Person personToMark) {
         assert personToMark != null;

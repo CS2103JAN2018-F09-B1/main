@@ -157,7 +157,7 @@ public class XmlAdaptedPerson {
                     Participation.class.getSimpleName()));
         }
         if (!Participation.isValidParticipation(this.participation)) {
-            throw new IllegalValueException(Participation.MESSAGE_PARTICPATION_CONSTRAINTS);
+            throw new IllegalValueException(Participation.MESSAGE_PARTICIPATION_CONSTRAINTS);
         }
         final Participation participation = new Participation(this.participation);
         final Set<Tag> tags = new HashSet<>(personTags);

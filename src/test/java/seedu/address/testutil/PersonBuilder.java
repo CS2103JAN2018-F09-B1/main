@@ -119,18 +119,18 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code DisplayPic} of the {@code Person} that we are building to null.
+     * Sets the {@code Participation} of the {@code Person} that we are building.
      */
-    public PersonBuilder withoutDisplayPic() {
-        this.displayPic = null;
+    public PersonBuilder withParticipation(String participation) {
+        this.participation = new Participation(participation);
         return this;
     }
 
     /**
-     * Sets the {@code Particitpation} of the {@code Person} that we are building to null.
+     * Sets the {@code Participation} of the {@code Person} that we are building to null.
      */
-    public PersonBuilder withParticipation(String participation) {
-        this.participation = new Participation(participation);
+    public PersonBuilder withoutParticipation() {
+        this.participation = null;
         return this;
     }
 
@@ -142,4 +142,5 @@ public class PersonBuilder {
         return new Person(name, matricNumber, phone, email, address, displayPic,
                 participation, tags);
     }
+
 }

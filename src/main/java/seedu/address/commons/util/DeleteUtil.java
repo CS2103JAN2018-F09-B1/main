@@ -8,9 +8,12 @@ import seedu.address.model.person.Person;
 
 /**
  * A class for deleting and managing unwanted storage files
+ * Currently only used for deleting unwanted image files
  */
 //@@author Alaru
 public class DeleteUtil {
+
+    public static final String DEFAULT_DISPLAY_PIC = "/images/displayPic/default.png";
 
     /**
      * Goes through the list of files to be deleted and only deletes those that are not in use
@@ -18,16 +21,16 @@ public class DeleteUtil {
      * @param persons List of Person objects in the addressbook
      */
     public static void clearImageFiles(List<String> itemsToDelete, ObservableList<Person> persons) {
-        for (String it : itemsToDelete) {
+        for (String item : itemsToDelete) {
             boolean notUsed = true;
             for (Person p : persons) {
-                if (p.getDisplayPic().toString().equals(it)) {
+                if (item.equals(DEFAULT_DISPLAY_PIC) || p.getDisplayPic().toString().equals(item)) {
                     notUsed = false;
                     break;
                 }
             }
             if (notUsed) {
-                deleteFile(it);
+                deleteFile(item);
             }
         }
     }

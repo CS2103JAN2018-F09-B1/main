@@ -74,12 +74,14 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public synchronized void deletePerson(Person target) throws PersonNotFoundException {
         addressBook.removePerson(target);
+        addressBook.addDeleteItem(target.getDisplayPic().toString());
         indicateAddressBookChanged();
     }
 
     @Override
     public synchronized void addPerson(Person person) throws DuplicatePersonException {
         addressBook.addPerson(person);
+        addressBook.addDeleteItem(person.getDisplayPic().toString());
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         indicateAddressBookChanged();
     }
@@ -99,17 +101,13 @@ public class ModelManager extends ComponentManager implements Model {
         indicateAddressBookChanged();
     }
 
-    @Override
-    public synchronized void addDeleteItem(String filepath) {
-        addressBook.addDeleteItem(filepath);
-        indicateAddressBookChanged();
-    }
-
+    //@@author Alaru
     @Override
     public synchronized void clearDeleteItems() {
         addressBook.clearItems();
         indicateAddressBookChanged();
     }
+    //@@author
 
     @Override
     public void updatePerson(Person target, Person editedPerson)
@@ -117,6 +115,8 @@ public class ModelManager extends ComponentManager implements Model {
         requireAllNonNull(target, editedPerson);
 
         addressBook.updatePerson(target, editedPerson);
+        addressBook.addDeleteItem(target.getDisplayPic().toString());
+        addressBook.addDeleteItem(editedPerson.getDisplayPic().toString());
         indicateAddressBookChanged();
     }
 

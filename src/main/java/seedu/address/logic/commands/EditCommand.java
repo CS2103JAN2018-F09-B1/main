@@ -19,7 +19,6 @@ import java.util.Set;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.person.Address;
@@ -33,6 +32,7 @@ import seedu.address.model.person.Phone;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.tag.Tag;
+import seedu.address.storage.DisplayPicStorage;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -88,12 +88,6 @@ public class EditCommand extends UndoableCommand {
         } catch (PersonNotFoundException pnfe) {
             throw new AssertionError("The target person cannot be missing");
         }
-        if (!personToEdit.getDisplayPic().equals(editedPerson.getDisplayPic())) {
-            if (!personToEdit.getDisplayPic().isDefault()) {
-                model.addDeleteItem(personToEdit.getDisplayPic().toString());
-                model.addDeleteItem(editedPerson.getDisplayPic().toString());
-            }
-        }
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedPerson));
     }
@@ -124,18 +118,11 @@ public class EditCommand extends UndoableCommand {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         DisplayPic updatedDisplay = editPersonDescriptor.getDisplayPic().orElse(personToEdit.getDisplayPic());
-        if (!updatedDisplay.equals(personToEdit.getDisplayPic())) {
-            try {
-                updatedDisplay.saveDisplay(updatedName.toString() + updatedPhone.toString()
-                        + updatedEmail.toString());
-                updatedDisplay.updateDisplay(updatedName.toString() + updatedPhone.toString()
-                        + updatedEmail.toString());
-            } catch (IllegalValueException ive) {
-                updatedDisplay.updateToDefault();
-            }
-        }
+        updatedDisplay = DisplayPicStorage.toSaveDisplay(updatedDisplay, personToEdit.getDisplayPic(),
+                updatedName.toString() + updatedPhone.toString() + updatedEmail.toString());
         Participation updatedPart = editPersonDescriptor.getParticipation().orElse(personToEdit.getParticipation());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+
         return new Person(updatedName, updatedMatricNumber, updatedPhone, updatedEmail, updatedAddress, updatedDisplay,
                 updatedPart, updatedTags);
     }
@@ -292,6 +279,7 @@ public class EditCommand extends UndoableCommand {
                     && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress())
                     && getDisplayPic().equals(e.getDisplayPic())
+                    && getParticipation().equals(e.getParticipation())
                     && getTags().equals(e.getTags());
         }
     }

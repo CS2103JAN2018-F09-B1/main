@@ -67,6 +67,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.itemList.setItemList(itemList);
     }
 
+    public void updateItemList(ObservableList<Person> persons) {
+        this.itemList.updateItemList(persons);
+    }
+
     public void setTasks(List<Task> tasks) {
         this.tasks.setTasks(tasks);
     }
@@ -86,9 +90,10 @@ public class AddressBook implements ReadOnlyAddressBook {
                 .collect(Collectors.toList());
 
         try {
+            updateItemList(this.persons.asObservableList());
+            setItemList(newData.getItemList());
             setPersons(syncedPersonList);
             setTasks(newData.getTaskList());
-            setItemList(newData.getItemList());
         } catch (DuplicatePersonException e) {
             throw new AssertionError("AddressBooks should not have duplicate persons");
         }
@@ -153,6 +158,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         tasks.setTask(target, editedTask);
     }
 
+    //@@author Alaru
     /**
      * Adds an item to be scheduled to be deleted to the address book.
      */
@@ -166,6 +172,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void clearItems() {
         itemList.clear();
     }
+    //@@author
 
     /**
      *  Updates the master tag list to include tags in {@code person} that are not in the list.
@@ -258,10 +265,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         return tags.asObservableList();
     }
 
+    //@@author Alaru
     @Override
     public List<String> getItemList() {
         return itemList.getItemList();
     }
+    //@@author
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

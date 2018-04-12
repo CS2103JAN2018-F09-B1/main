@@ -1,16 +1,160 @@
 # Wu
-###### \java\seedu\address\logic\commands\AddCommandTest.java
+###### \java\seedu\address\logic\commands\AddTaskCommandTest.java
 ``` java
+public class AddTaskCommandTest {
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+    @Test
+    public void constructor_nullTask_throwNullPointerException() {
+        thrown.expect(NullPointerException.class);
+        new AddTaskCommand(null);
+    }
+
+    @Test
+    public void execute_taskAcceptedByModel_addTaskSuccessful() throws Exception {
+        ModelStubAcceptingTaskAdded modelStub = new ModelStubAcceptingTaskAdded();
+        Task validTask = new TaskBuilder().build();
+
+        CommandResult commandResult = getAddTaskCommandForTask(validTask, modelStub).execute();
+
+        assertEquals(String.format(AddTaskCommand.MESSAGE_SUCCESS, validTask), commandResult.feedbackToUser);
+        assertEquals(Arrays.asList(validTask), modelStub.tasksAdded);
+    }
+
+    @Test
+    public void equals() {
+        Task meeting = new TaskBuilder().withTitle("Meeting").build();
+        Task assignment = new TaskBuilder().withTitle("Assignment").build();
+        AddTaskCommand addMeetingCommand = new AddTaskCommand(meeting);
+        AddTaskCommand addAssignmentCommand = new AddTaskCommand(assignment);
+
+        // same object -> returns true
+        assertTrue(addMeetingCommand.equals(addMeetingCommand));
+
+        // same values -> returns true
+        AddTaskCommand addMeetingCommandCopy = new AddTaskCommand(meeting);
+        assertTrue(addMeetingCommand.equals(addMeetingCommandCopy));
+
+        // different types -> returns false
+        assertFalse(addMeetingCommand.equals(1));
+
+        // null -> returns false
+        assertFalse(addMeetingCommand.equals(null));
+
+        // different person -> returns false
+        assertFalse(addMeetingCommand.equals(addAssignmentCommand));
+    }
+
+    private AddTaskCommand getAddTaskCommandForTask(Task task, Model model) {
+        AddTaskCommand command = new AddTaskCommand(task);
+        command.setData(model, new CommandHistory(), new UndoRedoStack());
+        return command;
+    }
+
+    /**
+     * A default model stub that have all of the methods failing.
+     */
+    private class ModelStub implements Model {
+        @Override
+        public void addPerson(Person person) throws DuplicatePersonException {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public void addTask(Task task) {
+        }
+
         @Override
         public void deleteTask(Task target) throws TaskNotFoundException {
-            fail("This method should not be called.");
         }
 
         @Override
         public void updateTask(Task target, Task editedTask) throws TaskNotFoundException {
+        }
+
+        @Override
+        public void resetData(ReadOnlyAddressBook newData) {
             fail("This method should not be called.");
         }
 
+        @Override
+        public ReadOnlyAddressBook getAddressBook() {
+            fail("This method should not be called.");
+            return null;
+        }
+
+        @Override
+        public void deletePerson(Person target) throws PersonNotFoundException {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public void updatePerson(Person target, Person editedPerson)
+                throws DuplicatePersonException {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public void sortPersons() {
+            fail("This method should not be called");
+        }
+
+        @Override
+        public ObservableList<Person> getFilteredPersonList() {
+            fail("This method should not be called.");
+            return null;
+        }
+
+        @Override
+        public ObservableList<Task> getFilteredTaskList() {
+            return null;
+        }
+
+        @Override
+        public ObservableList<Task>[][] getCalendarTaskLists() {
+            return new ObservableList[0][];
+        }
+
+        @Override
+        public void updateFilteredPersonList(Predicate<Person> predicate) {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredTaskList(Predicate<Task> predicate) {
+
+        }
+
+        @Override
+        public List<String> getItemList() {
+            return null;
+        }
+
+        @Override
+        public void clearDeleteItems() {
+        }
+    }
+
+    /**
+     * A Model stub that always accept the task being added.
+     */
+    private class ModelStubAcceptingTaskAdded extends ModelStub {
+        final ArrayList<Task> tasksAdded = new ArrayList<>();
+
+        @Override
+        public void addTask(Task task) {
+            requireNonNull(task);
+            tasksAdded.add(task);
+        }
+
+        @Override
+        public ReadOnlyAddressBook getAddressBook() {
+            return new AddressBook();
+        }
+    }
+}
 ```
 ###### \java\seedu\address\logic\commands\ImportCommandTest.java
 ``` java
@@ -156,6 +300,77 @@ public class ImportCommandParserTest {
     public void parse_noFile_throwsParseException() {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, ImportCommand.MESSAGE_USAGE);
         assertParseFailure(parser, "   ", expectedMessage);
+    }
+}
+```
+###### \java\seedu\address\testutil\TaskBuilder.java
+``` java
+/**
+ * A utility class to help with building Task objects.
+ */
+public class TaskBuilder {
+
+    public static final String DEFAULT_TITLE = "Dance";
+    public static final String DEFAULT_DESC = "Dance till I drop";
+    public static final String DEFAULT_DEALINE = "03-08-2018";
+    public static final String DEFAULT_PRIORITY = "3";
+
+    private Title title;
+    private TaskDescription desc;
+    private Deadline deadline;
+    private Priority priority;
+
+    public TaskBuilder() {
+        title = new Title(DEFAULT_TITLE);
+        desc = new TaskDescription(DEFAULT_DESC);
+        deadline = new Deadline(DEFAULT_DEALINE);
+        priority = new Priority(DEFAULT_PRIORITY);
+    }
+
+    /**
+     * Initializes the TaskBuilder with the data of {@code taskToCopy}
+     */
+    public TaskBuilder(Task taskToCopy) {
+        title = taskToCopy.getTitle();
+        desc = taskToCopy.getTaskDesc();
+        deadline = taskToCopy.getDeadline();
+        priority = taskToCopy.getPriority();
+    }
+
+    /**
+     * Sets the {@code Title} of the {@code Task} that we are building
+     */
+    public TaskBuilder withTitle (String title) {
+        this.title = new Title(title);
+        return this;
+    }
+
+    /**
+     * Sets the {@code TaskDescription} of the {@code Task} that we are building.
+     */
+    public TaskBuilder withDesc(String desc) {
+        this.desc = new TaskDescription(desc);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Deadline} of the {@code Task} that we are building.
+     */
+    public TaskBuilder withDeadline(String deadline) {
+        this.deadline = new Deadline(deadline);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Priority} of the {@code Task} that we are building.
+     */
+    public TaskBuilder withPriority(String priority) {
+        this.priority = new Priority(priority);
+        return this;
+    }
+
+    public Task build() {
+        return new Task(title, desc, deadline, priority);
     }
 }
 ```

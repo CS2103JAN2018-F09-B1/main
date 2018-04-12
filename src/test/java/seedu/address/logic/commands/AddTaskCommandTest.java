@@ -156,17 +156,12 @@ public class AddTaskCommandTest {
         }
 
         @Override
-        public void addDeleteItem(String filepath) {
-        }
-
-        @Override
         public List<String> getItemList() {
             return null;
         }
 
         @Override
         public void clearDeleteItems() {
-
         }
     }
 

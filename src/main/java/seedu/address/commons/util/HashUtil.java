@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
  * https://stackoverflow.com/questions/36162622/how-do-i-generate-a-hash-code-with-hash-sha256-in-java
  */
 //@@author Alaru
-public class NamingUtil {
+public class HashUtil {
 
     /**
      * This method uses SHA-256 to hash the 2 input strings and returns it.

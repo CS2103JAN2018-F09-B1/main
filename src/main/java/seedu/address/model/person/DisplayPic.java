@@ -3,10 +3,8 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.FileUtil;
-import seedu.address.commons.util.NamingUtil;
 import seedu.address.storage.DisplayPicStorage;
 
 /**
@@ -17,6 +15,12 @@ public class DisplayPic {
 
     public static final String DEFAULT_DISPLAY_PIC = "/images/displayPic/default.png";
     public static final String DEFAULT_IMAGE_LOCATION = "data/displayPic/";
+    public static final String MESSAGE_DISPLAY_PIC_NONEXISTENT_CONSTRAINTS =
+            "The filepath should lead to a file that exists.";
+    public static final String MESSAGE_DISPLAY_PIC_NOT_IMAGE =
+            "The filepath should point to a valid image file.";
+    public static final String MESSAGE_DISPLAY_PIC_NO_EXTENSION =
+            "The filepath should point to a file with an extension.";
 
     public final String originalPath;
     private String value;
@@ -31,22 +35,11 @@ public class DisplayPic {
      *
      * @param filePath A valid string containing the path to the file.
      */
-    public DisplayPic(String filePath, String personDetails) throws IllegalValueException {
-        requireNonNull(filePath);
-        String trimmedFilePath = filePath.trim();
-        this.originalPath = trimmedFilePath;
-        checkArgument(DisplayPicStorage.isValidPath(trimmedFilePath),
-                Messages.MESSAGE_DISPLAY_PIC_NONEXISTENT_CONSTRAINTS);
-        checkArgument(DisplayPicStorage.isValidImage(trimmedFilePath), Messages.MESSAGE_DISPLAY_PIC_NOT_IMAGE);
-        String fileType = FileUtil.getFileType(trimmedFilePath);
-        String uniqueFileName = NamingUtil.generateUniqueName(personDetails);
-        this.value = DEFAULT_IMAGE_LOCATION + uniqueFileName + '.' + fileType;
-    }
-
     public DisplayPic(String filePath) {
         requireNonNull(filePath);
-        checkArgument(DisplayPicStorage.isValidPath(filePath), Messages.MESSAGE_DISPLAY_PIC_NONEXISTENT_CONSTRAINTS);
-        checkArgument(DisplayPicStorage.isValidImage(filePath), Messages.MESSAGE_DISPLAY_PIC_NOT_IMAGE);
+        checkArgument(DisplayPicStorage.isValidPath(filePath), MESSAGE_DISPLAY_PIC_NONEXISTENT_CONSTRAINTS);
+        checkArgument(DisplayPicStorage.hasValidExtension(filePath), MESSAGE_DISPLAY_PIC_NO_EXTENSION);
+        checkArgument(DisplayPicStorage.isValidImage(filePath), MESSAGE_DISPLAY_PIC_NOT_IMAGE);
         this.originalPath = filePath;
         this.value = filePath;
     }
@@ -55,7 +48,7 @@ public class DisplayPic {
      * Saves the display picture to the specified storage location.
      */
     public void saveDisplay(String personDetails) throws IllegalValueException {
-        if (originalPath.equals(value)) {
+        if (originalPath.equals(DEFAULT_DISPLAY_PIC)) {
             return;
         }
         String fileType = FileUtil.getFileType(originalPath);
@@ -65,20 +58,6 @@ public class DisplayPic {
 
     public void updateToDefault() {
         this.value = DEFAULT_DISPLAY_PIC;
-    }
-
-    /**
-     * Updates the path the DisplayPic object points to
-     * @param personDetails are the details to hash to ensure a unique value
-     */
-    public void updateDisplay(String personDetails) {
-        try {
-            String fileType = FileUtil.getFileType(value);
-            String uniqueFileName = DisplayPicStorage.saveDisplayPic(personDetails, value, fileType);
-            this.value = DEFAULT_IMAGE_LOCATION + uniqueFileName + '.' + fileType;
-        } catch (IllegalValueException ive) {
-            assert false;
-        }
     }
 
     public boolean isDefault() {

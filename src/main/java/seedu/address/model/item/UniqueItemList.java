@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javafx.collections.ObservableList;
+import seedu.address.model.person.Person;
+
 /**
  * A list of filepaths that enforces uniqueness between its elements and does not allow nulls.
  *
@@ -32,7 +35,9 @@ public class UniqueItemList {
      */
     public void add(String toAdd) {
         requireNonNull(toAdd);
-        internalList.add(toAdd);
+        if (!contains(toAdd)) {
+            internalList.add(toAdd);
+        }
     }
 
     /**
@@ -45,9 +50,21 @@ public class UniqueItemList {
     }
 
     public void setItemList(List<String> replacement) {
-        requireNonNull(replacement);
-        this.internalList.clear();
-        this.internalList.addAll(replacement);
+        for (String item : replacement) {
+            if (!this.internalList.contains(item)) {
+                this.internalList.add(item);
+            }
+        }
+    }
+
+    /**
+     * Puts all the display picture paths into the UniqueItemList
+     * @param persons is a UniquePersonList which contains all the people in the application
+     */
+    public void updateItemList(ObservableList<Person> persons) {
+        for (Person p : persons) {
+            add(p.getDisplayPic().toString());
+        }
     }
 
     public void clear() {
@@ -55,7 +72,8 @@ public class UniqueItemList {
     }
 
     public List<String> getItemList() {
-        return Collections.unmodifiableList(internalList);
+        List<String> toReturn = new ArrayList<>(internalList);
+        return Collections.unmodifiableList(toReturn);
     }
 
     @Override

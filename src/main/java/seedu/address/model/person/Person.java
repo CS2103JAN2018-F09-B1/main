@@ -113,7 +113,8 @@ public class Person implements Comparable<Person> {
                 && otherPerson.getMatricNumber().equals(this.getMatricNumber())
                 && otherPerson.getPhone().equals(this.getPhone())
                 && otherPerson.getEmail().equals(this.getEmail())
-                && otherPerson.getAddress().equals(this.getAddress());
+                && otherPerson.getAddress().equals(this.getAddress())
+                && otherPerson.getParticipation().equals(this.getParticipation());
     }
 
     @Override
@@ -134,6 +135,8 @@ public class Person implements Comparable<Person> {
                 .append(getEmail())
                 .append(" Address: ")
                 .append(getAddress())
+                .append(" Participation marks: ")
+                .append(getParticipation())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();

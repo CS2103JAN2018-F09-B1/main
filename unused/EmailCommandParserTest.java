@@ -16,6 +16,8 @@ import seedu.address.logic.commands.EmailCommand;
  * The path variation for those two cases occur inside the ParserUtil, and
  * therefore should be covered by the ParserUtilTest.
  */
+//@@author Alaru-unused
+//Code not used as EmailCommand was removed
 public class EmailCommandParserTest {
 
     private EmailCommandParser parser = new EmailCommandParser();

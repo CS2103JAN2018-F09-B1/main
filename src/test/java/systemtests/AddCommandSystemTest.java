@@ -3,9 +3,13 @@ package systemtests;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.DISPLAY_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.DISPLAY_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_DISPLAY_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_DISPLAY_TYPE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_MATRIC_NUMBER_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
@@ -21,6 +25,7 @@ import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DISPLAY_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MATRIC_NUMBER_AMY;
@@ -48,6 +53,7 @@ import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.DisplayPic;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.MatriculationNumber;
 import seedu.address.model.person.Name;
@@ -66,8 +72,8 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
 
         /* ------------------------ Perform add operations on the shown unfiltered list ----------------------------- */
 
-        /* Case: add a person without tags to a non-empty address book, command with leading spaces and trailing spaces
-         * -> added
+        /* Case: add a person without display pic to a non-empty address book,
+         * command with leading spaces and trailing spaces -> added
          */
         Person toAdd = AMY;
         String command = "   " + AddCommand.COMMAND_WORD + "  " + NAME_DESC_AMY + "  " + MATRIC_NUMBER_DESC_AMY + " "
@@ -79,6 +85,20 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
         String expectedResultMessage = UndoCommand.MESSAGE_SUCCESS;
         assertCommandSuccess(command, model, expectedResultMessage);
 
+        /* Case: add a person without tags to a non-empty address book, command with leading spaces and trailing spaces
+         * -> added
+         */
+        toAdd = AMY;
+        command = "   " + AddCommand.COMMAND_WORD + "  " + NAME_DESC_AMY + "  " + MATRIC_NUMBER_DESC_AMY + " "
+                + PHONE_DESC_AMY + " " + EMAIL_DESC_AMY + "   " + ADDRESS_DESC_AMY + "   " + DISPLAY_DESC_AMY + "   "
+                + TAG_DESC_FRIEND + " ";
+        assertCommandSuccess(command, toAdd);
+
+        /* Case: undo adding Amy to the list -> Amy deleted */
+        command = UndoCommand.COMMAND_WORD;
+        expectedResultMessage = UndoCommand.MESSAGE_SUCCESS;
+        assertCommandSuccess(command, model, expectedResultMessage);
+
         /* Case: redo adding Amy to the list -> Amy added again */
         command = RedoCommand.COMMAND_WORD;
         model.addPerson(toAdd);
@@ -87,7 +107,7 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
 
         /* Case: add a person with all fields same as another person in the address book except name -> added */
         toAdd = new PersonBuilder().withName(VALID_NAME_BOB).withMatriculationNumber(VALID_MATRIC_NUMBER_AMY)
-                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY)
+                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withDisplayPic(VALID_DISPLAY_AMY)
                 .withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND).build();
         command = AddCommand.COMMAND_WORD + NAME_DESC_BOB + MATRIC_NUMBER_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
                 + ADDRESS_DESC_AMY + TAG_DESC_FRIEND;
@@ -95,7 +115,7 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
 
         /* Case: add a person with all fields same as another person in the address book except phone -> added */
         toAdd = new PersonBuilder().withName(VALID_NAME_AMY).withMatriculationNumber(VALID_MATRIC_NUMBER_AMY)
-                .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_AMY)
+                .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_AMY).withDisplayPic(VALID_DISPLAY_AMY)
                 .withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND).build();
         command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + MATRIC_NUMBER_DESC_AMY + PHONE_DESC_BOB + EMAIL_DESC_AMY
                 + ADDRESS_DESC_AMY + TAG_DESC_FRIEND;
@@ -103,7 +123,7 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
 
         /* Case: add a person with all fields same as another person in the address book except email -> added */
         toAdd = new PersonBuilder().withName(VALID_NAME_AMY).withMatriculationNumber(VALID_MATRIC_NUMBER_AMY)
-                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_BOB)
+                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_BOB).withDisplayPic(VALID_DISPLAY_AMY)
                 .withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND).build();
         command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + MATRIC_NUMBER_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_BOB
                 + ADDRESS_DESC_AMY + TAG_DESC_FRIEND;
@@ -111,7 +131,7 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
 
         /* Case: add a person with all fields same as another person in the address book except address -> added */
         toAdd = new PersonBuilder().withName(VALID_NAME_AMY).withMatriculationNumber(VALID_MATRIC_NUMBER_AMY)
-                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY)
+                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withDisplayPic(VALID_DISPLAY_AMY)
                 .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_FRIEND).build();
         command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + MATRIC_NUMBER_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
                 + ADDRESS_DESC_BOB + TAG_DESC_FRIEND;
@@ -119,7 +139,7 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
 
         /* Case: add a person with all fields same as another person in the address book except matricNumber -> added */
         toAdd = new PersonBuilder().withName(VALID_NAME_AMY).withMatriculationNumber(VALID_MATRIC_NUMBER_BOB)
-                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY)
+                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withDisplayPic(VALID_DISPLAY_AMY)
                 .withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND).build();
         command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + MATRIC_NUMBER_DESC_BOB + PHONE_DESC_AMY + EMAIL_DESC_AMY
                 + ADDRESS_DESC_AMY + TAG_DESC_FRIEND;
@@ -132,7 +152,7 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
         /* Case: add a person with tags, command with parameters in random order -> added */
         toAdd = BOB;
         command = AddCommand.COMMAND_WORD + TAG_DESC_FRIEND + MATRIC_NUMBER_DESC_BOB + PHONE_DESC_BOB
-                + ADDRESS_DESC_BOB + NAME_DESC_BOB + TAG_DESC_HUSBAND + EMAIL_DESC_BOB;
+                + ADDRESS_DESC_BOB + DISPLAY_DESC_BOB + NAME_DESC_BOB + TAG_DESC_HUSBAND + EMAIL_DESC_BOB;
         assertCommandSuccess(command, toAdd);
 
         /* Case: add a person, missing tags -> added */
@@ -211,6 +231,16 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
         command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + INVALID_MATRIC_NUMBER_DESC + PHONE_DESC_AMY
                 + EMAIL_DESC_AMY + INVALID_ADDRESS_DESC;
         assertCommandFailure(command, MatriculationNumber.MESSAGE_MATRIC_NUMBER_CONSTRAINTS);
+
+        /* Case: invalid (missing) display picture -> rejected */
+        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + MATRIC_NUMBER_DESC_AMY + PHONE_DESC_AMY
+                + EMAIL_DESC_AMY + ADDRESS_DESC_AMY + INVALID_DISPLAY_DESC;
+        assertCommandFailure(command, DisplayPic.MESSAGE_DISPLAY_PIC_NONEXISTENT_CONSTRAINTS);
+
+        /* Case: invalid (not image) display picture -> rejected */
+        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + MATRIC_NUMBER_DESC_AMY + PHONE_DESC_AMY
+                + EMAIL_DESC_AMY + ADDRESS_DESC_AMY + INVALID_DISPLAY_TYPE_DESC;
+        assertCommandFailure(command, DisplayPic.MESSAGE_DISPLAY_PIC_NOT_IMAGE);
 
         /* Case: invalid tag -> rejected */
         command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + MATRIC_NUMBER_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY

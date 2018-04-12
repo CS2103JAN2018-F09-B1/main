@@ -556,11 +556,16 @@ public class Title {
             throws TaskNotFoundException {
         requireNonNull(editedTask);
 
-        boolean taskFoundAndDeleted = internalList.remove(target);
-        if (!taskFoundAndDeleted) {
+        int index = internalList.indexOf(target);
+        if (index == -1) {
             throw new TaskNotFoundException();
         }
-        internalList.add(editedTask);
+        internalList.set(index, editedTask);
+        int indexCalendar = calendarList[target.getDeadline().diff][target.getDeadlineDay()].indexOf(target);
+        if (indexCalendar == -1) {
+            throw new TaskNotFoundException();
+        }
+        calendarList[target.getDeadline().diff][target.getDeadlineDay()].set(indexCalendar, editedTask);
     }
 
     /**
@@ -570,7 +575,8 @@ public class Title {
      */
     public boolean remove(Task toRemove) throws TaskNotFoundException {
         requireNonNull(toRemove);
-        final boolean taskFoundAndDeleted = internalList.remove(toRemove);
+        final boolean taskFoundAndDeleted = internalList.remove(toRemove)
+                && calendarList[toRemove.getDeadline().diff][toRemove.getDeadlineDay()].remove(toRemove);
         if (!taskFoundAndDeleted) {
             throw new TaskNotFoundException();
         }
@@ -798,13 +804,13 @@ public class  TodoListPanel extends UiPart<Region> {
             </HBox>
             <FlowPane fx:id="tags" />
             <Label fx:id="priority" styleClass="cell_small_label" text="\$priority"/>
-            <Label fx:id="deadline" styleClass="cell_small_label" text="\$complete by date"/>
+            <Label fx:id="date" styleClass="cell_small_label" text="\$complete by date"/>
             <Label fx:id="description" styleClass="cell_small_label" text="\$description"/>
         </VBox>
     </GridPane>
 </HBox>
 ```
-###### \resources\view\TodoListPanel.fxml
+###### \resources\view\todoListPanel.fxml
 ``` fxml
 <VBox xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
     <ListView fx:id="todoListView" VBox.vgrow="ALWAYS" />
