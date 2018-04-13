@@ -102,6 +102,9 @@ Both the display picture and tags fields are optional, and a person can have any
 [NOTE]
 The tags "lecturer", "TA" "student" and "T1" will appear red, yellow, blue and green respectively.
 
+[WARNING]
+The name field of Your TA will not allow duplicate names to be stored. However the matriculation number field allows duplicates.
+
 Examples:
 
 The address book initially starts with default inputs as displayed in Figure 2:
@@ -371,6 +374,14 @@ Format: `addTask title/TITLE desc/TASK DESCRIPTION by/DEADLINE priority/PRIORITY
 
 New tasks will be added into the *To-do list* and *Calendar*.
 
+[NOTE]
+Deadline has to be a date that exists.
+
+[NOTE]
+The month value has to be a month no more than 6 months after the current month (Start counting to 6 from the next month).
+
+[NOTE]
+Tasks do not need to be unique (in any field title, description, dealine or priority). Duplicate tasks are allow.
 Examples:
 
 Current date: 03-04-2018 +
@@ -554,6 +565,14 @@ Commands that cannot be undone:
 
 * `list`
 * `find`
+
+=== Calendar [To be improved in v2.0]
+
+* The calendar fills up based on the day of the first day of the calendar, Since the calendar only allows for 35 days to be displayed, this will cause some months such as September 2018 to be cut off too soon due to the first day being a saturday. This will be improved to be clearer in v2.0.
+* The unfilled nodes of the calendar will be filled with the days of either the previous or next month. (Depending on the layout of the current month).
+
+[NOTE]
+To see the last few days of the final month, click on the `>>` button to navigate to the next months calendar, the last days of that month will be displayed there, as well as its tasks.
 
 == Toggling between themes
 

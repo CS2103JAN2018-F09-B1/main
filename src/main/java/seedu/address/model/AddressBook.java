@@ -19,7 +19,7 @@ import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
 import seedu.address.model.task.Task;
-import seedu.address.model.task.UniqueTaskList;
+import seedu.address.model.task.TaskList;
 import seedu.address.model.task.exceptions.TaskNotFoundException;
 
 /**
@@ -28,7 +28,7 @@ import seedu.address.model.task.exceptions.TaskNotFoundException;
  */
 public class AddressBook implements ReadOnlyAddressBook {
 
-    private final UniqueTaskList tasks;
+    private final TaskList tasks;
     private final UniquePersonList persons;
     private final UniqueTagList tags;
     private final UniqueItemList itemList;
@@ -41,7 +41,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      *   among constructors.
      */
     {
-        tasks = new UniqueTaskList();
+        tasks = new TaskList();
         persons = new UniquePersonList();
         tags = new UniqueTagList();
         itemList = new UniqueItemList();

@@ -22,7 +22,7 @@ import seedu.address.model.task.exceptions.TaskNotFoundException;
  *
  * @see Task#equals(Object)
  */
-public class UniqueTaskList implements Iterable<Task> {
+public class TaskList implements Iterable<Task> {
 
     private final ObservableList<Task> internalList = FXCollections.observableArrayList();
 
@@ -34,7 +34,7 @@ public class UniqueTaskList implements Iterable<Task> {
 
     private int monthNow = now.getMonthValue();
 
-    public UniqueTaskList() {
+    public TaskList() {
         super();
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 32; j++) {
@@ -77,12 +77,8 @@ public class UniqueTaskList implements Iterable<Task> {
         if (index == -1) {
             throw new TaskNotFoundException();
         }
-        internalList.set(index, editedTask);
-        int indexCalendar = calendarList[target.getDeadline().diff][target.getDeadlineDay()].indexOf(target);
-        if (indexCalendar == -1) {
-            throw new TaskNotFoundException();
-        }
-        calendarList[target.getDeadline().diff][target.getDeadlineDay()].set(indexCalendar, editedTask);
+        remove(target);
+        add(editedTask);
     }
 
     /**
@@ -101,7 +97,7 @@ public class UniqueTaskList implements Iterable<Task> {
     }
 
     //@@author
-    public void setTasks(UniqueTaskList replacement) {
+    public void setTasks(TaskList replacement) {
         this.internalList.setAll(replacement.internalList);
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 32; j++) {
@@ -112,7 +108,7 @@ public class UniqueTaskList implements Iterable<Task> {
 
     public void setTasks(List<Task> tasks) {
         requireAllNonNull(tasks);
-        final UniqueTaskList replacement = new UniqueTaskList();
+        final TaskList replacement = new TaskList();
         for (final Task task : tasks) {
             replacement.add(task);
         }
@@ -142,8 +138,8 @@ public class UniqueTaskList implements Iterable<Task> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof UniqueTaskList // instanceof handles nulls
-                && this.internalList.equals(((UniqueTaskList) other).internalList));
+                || (other instanceof TaskList // instanceof handles nulls
+                && this.internalList.equals(((TaskList) other).internalList));
     }
 
     @Override

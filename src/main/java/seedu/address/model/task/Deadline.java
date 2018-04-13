@@ -2,6 +2,8 @@ package seedu.address.model.task;
 
 import static java.util.Objects.requireNonNull;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -14,7 +16,7 @@ public class Deadline {
 
 
     public static final String MESSAGE_DEADLINE_CONSTRAINTS =
-            "Deadline should be a valid date that exists and in the format dd-mm-yyyy. Tasks cannot be scheduled in the"
+            "Deadline should be a valid date that exists in the format dd-mm-yyyy. Tasks cannot be scheduled in the"
                     + " past. And can only be scheduled at most 6 months in advance. (Based on months: tasks cannot be"
                     + " scheduled on 1st August 2018 if the current date is 31st January 2018).";
     public final String dateString;
@@ -46,6 +48,14 @@ public class Deadline {
      * Returns true if a given string is a valid deadline.
      */
     public static boolean isValidDeadline(String test) {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        dateFormat.setLenient(false);
+        try {
+            dateFormat.parse(test.trim());
+        } catch (ParseException pe) {
+            return false;
+        }
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             LocalDate deadlineDate = LocalDate.parse(test, formatter);

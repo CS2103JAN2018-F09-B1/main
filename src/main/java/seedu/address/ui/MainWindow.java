@@ -27,8 +27,7 @@ import seedu.address.model.UserPrefs;
  */
 public class MainWindow extends UiPart<Stage> {
 
-    private static final String DARK_FXML = "DarkMainWindow.fxml";
-    private static final String LIGHT_FXML = "LightMainWindow.fxml";
+    private static final String FXML = "MainWindow.fxml";
 
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
@@ -68,7 +67,7 @@ public class MainWindow extends UiPart<Stage> {
     private TabPane tabPane;
 
     public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic) {
-        super(DARK_FXML, primaryStage);
+        super(FXML, primaryStage);
 
         // Set dependencies
         this.primaryStage = primaryStage;
@@ -183,29 +182,6 @@ public class MainWindow extends UiPart<Stage> {
     public void handleHelp() {
         HelpWindow helpWindow = new HelpWindow();
         helpWindow.show();
-    }
-
-    /**
-     * toggles between light and dark themes.
-     */
-    @FXML
-    public void switchTheme() {
-
-        if (isDark) {
-            super.loadFxmlFile(getFxmlFileUrl(LIGHT_FXML), primaryStage);
-            setTitle(config.getAppTitle());
-            setWindowDefaultSize(prefs);
-            setAccelerators();
-            fillInnerParts();
-            isDark = false;
-        } else {
-            super.loadFxmlFile(getFxmlFileUrl(DARK_FXML), primaryStage);
-            setTitle(config.getAppTitle());
-            setWindowDefaultSize(prefs);
-            setAccelerators();
-            fillInnerParts();
-            isDark = true;
-        }
     }
 
     void show() {
