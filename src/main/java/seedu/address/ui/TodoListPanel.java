@@ -38,7 +38,7 @@ public class  TodoListPanel extends UiPart<Region> {
         ObservableList<TodoCard> mappedList = EasyBind.map(
                 taskList, (task) -> new TodoCard(task, taskList.indexOf(task) + 1));
         todoListView.setItems(mappedList);
-        todoListView.setCellFactory(listView -> new todoListViewCell());
+        todoListView.setCellFactory(listView -> new TodoListViewCell());
         setEventHandlerForSelectionChangeEvent();
     }
 
@@ -71,7 +71,7 @@ public class  TodoListPanel extends UiPart<Region> {
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code PersonCard}.
      */
-    class todoListViewCell extends ListCell<TodoCard> {
+    class TodoListViewCell extends ListCell<TodoCard> {
 
         @Override
         protected void updateItem(TodoCard task, boolean empty) {

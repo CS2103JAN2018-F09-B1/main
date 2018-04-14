@@ -144,7 +144,7 @@ public class Person implements Comparable<Person> {
 
     @Override
     public int compareTo(Person otherPerson) {
-        return this.name.toString().toLowerCase().compareTo(otherPerson.name.toString().toLowerCase());
+        return this.matricNumber.toString().compareTo(otherPerson.matricNumber.toString());
     }
 
 }

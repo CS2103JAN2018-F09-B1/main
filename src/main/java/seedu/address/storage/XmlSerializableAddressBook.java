@@ -68,7 +68,11 @@ public class XmlSerializableAddressBook implements ReadOnlyAddressBook {
             addressBook.addPerson(p.toModelType());
         }
         for (XmlAdaptedTask ta : tasks) {
-            addressBook.addTask(ta.toModelType());
+            try {
+                addressBook.addTask(ta.toModelType());
+            } catch (IllegalValueException ive) {
+                ;
+            }
         }
         for (XmlAdaptedItem it : items) {
             addressBook.addDeleteItem(it.toModelType());

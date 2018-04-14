@@ -65,13 +65,13 @@ public class TodoListPanelHandle extends NodeHandle<ListView<TodoCard>> {
      * @throws AssertionError if no card is selected, or more than 1 card is selected.
      */
     public TodoCardHandle getHandleToSelectedCard() {
-        List<TodoCard> taskList = getRootNode().getSelectionModel().getSelectedItems();
+        List<TodoCard> uniqueTaskList = getRootNode().getSelectionModel().getSelectedItems();
 
-        if (taskList.size() != 1) {
+        if (uniqueTaskList.size() != 1) {
             throw new AssertionError("Person list size expected 1.");
         }
 
-        return new TodoCardHandle(taskList.get(0).getRoot());
+        return new TodoCardHandle(uniqueTaskList.get(0).getRoot());
     }
 
     /**

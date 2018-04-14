@@ -325,17 +325,17 @@ public class CalendarNode extends UiPart<Region> {
     /**
      * Create a calendar node.
      * @param txt the date of the node
-     * @param taskList the task list linked to it
+     * @param uniqueTaskList the task list linked to it
      */
-    public CalendarNode(String txt, ObservableList<Task> taskList) {
+    public CalendarNode(String txt, ObservableList<Task> uniqueTaskList) {
         super(FXML);
         date.setText(txt);
-        setConnections(taskList);
+        setConnections(uniqueTaskList);
     }
 
-    private void setConnections(ObservableList<Task> taskList) {
+    private void setConnections(ObservableList<Task> uniqueTaskList) {
         ObservableList<CalendarTaskCard> mappedList = EasyBind.map(
-                taskList, (task) -> new CalendarTaskCard(task));
+                uniqueTaskList, (task) -> new CalendarTaskCard(task));
         tasks.setItems(mappedList);
         tasks.setCellFactory(listView -> new TasksCell());
     }

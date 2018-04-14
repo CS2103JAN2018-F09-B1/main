@@ -77,12 +77,8 @@ public class UniqueTaskList implements Iterable<Task> {
         if (index == -1) {
             throw new TaskNotFoundException();
         }
-        internalList.set(index, editedTask);
-        int indexCalendar = calendarList[target.getDeadline().diff][target.getDeadlineDay()].indexOf(target);
-        if (indexCalendar == -1) {
-            throw new TaskNotFoundException();
-        }
-        calendarList[target.getDeadline().diff][target.getDeadlineDay()].set(indexCalendar, editedTask);
+        remove(target);
+        add(editedTask);
     }
 
     /**
