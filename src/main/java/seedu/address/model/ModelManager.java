@@ -33,11 +33,12 @@ public class ModelManager extends ComponentManager implements Model {
     private final FilteredList<Task> filteredTasks;
     private final ArrayList<String> filteredDeleteItems;
     private final ObservableList<Task>[][] calendarTaskLists;
+    private String username;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, UserPrefs userPrefs) {
+    public ModelManager(ReadOnlyAddressBook addressBook, UserPrefs userPrefs, String username) {
         super();
         requireAllNonNull(addressBook, userPrefs);
 
@@ -48,10 +49,11 @@ public class ModelManager extends ComponentManager implements Model {
         filteredTasks = new FilteredList<>(this.addressBook.getTaskList());
         filteredDeleteItems = new ArrayList<>(this.addressBook.getItemList());
         calendarTaskLists = this.addressBook.getCalendarList();
+        this.username = username;
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new AddressBook(), new UserPrefs(), "");
     }
 
 

@@ -43,6 +43,7 @@ public class LoginManager extends ComponentManager implements Login {
     private Stage primaryStage;
     private UniqueUserList userList;
     private UserPrefsStorage userPrefsStorage;
+    private String username;
 
     /**
      * Initializes a LoginManager with the given username and password.
@@ -105,6 +106,7 @@ public class LoginManager extends ComponentManager implements Login {
     public void authenticate(String username, String password) throws DuplicateUserException {
 
         logger.fine("Authenticating user: " + username);
+        this.username = username;
         String filepath = username + ".xml";
         if (userList.getUserList().containsKey(username)) {
             if (userList.getUserList().get(username).getPassword().getPassword().equals(password)) {
@@ -125,13 +127,13 @@ public class LoginManager extends ComponentManager implements Login {
 
     @Override
     public void loginUser(String filePath) {
-        String properFilePath = userPrefs.getAddressBookFilePath() + filePath;
+        String properFilePath = username + "/" + userPrefs.getAddressBookFilePath() + filePath;
         AddressBookStorage addressBookStorage = new XmlAddressBookStorage(properFilePath);
         storage = new StorageManager(addressBookStorage, userPrefsStorage);
 
         model = initModelManager(storage, userPrefs);
 
-        logic = new LogicManager(model);
+        logic = new LogicManager(model, username);
 
         ui = new UiManager(logic, config, userPrefs);
 
@@ -160,6 +162,13 @@ public class LoginManager extends ComponentManager implements Login {
             initialData = new AddressBook();
         }
 
-        return new ModelManager(initialData, userPrefs);
+        return new ModelManager(initialData, userPrefs, username);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof LoginManager // instanceof handles nulls
+                && this.userList.equals(((LoginManager) other).userList));
     }
 }
