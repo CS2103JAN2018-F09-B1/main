@@ -248,7 +248,7 @@ This command clears ALL the data from the application (both people and tasks).<b
 <div class="sect2">
 <h3 id="importing-data-from-another-file-code-import-code"><a class="link" href="#importing-data-from-another-file-code-import-code">Importing data from another file : <code>import</code></a></h3>
 <div class="paragraph">
-<p>Extracting data from an xml formatted file and
+<p>Extracts data from an xml formatted file and
 replaces the current stored data.<br>
 Format: <code>import FILEPATH</code></p>
 </div>
@@ -258,6 +258,14 @@ Format: <code>import FILEPATH</code></p>
 <div class="paragraph">
 <p>Command entered:<br>
 <code>import ~/download/NewData.xml</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="switching-between-tabs-code-switchtab-code"><a class="link" href="#switching-between-tabs-code-switchtab-code">Switching between tabs: <code>switchTab</code></a></h3>
+<div class="paragraph">
+<p>Switches between the <strong>Person List</strong> tab and <strong>Todo List</strong> tab.
+Alias: <code>swt</code>
+Format: <code>switchTab</code></p>
 </div>
 </div>
 <div class="sect2">
@@ -455,12 +463,15 @@ e.g <code>updateDP 1 dp/C:\Users\Betsy\Desktop\betsy.jpg</code></p>
 <div class="sect2">
 <h3 id="tasks-to-do-list-and-calendar-commands"><a class="link" href="#tasks-to-do-list-and-calendar-commands">Tasks, To-do list and Calendar commands</a></h3>
 <div class="paragraph">
-<p><strong>Add Task</strong> <code>addTask desc/TASK DESCRIPTION by/DEADLINE priority/PRIORITY</code><br>
+<p><strong>Add Task</strong>: <code>addTask desc/TASK DESCRIPTION by/DEADLINE priority/PRIORITY</code><br>
 e.g. <code>addTask title/Grade Exams desc/Grade mid-terms by/04-04-2018 priority/2</code>
-<strong>Delete Task</strong> <code>deleteTask INDEX</code><br>
+<strong>Delete Task</strong>: <code>deleteTask INDEX</code><br>
 e.g. <code>deleteTask 1</code>
-<strong>Edit Task</strong> <code>editTask INDEX [title/TASK TITLE] [desc/TASK DESCRIPTION] [by/DEADLINE] [priority/PRIORITY]</code>
-e.g. <code>editTask 1 title/Eat Dinner</code></p>
+<strong>Edit Task</strong>: <code>editTask INDEX [title/TASK TITLE] [desc/TASK DESCRIPTION] [by/DEADLINE] [priority/PRIORITY]</code>
+e.g. <code>editTask 1 title/Eat Dinner</code><br>
+<strong>List Task</strong>: <code>listTask</code><br>
+<strong>List Current month tasks</strong>: <code>listCurrentTask</code><br>
+<strong>Sort tasks by date</strong>: <code>sortTask</code></p>
 </div>
 </div>
 <div class="sect2">
@@ -478,6 +489,9 @@ e.g. <code>editTask 1 title/Eat Dinner</code></p>
 </li>
 <li>
 <p><strong>Redo</strong> : <code>redo</code></p>
+</li>
+<li>
+<p><strong>Switch tabs</strong>: <code>switchTab</code></p>
 </li>
 </ul>
 </div>
@@ -810,7 +824,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-12 23:49:03 UTC
+Last updated 2018-04-14 02:20:25 UTC
 </div>
 </div>
 </body>

@@ -22,7 +22,7 @@
 </div>
 </div>
 <div id="toc" class="toc">
-<div id="toctitle"></div>
+<div id="toctitle">Table of Content</div>
 <ul class="sectlevel1">
 <li><a href="#introduction">1. Introduction</a></li>
 <li><a href="#quick-start">2. Quick Start</a></li>
@@ -40,22 +40,26 @@
 <li><a href="#selecting-a-person-code-select-code">4.9. Selecting a person : <code>select</code></a></li>
 </ul>
 </li>
-<li><a href="#task-to-do-list-and-calendar-features">5. Task, To-do list and Calendar Features</a>
+<li><a href="#TaskList_Feature">5. Task, To-do list and Calendar Features</a>
 <ul class="sectlevel2">
 <li><a href="#adding-a-task-code-addtask-code">5.1. Adding a task: <code>addTask</code></a></li>
 <li><a href="#editing-a-task-code-edittask-code">5.2. Editing a task: <code>editTask</code></a></li>
 <li><a href="#removing-a-task-code-deletetask-code">5.3. Removing a task: <code>deleteTask</code></a></li>
+<li><a href="#listing-all-tasks-code-listtask-code">5.4. Listing all tasks: <code>listTask</code></a></li>
+<li><a href="#listing-current-month-tasks-code-listcurrenttask-code">5.5. Listing current month tasks: <code>listCurrentTask</code></a></li>
+<li><a href="#sorting-tasks-code-sorttask-code">5.6. Sorting tasks: <code>sortTask</code></a></li>
 </ul>
 </li>
-<li><a href="#miscellaneous-commands">6. Miscellaneous Commands</a>
+<li><a href="#otherCommands">6. Miscellaneous Commands</a>
 <ul class="sectlevel2">
 <li><a href="#listing-entered-commands-code-history-code">6.1. Listing entered commands : <code>history</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code">6.2. Undoing previous command : <code>undo</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">6.3. Redoing the previously undone command : <code>redo</code></a></li>
 <li><a href="#clearing-all-entries-code-clear-code">6.4. Clearing all entries : <code>clear</code></a></li>
 <li><a href="#importing-data-from-another-file-code-import-code">6.5. Importing data from another file : <code>import</code></a></li>
-<li><a href="#sorting-all-entries-code-sort-code">6.6. Sorting all entries : <code>sort</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">6.7. Exiting the program : <code>exit</code></a></li>
+<li><a href="#switching-between-tabs-code-switchtab-code">6.6. Switching between tabs: <code>switchTab</code></a></li>
+<li><a href="#sorting-all-entries-code-sort-code">6.7. Sorting all entries : <code>sort</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">6.8. Exiting the program : <code>exit</code></a></li>
 </ul>
 </li>
 <li><a href="#saving-the-data">7. Saving the data</a></li>
@@ -71,7 +75,7 @@
 <ul class="sectlevel2">
 <li><a href="#contact-commands">11.1. Contact commands</a></li>
 <li><a href="#tasks-to-do-list-and-calendar-commands">11.2. Tasks, To-do list and Calendar commands</a></li>
-<li><a href="#miscellaneous-commands-2">11.3. Miscellaneous Commands</a></li>
+<li><a href="#miscellaneous-commands">11.3. Miscellaneous Commands</a></li>
 </ul>
 </li>
 </ul>
@@ -116,14 +120,30 @@ This app will not work with earlier versions of Java 8.
 <p>Copy the file to the folder you want to use as the home folder for your application.</p>
 </li>
 <li>
-<p>Double-click the file to start the application. The GUI should appear in a few seconds, as shown in Figure 1 below.</p>
+<p>Double-click the file to start the application. The Login GUI should appear in a few seconds, as shown in Figure 1 below.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Login.png" alt="Login" width="800">
+</div>
+<div class="title">Figure 1. The Login GUI upon double-clicking.</div>
+</div>
+</li>
+<li>
+<p>Enter your <code>Username</code> and <code>Password</code> to log in. <em>Refer to <a href="#Features">Section 3, &#8220;Login Feature&#8221;</a> for details of the feature.</em></p>
+</li>
+<li>
+<p>After logging in, now you should see the main Application GUI in turn appear, as shown in Figure 2 below.</p>
+</li>
+</ol>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiInitial.png" alt="UiInitial" width="800">
 </div>
-<div class="title">Figure 1. The GUI upon Starting Up.</div>
+<div class="title">Figure 2. The main Application GUI upon login.</div>
 </div>
-</li>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>The command box is where you type in commands followed by pressing <kbd>Enter</kbd> to execute it.<br>
 e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window for the application.</p>
@@ -218,7 +238,7 @@ Then, click on the <code>Login</code> button.
 <div class="ulist">
 <ul>
 <li>
-<p>There are some equivalent shortcut commands known as aliases with fewer alphabetic letters or a sign.<br>
+<p>There are some equivalent shortcut commands known as <em>aliases</em> with fewer alphabetic letters or a sign.<br>
 e.g. to add a person to the addressbook, you can type 'add n/John Doe', 'a n/John Doe' or '+ n/John Doe'.</p>
 </li>
 <li>
@@ -300,7 +320,7 @@ The tags "lecturer", "TA" "student" and "T1" will appear red, yellow, blue and g
 <div class="content">
 <img src="images/UiInitial.png" alt="UiInitial" width="800">
 </div>
-<div class="title">Figure 2. Initial Address Book State<br></div>
+<div class="title">Figure 3. Initial Address Book State<br></div>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s try entering a command, such as the one below:<br></p>
@@ -326,7 +346,7 @@ This will add a person, 'John Doe' into the list with his respective details int
 <div class="content">
 <img src="images/UiAfterFirst.png" alt="UiAfterFirst" width="800">
 </div>
-<div class="title">Figure 3. Application after John Doe has been Added<br></div>
+<div class="title">Figure 4. Application after John Doe has been Added<br></div>
 </div>
 <div class="paragraph">
 <p>Command entered:<br>
@@ -349,7 +369,7 @@ You may leave the <code>dp/</code> portion empty if you do not have a profile pi
 <div class="content">
 <img src="images/UiAfterSecond.png" alt="UiAfterSecond" width="800">
 </div>
-<div class="title">Figure 4. Application after Betsy Crowe has been added<br></div>
+<div class="title">Figure 5. Application after Betsy Crowe has been added<br></div>
 </div>
 </div>
 <div class="sect2">
@@ -395,7 +415,7 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]&#8230;&#8203;</code></p>
 <div class="content">
 <img src="images/UiAfterSecond.png" alt="UiAfterSecond" width="800">
 </div>
-<div class="title">Figure 5. Application before People are Added.<br></div>
+<div class="title">Figure 6. Application before People are Added.<br></div>
 </div>
 <div class="paragraph">
 <p>Command entered:<br>
@@ -406,7 +426,7 @@ The application searches for the keyword 'John' and returns 1 result (Figure 6).
 <div class="content">
 <img src="images/FindJohn.png" alt="FindJohn" width="800">
 </div>
-<div class="title">Figure 6. Returns <code>John Doe</code>.<br></div>
+<div class="title">Figure 7. Returns <code>John Doe</code>.<br></div>
 </div>
 <div class="paragraph">
 <p>Command entered:<br>
@@ -417,7 +437,7 @@ The application searches for the keywords 'Betsy', 'Tim' and 'John' and returns 
 <div class="content">
 <img src="images/FindBTJ.png" alt="FindBTJ" width="800">
 </div>
-<div class="title">Figure 7. Returns <code>John Doe</code> and <code>Betsy Crowe</code>.<br></div>
+<div class="title">Figure 8. Returns <code>John Doe</code> and <code>Betsy Crowe</code>.<br></div>
 </div>
 <div class="paragraph">
 <p>Command entered:<br>
@@ -428,7 +448,7 @@ The application searches for the person with the matriculation number as shown a
 <div class="content">
 <img src="images/FindMatric.png" alt="FindMatric" width="800">
 </div>
-<div class="title">Figure 8. Returns <code>John Doe</code>, with Matriculation Number A0111111X.<br></div>
+<div class="title">Figure 9. Returns <code>John Doe</code>, with Matriculation Number A0111111X.<br></div>
 </div>
 </div>
 <div class="sect2">
@@ -450,7 +470,7 @@ Application lists all persons who have been added up until this point (Figure 9)
 <div class="content">
 <img src="images/AllListed.png" alt="AllListed" width="800">
 </div>
-<div class="title">Figure 9. All People Listed.<br></div>
+<div class="title">Figure 10. All People Listed.<br></div>
 </div>
 </div>
 <div class="sect2">
@@ -499,7 +519,7 @@ Format: <code>edit INDEX [n/NAME] [m/MATRICULATION NUMBER] [p/PHONE] [e/EMAIL] [
 <div class="content">
 <img src="images/AllListed.png" alt="AllListed" width="800">
 </div>
-<div class="title">Figure 10. Application Before Edit.<br></div>
+<div class="title">Figure 11. Application Before Edit.<br></div>
 </div>
 <div class="paragraph">
 <p>Command entered:<br>
@@ -510,7 +530,7 @@ This changes the details of the person with index 2 (John Doe), in this case, hi
 <div class="content">
 <img src="images/FirstEdit.png" alt="FirstEdit" width="800">
 </div>
-<div class="title">Figure 11. Phone Number and Email of 3rd Person (John Doe) Edited.<br></div>
+<div class="title">Figure 12. Phone Number and Email of 3rd Person (John Doe) Edited.<br></div>
 </div>
 <div class="paragraph">
 <p>Command entered:<br>
@@ -522,7 +542,7 @@ It also updated her display picture.<br></p>
 <div class="content">
 <img src="images/SecondEdit.png" alt="SecondEdit" width="800">
 </div>
-<div class="title">Figure 12. Name changed to "Betsy Crower" and All Tags Cleared.<br></div>
+<div class="title">Figure 13. Name changed to "Betsy Crower" and All Tags Cleared.<br></div>
 </div>
 </div>
 <div class="sect2">
@@ -656,7 +676,7 @@ Format: <code>delete INDEX</code></p>
 <div class="content">
 <img src="images/SecondEdit.png" alt="SecondEdit" width=""800'">
 </div>
-<div class="title">Figure 13. Application before Delete.<br></div>
+<div class="title">Figure 14. Application before Delete.<br></div>
 </div>
 <div class="paragraph">
 <p>Command(s) entered:<br>
@@ -667,7 +687,7 @@ The 2nd person listed in the address book is deleted (Figure 14).</p>
 <div class="content">
 <img src="images/FirstDelete.png" alt="FirstDelete" width="800">
 </div>
-<div class="title">Figure 14. 3rd Person Deleted.<br></div>
+<div class="title">Figure 15. 3rd Person Deleted.<br></div>
 </div>
 <div class="paragraph">
 <p>Command(s) entered:<br>
@@ -690,7 +710,7 @@ The display picture that is stored on your hard disk will only be removed upon t
 <div class="content">
 <img src="images/SecondDelete.png" alt="SecondDelete" width="800">
 </div>
-<div class="title">Figure 15. 1st Person from <code>find</code> Command Deleted.<br></div>
+<div class="title">Figure 16. 1st Person from <code>find</code> Command Deleted.<br></div>
 </div>
 </div>
 <div class="sect2">
@@ -727,7 +747,7 @@ Format: <code>select INDEX</code></p>
 <div class="content">
 <img src="images/SecondStart.png" alt="SecondStart" width="800">
 </div>
-<div class="title">Figure 16. Application before Select.<br></div>
+<div class="title">Figure 17. Application before Select.<br></div>
 </div>
 <div class="paragraph">
 <p>Command(s) entered:<br>
@@ -738,7 +758,7 @@ Lists all people in address book and selects the 1st person (Figure 17).</p>
 <div class="content">
 <img src="images/FirstSelect.png" alt="FirstSelect" width="800">
 </div>
-<div class="title">Figure 17. Selects 1st Person Listed.<br></div>
+<div class="title">Figure 18. Selects 1st Person Listed.<br></div>
 </div>
 <div class="paragraph">
 <p>Command(s) entered:<br>
@@ -749,25 +769,40 @@ The 1st person in the results of the <code>find</code> command is selected, in t
 <div class="content">
 <img src="images/SecondSelect.png" alt="SecondSelect" width="800">
 </div>
-<div class="title">Figure 18. 1st Person from <code>find</code> Command Selected.<br></div>
+<div class="title">Figure 19. 1st Person from <code>find</code> Command Selected.<br></div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="task-to-do-list-and-calendar-features"><a class="link" href="#task-to-do-list-and-calendar-features">5. Task, To-do list and Calendar Features</a></h2>
+<h2 id="TaskList_Feature"><a class="link" href="#TaskList_Feature">5. Task, To-do list and Calendar Features</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To see how the task scheduling feature works on the <code>Todo List</code> and <code>Calendar</code>, select the <code>Todo Lit</code> tab located right beside the <code>Person List</code> tab.</p>
+<p>To see how the task scheduling feature works on the <code>Todo List</code> and <code>Calendar</code>, select the <code>Todo List</code> tab located right beside the <code>Person List</code> tab.</p>
 </div>
 <div class="sect2">
 <h3 id="adding-a-task-code-addtask-code"><a class="link" href="#adding-a-task-code-addtask-code">5.1. Adding a task: <code>addTask</code></a></h3>
 <div class="paragraph">
 <p>Adds a task to the address book.<br>
+Alias: <code>at</code><br>
 Format: <code>addTask title/TITLE desc/TASK DESCRIPTION by/DEADLINE priority/PRIORITY</code></p>
 </div>
 <div class="paragraph">
-<p>New tasks will be added into the <strong>To-do list</strong> and <strong>Calendar</strong>.</p>
+<p>New tasks will be added into the <strong>To-do list</strong> and <strong>Calendar</strong>.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>DEADLINE</code> must be in the format of dd-MM-YYYY.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -791,10 +826,25 @@ This will add a task, 'Submit tutorial attendance' into the calendar and to-do l
 <h3 id="editing-a-task-code-edittask-code"><a class="link" href="#editing-a-task-code-edittask-code">5.2. Editing a task: <code>editTask</code></a></h3>
 <div class="paragraph">
 <p>Edits a task to the address book.<br>
+Alias: <code>et</code><br>
 Format: <code>editTask INDEX [title/TASK TITLE] [desc/TASK DESCRIPTION] [by/DEADLINE] [priority/PRIORITY]</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>The specified tasks will be edited in the <strong>To-do list</strong> and <strong>Calendar</strong>.</p>
+<p>Not all fields are required, you may only pick the fields that you want to edit.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The specified tasks will be edited in the <strong>Todo List</strong> and <strong>Calendar</strong>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -818,16 +868,47 @@ Format: <code>editTask INDEX [title/TASK TITLE] [desc/TASK DESCRIPTION] [by/DEAD
 <h3 id="removing-a-task-code-deletetask-code"><a class="link" href="#removing-a-task-code-deletetask-code">5.3. Removing a task: <code>deleteTask</code></a></h3>
 <div class="paragraph">
 <p>Deletes a task in the address book.<br>
+Alias: <code>dt</code><br>
 Format: <code>deleteTask INDEX</code></p>
 </div>
 <div class="paragraph">
-<p>The specified tasks will be deleted from the <strong>To-do list</strong> and <strong>Calendar</strong>.</p>
+<p>The specified indexed task will be deleted from the <strong>Todo List</strong> and <strong>Calendar</strong>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-all-tasks-code-listtask-code"><a class="link" href="#listing-all-tasks-code-listtask-code">5.4. Listing all tasks: <code>listTask</code></a></h3>
+<div class="paragraph">
+<p>Shows a list of all tasks in application.<br>
+Alias: <code>lt</code><br>
+Format: <code>listTask</code></p>
+</div>
+<div class="paragraph">
+<p>All the tasks stored in application will be listed in the <strong>Todo List</strong></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-current-month-tasks-code-listcurrenttask-code"><a class="link" href="#listing-current-month-tasks-code-listcurrenttask-code">5.5. Listing current month tasks: <code>listCurrentTask</code></a></h3>
+<div class="paragraph">
+<p>Shows a list of tasks that have deadline in the current month.<br>
+Alias: <code>lct</code><br>
+Format: <code>listCurrentTask</code></p>
+</div>
+<div class="paragraph">
+<p>Only the tasks due within current month will be listed in the <strong>Todo List</strong></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sorting-tasks-code-sorttask-code"><a class="link" href="#sorting-tasks-code-sorttask-code">5.6. Sorting tasks: <code>sortTask</code></a></h3>
+<div class="paragraph">
+<p>Sorts all entries displayed in <strong>Todo List</strong> in date order.<br>
+Alias: <code>stt</code>
+Format: <code>sortTask</code></p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="miscellaneous-commands"><a class="link" href="#miscellaneous-commands">6. Miscellaneous Commands</a></h2>
+<h2 id="otherCommands"><a class="link" href="#otherCommands">6. Miscellaneous Commands</a></h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">6.1. Listing entered commands : <code>history</code></a></h3>
@@ -882,7 +963,7 @@ Format: <code>undo</code></p>
 <div class="content">
 <img src="images/SecondStart.png" alt="SecondStart" width="800">
 </div>
-<div class="title">Figure 19. Application before any Commands<br></div>
+<div class="title">Figure 20. Application before any Commands<br></div>
 </div>
 <div class="paragraph">
 <p>Command(s) entered:<br>
@@ -925,7 +1006,7 @@ The delete command is reversed, then reapplied (Figure 20).</p>
 <div class="content">
 <img src="images/FirstRedo.png" alt="FirstRedo" width="800">
 </div>
-<div class="title">Figure 20. <code>delete</code> Command Reapplied<br></div>
+<div class="title">Figure 21. <code>delete</code> Command Reapplied<br></div>
 </div>
 <div class="paragraph">
 <p>Command(s) entered:<br>
@@ -943,7 +1024,7 @@ End result should look the same as in Figure 19.</p>
 <div class="content">
 <img src="images/SecondRedo.png" alt="SecondRedo" width="800">
 </div>
-<div class="title">Figure 21. Both Commands Reversed, Reapplied. Application Cleared.<br></div>
+<div class="title">Figure 22. Both Commands Reversed, Reapplied. Application Cleared.<br></div>
 </div>
 </div>
 <div class="sect2">
@@ -972,7 +1053,7 @@ This command clears ALL the data from the application (both people and tasks).<b
 <div class="sect2">
 <h3 id="importing-data-from-another-file-code-import-code"><a class="link" href="#importing-data-from-another-file-code-import-code">6.5. Importing data from another file : <code>import</code></a></h3>
 <div class="paragraph">
-<p>Extracting data from an xml formatted file and
+<p>Extracts data from an xml formatted file and
 replaces the current stored data.<br>
 Format: <code>import FILEPATH</code></p>
 </div>
@@ -985,7 +1066,15 @@ Format: <code>import FILEPATH</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sorting-all-entries-code-sort-code"><a class="link" href="#sorting-all-entries-code-sort-code">6.6. Sorting all entries : <code>sort</code></a></h3>
+<h3 id="switching-between-tabs-code-switchtab-code"><a class="link" href="#switching-between-tabs-code-switchtab-code">6.6. Switching between tabs: <code>switchTab</code></a></h3>
+<div class="paragraph">
+<p>Switches between the <strong>Person List</strong> tab and <strong>Todo List</strong> tab.
+Alias: <code>swt</code>
+Format: <code>switchTab</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sorting-all-entries-code-sort-code"><a class="link" href="#sorting-all-entries-code-sort-code">6.7. Sorting all entries : <code>sort</code></a></h3>
 <div class="paragraph">
 <p>Sorts all entries from the address book in alphabetical order based on name.<br>
 Alias: <code>s</code><br>
@@ -993,7 +1082,7 @@ Format: <code>sort</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">6.7. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">6.8. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
@@ -1179,16 +1268,19 @@ e.g <code>updateDP 1 dp/C:\Users\Betsy\Desktop\betsy.jpg</code></p>
 <div class="sect2">
 <h3 id="tasks-to-do-list-and-calendar-commands"><a class="link" href="#tasks-to-do-list-and-calendar-commands">11.2. Tasks, To-do list and Calendar commands</a></h3>
 <div class="paragraph">
-<p><strong>Add Task</strong> <code>addTask desc/TASK DESCRIPTION by/DEADLINE priority/PRIORITY</code><br>
+<p><strong>Add Task</strong>: <code>addTask desc/TASK DESCRIPTION by/DEADLINE priority/PRIORITY</code><br>
 e.g. <code>addTask title/Grade Exams desc/Grade mid-terms by/04-04-2018 priority/2</code>
-<strong>Delete Task</strong> <code>deleteTask INDEX</code><br>
+<strong>Delete Task</strong>: <code>deleteTask INDEX</code><br>
 e.g. <code>deleteTask 1</code>
-<strong>Edit Task</strong> <code>editTask INDEX [title/TASK TITLE] [desc/TASK DESCRIPTION] [by/DEADLINE] [priority/PRIORITY]</code>
-e.g. <code>editTask 1 title/Eat Dinner</code></p>
+<strong>Edit Task</strong>: <code>editTask INDEX [title/TASK TITLE] [desc/TASK DESCRIPTION] [by/DEADLINE] [priority/PRIORITY]</code>
+e.g. <code>editTask 1 title/Eat Dinner</code><br>
+<strong>List Task</strong>: <code>listTask</code><br>
+<strong>List Current month tasks</strong>: <code>listCurrentTask</code><br>
+<strong>Sort tasks by date</strong>: <code>sortTask</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="miscellaneous-commands-2"><a class="link" href="#miscellaneous-commands-2">11.3. Miscellaneous Commands</a></h3>
+<h3 id="miscellaneous-commands"><a class="link" href="#miscellaneous-commands">11.3. Miscellaneous Commands</a></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1203,6 +1295,9 @@ e.g. <code>editTask 1 title/Eat Dinner</code></p>
 <li>
 <p><strong>Redo</strong> : <code>redo</code></p>
 </li>
+<li>
+<p><strong>Switch tabs</strong>: <code>switchTab</code></p>
+</li>
 </ul>
 </div>
 </div>
@@ -1211,7 +1306,7 @@ e.g. <code>editTask 1 title/Eat Dinner</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-12 23:49:03 UTC
+Last updated 2018-04-14 02:20:25 UTC
 </div>
 </div>
 </body>
