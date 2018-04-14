@@ -306,7 +306,16 @@ Both the display picture and tags fields are optional, and a person can have any
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The tags "lecturer", "TA" "student" and "T1" will appear red, yellow, blue and green respectively.
+<div class="ulist">
+<ul>
+<li>
+<p>The tags "lecturer", "TA" "student" and "T1" will appear red, yellow, blue and green respectively.</p>
+</li>
+<li>
+<p>Do refrain from using high resolution images as display pictures, the optimum resolution is 300 x 300 pixels.</p>
+</li>
+</ul>
+</div>
 </td>
 </tr>
 </table>
@@ -522,6 +531,18 @@ Format: <code>edit INDEX [n/NAME] [m/MATRICULATION NUMBER] [p/PHONE] [e/EMAIL] [
 </div>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Do refrain from using high resolution images as display pictures, the optimum resolution is 300 x 300 pixels.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -562,7 +583,10 @@ It also updated her display picture.<br></p>
 <h3 id="adding-participation-marks-code-markpart-code"><a class="link" href="#adding-participation-marks-code-markpart-code">4.6. Adding Participation Marks : <code>markPart</code></a></h3>
 <div class="paragraph">
 <p>Adds to the participation marks of a person. The maximum limit for participation marks is 100
-and the maximum amount that can be added with one execution of the command is 100.</p>
+and the maximum amount that can be added per execution of the command is 100.</p>
+</div>
+<div class="paragraph">
+<p>If the marks is below 50, there will be a red frame. If the person has 50 or more marks, the colored frame around the user will change to green.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>markPart INDEX marks/DIGITS</code></p>
@@ -587,16 +611,44 @@ and the maximum amount that can be added with one execution of the command is 10
 <div class="paragraph">
 <p>Command(s) entered:<br>
 <code>list</code><br>
-Lists all people in the address book. Followed by:<br>
-<code>markPart 2 marks/50</code><br>
-Adds 50 participation marks to the 2nd person in the address book.</p>
+Lists all people in the address book.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/markPartlist.png" alt="markPartlist" width="300">
+</div>
+<div class="title">Figure 14. Listing everyone in Your TA</div>
+</div>
+<div class="paragraph">
+<p><code>markPart 1 marks/50</code><br>
+Adds 50 participation marks to the 1st person in Your TA.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/markPartadd50.png" alt="markPartadd50" width="300">
+</div>
+<div class="title">Figure 15. Adds 50 marks to Alex, note that the frame turns green</div>
 </div>
 <div class="paragraph">
 <p>Command(s) entered:<br>
-<code>find Betsy</code><br>
-Returns Betsy as a result. Followed by:<br>
-<code>markPart 1 marks/70</code><br>
-Adds 70 marks to the 1st person in the results of the <code>find</code> command, in this case, Betsy.</p>
+<code>find David</code><br>
+Returns David as a result.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/markPart2David.png" alt="markPart2David" width="300">
+</div>
+<div class="title">Figure 16. Find command returns David</div>
+</div>
+<div class="paragraph">
+<p><code>markPart 1 marks/70</code><br>
+Adds 70 marks to the 1st person in the results of the <code>find</code> command, in this case, David. We note that it has exceeded the cap of 100, hence the marks was set to 100.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/markPartupdateDavid.png" alt="markPartupdateDavid" width="300">
+</div>
+<div class="title">Figure 17. David&#8217;s marks updated</div>
 </div>
 </div>
 <div class="sect2">
@@ -616,23 +668,26 @@ Format: <code>updateDP INDEX dp/[IMAGE PATH]</code></p>
 <p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
+<p>Do note that unused display pictures will be deleted upon the next application startup.</p>
+</li>
+<li>
 <p>You can reset a person&#8217;s display picture to default by typing <code>dp/</code> with no [IMAGE PATH] written after it.</p>
 </li>
 <li>
-<p>The aspect ratio of the image will be used to fill a circle, thus using an image with a ratio close to 1:1 pixels would be optimal.</p>
+<p>The aspect ratio of the image will be used to fill a circle for the display picture, thus using an image with an aspect ratio close to 1:1 pixels would be optimal.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
-<div class="admonitionblock warning">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The application does not support reading image files from a folder named <code>dp</code> due to the nature of how the application parses the prefixes.
+Do refrain from using high resolution images as display pictures, the optimum resolution is 300 x 300 pixels.
 </td>
 </tr>
 </table>
@@ -643,9 +698,23 @@ The application does not support reading image files from a folder named <code>d
 <div class="paragraph">
 <p>Command(s) entered:<br>
 <code>list</code><br>
-Lists all people in the address book. Followed by:<br>
-<code>updateDP 2 dp/</code><br>
-Deletes the display picture of the 2nd person, turning it back to the default profile picture.</p>
+Lists all people in Your TA.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/updateDPJack1.png" alt="updateDPJack1" width="300">
+</div>
+<div class="title">Figure 18. Listing everyone in Your TA</div>
+</div>
+<div class="paragraph">
+<p><code>updateDP 1 dp/</code><br>
+Deletes the display picture of the 1st person, turning it back to the default profile picture.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/updateDPJack2.png" alt="updateDPJack2" width="300">
+</div>
+<div class="title">Figure 19. Resetting Alex&#8217;s display picture</div>
 </div>
 <div class="paragraph">
 <p>Command(s) entered:<br>
@@ -675,37 +744,12 @@ Format: <code>delete INDEX</code></p>
 <li>
 <p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
+<li>
+<p>The display picture (if the person has one) will be deleted upon the next application start up.</p>
+</li>
 </ul>
 </div>
 </div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="paragraph">
-<p>Address book starts with the following as shown in Figure 13:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/SecondEdit.png" alt="SecondEdit" width=""800'">
-</div>
-<div class="title">Figure 14. Application before Delete.<br></div>
-</div>
-<div class="paragraph">
-<p>Command(s) entered:<br>
-<code>list</code>, <code>delete 2</code>:<br>
-The 2nd person listed in the address book is deleted (Figure 14).</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/FirstDelete.png" alt="FirstDelete" width="800">
-</div>
-<div class="title">Figure 15. 3rd Person Deleted.<br></div>
-</div>
-<div class="paragraph">
-<p>Command(s) entered:<br>
-<code>find Betsy</code>,<code>delete 1</code>:<br>
-The 1st person in the results of the <code>find</code> command is deleted, in this case, Betsy is deleted (Figure 15).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -719,11 +763,39 @@ The display picture that is stored on your hard disk will only be removed upon t
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>Address book starts with the following as shown in Figure 13:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SecondEdit.png" alt="SecondEdit" width=""800'">
+</div>
+<div class="title">Figure 20. Application before Delete.<br></div>
+</div>
+<div class="paragraph">
+<p>Command(s) entered:<br>
+<code>list</code>, <code>delete 2</code>:<br>
+The 2nd person listed in the address book is deleted (Figure 14).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FirstDelete.png" alt="FirstDelete" width="800">
+</div>
+<div class="title">Figure 21. 3rd Person Deleted.<br></div>
+</div>
+<div class="paragraph">
+<p>Command(s) entered:<br>
+<code>find Betsy</code>,<code>delete 1</code>:<br>
+The 1st person in the results of the <code>find</code> command is deleted, in this case, Betsy is deleted (Figure 15).</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/SecondDelete.png" alt="SecondDelete" width="800">
 </div>
-<div class="title">Figure 16. 1st Person from <code>find</code> Command Deleted.<br></div>
+<div class="title">Figure 22. 1st Person from <code>find</code> Command Deleted.<br></div>
 </div>
 </div>
 <div class="sect2">
@@ -760,7 +832,7 @@ Format: <code>select INDEX</code></p>
 <div class="content">
 <img src="images/SecondStart.png" alt="SecondStart" width="800">
 </div>
-<div class="title">Figure 17. Application before Select.<br></div>
+<div class="title">Figure 23. Application before Select.<br></div>
 </div>
 <div class="paragraph">
 <p>Command(s) entered:<br>
@@ -771,7 +843,7 @@ Lists all people in address book and selects the 1st person (Figure 17).</p>
 <div class="content">
 <img src="images/FirstSelect.png" alt="FirstSelect" width="800">
 </div>
-<div class="title">Figure 18. Selects 1st Person Listed.<br></div>
+<div class="title">Figure 24. Selects 1st Person Listed.<br></div>
 </div>
 <div class="paragraph">
 <p>Command(s) entered:<br>
@@ -782,7 +854,7 @@ The 1st person in the results of the <code>find</code> command is selected, in t
 <div class="content">
 <img src="images/SecondSelect.png" alt="SecondSelect" width="800">
 </div>
-<div class="title">Figure 19. 1st Person from <code>find</code> Command Selected.<br></div>
+<div class="title">Figure 25. 1st Person from <code>find</code> Command Selected.<br></div>
 </div>
 </div>
 </div>
@@ -1010,7 +1082,7 @@ Format: <code>undo</code></p>
 <div class="content">
 <img src="images/SecondStart.png" alt="SecondStart" width="800">
 </div>
-<div class="title">Figure 20. Application before any Commands<br></div>
+<div class="title">Figure 26. Application before any Commands<br></div>
 </div>
 <div class="paragraph">
 <p>Command(s) entered:<br>
@@ -1053,7 +1125,7 @@ The delete command is reversed, then reapplied (Figure 20).</p>
 <div class="content">
 <img src="images/FirstRedo.png" alt="FirstRedo" width="800">
 </div>
-<div class="title">Figure 21. <code>delete</code> Command Reapplied<br></div>
+<div class="title">Figure 27. <code>delete</code> Command Reapplied<br></div>
 </div>
 <div class="paragraph">
 <p>Command(s) entered:<br>
@@ -1071,7 +1143,7 @@ End result should look the same as in Figure 19.</p>
 <div class="content">
 <img src="images/SecondRedo.png" alt="SecondRedo" width="800">
 </div>
-<div class="title">Figure 22. Both Commands Reversed, Reapplied. Application Cleared.<br></div>
+<div class="title">Figure 28. Both Commands Reversed, Reapplied. Application Cleared.<br></div>
 </div>
 </div>
 <div class="sect2">
@@ -1091,7 +1163,7 @@ Format: <code>clear</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-This command clears ALL the data from the application (both people and tasks).<br>
+This command clears ALL the data from the application (both people and tasks). The display pictures files will be cleared as well upon the next application startup.
 </td>
 </tr>
 </table>
@@ -1324,7 +1396,7 @@ e.g. <code>find James Jake</code></p>
 </li>
 <li>
 <p><strong>MarkParticipation</strong> : <code>markPart INDEX marks/DIGIT</code>
-e.g <code>markpart 1 marks/50</code></p>
+e.g <code>markPart 1 marks/50</code></p>
 </li>
 <li>
 <p><strong>Select</strong> : <code>select INDEX</code><br>
@@ -1339,16 +1411,32 @@ e.g <code>updateDP 1 dp/C:\Users\Betsy\Desktop\betsy.jpg</code></p>
 </div>
 <div class="sect2">
 <h3 id="tasks-to-do-list-and-calendar-commands"><a class="link" href="#tasks-to-do-list-and-calendar-commands">11.2. Tasks, To-do list and Calendar commands</a></h3>
-<div class="paragraph">
-<p><strong>Add Task</strong>: <code>addTask desc/TASK DESCRIPTION by/DEADLINE priority/PRIORITY</code><br>
-e.g. <code>addTask title/Grade Exams desc/Grade mid-terms by/04-04-2018 priority/2</code>
-<strong>Delete Task</strong>: <code>deleteTask INDEX</code><br>
-e.g. <code>deleteTask 1</code>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add Task</strong> : <code>addTask desc/TASK DESCRIPTION by/DEADLINE priority/PRIORITY</code><br>
+e.g. <code>addTask title/Grade Exams desc/Grade mid-terms by/04-04-2018 priority/2</code></p>
+</li>
+<li>
+<p><strong>Delete Task</strong> : <code>deleteTask INDEX</code><br>
+e.g. <code>deleteTask 1</code></p>
+</li>
+<li>
+<p><strong>Edit Task</strong> : <code>editTask INDEX [title/TASK TITLE] [desc/TASK DESCRIPTION] [by/DEADLINE] [priority/PRIORITY]</code>
+e.g. <code>editTask 1 title/Eat Dinner</code>
 <strong>Edit Task</strong>: <code>editTask INDEX [title/TASK TITLE] [desc/TASK DESCRIPTION] [by/DEADLINE] [priority/PRIORITY]</code>
-e.g. <code>editTask 1 title/Eat Dinner</code><br>
-<strong>List Task</strong>: <code>listTask</code><br>
-<strong>List Current month tasks</strong>: <code>listCurrentTask</code><br>
-<strong>Sort tasks by date</strong>: <code>sortTask</code></p>
+e.g. <code>editTask 1 title/Eat Dinner</code><br></p>
+</li>
+<li>
+<p><strong>List Task</strong>: <code>listTask</code><br></p>
+</li>
+<li>
+<p><strong>List Current month tasks</strong>: <code>listCurrentTask</code><br></p>
+</li>
+<li>
+<p><strong>Sort tasks by date</strong>: <code>sortTask</code></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -1378,7 +1466,7 @@ e.g. <code>editTask 1 title/Eat Dinner</code><br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 17:11:20 UTC
+Last updated 2018-04-14 22:26:35 UTC
 </div>
 </div>
 </body>

@@ -52,8 +52,11 @@ which in turn allow the tutor to remember their students better. This would enco
 personal between the tutor and the student. Additionally, it also contains a drop shadow frame which shows whether the student has at least participated sufficiently in classes.</p>
 </li>
 <li>
-<p>Highlights: This enhancement fully supports the implemented undo and redo even though image files are stored outside the <code>AddressBook</code> memory.
-The existing commands were also updated to support the adding and changing of display pictures.</p>
+<p>Highlights: This enhancement fully supports the existing undo and redo even though image files are stored outside the <code>AddressBook</code> memory.
+The existing commands (add, edit, delete and clear) were also updated to support the adding and changing of display pictures.</p>
+</li>
+<li>
+<p>Additional changes: Had to modify the codebase to ensure that <code>add</code>, <code>edit</code>, and <code>clear</code> works with the display picture field as well. Relevant tests were updated.</p>
 </li>
 <li>
 <p>Credits: <a href="https://stackoverflow.com/users/2970947/elliott-frisch">Elliott Frisch</a> from stackoverflow on the SHA-256 hash algorithm used to generate the name of the image file.</p>
@@ -65,7 +68,7 @@ The existing commands were also updated to support the adding and changing of di
 <p><strong>Minor enhancement</strong>: Added a <code>Participation</code> attribute to <code>Person</code> to keep track of a student&#8217;s participation level. It supports the addition of marks to the <code>Person</code> object.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-F09-B1/main/blob/master/collated/functional/Wu.md">Functional code</a>][<a href="https://github.com/CS2103JAN2018-F09-B1/main/blob/master/collated/test/Wu.md">Test code</a>]</p>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-F09-B1/main/blob/master/collated/functional/Alaru.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-F09-B1/main/blob/master/collated/functional/Alaru-reused.md">Functional(re-used) code</a>] [<a href="https://github.com/CS2103JAN2018-F09-B1/main/blob/master/collated/test/Alaru.md">Test code</a>] [<a href="https://github.com/CS2103JAN2018-F09-B1/main/blob/master/collated/unused/Alaru-unused.md">Unused code</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -76,13 +79,19 @@ The existing commands were also updated to support the adding and changing of di
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.1</code> - <code>v1.2</code> (2 releases) on GitHub</p>
+<p>Managed releases <code>v1.3</code> - <code>v1.4</code> (2 releases) on GitHub</p>
 </li>
 <li>
-<p>Manage and set up the organization repo, assigned issues and mange Pull Requests.</p>
+<p>Managed the Issue Tracker, assigned issues and added labels to the issues.</p>
 </li>
 <li>
-<p>Set up Coverall for the organization repo.</p>
+<p>Help resolve merge conflicts.</p>
+</li>
+<li>
+<p>Set up Travis for the organization repo.</p>
+</li>
+<li>
+<p>Help update README (PR <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/66">#66</a>), changed application icon and name.</p>
 </li>
 </ul>
 </div>
@@ -94,6 +103,9 @@ The existing commands were also updated to support the adding and changing of di
 <li>
 <p>Updated the screenshots used in the User Guide: <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/57">#57</a></p>
 </li>
+<li>
+<p>Edited the developer guide for english, added prefaces, updated images, made explanations clearer and added manual testing cases.</p>
+</li>
 </ul>
 </div>
 </li>
@@ -102,7 +114,7 @@ The existing commands were also updated to support the adding and changing of di
 <div class="ulist">
 <ul>
 <li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/CS2103JAN2018-F12-B2/main/issues/83">1</a>, <a href="https://github.com/CS2103JAN2018-F12-B2/main/issues/80">2</a>, <a href="https://github.com/CS2103JAN2018-F12-B2/main/issues/76">3</a>)</p>
+<p>Reported bugs and suggestions for another team in the class (examples:  <a href="https://github.com/CS2103JAN2018-F12-B2/main/issues/83">1</a>, <a href="https://github.com/CS2103JAN2018-F12-B2/main/issues/80">2</a>, <a href="https://github.com/CS2103JAN2018-F12-B2/main/issues/76">3</a>)</p>
 </li>
 </ul>
 </div>
@@ -123,7 +135,7 @@ The existing commands were also updated to support the adding and changing of di
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are main sections I contributed to the User Guide. Updates were also made to existing User Guide portions such as the add, edit, delete and clear commands.  They showcase my ability to write documentation targeting end-users.</em></p></td>
 </tr>
 </tbody>
 </table>
@@ -131,7 +143,10 @@ The existing commands were also updated to support the adding and changing of di
 <h3 id="adding-participation-marks-code-markpart-code"><a class="link" href="#adding-participation-marks-code-markpart-code">Adding Participation Marks : <code>markPart</code></a></h3>
 <div class="paragraph">
 <p>Adds to the participation marks of a person. The maximum limit for participation marks is 100
-and the maximum amount that can be added with one execution of the command is 100.</p>
+and the maximum amount that can be added per execution of the command is 100.</p>
+</div>
+<div class="paragraph">
+<p>If the marks is below 50, there will be a red frame. If the person has 50 or more marks, the colored frame around the user will change to green.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>markPart INDEX marks/DIGITS</code></p>
@@ -156,16 +171,44 @@ and the maximum amount that can be added with one execution of the command is 10
 <div class="paragraph">
 <p>Command(s) entered:<br>
 <code>list</code><br>
-Lists all people in the address book. Followed by:<br>
-<code>markPart 2 marks/50</code><br>
-Adds 50 participation marks to the 2nd person in the address book.</p>
+Lists all people in the address book.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/markPartlist.png" alt="markPartlist" width="300">
+</div>
+<div class="title">Figure 1. Listing everyone in Your TA</div>
+</div>
+<div class="paragraph">
+<p><code>markPart 1 marks/50</code><br>
+Adds 50 participation marks to the 1st person in Your TA.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/markPartadd50.png" alt="markPartadd50" width="300">
+</div>
+<div class="title">Figure 2. Adds 50 marks to Alex, note that the frame turns green</div>
 </div>
 <div class="paragraph">
 <p>Command(s) entered:<br>
-<code>find Betsy</code><br>
-Returns Betsy as a result. Followed by:<br>
-<code>markPart 1 marks/70</code><br>
-Adds 70 marks to the 1st person in the results of the <code>find</code> command, in this case, Betsy.</p>
+<code>find David</code><br>
+Returns David as a result.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/markPart2David.png" alt="markPart2David" width="300">
+</div>
+<div class="title">Figure 3. Find command returns David</div>
+</div>
+<div class="paragraph">
+<p><code>markPart 1 marks/70</code><br>
+Adds 70 marks to the 1st person in the results of the <code>find</code> command, in this case, David. We note that it has exceeded the cap of 100, hence the marks was set to 100.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/markPartupdateDavid.png" alt="markPartupdateDavid" width="300">
+</div>
+<div class="title">Figure 4. David&#8217;s marks updated</div>
 </div>
 </div>
 <div class="sect2">
@@ -185,23 +228,26 @@ Format: <code>updateDP INDEX dp/[IMAGE PATH]</code></p>
 <p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
+<p>Do note that unused display pictures will be deleted upon the next application startup.</p>
+</li>
+<li>
 <p>You can reset a person&#8217;s display picture to default by typing <code>dp/</code> with no [IMAGE PATH] written after it.</p>
 </li>
 <li>
-<p>The aspect ratio of the image will be used to fill a circle, thus using an image with a ratio close to 1:1 pixels would be optimal.</p>
+<p>The aspect ratio of the image will be used to fill a circle for the display picture, thus using an image with an aspect ratio close to 1:1 pixels would be optimal.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
-<div class="admonitionblock warning">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The application does not support reading image files from a folder named <code>dp</code> due to the nature of how the application parses the prefixes.
+Do refrain from using high resolution images as display pictures, the optimum resolution is 300 x 300 pixels.
 </td>
 </tr>
 </table>
@@ -212,9 +258,23 @@ The application does not support reading image files from a folder named <code>d
 <div class="paragraph">
 <p>Command(s) entered:<br>
 <code>list</code><br>
-Lists all people in the address book. Followed by:<br>
-<code>updateDP 2 dp/</code><br>
-Deletes the display picture of the 2nd person, turning it back to the default profile picture.</p>
+Lists all people in Your TA.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/updateDPJack1.png" alt="updateDPJack1" width="300">
+</div>
+<div class="title">Figure 5. Listing everyone in Your TA</div>
+</div>
+<div class="paragraph">
+<p><code>updateDP 1 dp/</code><br>
+Deletes the display picture of the 1st person, turning it back to the default profile picture.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/updateDPJack2.png" alt="updateDPJack2" width="300">
+</div>
+<div class="title">Figure 6. Resetting Alex&#8217;s display picture</div>
 </div>
 <div class="paragraph">
 <p>Command(s) entered:<br>
@@ -242,21 +302,22 @@ Updates the display picture of the 1st person, in this case Betsy, to the pictur
 <div class="sect2">
 <h3 id="participation"><a class="link" href="#participation">Participation</a></h3>
 <div class="paragraph">
-<p>This feature allows the user to keep track of participation marks of a <code>Person</code>. A new class, <code>Participation</code>, is created and is associated to the <code>Person</code> class.</p>
+<p>This feature allows the user to keep track of participation marks of a <code>Person</code>. The participation marks in this case is limited to an integer value of 0 to 100 inclusive. A new class, <code>Participation</code>, is created and is associated to the <code>Person</code> class.
+This utilizes the <code>MarkCommand</code> command to update the participation marks of a <code>Person</code>.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current implementation</a></h4>
 <div class="paragraph">
-<p>The user uses this feature by inputting a command, <code>markPart INDEX marks/DIGITS</code>, to the application.</p>
+<p>The user will input a command, <code>markPart INDEX marks/DIGITS</code>, to the application to update the marks.</p>
 </div>
 <div class="paragraph">
-<p>The following figure 13 and paragraph below shows the sequence of how the <code>MarkCommand</code> command functions:</p>
+<p>The following figure 12 and paragraph below shows the sequence of how the <code>MarkCommand</code> command functions:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/MarkCommandSequenceDiagram.png" alt="MarkCommandSequenceDiagram" width="800">
+<img src="../images/MarkCommandSequenceDiagram.png" alt="MarkCommandSequenceDiagram" width="700">
 </div>
-<div class="title">Figure 1. MarkCommand Sequence Diagram</div>
+<div class="title">Figure 7. MarkCommand Sequence Diagram</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -282,7 +343,7 @@ Updates the display picture of the 1st person, in this case Betsy, to the pictur
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-update-the-marks"><a class="link" href="#aspect-how-to-update-the-marks">Aspect: How to update the marks</a></h5>
 <div class="ulist">
@@ -308,7 +369,40 @@ Updates the display picture of the 1st person, in this case Betsy, to the pictur
 <p>Pros: It uses less memory, and only the value has to be updated.</p>
 </li>
 <li>
-<p>Cons: This will involve writing more methods, and the existing methods can be easily used for the implementation.</p>
+<p>Cons: The implementation will require the writing of more methods.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-setting-a-limit-to-the-number-of-marks"><a class="link" href="#aspect-setting-a-limit-to-the-number-of-marks">Aspect: Setting a limit to the number of marks</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Set the limit of participation marks to 100</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Maintain a fixed value, prevents unforeseen issues such as <a href="#integer-overflow">integer overflows</a>.</p>
+</li>
+<li>
+<p>Cons: The user is restricted to only 100 marks total, and has to be more careful in the amount of marks they wish to add.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Do not set a limit for the amount of participation marks</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: It is more flexible, and allows more variation in the marks the user wishes to add</p>
+</li>
+<li>
+<p>Cons: This requires more validation checks to prevent issues like an integer overflow.</p>
 </li>
 </ul>
 </div>
@@ -329,31 +423,32 @@ Updates the display picture of the 1st person, in this case Betsy, to the pictur
 </div>
 </div>
 <div class="sect2">
-<h3 id="display-picture"><a class="link" href="#display-picture">Display Picture</a></h3>
+<h3 id="display-picture"><a class="link" href="#display-picture">Display picture</a></h3>
 <div class="paragraph">
 <p>Users are able to add a display picture for any person within the application. The user can utilise 3 different commands (<code>add</code>, <code>edit</code> and <code>updateDP</code>) to create and specify a display image for the person.
 It fully supports the <code>undo</code> and <code>redo</code> commands as well. It adds a drop shadow around the frame to indicate the level of participation (see above section 5.3) of the person.</p>
 </div>
 <div class="paragraph">
-<p>This feature allows the user to enter a path to their selected image file when entering any of the above 3 commands and copies the image into the <code>images/displayPic</code> folder.</p>
+<p>This feature allows the user to enter a path to their selected image file when entering any of the above 3 commands and copies the image into the <code>data/displayPic</code> folder.</p>
 </div>
 <div class="paragraph">
 <p>It utilises the <code>DisplayPicStorage</code> class to handle all image storage related operations.</p>
 </div>
 <div class="paragraph">
-<p>It also makes use of the <code>Participation</code> feature to display a colored shadow around the display picture. This image will be shown in the application next to the details of the person as seen in figure 14 below.</p>
+<p>It also makes use of the <code>Participation</code> feature to display a colored shadow around the display picture.
+This image will be shown in the application next to the details of the person as seen in figure 13 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/displaypic_personcard.PNG" alt="displaypic personcard" width="350">
+<img src="../images/displaypic_personcard.PNG" alt="displaypic personcard" width="250">
 </div>
-<div class="title">Figure 2. Display Picture example</div>
+<div class="title">Figure 8. Display Picture example</div>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current implementation</a></h4>
 <div class="paragraph">
 <p>An additional class, <code>DisplayPic</code>, is added to the <code>Person</code> class. This class contains the filepath to the stored image file.
-It uses validation checks to ensure that the image meets the following requirements.</p>
+It uses validation checks to ensure that the image meets the following requirements:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -366,19 +461,8 @@ It uses validation checks to ensure that the image meets the following requireme
 </ul>
 </div>
 <div class="paragraph">
-<p>If it passes the checks, then a new <code>DisplayPic</code> object will be created with the filepath to the image stored as its value.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-When the <code>DisplayPic</code> object is first created, it stores the <em>original</em> filepath of the image file provided by the user. This will later be updated by the 3 commands mentioned earlier to the duplicated image filepath.
-</td>
-</tr>
-</table>
+<p>If it passes the checks, then a new <code>DisplayPic</code> object will be created with the filepath to the image stored as its value.
+It will then proceed to duplicate the image. After duplicating the image, the value will be further updated with the duplicate image&#8217;s filepath.</p>
 </div>
 <div class="sect4">
 <h5 id="adding-a-display-picture-when-creating-a-new-person"><a class="link" href="#adding-a-display-picture-when-creating-a-new-person">Adding a display picture when creating a new person</a></h5>
@@ -396,13 +480,13 @@ When the <code>DisplayPic</code> object is first created, it stores the <em>orig
 The implementation of the UpdateDisplayCommand (<code>updateDP</code>) command closely follows the <code>edit</code> command, hence we will only showcase the implementation of the <code>UpdateDP</code> command.</p>
 </div>
 <div class="paragraph">
-<p>The following figure 15 is the sequence diagram of the <code>updateDP</code> command to show how it functions:</p>
+<p>The following figure 14 is the sequence diagram of the <code>updateDP</code> command to show how it functions:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/UpdateDisplayCommandSequenceDiagram.png" alt="UpdateDisplayCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 3. UpdateDisplayCommand Sequence Diagram</div>
+<div class="title">Figure 9. UpdateDisplayCommand Sequence Diagram</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -427,16 +511,16 @@ The implementation of the UpdateDisplayCommand (<code>updateDP</code>) command c
 <p>To fully support the <code>undo</code> and <code>redo</code> commands, image files cannot be immediately deleted when it is not in use by the <code>UI</code>.</p>
 </div>
 <div class="paragraph">
-<p>To work around this, a new class <code>UniqueItemList</code> was added to the model of the <code>AddressBook</code> as seen below in Figure 16.</p>
+<p>To work around this, a new class <code>UniqueItemList</code> was added to the model of the <code>AddressBook</code> as seen below in Figure 15.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/AddressBookClass.png" alt="AddressBookClass" width="600">
 </div>
-<div class="title">Figure 4. AddressBook Class Diagram</div>
+<div class="title">Figure 10. AddressBook Class Diagram</div>
 </div>
 <div class="paragraph">
-<p>The <code>UniqueItemList</code> consists of an <code>ArrayList</code> of <code>String</code> objects. These <code>String</code> objects represent the filepaths of all images that have been added to application during its runtime.</p>
+<p>The <code>UniqueItemList</code> consists of an <code>ArrayList</code> of unique <code>String</code> objects. These <code>String</code> objects represent the filepaths of all images that have been added or are used by the application during its runtime.</p>
 </div>
 <div class="paragraph">
 <p>Upon every launch of the application, during the initialization of the <code>LogicManager</code> class, it will run through the <code>UniqueItemList</code> and delete
@@ -449,13 +533,13 @@ The following code fragment shows the deletion process:</p>
     <span class="keyword">for</span> (<span class="predefined-type">String</span> item : itemsToDelete) {
         <span class="type">boolean</span> notUsed = <span class="predefined-constant">true</span>;
         <span class="keyword">for</span> (Person p : persons) {
-            <span class="keyword">if</span> (p.getDisplayPic().toString().equals(item) || p.getDisplayPic().isDefault()) {
+            <span class="keyword">if</span> (p.getDisplayPic().toString().equals(item) || item.equals(DisplayPic.DEFAULT_DISPLAY_PIC)) {
                 notUsed = <span class="predefined-constant">false</span>;
                 <span class="keyword">break</span>;
             }
         }
         <span class="keyword">if</span> (notUsed) {
-            deleteFile(item);
+            <span class="comment">//deletion of file occurs here</span>
         }
     }
 }</code></pre>
@@ -483,22 +567,19 @@ An example of a <code>[PATH TO IMAGE]</code> would be C:\Users\Desktop\Image.jpg
 </table>
 </div>
 <div class="paragraph">
-<p>If this is empty, the application will default to using the default profile picture
+<p>If this <code>[PATH TO IMAGE]</code> leads to a non-existent file or a non-image file, it will utilise the default profile picture
 which is stored in <code>src/resources/images/displayPic</code> as <code>default.png</code>.
-If a valid path to an image is provided, the image will be processed and copied over to the <code>data</code> folder where the</p>
+If a valid path to an image is provided, the image will be processed and copied over to the <code>data</code> folder where the <code>addressbook.xml</code> is stored as well.</p>
 </div>
 <div class="paragraph">
-<p><code>addressbook.xml</code> is stored as well.</p>
-</div>
-<div class="paragraph">
-<p>The image copied over will be stored with a SHA-256 hash name. This hash is calculated over the <code>Person</code> object&#8217;s details (i.e Name, Phone and Email) to ensure a unique filename.
-The following activity diagram in Figure 15 shows how the files are saved:</p>
+<p>The filename of the image copied over will be a <a href="#sha-256">SHA-256</a> hash. This hash is calculated over the <code>Person</code> object&#8217;s details (i.e Name, Phone and Email) to ensure a unique filename.
+The following activity diagram in Figure 16 shows how the files are saved:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/StoreDisplayPictureActivityDiagram.png" alt="StoreDisplayPictureActivityDiagram" width="800">
 </div>
-<div class="title">Figure 5. Activity diagram for storing image files</div>
+<div class="title">Figure 11. Activity diagram for storing image files</div>
 </div>
 <div class="paragraph">
 <p>Due to the possibility that display pictures for a <code>Person</code> can be updated, this could lead to clashing of the same file names. In order to prevent overwriting of files, the new image filename
@@ -523,16 +604,7 @@ will be the SHA-256 hash of the previous image filename.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Finally, the <code>DisplayPic</code> object will then be updated to store the relative filepath to this new duplicated image. The following code fragment shows how the filename of the image is returned and stored as the new value.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> saveDisplay(<span class="predefined-type">String</span> personDetails) <span class="directive">throws</span> IllegalValueException {
-    <span class="comment">//declaring and initializing variables</span>
-    <span class="predefined-type">String</span> uniqueFileName = DisplayPicStorage.saveDisplayPic(personDetails, value, fileType);
-    <span class="local-variable">this</span>.value = DEFAULT_IMAGE_LOCATION + uniqueFileName + <span class="string"><span class="delimiter">'</span><span class="content">.</span><span class="delimiter">'</span></span> + fileType;
-}</code></pre>
-</div>
+<p>Finally, the <code>DisplayPic</code> object will then be updated to store the relative filepath to this new duplicated image.</p>
 </div>
 </div>
 <div class="sect4">
@@ -544,7 +616,7 @@ will be the SHA-256 hash of the previous image filename.</p>
 <div class="content">
 <img src="../images/FetchDisplayPictureActivityDiagram.png" alt="FetchDisplayPictureActivityDiagram" width="800">
 </div>
-<div class="title">Figure 6. Activity diagram for fetching image files</div>
+<div class="title">Figure 12. Activity diagram for fetching image files</div>
 </div>
 <div class="paragraph">
 <p>The image file will then be utilized by JavaFX and displayed on the UI. The drop shadow of the image is determined by the <code>Participation</code> of the <code>Person</code>.</p>
@@ -552,7 +624,7 @@ will be the SHA-256 hash of the previous image filename.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-filepath-to-the-image"><a class="link" href="#aspect-filepath-to-the-image">Aspect: Filepath to the image</a></h5>
 <div class="ulist">
@@ -565,7 +637,7 @@ will be the SHA-256 hash of the previous image filename.</p>
 <p>Pros: The user does not need to maintain the image file, as the application does so itself.</p>
 </li>
 <li>
-<p>Cons: User has to delete the original file if not there will be 2 of the same files on the user&#8217;s storage.</p>
+<p>Cons: Duplication of the image file will take up more space on the user&#8217;s storage.</p>
 </li>
 </ul>
 </div>
@@ -595,7 +667,7 @@ will be the SHA-256 hash of the previous image filename.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: SHA-256 provides collision resistant which means the filename would be unique and it is easy to implement.</p>
+<p>Pros: SHA-256 provides <a href="#collision-resistance">collision resistance</a> which means the filename would be unique majority of the time and it is easy to implement.</p>
 </li>
 <li>
 <p>Cons: It is difficult to manually check which <code>Person</code> the image file belongs to.</p>
@@ -637,7 +709,7 @@ will be the SHA-256 hash of the previous image filename.</p>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Delete the image file immediately when the associated <code>Person</code> is removed</p>
+<p><strong>Alternative 2:</strong> Delete the image file immediately when the associated <code>Person</code> is removed.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -658,7 +730,7 @@ will be the SHA-256 hash of the previous image filename.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Support for online URLs to download images</p>
+<p>Support for online URLs to download images.</p>
 </li>
 </ul>
 </div>
@@ -669,7 +741,7 @@ will be the SHA-256 hash of the previous image filename.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 17:11:20 UTC
+Last updated 2018-04-14 22:26:35 UTC
 </div>
 </div>
 </body>

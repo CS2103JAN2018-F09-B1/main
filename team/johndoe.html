@@ -263,7 +263,7 @@ Format: <code>clear</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-This command clears ALL the data from the application (both people and tasks).<br>
+This command clears ALL the data from the application (both people and tasks). The display pictures files will be cleared as well upon the next application startup.
 </td>
 </tr>
 </table>
@@ -496,7 +496,7 @@ e.g. <code>find James Jake</code></p>
 </li>
 <li>
 <p><strong>MarkParticipation</strong> : <code>markPart INDEX marks/DIGIT</code>
-e.g <code>markpart 1 marks/50</code></p>
+e.g <code>markPart 1 marks/50</code></p>
 </li>
 <li>
 <p><strong>Select</strong> : <code>select INDEX</code><br>
@@ -511,16 +511,32 @@ e.g <code>updateDP 1 dp/C:\Users\Betsy\Desktop\betsy.jpg</code></p>
 </div>
 <div class="sect2">
 <h3 id="tasks-to-do-list-and-calendar-commands"><a class="link" href="#tasks-to-do-list-and-calendar-commands">Tasks, To-do list and Calendar commands</a></h3>
-<div class="paragraph">
-<p><strong>Add Task</strong>: <code>addTask desc/TASK DESCRIPTION by/DEADLINE priority/PRIORITY</code><br>
-e.g. <code>addTask title/Grade Exams desc/Grade mid-terms by/04-04-2018 priority/2</code>
-<strong>Delete Task</strong>: <code>deleteTask INDEX</code><br>
-e.g. <code>deleteTask 1</code>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add Task</strong> : <code>addTask desc/TASK DESCRIPTION by/DEADLINE priority/PRIORITY</code><br>
+e.g. <code>addTask title/Grade Exams desc/Grade mid-terms by/04-04-2018 priority/2</code></p>
+</li>
+<li>
+<p><strong>Delete Task</strong> : <code>deleteTask INDEX</code><br>
+e.g. <code>deleteTask 1</code></p>
+</li>
+<li>
+<p><strong>Edit Task</strong> : <code>editTask INDEX [title/TASK TITLE] [desc/TASK DESCRIPTION] [by/DEADLINE] [priority/PRIORITY]</code>
+e.g. <code>editTask 1 title/Eat Dinner</code>
 <strong>Edit Task</strong>: <code>editTask INDEX [title/TASK TITLE] [desc/TASK DESCRIPTION] [by/DEADLINE] [priority/PRIORITY]</code>
-e.g. <code>editTask 1 title/Eat Dinner</code><br>
-<strong>List Task</strong>: <code>listTask</code><br>
-<strong>List Current month tasks</strong>: <code>listCurrentTask</code><br>
-<strong>Sort tasks by date</strong>: <code>sortTask</code></p>
+e.g. <code>editTask 1 title/Eat Dinner</code><br></p>
+</li>
+<li>
+<p><strong>List Task</strong>: <code>listTask</code><br></p>
+</li>
+<li>
+<p><strong>List Current month tasks</strong>: <code>listCurrentTask</code><br></p>
+</li>
+<li>
+<p><strong>Sort tasks by date</strong>: <code>sortTask</code></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -563,7 +579,7 @@ e.g. <code>editTask 1 title/Eat Dinner</code><br>
 <div class="sect2">
 <h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the address book (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
 </div>
@@ -717,7 +733,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-code-undoablecommand-code"><a class="link" href="#aspect-implementation-of-code-undoablecommand-code">Aspect: Implementation of <code>UndoableCommand</code></a></h5>
 <div class="ulist">
@@ -854,7 +870,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="data-encryption-coming-in-v2-0"><a class="link" href="#data-encryption-coming-in-v2-0">Data Encryption (Coming in v2.0)</a></h3>
+<h3 id="data-encryption-coming-in-v2-0"><a class="link" href="#data-encryption-coming-in-v2-0">Data encryption (coming in v2.0)</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
@@ -873,7 +889,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 17:11:20 UTC
+Last updated 2018-04-14 22:26:35 UTC
 </div>
 </div>
 </body>
