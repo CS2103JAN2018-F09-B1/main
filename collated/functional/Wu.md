@@ -109,15 +109,15 @@ public class  TodoListPanel extends UiPart<Region> {
     @FXML
     private ListView<TodoCard> todoListView;
 
-    public TodoListPanel(ObservableList<Task> taskList) {
+    public TodoListPanel(ObservableList<Task> uniqueTaskList) {
         super(FXML);
-        setConnections(taskList);
+        setConnections(uniqueTaskList);
         registerAsAnEventHandler(this);
     }
 
-    private void setConnections(ObservableList<Task> taskList) {
+    private void setConnections(ObservableList<Task> uniqueTaskList) {
         ObservableList<TodoCard> mappedList = EasyBind.map(
-                taskList, (task) -> new TodoCard(task, taskList.indexOf(task) + 1));
+                uniqueTaskList, (task) -> new TodoCard(task, uniqueTaskList.indexOf(task) + 1));
         todoListView.setItems(mappedList);
         todoListView.setCellFactory(listView -> new todoListViewCell());
         setEventHandlerForSelectionChangeEvent();
@@ -1071,15 +1071,15 @@ public class  TodoListPanel extends UiPart<Region> {
     @FXML
     private ListView<TodoCard> todoListView;
 
-    public TodoListPanel(ObservableList<Task> taskList) {
+    public TodoListPanel(ObservableList<Task> uniqueTaskList) {
         super(FXML);
-        setConnections(taskList);
+        setConnections(uniqueTaskList);
         registerAsAnEventHandler(this);
     }
 
-    private void setConnections(ObservableList<Task> taskList) {
+    private void setConnections(ObservableList<Task> uniqueTaskList) {
         ObservableList<TodoCard> mappedList = EasyBind.map(
-                taskList, (task) -> new TodoCard(task, taskList.indexOf(task) + 1));
+                uniqueTaskList, (task) -> new TodoCard(task, uniqueTaskList.indexOf(task) + 1));
         todoListView.setItems(mappedList);
         todoListView.setCellFactory(listView -> new todoListViewCell());
         setEventHandlerForSelectionChangeEvent();
