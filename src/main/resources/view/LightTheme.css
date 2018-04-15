@@ -10,6 +10,13 @@
     -fx-opacity: 0.9;
 }
 
+.label-info {
+    -fx-font-size: 9pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: #ababab;
+    -fx-opacity: 0.9;
+}
+
 .label-date {
     -fx-text-fill: black;
 }
@@ -17,7 +24,7 @@
 .label-small {
     -fx-font-size: 9pt;
     -fx-text-fill: black;
-    -fx-background-color: grey;
+    -fx-background-color: #e3e3e3;
 }
 
 .label-small-red {

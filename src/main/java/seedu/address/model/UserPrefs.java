@@ -10,7 +10,7 @@ import seedu.address.commons.core.GuiSettings;
 public class UserPrefs {
 
     private GuiSettings guiSettings;
-    private String addressBookFilePath = "data/login/";
+    private String addressBookFilePath = "data/";
     private String addressBookName = "MyAddressBook";
 
     public UserPrefs() {
