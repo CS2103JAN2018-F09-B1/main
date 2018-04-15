@@ -25,7 +25,7 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Your TA is a desktop contact, calendar and task manager application that caters to tech-savvy university Teaching Assistants and/or Professors/Lecturers.<br>
+<p>Your TA is a desktop contact, calendar and task manager application that caters to tech-savvy university Teaching Assistants (TAs) and/or Professors/Lecturers.<br>
 It allows the user to manage their deadlines, as well as keep track of their students.<br>
 The user is mostly required to interact with the application through a Command Line Interface (CLI), along with minimal Graphical User Interface (GUI) features created with JavaFX. It is written in Java, and has about 15 kLoC.</p>
 </div>
@@ -62,10 +62,43 @@ The user is mostly required to interact with the application through a Command L
 <p><strong>Minor feature</strong>: Added a new <strong>theme</strong> for the application</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-F09-B1/main/blob/master/collated/functional/Pearlissa.md">Functional</a>] [<a href="https://github.com/CS2103JAN2018-F09-B1/main/blob/master/collated/test/Pearlissa.md">Test</a>].</p>
+<p><strong>Minor feature</strong>: Added <strong>default tag colours</strong> for "Lecturer", "TA", "student" and "T1"</p>
 </li>
 <li>
-<p><strong>Other contributions</strong>: <em>TO BE FILLED IN</em></p>
+<p><strong>Code contributed</strong>: <a href="https://github.com/CS2103JAN2018-F09-B1/main/blob/master/collated/functional/Pearlissa.md">functional</a>, <a href="https://github.com/CS2103JAN2018-F09-B1/main/blob/master/collated/test/Pearlissa.md">test</a>.</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Checked and improved consistency of User Guide</p>
+</li>
+<li>
+<p>Updated screenshots used in the User Guide: (PR <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/136">#136</a>)</p>
+</li>
+<li>
+<p>Created images for Developer&#8217;s Guide: (PR <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/104">#104</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reported bugs in another group&#8217;s application (Examples: <a href="https://github.com/CS2103JAN2018-T11-B4/main/issues/135">1</a>, <a href="https://github.com/CS2103JAN2018-T11-B4/main/issues/130">2</a>, <a href="https://github.com/CS2103JAN2018-T11-B4/main/issues/128">3</a>, <a href="https://github.com/CS2103JAN2018-T11-B4/main/issues/116">4</a>, <a href="https://github.com/CS2103JAN2018-T11-B4/main/issues/123">5</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -81,6 +114,72 @@ The user is mostly required to interact with the application through a Command L
 <p><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="link" href="#introduction">Introduction</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Your TA</strong> is for university Teaching Assistants (TAs) who prefer using a desktop application to manage student contacts and plan schedules.<br></p>
+</div>
+<div class="paragraph">
+<p>Its features include a login system, tools to manage students' information, task schedulers linked to a calendar and many more!<br></p>
+</div>
+<div class="paragraph">
+<p>It is optimized for those who prefer to work with a <strong>Command Line Interface</strong> (CLI) while still having the benefits of a <strong>Graphical User Interface</strong> (GUI).<br>
+This means if you prefer using the keyboard over the mouse and can type fast, it can get your contact management and scheduling done faster than traditional GUI applications.<br></p>
+</div>
+<div class="paragraph">
+<p>This user guide will take you through the features and commands available for use.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter your <code>Username</code> and <code>Password</code> to log in. <em>Refer to <a href="#Features">[Features]</a> for details of the feature.</em></p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you&#8217;re a first-time user without an account, enter your desired <code>Username</code> and <code>Password</code> and an account will be created and you will be logged in automatically.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>After logging in, you should now see the main Application GUI appear.<br>
+The key parts of the GUI (as shown in Figure 2 below) are:<br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Person List (displays all contacts)</p>
+</li>
+<li>
+<p>Todo List (displays all outstanding tasks)</p>
+</li>
+<li>
+<p>Calendar</p>
+</li>
+<li>
+<p>Command Box (field where you input your commands)</p>
+</li>
+<li>
+<p>Results Display Panel (field where results of commands appear)</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UiParts.png" alt="UiParts" width="800">
+</div>
+<div class="title">Figure 1. Parts of the GUI</div>
 </div>
 <div class="sect2">
 <h3 id="sorting-all-entries-code-sort-code"><a class="link" href="#sorting-all-entries-code-sort-code">Sorting all entries : <code>sort</code></a></h3>
@@ -142,6 +241,147 @@ Then, click on the <code>Login</code> button.
 </td>
 </tr>
 </table>
+</div>
+<div class="sect2">
+<h3 id="editing-a-task-code-edittask-code"><a class="link" href="#editing-a-task-code-edittask-code">Editing a task: <code>editTask</code></a></h3>
+<div class="paragraph">
+<p>Edits a task in the todo list.<br></p>
+</div>
+<div class="paragraph">
+<p>Alias: <code>et</code><br>
+Format: <code>editTask</code> <code>INDEX</code> <code>[title/TASK TITLE] [desc/TASK DESCRIPTION]</code> <code>[by/DEADLINE]</code> <code>[priority/PRIORITY]</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Not all fields are required, you may only pick the fields that you want to edit.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The specified tasks will be edited in the <strong>Todo List</strong> and <strong>Calendar</strong>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>INDEX</code> refers to the index number shown in the last task listing.<br>
+The index must be a <strong>positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>Current date: 15-04-2018<br></p>
+</div>
+<div class="paragraph">
+<p>The application initially starts with 2 tasks (see Figure 33).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SecondTask.png" alt="SecondTask" width="800">
+</div>
+<div class="title">Figure 2. Initial Application View<br></div>
+</div>
+<div class="paragraph">
+<p>Command entered: <code>editTask</code> <code>1</code> <code>priority/1</code><br></p>
+</div>
+<div class="paragraph">
+<p>Result: This edits the task at index 1, and change its priority to 1 (see Figure 34).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FirstEditTask.png" alt="FirstEditTask" width="800">
+</div>
+<div class="title">Figure 3. Task at Index 1 Priority Changed to 1<br></div>
+</div>
+<div class="paragraph">
+<p>Command entered: <code>editTask</code> <code>2</code> <code>by/23-04-2018</code><br></p>
+</div>
+<div class="paragraph">
+<p>Result: This edits the task at index 2, and change its deadline to 23-04-2018 (see Figure 35).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SecondEditTask.png" alt="SecondEditTask" width="800">
+</div>
+<div class="title">Figure 4. Task at Index 2 Deadline Changed to 23-04-2018<br></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-task-code-deletetask-code"><a class="link" href="#deleting-a-task-code-deletetask-code">Deleting a task: <code>deleteTask</code></a></h3>
+<div class="paragraph">
+<p>Deletes a task in the todo list.<br></p>
+</div>
+<div class="paragraph">
+<p>Alias: <code>dt</code><br>
+Format: <code>deleteTask</code> <code>INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>The specified indexed task will be deleted from the <strong>Todo List</strong> and <strong>Calendar</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>Current date: 15-04-2018<br></p>
+</div>
+<div class="paragraph">
+<p>The application initially starts with 2 tasks as seen in Figure 36 below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SecondEditTask.png" alt="SecondEditTask" width="800">
+</div>
+<div class="title">Figure 5. Initial Application View<br></div>
+</div>
+<div class="paragraph">
+<p>Command entered: <code>deleteTask</code> <code>1</code><br></p>
+</div>
+<div class="paragraph">
+<p>Result: This will delete the task at index 1, as shown in Figure 37 below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeleteTask.png" alt="DeleteTask" width="800">
+</div>
+<div class="title">Figure 6. Task at Index 1 Removed<br></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="frequently-asked-questions-faq"><a class="link" href="#frequently-asked-questions-faq">Frequently Asked Questions (FAQ)</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Q</strong>: How do I transfer my data to another Computer?<br></p>
+</div>
+<div class="paragraph">
+<p><strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the data file of your previous <strong>Your TA</strong> folder.</p>
+</div>
+<div class="paragraph">
+<p><strong>Q</strong>: How do i keep my information safe?<br></p>
+</div>
+<div class="paragraph">
+<p><strong>A</strong>: A login feature has already been implemented as of v1.5, which ensures that a user can only access their own accounts via authentication.</p>
 </div>
 </div>
 </div>
@@ -333,6 +573,39 @@ If the user is a new (username does not exist), they should simply enter their d
 </div>
 </div>
 <div class="sect4">
+<h5 id="aspect-managing-existing-users"><a class="link" href="#aspect-managing-existing-users">Aspect: Managing existing users</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: <code>User</code> is immutable</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to keep track of <code>User</code>.</p>
+</li>
+<li>
+<p>Cons: Highly inflexible, not user-friendly.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: <code>User</code> to be mutable, can be edited or deleted</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Users can change their usernames/passwords if they feel their credentials may be insecure.</p>
+</li>
+<li>
+<p>Cons: Need for rigorous salting/hashing if repeated usernames/passwords are allowed.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
 <h5 id="aspect-code-user-code-identification"><a class="link" href="#aspect-code-user-code-identification">Aspect: <code>User</code> identification</a></h5>
 <div class="ulist">
 <ul>
@@ -435,10 +708,150 @@ If the user is a new (username does not exist), they should simply enter their d
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="user-stories"><a class="link" href="#user-stories">User Stories</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 59%;">
+<colgroup>
+<col style="width: 22%;">
+<col style="width: 23%;">
+<col style="width: 25%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Priority</th>
+<th class="tableblock halign-left valign-top">As a &#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">I want to &#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">So that I can&#8230;&#8203;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">new user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see usage instructions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">refer to instructions when I forget how to use the App</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">new user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">get error messages/prompts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">better adapt to commands to use them properly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a new person</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">better manage all my contacts at one go</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete a person</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove entries that I no longer need</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find a person by name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">locate details of persons without having to go through the entire list</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find a person by matriculation number/email</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">identify people easily</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sort contacts based on name/address/email/tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">work with specific groups of people</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">assign a to-do list to each person in address book</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know what I need to do for them</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add individual items to the to-do lists</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update additional tasks</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove entire to-do lists or items in it</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove completed tasks</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add events to the schedule</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">better manage work/students</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a deadline to tasks/items</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know what needs to be done and by when</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">prioritize tasks/items</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">efficiently get tasks/items done on time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hide <a href="#private-contact-detail">private contact details</a> by default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">minimize chance of someone else seeing them by accident</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">import students/people from a text file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">it is easier to enter large numbers of people</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add profile pictures</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know who the people I am working with are</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mass email students/people based on a tag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily email/inform a class of students of announcements</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set reminders for certain events</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have an email sent to me before the actual event so that I don&#8217;t forget</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user with many persons in the address book</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">combine groups/tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">better work with people who have similar interests/work</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 15:10:35 UTC
+Last updated 2018-04-15 15:12:15 UTC
 </div>
 </div>
 </body>
