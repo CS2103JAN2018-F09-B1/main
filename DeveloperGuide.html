@@ -54,12 +54,14 @@
 <li><a href="#login-feature">5.1. Login feature</a></li>
 <li><a href="#help-feature">5.2. Help feature</a></li>
 <li><a href="#undo-redo-feature">5.3. Undo/Redo feature</a></li>
-<li><a href="#participation">5.4. Participation</a></li>
-<li><a href="#display-picture">5.5. Display picture</a></li>
-<li><a href="#task-list">5.6. Task List</a></li>
-<li><a href="#logging">5.7. Logging</a></li>
-<li><a href="#Implementation-Configuration">5.8. Configuration</a></li>
-<li><a href="#data-encryption-coming-in-v2-0">5.9. Data encryption (coming in v2.0)</a></li>
+<li><a href="#tasks-on-calendar-view">5.4. Tasks on Calendar View</a></li>
+<li><a href="#matriculation-number">5.5. Matriculation Number</a></li>
+<li><a href="#participation">5.6. Participation</a></li>
+<li><a href="#display-picture">5.7. Display picture</a></li>
+<li><a href="#task-list">5.8. Task List</a></li>
+<li><a href="#logging">5.9. Logging</a></li>
+<li><a href="#Implementation-Configuration">5.10. Configuration</a></li>
+<li><a href="#data-encryption-coming-in-v2-0">5.11. Data encryption (coming in v2.0)</a></li>
 </ul>
 </li>
 <li><a href="#documentation">6. Documentation</a>
@@ -1484,13 +1486,162 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="participation"><a class="link" href="#participation">5.4. Participation</a></h3>
+<h3 id="tasks-on-calendar-view"><a class="link" href="#tasks-on-calendar-view">5.4. Tasks on Calendar View</a></h3>
+<div class="paragraph">
+<p>This feature allows the user to see the calendar on the UI and see the scheduled <code>Task</code> deadlines on the calendar.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">5.4.1. Current implementation</a></h4>
+<div class="paragraph">
+<p>The user will enter a command <code>addTask title/TITLE desc/DESCRIPTION by/DEADLINE priority/PRIORITY</code> to the application. The application will then rely on <code>AddressBookparser</code> and
+parse the argument. The argument will be passed into the AddTaskCommand to be executed. From there, it will create a new <code>Task</code> object that will be
+added to the <code>calendarList</code> of the <code>UniqueTaskList</code> which in turn will be displayed on the date of the deadline, on the calendar.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">5.4.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-link-specific-tasks-to-the-correct-calendar-nodes"><a class="link" href="#aspect-how-to-link-specific-tasks-to-the-correct-calendar-nodes">Aspect: How to link specific tasks to the correct calendar nodes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a 7 by 32, 2D <code>Array</code> to store the tasks to be added into the calendar.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Separate from the Task list (less prone to bugs). Faster run time (does not need to iterate through all tasks).</p>
+</li>
+<li>
+<p>Cons: Higher memory usage constraint, can only schedule tasks up to 6 months in advance to prevent high memory usage that will affect the speed and performance of the app.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use the task list itself to be displayed in the calendar.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to program and less memory usage (only 1 task list is used without another 2D array for the calendar), tasks can be scheduled as far ahead as desired.</p>
+</li>
+<li>
+<p>Cons: Needs to iterate through the entire task list for every calendar node when loading the calendar view (slows performance when dealing with tasks).</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-viewing-the-calendar-only-by-month"><a class="link" href="#aspect-viewing-the-calendar-only-by-month">Aspect: Viewing the calendar only by month</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a monthly only calendar view.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy view of the current tasks that are due on that month.</p>
+</li>
+<li>
+<p>Cons: Not much choice for the user as only the monthly view is provided.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Give the user a choice to switch between weekly, monthly or yearly, e.g. <em>calendarfx</em>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User has more choice and freedom to control their UI.</p>
+</li>
+<li>
+<p>Cons: Difficult to implement, also if 3rd party programs such at <em>calendarfx</em> is used, certain features in those programs are redundant (e.g. map) and would only slow the app down.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="future-enhancements-coming-in-v2-0"><a class="link" href="#future-enhancements-coming-in-v2-0">5.4.3. Future enhancements (Coming in v2.0)</a></h4>
+<div class="paragraph">
+<p>Link specific key-press or select actions to the todo list such that a click on either side will display the selected task on the other.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="matriculation-number"><a class="link" href="#matriculation-number">5.5. Matriculation Number</a></h3>
+<div class="paragraph">
+<p>This feature allows the user to keep track of the matriculation number of a <code>Person</code>. The matriculation number in this case
+has to start with an "A" or "U" followed by 7 digits and end with a capital letter. A new class, <code>Matriculation Number</code>, is created and is associated to the <code>Person</code> class.
+This is integrated into the <code>AddCommand</code> and <code>EditCommand</code> commands to update the participation marks of a <code>Person</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">5.5.1. Current implementation</a></h4>
+<div class="paragraph">
+<p>The user will input an AddCommand or EditCommand, with the additional parameter <code>m/MATRICULATION_NUMBER</code>, to the application to update the marks.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">5.5.2. Design considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-should-2-people-be-allowed-to-have-to-same-matriculation-number"><a class="link" href="#aspect-should-2-people-be-allowed-to-have-to-same-matriculation-number">Aspect: Should 2 people be allowed to have to same matriculation number</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> No, no 2 people can have the same matriculation number, DuplicateUserException will be thrown when trying to add a person with a matriculation number already inside Your TA.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: It makes sense as no 2 students would have the same matriculation number, it alerts the user when they&#8217;ve most likely typed in the wrong matriculation number.</p>
+</li>
+<li>
+<p>Cons: The user will not be able to add 2 different instances of the same student.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Duplicate matriculation numbers are allowed</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User have more freedom to add anyone.</p>
+</li>
+<li>
+<p>Cons: Duplicate matriculation numbers will cause messiness when dealing with many students.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="future-enhancements-coming-in-v2-0-2"><a class="link" href="#future-enhancements-coming-in-v2-0-2">5.5.3. Future enhancements (Coming in v2.0)</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Link matriculation number to the students IVLE account info.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="participation"><a class="link" href="#participation">5.6. Participation</a></h3>
 <div class="paragraph">
 <p>This feature allows the user to keep track of participation marks of a <code>Person</code>. The participation marks in this case is limited to an integer value of 0 to 100 inclusive. A new class, <code>Participation</code>, is created and is associated to the <code>Person</code> class.
 This utilizes the <code>MarkCommand</code> command to update the participation marks of a <code>Person</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">5.4.1. Current implementation</a></h4>
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">5.6.1. Current implementation</a></h4>
 <div class="paragraph">
 <p>The user will input a command, <code>markPart INDEX marks/DIGITS</code>, to the application to update the marks.</p>
 </div>
@@ -1527,7 +1678,7 @@ This utilizes the <code>MarkCommand</code> command to update the participation m
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">5.4.2. Design considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">5.6.2. Design considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-update-the-marks"><a class="link" href="#aspect-how-to-update-the-marks">Aspect: How to update the marks</a></h5>
 <div class="ulist">
@@ -1596,7 +1747,7 @@ This utilizes the <code>MarkCommand</code> command to update the participation m
 </div>
 </div>
 <div class="sect3">
-<h4 id="future-enhancements-coming-in-v2-0"><a class="link" href="#future-enhancements-coming-in-v2-0">5.4.3. Future enhancements (Coming in v2.0)</a></h4>
+<h4 id="future-enhancements-coming-in-v2-0-3"><a class="link" href="#future-enhancements-coming-in-v2-0-3">5.6.3. Future enhancements (Coming in v2.0)</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1607,7 +1758,7 @@ This utilizes the <code>MarkCommand</code> command to update the participation m
 </div>
 </div>
 <div class="sect2">
-<h3 id="display-picture"><a class="link" href="#display-picture">5.5. Display picture</a></h3>
+<h3 id="display-picture"><a class="link" href="#display-picture">5.7. Display picture</a></h3>
 <div class="paragraph">
 <p>Users are able to add a display picture for any person within the application. The user can utilise 3 different commands (<code>add</code>, <code>edit</code> and <code>updateDP</code>) to create and specify a display image for the person.
 It fully supports the <code>undo</code> and <code>redo</code> commands as well. It adds a drop shadow around the frame to indicate the level of participation (see above section 5.3) of the person.</p>
@@ -1629,7 +1780,7 @@ This image will be shown in the application next to the details of the person as
 <div class="title">Figure 13. Display Picture example</div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">5.5.1. Current implementation</a></h4>
+<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">5.7.1. Current implementation</a></h4>
 <div class="paragraph">
 <p>An additional class, <code>DisplayPic</code>, is added to the <code>Person</code> class. This class contains the filepath to the stored image file.
 It uses validation checks to ensure that the image meets the following requirements:</p>
@@ -1808,7 +1959,7 @@ will be the SHA-256 hash of the previous image filename.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">5.5.2. Design considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">5.7.2. Design considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-filepath-to-the-image"><a class="link" href="#aspect-filepath-to-the-image">Aspect: Filepath to the image</a></h5>
 <div class="ulist">
@@ -1910,7 +2061,7 @@ will be the SHA-256 hash of the previous image filename.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="future-enhancements-coming-in-v2-0-2"><a class="link" href="#future-enhancements-coming-in-v2-0-2">5.5.3. Future enhancements (Coming in v2.0)</a></h4>
+<h4 id="future-enhancements-coming-in-v2-0-4"><a class="link" href="#future-enhancements-coming-in-v2-0-4">5.7.3. Future enhancements (Coming in v2.0)</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1921,7 +2072,7 @@ will be the SHA-256 hash of the previous image filename.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="task-list"><a class="link" href="#task-list">5.6. Task List</a></h3>
+<h3 id="task-list"><a class="link" href="#task-list">5.8. Task List</a></h3>
 <div class="paragraph">
 <p>Users are able to add, edit and remove tasks (with command <code>addTask</code>, <code>editTask</code> and <code>deleteTask</code>) in order to schedule their tasks within the application.
 Tasks scheduled in this application will be stored in <code>addressbook.xml</code> and displayed in the <code>Todo List</code> tab and <code>Calender</code> view respectively.</p>
@@ -1937,7 +2088,7 @@ Tasks displayed in a date cell are color coded according to their priorities&#82
 <div class="title">Figure 18. Tasks displayed in the application.</div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">5.6.1. Current Implementation</a></h4>
+<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">5.8.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>An additional class, <code>UniqueTaskList</code> is added to the <code>AddressBook</code> class. This class contains an <code>ObservableList</code> of tasks and a 2-dimensional <code>ObservableList</code> of tasks.
 The previous is the actual copy of tasks stored in <code>addressbook.xml</code> while the latter is a copy of reorganized tasks for displaying in <code>Calendar</code>.</p>
@@ -2036,7 +2187,7 @@ This is similar to Listing tasks but it will only extract tasks with deadlines d
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-consideration"><a class="link" href="#design-consideration">5.6.2. Design Consideration</a></h4>
+<h4 id="design-consideration"><a class="link" href="#design-consideration">5.8.2. Design Consideration</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-code-edittaskcommand-code-executes"><a class="link" href="#aspect-how-code-edittaskcommand-code-executes">Aspect: How <code>EditTaskCommand</code> executes</a></h5>
 <div class="ulist">
@@ -2073,14 +2224,14 @@ This is similar to Listing tasks but it will only extract tasks with deadlines d
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">5.7. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">5.9. Logging</a></h3>
 <div class="paragraph">
 <p>We utilize <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class manages the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file. (See <a href="#Implementation-Configuration">Section 5.8, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file. (See <a href="#Implementation-Configuration">Section 5.10, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level.</p>
@@ -2111,13 +2262,13 @@ This is similar to Listing tasks but it will only extract tasks with deadlines d
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.8. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.10. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g app name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="data-encryption-coming-in-v2-0"><a class="link" href="#data-encryption-coming-in-v2-0">5.9. Data encryption (coming in v2.0)</a></h3>
+<h3 id="data-encryption-coming-in-v2-0"><a class="link" href="#data-encryption-coming-in-v2-0">5.11. Data encryption (coming in v2.0)</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
@@ -3209,7 +3360,7 @@ Expected: John Doe is added with the specified details and has the default displ
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 01:12:43 UTC
+Last updated 2018-04-15 07:58:40 UTC
 </div>
 </div>
 </body>
