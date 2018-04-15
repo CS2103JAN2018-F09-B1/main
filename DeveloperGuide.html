@@ -104,7 +104,10 @@
 <li><a href="#adding-participation-marks-for-a-person">F.3. Adding participation marks for a person</a></li>
 <li><a href="#adding-display-picture-to-a-person">F.4. Adding display picture to a person</a></li>
 <li><a href="#saving-and-loading-of-the-image-files">F.5. Saving and loading of the image files</a></li>
-<li><a href="#saving-data">F.6. Saving data</a></li>
+<li><a href="#adding-a-task-2">F.6. Adding a Task</a></li>
+<li><a href="#deleting-a-task-2">F.7. Deleting a Task</a></li>
+<li><a href="#editing-a-task-2">F.8. Editing a Task</a></li>
+<li><a href="#saving-data">F.9. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -3336,7 +3339,132 @@ Expected: John Doe is added with the specified details and has the default displ
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">F.6. Saving data</a></h3>
+<h3 id="adding-a-task-2"><a class="link" href="#adding-a-task-2">F.6. Adding a Task</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a task while all tasks are listed.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Prerequisites: List all tasks using the <code>listTask</code> command. Multiple tasks in the list.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>addTask title/meeting desc/there is team meeting for CS2103 by/20-04-2018 priority/3</code>
+Expected: a task is added with title, description, deadline and priority stated in the command. Details of the added task shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: 'addTask title/meeting`
+Expected: No task is added. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect addTask commands to try: <code>addTask title/meeting priority/1</code>, <code>addTask by/20-04-2018 priority/3</code>
+Expected: similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Adding a task while current month tasks are listed.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Prerequisites: List all current month tasks using the <code>listCurrentTask</code> command. Multiple tasks in the list.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>addTask title/meeting desc/there is team meeting for CS2103 by/20-04-2018 priority/3</code>
+Expected: a task is added with title, description, deadline and priority stated in the command. All tasks again are shown in the list. Details of the added task shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: 'addTask title/meeting`
+Expected: No task is added. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect addTask commands to try: <code>addTask title/meeting priority/1</code>, <code>addTask by/20-04-2018 priority/3</code>
+Expected: similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-task-2"><a class="link" href="#deleting-a-task-2">F.7. Deleting a Task</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a task while all tasks are listed.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Prerequisites: List all tasks using the <code>listTask</code> command. Multiple tasks in the list.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>deleteTask 1</code><br>
+Expected: First task is deleted from the list. Details of the deleted task shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>deleteTask 0</code><br>
+Expected: No task is deleted. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect deleteTask commands to try: <code>deleteTask</code>, <code>deleteTask x</code> (where x is larger than the list size)
+Expected: similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-task-2"><a class="link" href="#editing-a-task-2">F.8. Editing a Task</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing a task while all tasks are listed.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Prerequisites: List all tasks using the <code>listTask</code> command. Multiple tasks in the list.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>editTask 1 title/meeting priority/3</code>
+Expected: First task is edited with title meeting and priority 3. It is shown last in the list. Details of the edited task shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: 'editTask 1`
+Expected: No task is edited. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect addTask commands to try: <code>editTask title/meeting priority/1</code>, <code>editTask x by/20-04-2018 priority/3</code> (where x is larger than the list size)
+Expected: similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">F.9. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3360,7 +3488,7 @@ Expected: John Doe is added with the specified details and has the default displ
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 07:58:40 UTC
+Last updated 2018-04-15 08:31:29 UTC
 </div>
 </div>
 </body>
