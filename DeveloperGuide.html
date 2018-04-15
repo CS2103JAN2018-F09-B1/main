@@ -25,7 +25,7 @@
 <div id="toctitle">Table of Content</div>
 <ul class="sectlevel1">
 <li><a href="#introduction">1. Introduction</a></li>
-<li><a href="#how-to-contribute-to-your-ta">2. How to contribute to Your TA?</a>
+<li><a href="#how-to-contribute-to-your-ta">2. How to Contribute to Your TA</a>
 <ul class="sectlevel2">
 <li><a href="#new-developers">2.1. New developers</a></li>
 <li><a href="#experienced-developers">2.2. Experienced developers</a></li>
@@ -42,7 +42,7 @@
 <li><a href="#design">4. Design</a>
 <ul class="sectlevel2">
 <li><a href="#Design-Architecture">4.1. Architecture</a></li>
-<li><a href="#Design-Login">4.2. Login Component</a></li>
+<li><a href="#Design-Login">4.2. Login component</a></li>
 <li><a href="#Design-Ui">4.3. UI component</a></li>
 <li><a href="#Design-Logic">4.4. Logic component</a></li>
 <li><a href="#Design-Model">4.5. Model component</a></li>
@@ -116,36 +116,44 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Your TA is an address book application designed to amplify the capabilities of a university teaching assistant or tutor.
-It aims to provide all the essential functions needed to manage the administrative duties of handling a class as well as
-to aid the tutor to better connect with the class. It includes a calendar, scheduling capabilities, as well as the ability to mark
+<p>Your TA is an address book application designed to enhance the capabilities of a university Teaching Assistant (TA) or tutor.</p>
+</div>
+<div class="paragraph">
+<p>It aims to provide all the essential functions needed to manage the administrative duties of handling a class as well as
+to aid the tutor to better connect with the class.<br></p>
+</div>
+<div class="paragraph">
+<p>It includes a calendar, scheduling capabilities, as well as the ability to mark
 attendance and participation.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="how-to-contribute-to-your-ta"><a class="link" href="#how-to-contribute-to-your-ta">2. How to contribute to Your TA?</a></h2>
+<h2 id="how-to-contribute-to-your-ta"><a class="link" href="#how-to-contribute-to-your-ta">2. How to Contribute to Your TA</a></h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="new-developers"><a class="link" href="#new-developers">2.1. New developers</a></h3>
 <div class="paragraph">
 <p>You may wish to refer to Section 3: <a href="#Setting up">Setting up</a>
-to properly set up the Your TA project file.</p>
+to properly set up the <strong>Your TA</strong> project file.</p>
 </div>
 <div class="paragraph">
-<p>Read through the rest of the guide to familiarise yourself with how Your TA components functions together.</p>
+<p>Read through the rest of the guide to familiarise yourself with how <strong>Your TA</strong> components functions together.</p>
 </div>
 <div class="paragraph">
 <p>Try making some enhancements or edits to a component and make a pull request (PR) to our repo! We will take a look at your PR and
-give you some feedback or even merge your code if it&#8217;s great.</p>
+give you some feedback or even merge your code if it&#8217;s a good working enhancement.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="experienced-developers"><a class="link" href="#experienced-developers">2.2. Experienced developers</a></h3>
 <div class="paragraph">
 <p>The developer guide contains the design of the models that make up the program. Each section also details how each and every functionality
-is implemented and how it interacts with the different components. We would greatly appreciate your help in fine-tuning the components and also
-welcome any suggestions or feedback to improve Your TA.</p>
+is implemented and how it interacts with the different components.<br></p>
+</div>
+<div class="paragraph">
+<p>We would greatly appreciate your help in fine-tuning the components and also
+welcome any suggestions or feedback to improve <strong>Your TA</strong>.</p>
 </div>
 </div>
 </div>
@@ -458,7 +466,7 @@ The classes can be found in the <code>seedu.addressbook.commons</code> package.<
 </ul>
 </div>
 <div class="paragraph">
-<p>Do note that each of the last four components</p>
+<p>Do note that each of the components</p>
 </div>
 <div class="ulist">
 <ul>
@@ -530,7 +538,10 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Login"><a class="link" href="#Design-Login">4.2. Login Component</a></h3>
+<h3 id="Design-Login"><a class="link" href="#Design-Login">4.2. Login component</a></h3>
+<div class="paragraph">
+<p>Before access to the application is granted, the user is required to log in with their <code>Username</code> and <code>Password</code> (see Figure 5).</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/Login.png" alt="Login" width="800">
@@ -978,9 +989,10 @@ It supports multiple accounts whereby one user cannot access the application con
 <div class="content">
 <img src="images/LoginDiagram.png" alt="LoginDiagram" width="800">
 </div>
+<div class="title">Figure 12. Structure of the Login System</div>
 </div>
 <div class="paragraph">
-<p>As seen from the diagram, upon opening the application, the user is prompted to enter their <code>Username</code> and <code>Password</code>. The <code>LoginManager</code> fetches the data of existing <code>User</code> objects, before putting them into a Hashmap&lt;Username, User&gt; as shown below.<br></p>
+<p>As seen from the Figure 12, upon opening the application, the user is prompted to enter their <code>Username</code> and <code>Password</code>. The <code>LoginManager</code> fetches the data of existing <code>User</code> objects, before putting them into a Hashmap&lt;Username, User&gt; as shown below.<br></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1085,6 +1097,39 @@ If the user is a new (username does not exist), they should simply enter their d
 </div>
 </div>
 <div class="sect4">
+<h5 id="aspect-managing-existing-users"><a class="link" href="#aspect-managing-existing-users">Aspect: Managing existing users</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: <code>User</code> is immutable</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to keep track of <code>User</code>.</p>
+</li>
+<li>
+<p>Cons: Highly inflexible, not user-friendly.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: <code>User</code> to be mutable, can be edited or deleted</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Users can change their usernames/passwords if they feel their credentials may be insecure.</p>
+</li>
+<li>
+<p>Cons: Need for rigorous salting/hashing if repeated usernames/passwords are allowed.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
 <h5 id="aspect-code-user-code-identification"><a class="link" href="#aspect-code-user-code-identification">Aspect: <code>User</code> identification</a></h5>
 <div class="ulist">
 <ul>
@@ -1118,7 +1163,7 @@ If the user is a new (username does not exist), they should simply enter their d
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-code-username-code-and-code-password-code-representation"><a class="link" href="#aspect-code-username-code-and-code-password-code-representation">Aspect: <code>Username</code> and <code>Password</code> Representation</a></h5>
+<h5 id="aspect-code-username-code-and-code-password-code-representation"><a class="link" href="#aspect-code-username-code-and-code-password-code-representation">Aspect: <code>Username</code> and <code>Password</code> representation</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1151,7 +1196,7 @@ If the user is a new (username does not exist), they should simply enter their d
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-salting-passwords-encryption-of-files"><a class="link" href="#aspect-salting-passwords-encryption-of-files">Aspect: Salting Passwords/Encryption of Files</a></h5>
+<h5 id="aspect-salting-passwords-encryption-of-files"><a class="link" href="#aspect-salting-passwords-encryption-of-files">Aspect: Salting passwords/encryption of files</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1556,7 +1601,7 @@ This utilizes the <code>MarkCommand</code> command to update the participation m
 <div class="content">
 <img src="images/MarkCommandSequenceDiagram.png" alt="MarkCommandSequenceDiagram" width="700">
 </div>
-<div class="title">Figure 12. MarkCommand Sequence Diagram</div>
+<div class="title">Figure 13. MarkCommand Sequence Diagram</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1665,7 +1710,7 @@ This utilizes the <code>MarkCommand</code> command to update the participation m
 <h3 id="display-picture"><a class="link" href="#display-picture">5.5. Display picture</a></h3>
 <div class="paragraph">
 <p>Users are able to add a display picture for any person within the application. The user can utilise 3 different commands (<code>add</code>, <code>edit</code> and <code>updateDP</code>) to create and specify a display image for the person.
-It fully supports the <code>undo</code> and <code>redo</code> commands as well. It adds a drop shadow around the frame to indicate the level of participation (see above section 5.3) of the person.</p>
+It fully supports the <code>undo</code> and <code>redo</code> commands. It adds a drop shadow around the frame to indicate the level of participation (see above section 5.3) of the person.</p>
 </div>
 <div class="paragraph">
 <p>This feature allows the user to enter a path to their selected image file when entering any of the above 3 commands and copies the image into the <code>data/displayPic</code> folder.</p>
@@ -1681,7 +1726,7 @@ This image will be shown in the application next to the details of the person as
 <div class="content">
 <img src="images/displaypic_personcard.PNG" alt="displaypic personcard" width="250">
 </div>
-<div class="title">Figure 13. Display Picture example</div>
+<div class="title">Figure 14. Display Picture example</div>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">5.5.1. Current implementation</a></h4>
@@ -1725,7 +1770,7 @@ The implementation of the UpdateDisplayCommand (<code>updateDP</code>) command c
 <div class="content">
 <img src="images/UpdateDisplayCommandSequenceDiagram.png" alt="UpdateDisplayCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 14. UpdateDisplayCommand Sequence Diagram</div>
+<div class="title">Figure 15. UpdateDisplayCommand Sequence Diagram</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1756,7 +1801,7 @@ The implementation of the UpdateDisplayCommand (<code>updateDP</code>) command c
 <div class="content">
 <img src="images/AddressBookClass.png" alt="AddressBookClass" width="600">
 </div>
-<div class="title">Figure 15. AddressBook Class Diagram</div>
+<div class="title">Figure 16. AddressBook Class Diagram</div>
 </div>
 <div class="paragraph">
 <p>The <code>UniqueItemList</code> consists of an <code>ArrayList</code> of unique <code>String</code> objects. These <code>String</code> objects represent the filepaths of all images that have been added or are used by the application during its runtime.</p>
@@ -1818,7 +1863,7 @@ The following activity diagram in Figure 16 shows how the files are saved:</p>
 <div class="content">
 <img src="images/StoreDisplayPictureActivityDiagram.png" alt="StoreDisplayPictureActivityDiagram" width="800">
 </div>
-<div class="title">Figure 16. Activity diagram for storing image files</div>
+<div class="title">Figure 17. Activity diagram for storing image files</div>
 </div>
 <div class="paragraph">
 <p>Due to the possibility that display pictures for a <code>Person</code> can be updated, this could lead to clashing of the same file names. In order to prevent overwriting of files, the new image filename
@@ -1855,7 +1900,7 @@ will be the SHA-256 hash of the previous image filename.</p>
 <div class="content">
 <img src="images/FetchDisplayPictureActivityDiagram.png" alt="FetchDisplayPictureActivityDiagram" width="800">
 </div>
-<div class="title">Figure 17. Activity diagram for fetching image files</div>
+<div class="title">Figure 18. Activity diagram for fetching image files</div>
 </div>
 <div class="paragraph">
 <p>The image file will then be utilized by JavaFX and displayed on the UI. The drop shadow of the image is determined by the <code>Participation</code> of the <code>Person</code>.</p>
@@ -1989,7 +2034,7 @@ Tasks displayed in a date cell are color coded according to their priorities&#82
 <div class="content">
 <img src="images/displayTask.png" alt="displayTask" width="800">
 </div>
-<div class="title">Figure 18. Tasks displayed in the application.</div>
+<div class="title">Figure 19. Tasks displayed in the application.</div>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">5.6.1. Current implementation</a></h4>
@@ -2048,7 +2093,7 @@ The <code>AddressBook</code> will be called by <code>ModelManager</code> to dele
 <div class="content">
 <img src="images/DeleteTaskCommandSequenceDiagram.png" alt="DeleteTaskCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 19. Dlete a task.</div>
+<div class="title">Figure 20. Dlete a task.</div>
 </div>
 </div>
 <div class="sect4">
@@ -2335,7 +2380,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 20. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 21. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -3561,7 +3606,7 @@ Expected: similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 14:04:08 UTC
+Last updated 2018-04-15 14:14:06 UTC
 </div>
 </div>
 </body>
