@@ -27,8 +27,10 @@
 <div class="paragraph">
 <p>Your TA is a desktop application designed to meet the needs of university tutors. It helps them to keep track of their students and schedule their tasks that they have to do.
 Your TA uses a graphical user interface built using JavaFX and the user interacts with the application mostly through a command line interface.
-Your TA is written in Java and has about 10 kLoC.
-Your TA is build upon <a href="https://github.com/se-edu/addressbook-level4">AddressBook - Level 4</a>.</p>
+Your TA is written in Java and has about 10 kLoC.</p>
+</div>
+<div class="paragraph">
+<p>Your TA is build upon <a href="https://github.com/se-edu/addressbook-level4">AddressBook - Level 4</a>.</p>
 </div>
 </div>
 </div>
@@ -42,10 +44,10 @@ Your TA is build upon <a href="https://github.com/se-edu/addressbook-level4">Add
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: It allows users to schedule tasks that they need to do and take a glance of what they need to do in the application.</p>
+<p>What it does: It allows users to schedule tasks that they need to do and enables a glance view of tasks what they need to do in the application.</p>
 </li>
 <li>
-<p>Justification: This feature provides the tutor with a visual stimulus on how many tasks they had in hand. This way, the tutors would be able to do their time management in a easier way.</p>
+<p>Justification: This feature provides the tutor a quick view on how many tasks they have in hand. This way, the tutors would be better assisted with their time management and organization.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -55,12 +57,18 @@ Your TA is build upon <a href="https://github.com/se-edu/addressbook-level4">Add
 </div>
 </li>
 <li>
-<p>Highlights: This enhancement fully supports the implemented undo and redo feature.
-The existing commands were also updated to support the adding, deleting and editing tasks.</p>
+<p>Highlights: This enhancement well supports the implemented undo and redo feature.</p>
 </li>
 </ul>
 </div>
 </li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The existing commands are also updated to support the adding, deleting and editing tasks.</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><strong>Minor enhancement</strong>: added a import command that enhances the mobility of users' data. Thus, with the data along it can be used anywhere with the application downloaded.</p>
 </li>
@@ -76,10 +84,10 @@ The existing commands were also updated to support the adding, deleting and edit
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.1</code> - <code>v1.2</code> (2 releases) on GitHub</p>
+<p>Managed releases <code>v1.2</code> and <code>v1.5rc</code>(2 releases) on GitHub</p>
 </li>
 <li>
-<p>Manage and set up the organization repo, assigned issues and mange Pull Requests.</p>
+<p>Manage and set up the organization repo, assigned issues and manage Pull Requests.</p>
 </li>
 <li>
 <p>Set up Coverall for the organization repo.</p>
@@ -94,6 +102,9 @@ The existing commands were also updated to support the adding, deleting and edit
 <li>
 <p>Updated the screenshots used in the User Guide: <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/57">#57</a></p>
 </li>
+<li>
+<p>Updated the images and added the Task List section in the Developer Guide:</p>
+</li>
 </ul>
 </div>
 </li>
@@ -102,7 +113,7 @@ The existing commands were also updated to support the adding, deleting and edit
 <div class="ulist">
 <ul>
 <li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/CS2103JAN2018-F12-B2/main/issues/83">1</a>, <a href="https://github.com/CS2103JAN2018-F12-B2/main/issues/80">2</a>, <a href="https://github.com/CS2103JAN2018-F12-B2/main/issues/76">3</a>)</p>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/CS2103JAN2018-T15-B4/main/issues/125">1</a>)</p>
 </li>
 </ul>
 </div>
@@ -128,413 +139,57 @@ The existing commands were also updated to support the adding, deleting and edit
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">Undoing previous command : <code>undo</code></a></h3>
+<h3 id="listing-all-tasks-code-listtask-code"><a class="link" href="#listing-all-tasks-code-listtask-code">Listing all tasks: <code>listTask</code></a></h3>
 <div class="paragraph">
-<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
-Alias: <code>u</code><br>
-Format: <code>undo</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
-</div>
-</td>
-</tr>
-</table>
+<p>Shows a list of all tasks in application.<br>
+Alias: <code>lt</code><br>
+Format: <code>listTask</code></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>All the tasks stored in application will be listed in the <strong>Todo List</strong></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-current-month-tasks-code-listcurrenttask-code"><a class="link" href="#listing-current-month-tasks-code-listcurrenttask-code">Listing current month tasks: <code>listCurrentTask</code></a></h3>
+<div class="paragraph">
+<p>Shows a list of tasks that have deadline in the current month.<br>
+Alias: <code>lct</code><br>
+Format: <code>listCurrentTask</code></p>
 </div>
 <div class="paragraph">
-<p>Address book starts with the following as shown in Figure 19:</p>
+<p>Only the tasks due within current month will be listed in the <strong>Todo List</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Figure below illustrate the display change of tasks after listCurrentTask is entered.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/SecondStart.png" alt="SecondStart" width="800">
+<img src="../images/listTasks.PNG" alt="listTasks" width="800">
 </div>
-<div class="title">Figure 1. Application before any Commands<br></div>
-</div>
-<div class="paragraph">
-<p>Command(s) entered:<br>
-<code>delete 1</code>, <code>list</code>, <code>undo</code>:<br>
-The <code>delete 1</code> command will be reversed.<br>
-End result should look the same as Figure 19.</p>
-</div>
-<div class="paragraph">
-<p>Command(s) entered:<br>
-<code>select 1</code>, <code>list</code>, <code>undo</code>:<br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.<br>
-End result should look the same as Figure 19.</p>
-</div>
-<div class="paragraph">
-<p>Command(s) entered:<br>
-<code>delete 1</code>, <code>clear</code>, <code>undo</code>, <code>undo</code>:<br>
-Both commands reversed.<br>
-End result should look the same as Figure 19.</p>
+<div class="title">Figure 1. Behavior of executing listCurrentTask</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="sorting-tasks-code-sorttask-code"><a class="link" href="#sorting-tasks-code-sorttask-code">Sorting tasks: <code>sortTask</code></a></h3>
 <div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Alias: <code>r</code><br>
-Format: <code>redo</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
+<p>Sorts all entries displayed in <strong>Todo List</strong> in date order.<br>
+Alias: <code>stt</code>
+Format: <code>sortTask</code>
+=== Switching between tabs: <code>switchTab</code></p>
 </div>
 <div class="paragraph">
-<p>Address book starts with the same one in Figure 19.</p>
-</div>
-<div class="paragraph">
-<p>Command(s) entered:<br>
-<code>delete 1</code>, <code>undo</code>, <code>redo</code>:<br>
-The delete command is reversed, then reapplied (Figure 20).</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/FirstRedo.png" alt="FirstRedo" width="800">
-</div>
-<div class="title">Figure 2. <code>delete</code> Command Reapplied<br></div>
-</div>
-<div class="paragraph">
-<p>Command(s) entered:<br>
-<code>delete 1</code>, <code>redo</code>:<br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.<br>
-End result should look the same as in Figure 19.</p>
-</div>
-<div class="paragraph">
-<p>Command(s) entered:<br>
-<code>delete 1</code>, <code>clear</code>, <code>undo</code>, <code>redo</code>:<br>
-<code>clear</code> command and <code>delete</code> command are reversed.<br>
-<code>clear</code> command and <code>delete</code> command are subsequently reapplied (Figure 21).</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/SecondRedo.png" alt="SecondRedo" width="800">
-</div>
-<div class="title">Figure 3. Both Commands Reversed, Reapplied. Application Cleared.<br></div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">Clearing all entries : <code>clear</code></a></h3>
-<div class="paragraph">
-<p>Clears all entries from the address book.<br>
-This command will also clear all the display picture images stored.</p>
-</div>
-<div class="paragraph">
-<p>Alias: <code>c</code><br>
-Format: <code>clear</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-This command clears ALL the data from the application (both people and tasks). The display pictures files will be cleared as well upon the next application startup.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="importing-data-from-another-file-code-import-code"><a class="link" href="#importing-data-from-another-file-code-import-code">Importing data from another file : <code>import</code></a></h3>
-<div class="paragraph">
-<p>Extracts data from an xml formatted file and
-replaces the current stored data.<br>
-Format: <code>import FILEPATH</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="paragraph">
-<p>Command entered:<br>
-<code>import ~/download/NewData.xml</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="switching-between-tabs-code-switchtab-code"><a class="link" href="#switching-between-tabs-code-switchtab-code">Switching between tabs: <code>switchTab</code></a></h3>
-<div class="paragraph">
-<p>Switches between the <strong>Person List</strong> tab and <strong>Todo List</strong> tab.
-Alias: <code>swt</code>
+<p>Switches between the <strong>Person List</strong> tab and <strong>Todo List</strong> tab.<br>
+Alias: <code>swt</code><br>
 Format: <code>switchTab</code></p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="sorting-all-entries-code-sort-code"><a class="link" href="#sorting-all-entries-code-sort-code">Sorting all entries : <code>sort</code></a></h3>
 <div class="paragraph">
-<p>Sorts all entries from the address book in alphabetical order based on name.<br>
-Alias: <code>s</code><br>
-Format: <code>sort</code></p>
+<p>Figure below shows the result of entering command <code>switchTab</code> switching from Person List to Todo List and the display of command result.</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/switchTabs.PNG" alt="switchTabs" width="800">
 </div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">Exiting the program : <code>exit</code></a></h3>
-<div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code></p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="saving-the-data"><a class="link" href="#saving-the-data">Saving the data</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="additional-information-on-features"><a class="link" href="#additional-information-on-features">Additional Information on Features</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This section goes more in depth for some of the features mentioned in the above chapter.</p>
-</div>
-<div class="sect2">
-<h3 id="add-command"><a class="link" href="#add-command">Add command</a></h3>
-<div class="paragraph">
-<p>The <code>add</code> command adds a person into the application.<br>
-This command have specific compulsory (must-have) and non-compulsory fields.<br></p>
-</div>
-<div class="paragraph">
-<p>Compulsory fields:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Name</p>
-</li>
-<li>
-<p>Matriculation Number</p>
-</li>
-<li>
-<p>Phone Number</p>
-</li>
-<li>
-<p>Email Address</p>
-</li>
-<li>
-<p>Address</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Non-Compulsory field(s):</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Tags</p>
-</li>
-<li>
-<p>Display Picture</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Each individual field has a specific format requirement.<br>
-e.g the NAME field must only contain letters.</p>
-</div>
-<div class="paragraph">
-<p>If the wrong format is detected, the application will prompt you of the correct input format in the results display panel right underneath the command input line.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="undo-command"><a class="link" href="#undo-command">Undo command</a></h3>
-<div class="paragraph">
-<p>As stated in chapter 3.10, certain commands (not all) can be undone.</p>
-</div>
-<div class="paragraph">
-<p>Commands that cannot be undone:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code></p>
-</li>
-<li>
-<p><code>find</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="calendar-to-be-improved-in-v2-0"><a class="link" href="#calendar-to-be-improved-in-v2-0">Calendar [To be improved in v2.0]</a></h3>
-<div class="ulist">
-<ul>
-<li>
-<p>The calendar fills up based on the day of the first day of the calendar, Since the calendar only allows for 35 days to be displayed, this will cause some months such as September 2018 to be cut off too soon due to the first day being a saturday. This will be improved to be clearer in v2.0.</p>
-</li>
-<li>
-<p>The unfilled nodes of the calendar will be filled with the days of either the previous or next month. (Depending on the layout of the current month).</p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-To see the last few days of the final month, click on the <code>&gt;&gt;</code> button to navigate to the next months calendar, the last days of that month will be displayed there, as well as its tasks.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="toggling-between-themes"><a class="link" href="#toggling-between-themes">Toggling between themes</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Your TA starts off with a default <code>Dark Theme</code>. However, it can be toggled to become a <code>Light Theme</code>.</p>
-</div>
-<div class="paragraph">
-<p>On the top left side of the app, there are some menus.</p>
-</div>
-<div class="paragraph">
-<p>Click on the menu labeled <code>Switch Theme</code>.</p>
-</div>
-<div class="paragraph">
-<p>A drop-down menu will appear and click on the <code>toggle</code> option to switch to the theme that is not currently in use.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-As of version 1.5, the app only supports 2 themes, <code>Dark Theme</code> and <code>Light Theme</code>.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">FAQ</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Your TA folder.</p>
-</div>
-<div class="paragraph">
-<p><strong>Q</strong>: What is the calendar for?<br>
-<strong>A</strong>: The calendar is there for a task scheduling feature that is coming in v2.0 of the application.</p>
-</div>
-<div class="paragraph">
-<p><strong>Q</strong>: How do i keep my information safe?<br>
-<strong>A</strong>: A login feature will be coming in v2.0.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">Command Summary</a></h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="contact-commands"><a class="link" href="#contact-commands">Contact commands</a></h3>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Add</strong> <code>add n/NAME m/MATRICULATION_NUMBER p/PHONE_NUMBER e/EMAIL a/ADDRESS dp/DISPLAY_PICTURE [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho m/A2345678J p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
-</li>
-<li>
-<p><strong>Clear</strong> : <code>clear</code></p>
-</li>
-<li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 3</code></p>
-</li>
-<li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [m/MATRICULATION_NUMBER] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [dp/DISPLAY_PICTURE] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
-</li>
-<li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]&#8230;&#8203;</code><br>
-e.g. <code>find James Jake</code></p>
-</li>
-<li>
-<p><strong>List</strong> : <code>list</code></p>
-</li>
-<li>
-<p><strong>MarkParticipation</strong> : <code>markPart INDEX marks/DIGIT</code>
-e.g <code>markPart 1 marks/50</code></p>
-</li>
-<li>
-<p><strong>Select</strong> : <code>select INDEX</code><br>
-e.g.<code>select 2</code></p>
-</li>
-<li>
-<p><strong>UpdateDP</strong> : <code>updateDP INDEX dp/[IMAGE PATH]</code><br>
-e.g <code>updateDP 1 dp/C:\Users\Betsy\Desktop\betsy.jpg</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="tasks-to-do-list-and-calendar-commands"><a class="link" href="#tasks-to-do-list-and-calendar-commands">Tasks, To-do list and Calendar commands</a></h3>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Add Task</strong> : <code>addTask desc/TASK DESCRIPTION by/DEADLINE priority/PRIORITY</code><br>
-e.g. <code>addTask title/Grade Exams desc/Grade mid-terms by/04-04-2018 priority/2</code></p>
-</li>
-<li>
-<p><strong>Delete Task</strong> : <code>deleteTask INDEX</code><br>
-e.g. <code>deleteTask 1</code></p>
-</li>
-<li>
-<p><strong>Edit Task</strong> : <code>editTask INDEX [title/TASK TITLE] [desc/TASK DESCRIPTION] [by/DEADLINE] [priority/PRIORITY]</code>
-e.g. <code>editTask 1 title/Eat Dinner</code>
-<strong>Edit Task</strong>: <code>editTask INDEX [title/TASK TITLE] [desc/TASK DESCRIPTION] [by/DEADLINE] [priority/PRIORITY]</code>
-e.g. <code>editTask 1 title/Eat Dinner</code><br></p>
-</li>
-<li>
-<p><strong>List Task</strong>: <code>listTask</code><br></p>
-</li>
-<li>
-<p><strong>List Current month tasks</strong>: <code>listCurrentTask</code><br></p>
-</li>
-<li>
-<p><strong>Sort tasks by date</strong>: <code>sortTask</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="miscellaneous-commands"><a class="link" href="#miscellaneous-commands">Miscellaneous Commands</a></h3>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Help</strong> : <code>help</code></p>
-</li>
-<li>
-<p><strong>History</strong> : <code>history</code></p>
-</li>
-<li>
-<p><strong>Undo</strong> : <code>undo</code></p>
-</li>
-<li>
-<p><strong>Redo</strong> : <code>redo</code></p>
-</li>
-<li>
-<p><strong>Switch tabs</strong>: <code>switchTab</code></p>
-</li>
-</ul>
+<div class="title">Figure 2. Switches between tabs with command result displayed.</div>
 </div>
 </div>
 </div>
@@ -553,76 +208,56 @@ e.g. <code>editTask 1 title/Eat Dinner</code><br></p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
+<h3 id="task-list"><a class="link" href="#task-list">Task List</a></h3>
+<div class="paragraph">
+<p>Users are able to add, edit and remove tasks (with command <code>addTask</code>, <code>editTask</code> and <code>deleteTask</code>) in order to schedule their tasks within the application.
+Tasks scheduled in this application will be stored in <code>addressbook.xml</code> and displayed in the <code>Todo List</code> tab and <code>Calender</code> view respectively.</p>
+</div>
+<div class="paragraph">
+<p><code>Todo List</code> displays tasks with all fields (title, description, deadline and priority) in a list view whereas <code>Calender</code> displays tasks with only task titles in their respective date cells determined by their deadline.
+Tasks displayed in a date cell are color coded according to their priorities&#8201;&#8212;&#8201;Green being lowest, yellow being medium and red being highest . Tasks are displayed in <code>Todo List</code> and <code>Calender</code> as shown in figure 19.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/displayTask.png" alt="displayTask" width="800">
+</div>
+<div class="title">Figure 3. Tasks displayed in the application.</div>
+</div>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">Current implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the address book (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
+<p>An additional class, <code>UniqueTaskList</code> is added to the <code>AddressBook</code> class. This class contains an <code>ObservableList</code> of tasks and a 2-dimensional <code>ObservableList</code> of tasks.
+The previous is the actual copy of tasks stored in <code>addressbook.xml</code> while the latter is a copy of reorganized tasks for displaying in <code>Calendar</code>.</p>
 </div>
+<div class="sect4">
+<h5 id="adding-a-task"><a class="link" href="#adding-a-task">Adding a Task</a></h5>
 <div class="paragraph">
-<p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. The following diagram shows the inheritance diagram for commands:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>As you can see from the diagram, <code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone, such as the <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such as saving the state of the address book before execution. <code>UndoableCommand</code> contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the <a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a>.</p>
+<p>The <code>addTask</code> command requires fields of <code>title/</code>, <code>desc/</code>, <code>by/</code> and <code>priority/</code> to be present.
+Any missing field will cause a built-in exception thrown when creating the <code>Task</code> object as the <code>addTaskCommandParser</code> validates the presence of all required fields.
+The exception prevents the invalid task from being created and added into <code>UniqueTaskList</code>.</p>
 </div>
 <div class="paragraph">
-<p>Commands that are not undoable are implemented this way:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ListCommand</span> <span class="directive">extends</span> Command {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult execute() {
-        <span class="comment">// ... list logic ...</span>
-    }
-}</code></pre>
-</div>
+<p>Multiple of same field is allowed but all are discarded except the last entry of that field by <code>ArgumentTokenizer</code> called in <code>AddTaskCommandParser</code>.</p>
 </div>
 <div class="paragraph">
-<p>With the extra layer, the commands that are undoable are implemented this way:</p>
+<p>After successful creating the <code>Task</code> object, <code>ModelManager</code> will help add the object into <code>Addressbook</code>.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">abstract</span> <span class="type">class</span> <span class="class">UndoableCommand</span> <span class="directive">extends</span> Command {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult execute() {
-        <span class="comment">// ... undo logic ...</span>
-
-        executeUndoableCommand();
-    }
-}
-
-<span class="directive">public</span> <span class="type">class</span> <span class="class">DeleteCommand</span> <span class="directive">extends</span> UndoableCommand {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult executeUndoableCommand() {
-        <span class="comment">// ... delete logic ...</span>
-    }
-}</code></pre>
 </div>
+<div class="sect4">
+<h5 id="deleting-a-task"><a class="link" href="#deleting-a-task">Deleting a Task</a></h5>
+<div class="paragraph">
+<p>The <code>deleteTask</code> command requires a positive task index which specifies the task to be deleted. The <code>DeleteTaskCommandParse</code> validates this index with accordance to the current displayed <code>Todo List</code> size.
+If the index is valid, the <code>DeleteTaskCommand</code> will delete the corresponding <code>Task</code> object from <code>UniqueTaskList</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="editing-a-task"><a class="link" href="#editing-a-task">Editing a Task</a></h5>
+<div class="paragraph">
+<p>The <code>editTask</code> command requires a positive task index and desired edit fields indicated by prefix <code>title/</code>, <code>desc/</code>, <code>by/</code> and <code>priority/</code>. The <code>EditTaskCommandParser</code> validates that there is at least one field specified in the command.</p>
 </div>
 <div class="paragraph">
-<p>Suppose that the user has just launched the application. The <code>UndoRedoStack</code> will be empty at the beginning.</p>
-</div>
-<div class="paragraph">
-<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th person in the address book. The current state of the address book is saved before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto the <code>undoStack</code> (the current state is saved together with the command).</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoStartingStackDiagram.png" alt="UndoRedoStartingStackDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>As the user continues to use the program, more commands are added into the <code>undoStack</code>. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new person.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand1StackDiagram.png" alt="UndoRedoNewCommand1StackDiagram" width="800">
-</div>
+<p><code>EditTaskCommand</code> then creates a new <code>Task</code> object with modified fields and other unmodified fields identical.
+The <code>AddressBook</code> will be called by <code>ModelManager</code> to delete the original <code>Task</code> object from the <code>UniqueTaskList</code> and add the newly created task to the <code>UniqueTaskList</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -631,22 +266,45 @@ e.g. <code>editTask 1 title/Eat Dinner</code><br></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not be pushed to the <code>UndoRedoStack</code> at all.
+<div class="paragraph">
+<p>Add task, delete task and edit task commands support <code>undo</code> and <code>redo</code> commands.</p>
+</div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The user now decides that adding the person was a mistake, and decides to undo that action using <code>undo</code>.</p>
-</div>
-<div class="paragraph">
-<p>We will pop the most recent command out of the <code>undoStack</code> and push it back to the <code>redoStack</code>.
-It would then proceed to restore the address book to the state before the <code>add</code> command executed.</p>
+<p>Add task, delete task and edit task commands have similar sequence behavior. Below is an example of the overview how components interact during deletion of a task.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoExecuteUndoStackDiagram.png" alt="UndoRedoExecuteUndoStackDiagram" width="800">
+<img src="../images/DeleteTaskCommandSequenceDiagram.png" alt="DeleteTaskCommandSequenceDiagram" width="800">
 </div>
+<div class="title">Figure 4. Dlete a task.</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="listing-tasks"><a class="link" href="#listing-tasks">Listing Tasks</a></h5>
+<div class="paragraph">
+<p>The execution of <code>listTask</code> command parses a predicate argument PREDICATE_SHOW_ALL_TASK to <code>ModelManager</code> which updates the task list based on this predicate.
+This will extract all tasks saved in the data file <code>addressbook.xml</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="listing-current-month-tasks"><a class="link" href="#listing-current-month-tasks">Listing Current Month Tasks</a></h5>
+<div class="paragraph">
+<p>The execution of <code>listCurrentTask</code> command parses the predicate argument PREDICATE_SHOW_ALL_CURRENT_TASK to <code>Model</code>. <code>ModelManager</code> then updates the task list based on this predicate.
+This is similar to Listing tasks but it will only extract tasks with deadlines due in the current month.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="sorting-tasks"><a class="link" href="#sorting-tasks">Sorting Tasks</a></h5>
+<div class="paragraph">
+<p><code>Task</code> class implements Java <code>Comparable&lt;&gt;</code> class which enables sorting without writing the actual sorting algorithm. Thus,the execution of <code>sortTask</code> command relies on it.
+<code>Model</code> then calls <code>AddressBook</code> which sorts the tasks in <code>UniqueTaskList</code>.</p>
+</div>
+<div class="paragraph">
+<p>The sorting is done by comparing the year, month and date sequentially. This is specified in the compareTo() method in <code>Task</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -655,187 +313,43 @@ It would then proceed to restore the address book to the state before the <code>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>undoStack</code> is empty, then there are no other commands left to be undone, and an <code>Exception</code> will be thrown when popping the <code>undoStack</code>.
+<div class="paragraph">
+<p>listing and sorting tasks do not support <code>undo</code> and <code>redo</code> commands.</p>
+</div>
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The redo does the exact opposite (pops from <code>redoStack</code>, push to <code>undoStack</code>, and restores the address book to the state after the command is executed).</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>redoStack</code> is empty, then there are no other commands left to be redone, and an <code>Exception</code> will be thrown when popping the <code>redoStack</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into the <code>undoStack</code>. This time the <code>redoStack</code> is no longer empty. It will be purged as it no longer make sense to redo the <code>add n/David</code> command (this is the behavior that most modern desktop applications follow).</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand2StackDiagram.png" alt="UndoRedoNewCommand2StackDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand3StackDiagram.png" alt="UndoRedoNewCommand3StackDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarize what happens inside the <code>UndoRedoStack</code> when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design considerations</a></h4>
+<h4 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h4>
 <div class="sect4">
-<h5 id="aspect-implementation-of-code-undoablecommand-code"><a class="link" href="#aspect-implementation-of-code-undoablecommand-code">Aspect: Implementation of <code>UndoableCommand</code></a></h5>
+<h5 id="aspect-how-code-edittaskcommand-code-executes"><a class="link" href="#aspect-how-code-edittaskcommand-code-executes">Aspect: How <code>EditTaskCommand</code> executes</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Add a new abstract method <code>executeUndoableCommand()</code></p>
+<p><strong>Alternative 1(current choice): </strong> Adds a new Task and deletes the original task</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: We will not lose any undone/redone functionality as it is now part of the default behaviour. Classes that deal with <code>Command</code> do not have to know that <code>executeUndoableCommand()</code> exist.</p>
+<p>Pros: Easy to implement, no need to worry about the change of deadline shown in <code>Calendar</code></p>
 </li>
 <li>
-<p>Cons: Hard for new developers to understand the template pattern.</p>
+<p>Cons: Unable to maintain the original task list order.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Just override <code>execute()</code></p>
+<p><strong>Alternative 2: </strong> Edits the field of original task</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Does not involve the template pattern, easier for new developers to understand.</p>
+<p>Pros: Maintains the task list order</p>
 </li>
 <li>
-<p>Cons: Classes that inherit from <code>UndoableCommand</code> must remember to call <code>super.execute()</code>, or lose the ability to undo/redo.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
-</li>
-<li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-type-of-commands-that-can-be-undone-redone"><a class="link" href="#aspect-type-of-commands-that-can-be-undone-redone">Aspect: Type of commands that can be undone/redone</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Only include commands that modifies the address book (<code>add</code>, <code>clear</code>, <code>edit</code>).</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We only revert changes that are hard to change back (the view can easily be re-modified as no data are * lost).</p>
-</li>
-<li>
-<p>Cons: User might think that undo also applies when the list is modified (undoing filtering for example), * only to realize that it does not do that, after executing <code>undo</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Include all commands.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Might be more intuitive for the user.</p>
-</li>
-<li>
-<p>Cons: User have no way of skipping such commands if he or she just want to reset the state of the address * book and not the view.
-<strong>Additional Info:</strong> See our discussion  <a href="https://github.com/se-edu/addressbook-level4/issues/390#issuecomment-298936672">here</a>.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use separate stack for undo and redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to understand for new Computer Science student undergraduates to understand, who are likely to be * the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update * both <code>HistoryManager</code> and <code>UndoRedoStack</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate stack, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two * different things.</p>
+<p>Cons: Difficult to implement as a new mechanism to sync the <code>Calendar</code> cells is needed.</p>
 </li>
 </ul>
 </div>
@@ -844,28 +358,13 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="data-encryption-coming-in-v2-0"><a class="link" href="#data-encryption-coming-in-v2-0">Data encryption (coming in v2.0)</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 22:26:35 UTC
+Last updated 2018-04-15 01:12:43 UTC
 </div>
 </div>
 </body>

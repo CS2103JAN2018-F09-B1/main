@@ -56,9 +56,10 @@
 <li><a href="#undo-redo-feature">5.3. Undo/Redo feature</a></li>
 <li><a href="#participation">5.4. Participation</a></li>
 <li><a href="#display-picture">5.5. Display picture</a></li>
-<li><a href="#logging">5.6. Logging</a></li>
-<li><a href="#Implementation-Configuration">5.7. Configuration</a></li>
-<li><a href="#data-encryption-coming-in-v2-0">5.8. Data encryption (coming in v2.0)</a></li>
+<li><a href="#task-list">5.6. Task List</a></li>
+<li><a href="#logging">5.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">5.8. Configuration</a></li>
+<li><a href="#data-encryption-coming-in-v2-0">5.9. Data encryption (coming in v2.0)</a></li>
 </ul>
 </li>
 <li><a href="#documentation">6. Documentation</a>
@@ -1920,14 +1921,166 @@ will be the SHA-256 hash of the previous image filename.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">5.6. Logging</a></h3>
+<h3 id="task-list"><a class="link" href="#task-list">5.6. Task List</a></h3>
+<div class="paragraph">
+<p>Users are able to add, edit and remove tasks (with command <code>addTask</code>, <code>editTask</code> and <code>deleteTask</code>) in order to schedule their tasks within the application.
+Tasks scheduled in this application will be stored in <code>addressbook.xml</code> and displayed in the <code>Todo List</code> tab and <code>Calender</code> view respectively.</p>
+</div>
+<div class="paragraph">
+<p><code>Todo List</code> displays tasks with all fields (title, description, deadline and priority) in a list view whereas <code>Calender</code> displays tasks with only task titles in their respective date cells determined by their deadline.
+Tasks displayed in a date cell are color coded according to their priorities&#8201;&#8212;&#8201;Green being lowest, yellow being medium and red being highest . Tasks are displayed in <code>Todo List</code> and <code>Calender</code> as shown in figure 19.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/displayTask.png" alt="displayTask" width="800">
+</div>
+<div class="title">Figure 18. Tasks displayed in the application.</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">5.6.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>An additional class, <code>UniqueTaskList</code> is added to the <code>AddressBook</code> class. This class contains an <code>ObservableList</code> of tasks and a 2-dimensional <code>ObservableList</code> of tasks.
+The previous is the actual copy of tasks stored in <code>addressbook.xml</code> while the latter is a copy of reorganized tasks for displaying in <code>Calendar</code>.</p>
+</div>
+<div class="sect4">
+<h5 id="adding-a-task"><a class="link" href="#adding-a-task">Adding a Task</a></h5>
+<div class="paragraph">
+<p>The <code>addTask</code> command requires fields of <code>title/</code>, <code>desc/</code>, <code>by/</code> and <code>priority/</code> to be present.
+Any missing field will cause a built-in exception thrown when creating the <code>Task</code> object as the <code>addTaskCommandParser</code> validates the presence of all required fields.
+The exception prevents the invalid task from being created and added into <code>UniqueTaskList</code>.</p>
+</div>
+<div class="paragraph">
+<p>Multiple of same field is allowed but all are discarded except the last entry of that field by <code>ArgumentTokenizer</code> called in <code>AddTaskCommandParser</code>.</p>
+</div>
+<div class="paragraph">
+<p>After successful creating the <code>Task</code> object, <code>ModelManager</code> will help add the object into <code>Addressbook</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="deleting-a-task"><a class="link" href="#deleting-a-task">Deleting a Task</a></h5>
+<div class="paragraph">
+<p>The <code>deleteTask</code> command requires a positive task index which specifies the task to be deleted. The <code>DeleteTaskCommandParse</code> validates this index with accordance to the current displayed <code>Todo List</code> size.
+If the index is valid, the <code>DeleteTaskCommand</code> will delete the corresponding <code>Task</code> object from <code>UniqueTaskList</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="editing-a-task"><a class="link" href="#editing-a-task">Editing a Task</a></h5>
+<div class="paragraph">
+<p>The <code>editTask</code> command requires a positive task index and desired edit fields indicated by prefix <code>title/</code>, <code>desc/</code>, <code>by/</code> and <code>priority/</code>. The <code>EditTaskCommandParser</code> validates that there is at least one field specified in the command.</p>
+</div>
+<div class="paragraph">
+<p><code>EditTaskCommand</code> then creates a new <code>Task</code> object with modified fields and other unmodified fields identical.
+The <code>AddressBook</code> will be called by <code>ModelManager</code> to delete the original <code>Task</code> object from the <code>UniqueTaskList</code> and add the newly created task to the <code>UniqueTaskList</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Add task, delete task and edit task commands support <code>undo</code> and <code>redo</code> commands.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Add task, delete task and edit task commands have similar sequence behavior. Below is an example of the overview how components interact during deletion of a task.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeleteTaskCommandSequenceDiagram.png" alt="DeleteTaskCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 19. Dlete a task.</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="listing-tasks"><a class="link" href="#listing-tasks">Listing Tasks</a></h5>
+<div class="paragraph">
+<p>The execution of <code>listTask</code> command parses a predicate argument PREDICATE_SHOW_ALL_TASK to <code>ModelManager</code> which updates the task list based on this predicate.
+This will extract all tasks saved in the data file <code>addressbook.xml</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="listing-current-month-tasks"><a class="link" href="#listing-current-month-tasks">Listing Current Month Tasks</a></h5>
+<div class="paragraph">
+<p>The execution of <code>listCurrentTask</code> command parses the predicate argument PREDICATE_SHOW_ALL_CURRENT_TASK to <code>Model</code>. <code>ModelManager</code> then updates the task list based on this predicate.
+This is similar to Listing tasks but it will only extract tasks with deadlines due in the current month.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="sorting-tasks"><a class="link" href="#sorting-tasks">Sorting Tasks</a></h5>
+<div class="paragraph">
+<p><code>Task</code> class implements Java <code>Comparable&lt;&gt;</code> class which enables sorting without writing the actual sorting algorithm. Thus,the execution of <code>sortTask</code> command relies on it.
+<code>Model</code> then calls <code>AddressBook</code> which sorts the tasks in <code>UniqueTaskList</code>.</p>
+</div>
+<div class="paragraph">
+<p>The sorting is done by comparing the year, month and date sequentially. This is specified in the compareTo() method in <code>Task</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>listing and sorting tasks do not support <code>undo</code> and <code>redo</code> commands.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration"><a class="link" href="#design-consideration">5.6.2. Design Consideration</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-code-edittaskcommand-code-executes"><a class="link" href="#aspect-how-code-edittaskcommand-code-executes">Aspect: How <code>EditTaskCommand</code> executes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1(current choice): </strong> Adds a new Task and deletes the original task</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement, no need to worry about the change of deadline shown in <code>Calendar</code></p>
+</li>
+<li>
+<p>Cons: Unable to maintain the original task list order.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2: </strong> Edits the field of original task</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Maintains the task list order</p>
+</li>
+<li>
+<p>Cons: Difficult to implement as a new mechanism to sync the <code>Calendar</code> cells is needed.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">5.7. Logging</a></h3>
 <div class="paragraph">
 <p>We utilize <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class manages the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file. (See <a href="#Implementation-Configuration">Section 5.7, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file. (See <a href="#Implementation-Configuration">Section 5.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level.</p>
@@ -1958,13 +2111,13 @@ will be the SHA-256 hash of the previous image filename.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.7. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g app name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="data-encryption-coming-in-v2-0"><a class="link" href="#data-encryption-coming-in-v2-0">5.8. Data encryption (coming in v2.0)</a></h3>
+<h3 id="data-encryption-coming-in-v2-0"><a class="link" href="#data-encryption-coming-in-v2-0">5.9. Data encryption (coming in v2.0)</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
@@ -2030,7 +2183,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 18. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 20. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -3056,7 +3209,7 @@ Expected: John Doe is added with the specified details and has the default displ
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 22:26:35 UTC
+Last updated 2018-04-15 01:12:43 UTC
 </div>
 </div>
 </body>
