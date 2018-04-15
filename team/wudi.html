@@ -208,7 +208,7 @@ Format: <code>switchTab</code></p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="task-list"><a class="link" href="#task-list">Task List</a></h3>
+<h3 id="task-list"><a class="link" href="#task-list">Task list</a></h3>
 <div class="paragraph">
 <p>Users are able to add, edit and remove tasks (with command <code>addTask</code>, <code>editTask</code> and <code>deleteTask</code>) in order to schedule their tasks within the application.
 Tasks scheduled in this application will be stored in <code>addressbook.xml</code> and displayed in the <code>Todo List</code> tab and <code>Calender</code> view respectively.</p>
@@ -224,13 +224,13 @@ Tasks displayed in a date cell are color coded according to their priorities&#82
 <div class="title">Figure 3. Tasks displayed in the application.</div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current implementation</a></h4>
 <div class="paragraph">
 <p>An additional class, <code>UniqueTaskList</code> is added to the <code>AddressBook</code> class. This class contains an <code>ObservableList</code> of tasks and a 2-dimensional <code>ObservableList</code> of tasks.
 The previous is the actual copy of tasks stored in <code>addressbook.xml</code> while the latter is a copy of reorganized tasks for displaying in <code>Calendar</code>.</p>
 </div>
 <div class="sect4">
-<h5 id="adding-a-task"><a class="link" href="#adding-a-task">Adding a Task</a></h5>
+<h5 id="adding-a-task"><a class="link" href="#adding-a-task">Adding a task</a></h5>
 <div class="paragraph">
 <p>The <code>addTask</code> command requires fields of <code>title/</code>, <code>desc/</code>, <code>by/</code> and <code>priority/</code> to be present.
 Any missing field will cause a built-in exception thrown when creating the <code>Task</code> object as the <code>addTaskCommandParser</code> validates the presence of all required fields.
@@ -244,14 +244,14 @@ The exception prevents the invalid task from being created and added into <code>
 </div>
 </div>
 <div class="sect4">
-<h5 id="deleting-a-task"><a class="link" href="#deleting-a-task">Deleting a Task</a></h5>
+<h5 id="deleting-a-task"><a class="link" href="#deleting-a-task">Deleting a task</a></h5>
 <div class="paragraph">
 <p>The <code>deleteTask</code> command requires a positive task index which specifies the task to be deleted. The <code>DeleteTaskCommandParse</code> validates this index with accordance to the current displayed <code>Todo List</code> size.
 If the index is valid, the <code>DeleteTaskCommand</code> will delete the corresponding <code>Task</code> object from <code>UniqueTaskList</code>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="editing-a-task"><a class="link" href="#editing-a-task">Editing a Task</a></h5>
+<h5 id="editing-a-task"><a class="link" href="#editing-a-task">Editing a task</a></h5>
 <div class="paragraph">
 <p>The <code>editTask</code> command requires a positive task index and desired edit fields indicated by prefix <code>title/</code>, <code>desc/</code>, <code>by/</code> and <code>priority/</code>. The <code>EditTaskCommandParser</code> validates that there is at least one field specified in the command.</p>
 </div>
@@ -284,21 +284,21 @@ The <code>AddressBook</code> will be called by <code>ModelManager</code> to dele
 </div>
 </div>
 <div class="sect4">
-<h5 id="listing-tasks"><a class="link" href="#listing-tasks">Listing Tasks</a></h5>
+<h5 id="listing-tasks"><a class="link" href="#listing-tasks">Listing tasks</a></h5>
 <div class="paragraph">
 <p>The execution of <code>listTask</code> command parses a predicate argument PREDICATE_SHOW_ALL_TASK to <code>ModelManager</code> which updates the task list based on this predicate.
 This will extract all tasks saved in the data file <code>addressbook.xml</code>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="listing-current-month-tasks"><a class="link" href="#listing-current-month-tasks">Listing Current Month Tasks</a></h5>
+<h5 id="listing-current-month-tasks"><a class="link" href="#listing-current-month-tasks">Listing current month tasks</a></h5>
 <div class="paragraph">
 <p>The execution of <code>listCurrentTask</code> command parses the predicate argument PREDICATE_SHOW_ALL_CURRENT_TASK to <code>Model</code>. <code>ModelManager</code> then updates the task list based on this predicate.
 This is similar to Listing tasks but it will only extract tasks with deadlines due in the current month.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="sorting-tasks"><a class="link" href="#sorting-tasks">Sorting Tasks</a></h5>
+<h5 id="sorting-tasks"><a class="link" href="#sorting-tasks">Sorting tasks</a></h5>
 <div class="paragraph">
 <p><code>Task</code> class implements Java <code>Comparable&lt;&gt;</code> class which enables sorting without writing the actual sorting algorithm. Thus,the execution of <code>sortTask</code> command relies on it.
 <code>Model</code> then calls <code>AddressBook</code> which sorts the tasks in <code>UniqueTaskList</code>.</p>
@@ -323,7 +323,7 @@ This is similar to Listing tasks but it will only extract tasks with deadlines d
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h4>
+<h4 id="design-consideration"><a class="link" href="#design-consideration">Design consideration</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-code-edittaskcommand-code-executes"><a class="link" href="#aspect-how-code-edittaskcommand-code-executes">Aspect: How <code>EditTaskCommand</code> executes</a></h5>
 <div class="ulist">
@@ -364,7 +364,7 @@ This is similar to Listing tasks but it will only extract tasks with deadlines d
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 08:31:29 UTC
+Last updated 2018-04-15 09:52:49 UTC
 </div>
 </div>
 </body>

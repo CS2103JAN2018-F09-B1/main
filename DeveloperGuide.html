@@ -52,16 +52,15 @@
 <li><a href="#implementation">5. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#login-feature">5.1. Login feature</a></li>
-<li><a href="#help-feature">5.2. Help feature</a></li>
-<li><a href="#undo-redo-feature">5.3. Undo/Redo feature</a></li>
-<li><a href="#tasks-on-calendar-view">5.4. Tasks on Calendar View</a></li>
-<li><a href="#matriculation-number">5.5. Matriculation Number</a></li>
-<li><a href="#participation">5.6. Participation</a></li>
-<li><a href="#display-picture">5.7. Display picture</a></li>
-<li><a href="#task-list">5.8. Task List</a></li>
-<li><a href="#logging">5.9. Logging</a></li>
-<li><a href="#Implementation-Configuration">5.10. Configuration</a></li>
-<li><a href="#data-encryption-coming-in-v2-0">5.11. Data encryption (coming in v2.0)</a></li>
+<li><a href="#undo-redo-feature">5.2. Undo/Redo feature</a></li>
+<li><a href="#matriculation-number">5.3. Matriculation number</a></li>
+<li><a href="#participation">5.4. Participation</a></li>
+<li><a href="#display-picture">5.5. Display picture</a></li>
+<li><a href="#task-list">5.6. Task list</a></li>
+<li><a href="#tasks-on-calendar-view">5.7. Tasks on calendar view</a></li>
+<li><a href="#logging">5.8. Logging</a></li>
+<li><a href="#Implementation-Configuration">5.9. Configuration</a></li>
+<li><a href="#data-encryption-coming-in-v2-0">5.10. Data encryption (coming in v2.0)</a></li>
 </ul>
 </li>
 <li><a href="#documentation">6. Documentation</a>
@@ -88,9 +87,10 @@
 <li><a href="#managing-dependencies">8.6. Managing dependencies</a></li>
 </ul>
 </li>
-<li><a href="#product-scope">Appendix A: Product Scope</a>
+<li><a href="#product-scope-and-features">Appendix A: Product Scope and Features</a>
 <ul class="sectlevel2">
-<li><a href="#feature-contribution">A.1. Feature contribution</a></li>
+<li><a href="#product-scope">A.1. Product scope</a></li>
+<li><a href="#feature-contribution">A.2. Feature contribution</a></li>
 </ul>
 </li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
@@ -102,12 +102,11 @@
 <li><a href="#launch-and-shutdown">F.1. Launch and shutdown</a></li>
 <li><a href="#deleting-a-person">F.2. Deleting a person</a></li>
 <li><a href="#adding-participation-marks-for-a-person">F.3. Adding participation marks for a person</a></li>
-<li><a href="#adding-display-picture-to-a-person">F.4. Adding display picture to a person</a></li>
+<li><a href="#adding-updating-display-picture-for-a-person">F.4. Adding/Updating display picture for a person</a></li>
 <li><a href="#saving-and-loading-of-the-image-files">F.5. Saving and loading of the image files</a></li>
 <li><a href="#adding-a-task-2">F.6. Adding a Task</a></li>
 <li><a href="#deleting-a-task-2">F.7. Deleting a Task</a></li>
 <li><a href="#editing-a-task-2">F.8. Editing a Task</a></li>
-<li><a href="#saving-data">F.9. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -1187,18 +1186,9 @@ If the user is a new (username does not exist), they should simply enter their d
 </div>
 </div>
 <div class="sect2">
-<h3 id="help-feature"><a class="link" href="#help-feature">5.2. Help feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">5.2. Undo/Redo feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">5.2.1. Current implementation</a></h4>
-<div class="paragraph">
-<p>The help command opens a new window, opening the user guide.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">5.3. Undo/Redo feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">5.3.1. Current implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the address book (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
 </div>
@@ -1352,7 +1342,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">5.3.2. Design considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">5.2.2. Design considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-code-undoablecommand-code"><a class="link" href="#aspect-implementation-of-code-undoablecommand-code">Aspect: Implementation of <code>UndoableCommand</code></a></h5>
 <div class="ulist">
@@ -1489,109 +1479,20 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="tasks-on-calendar-view"><a class="link" href="#tasks-on-calendar-view">5.4. Tasks on Calendar View</a></h3>
-<div class="paragraph">
-<p>This feature allows the user to see the calendar on the UI and see the scheduled <code>Task</code> deadlines on the calendar.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">5.4.1. Current implementation</a></h4>
-<div class="paragraph">
-<p>The user will enter a command <code>addTask title/TITLE desc/DESCRIPTION by/DEADLINE priority/PRIORITY</code> to the application. The application will then rely on <code>AddressBookparser</code> and
-parse the argument. The argument will be passed into the AddTaskCommand to be executed. From there, it will create a new <code>Task</code> object that will be
-added to the <code>calendarList</code> of the <code>UniqueTaskList</code> which in turn will be displayed on the date of the deadline, on the calendar.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">5.4.2. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-to-link-specific-tasks-to-the-correct-calendar-nodes"><a class="link" href="#aspect-how-to-link-specific-tasks-to-the-correct-calendar-nodes">Aspect: How to link specific tasks to the correct calendar nodes</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a 7 by 32, 2D <code>Array</code> to store the tasks to be added into the calendar.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Separate from the Task list (less prone to bugs). Faster run time (does not need to iterate through all tasks).</p>
-</li>
-<li>
-<p>Cons: Higher memory usage constraint, can only schedule tasks up to 6 months in advance to prevent high memory usage that will affect the speed and performance of the app.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use the task list itself to be displayed in the calendar.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easier to program and less memory usage (only 1 task list is used without another 2D array for the calendar), tasks can be scheduled as far ahead as desired.</p>
-</li>
-<li>
-<p>Cons: Needs to iterate through the entire task list for every calendar node when loading the calendar view (slows performance when dealing with tasks).</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-viewing-the-calendar-only-by-month"><a class="link" href="#aspect-viewing-the-calendar-only-by-month">Aspect: Viewing the calendar only by month</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a monthly only calendar view.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy view of the current tasks that are due on that month.</p>
-</li>
-<li>
-<p>Cons: Not much choice for the user as only the monthly view is provided.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Give the user a choice to switch between weekly, monthly or yearly, e.g. <em>calendarfx</em>.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: User has more choice and freedom to control their UI.</p>
-</li>
-<li>
-<p>Cons: Difficult to implement, also if 3rd party programs such at <em>calendarfx</em> is used, certain features in those programs are redundant (e.g. map) and would only slow the app down.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="future-enhancements-coming-in-v2-0"><a class="link" href="#future-enhancements-coming-in-v2-0">5.4.3. Future enhancements (Coming in v2.0)</a></h4>
-<div class="paragraph">
-<p>Link specific key-press or select actions to the todo list such that a click on either side will display the selected task on the other.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="matriculation-number"><a class="link" href="#matriculation-number">5.5. Matriculation Number</a></h3>
+<h3 id="matriculation-number"><a class="link" href="#matriculation-number">5.3. Matriculation number</a></h3>
 <div class="paragraph">
 <p>This feature allows the user to keep track of the matriculation number of a <code>Person</code>. The matriculation number in this case
 has to start with an "A" or "U" followed by 7 digits and end with a capital letter. A new class, <code>Matriculation Number</code>, is created and is associated to the <code>Person</code> class.
 This is integrated into the <code>AddCommand</code> and <code>EditCommand</code> commands to update the participation marks of a <code>Person</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">5.5.1. Current implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">5.3.1. Current implementation</a></h4>
 <div class="paragraph">
 <p>The user will input an AddCommand or EditCommand, with the additional parameter <code>m/MATRICULATION_NUMBER</code>, to the application to update the marks.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">5.5.2. Design considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">5.3.2. Design considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-should-2-people-be-allowed-to-have-to-same-matriculation-number"><a class="link" href="#aspect-should-2-people-be-allowed-to-have-to-same-matriculation-number">Aspect: Should 2 people be allowed to have to same matriculation number</a></h5>
 <div class="ulist">
@@ -1627,7 +1528,7 @@ This is integrated into the <code>AddCommand</code> and <code>EditCommand</code>
 </div>
 </div>
 <div class="sect3">
-<h4 id="future-enhancements-coming-in-v2-0-2"><a class="link" href="#future-enhancements-coming-in-v2-0-2">5.5.3. Future enhancements (Coming in v2.0)</a></h4>
+<h4 id="future-enhancements-coming-in-v2-0"><a class="link" href="#future-enhancements-coming-in-v2-0">5.3.3. Future enhancements (Coming in v2.0)</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1638,13 +1539,13 @@ This is integrated into the <code>AddCommand</code> and <code>EditCommand</code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="participation"><a class="link" href="#participation">5.6. Participation</a></h3>
+<h3 id="participation"><a class="link" href="#participation">5.4. Participation</a></h3>
 <div class="paragraph">
 <p>This feature allows the user to keep track of participation marks of a <code>Person</code>. The participation marks in this case is limited to an integer value of 0 to 100 inclusive. A new class, <code>Participation</code>, is created and is associated to the <code>Person</code> class.
 This utilizes the <code>MarkCommand</code> command to update the participation marks of a <code>Person</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">5.6.1. Current implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">5.4.1. Current implementation</a></h4>
 <div class="paragraph">
 <p>The user will input a command, <code>markPart INDEX marks/DIGITS</code>, to the application to update the marks.</p>
 </div>
@@ -1681,7 +1582,7 @@ This utilizes the <code>MarkCommand</code> command to update the participation m
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">5.6.2. Design considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">5.4.2. Design considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-update-the-marks"><a class="link" href="#aspect-how-to-update-the-marks">Aspect: How to update the marks</a></h5>
 <div class="ulist">
@@ -1750,7 +1651,7 @@ This utilizes the <code>MarkCommand</code> command to update the participation m
 </div>
 </div>
 <div class="sect3">
-<h4 id="future-enhancements-coming-in-v2-0-3"><a class="link" href="#future-enhancements-coming-in-v2-0-3">5.6.3. Future enhancements (Coming in v2.0)</a></h4>
+<h4 id="future-enhancements-coming-in-v2-0-2"><a class="link" href="#future-enhancements-coming-in-v2-0-2">5.4.3. Future enhancements (Coming in v2.0)</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1761,7 +1662,7 @@ This utilizes the <code>MarkCommand</code> command to update the participation m
 </div>
 </div>
 <div class="sect2">
-<h3 id="display-picture"><a class="link" href="#display-picture">5.7. Display picture</a></h3>
+<h3 id="display-picture"><a class="link" href="#display-picture">5.5. Display picture</a></h3>
 <div class="paragraph">
 <p>Users are able to add a display picture for any person within the application. The user can utilise 3 different commands (<code>add</code>, <code>edit</code> and <code>updateDP</code>) to create and specify a display image for the person.
 It fully supports the <code>undo</code> and <code>redo</code> commands as well. It adds a drop shadow around the frame to indicate the level of participation (see above section 5.3) of the person.</p>
@@ -1783,7 +1684,7 @@ This image will be shown in the application next to the details of the person as
 <div class="title">Figure 13. Display Picture example</div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">5.7.1. Current implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">5.5.1. Current implementation</a></h4>
 <div class="paragraph">
 <p>An additional class, <code>DisplayPic</code>, is added to the <code>Person</code> class. This class contains the filepath to the stored image file.
 It uses validation checks to ensure that the image meets the following requirements:</p>
@@ -1962,7 +1863,7 @@ will be the SHA-256 hash of the previous image filename.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">5.7.2. Design considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">5.5.2. Design considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-filepath-to-the-image"><a class="link" href="#aspect-filepath-to-the-image">Aspect: Filepath to the image</a></h5>
 <div class="ulist">
@@ -2064,7 +1965,7 @@ will be the SHA-256 hash of the previous image filename.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="future-enhancements-coming-in-v2-0-4"><a class="link" href="#future-enhancements-coming-in-v2-0-4">5.7.3. Future enhancements (Coming in v2.0)</a></h4>
+<h4 id="future-enhancements-coming-in-v2-0-3"><a class="link" href="#future-enhancements-coming-in-v2-0-3">5.5.3. Future enhancements (Coming in v2.0)</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2075,7 +1976,7 @@ will be the SHA-256 hash of the previous image filename.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="task-list"><a class="link" href="#task-list">5.8. Task List</a></h3>
+<h3 id="task-list"><a class="link" href="#task-list">5.6. Task list</a></h3>
 <div class="paragraph">
 <p>Users are able to add, edit and remove tasks (with command <code>addTask</code>, <code>editTask</code> and <code>deleteTask</code>) in order to schedule their tasks within the application.
 Tasks scheduled in this application will be stored in <code>addressbook.xml</code> and displayed in the <code>Todo List</code> tab and <code>Calender</code> view respectively.</p>
@@ -2091,13 +1992,13 @@ Tasks displayed in a date cell are color coded according to their priorities&#82
 <div class="title">Figure 18. Tasks displayed in the application.</div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">5.8.1. Current Implementation</a></h4>
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">5.6.1. Current implementation</a></h4>
 <div class="paragraph">
 <p>An additional class, <code>UniqueTaskList</code> is added to the <code>AddressBook</code> class. This class contains an <code>ObservableList</code> of tasks and a 2-dimensional <code>ObservableList</code> of tasks.
 The previous is the actual copy of tasks stored in <code>addressbook.xml</code> while the latter is a copy of reorganized tasks for displaying in <code>Calendar</code>.</p>
 </div>
 <div class="sect4">
-<h5 id="adding-a-task"><a class="link" href="#adding-a-task">Adding a Task</a></h5>
+<h5 id="adding-a-task"><a class="link" href="#adding-a-task">Adding a task</a></h5>
 <div class="paragraph">
 <p>The <code>addTask</code> command requires fields of <code>title/</code>, <code>desc/</code>, <code>by/</code> and <code>priority/</code> to be present.
 Any missing field will cause a built-in exception thrown when creating the <code>Task</code> object as the <code>addTaskCommandParser</code> validates the presence of all required fields.
@@ -2111,14 +2012,14 @@ The exception prevents the invalid task from being created and added into <code>
 </div>
 </div>
 <div class="sect4">
-<h5 id="deleting-a-task"><a class="link" href="#deleting-a-task">Deleting a Task</a></h5>
+<h5 id="deleting-a-task"><a class="link" href="#deleting-a-task">Deleting a task</a></h5>
 <div class="paragraph">
 <p>The <code>deleteTask</code> command requires a positive task index which specifies the task to be deleted. The <code>DeleteTaskCommandParse</code> validates this index with accordance to the current displayed <code>Todo List</code> size.
 If the index is valid, the <code>DeleteTaskCommand</code> will delete the corresponding <code>Task</code> object from <code>UniqueTaskList</code>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="editing-a-task"><a class="link" href="#editing-a-task">Editing a Task</a></h5>
+<h5 id="editing-a-task"><a class="link" href="#editing-a-task">Editing a task</a></h5>
 <div class="paragraph">
 <p>The <code>editTask</code> command requires a positive task index and desired edit fields indicated by prefix <code>title/</code>, <code>desc/</code>, <code>by/</code> and <code>priority/</code>. The <code>EditTaskCommandParser</code> validates that there is at least one field specified in the command.</p>
 </div>
@@ -2151,21 +2052,21 @@ The <code>AddressBook</code> will be called by <code>ModelManager</code> to dele
 </div>
 </div>
 <div class="sect4">
-<h5 id="listing-tasks"><a class="link" href="#listing-tasks">Listing Tasks</a></h5>
+<h5 id="listing-tasks"><a class="link" href="#listing-tasks">Listing tasks</a></h5>
 <div class="paragraph">
 <p>The execution of <code>listTask</code> command parses a predicate argument PREDICATE_SHOW_ALL_TASK to <code>ModelManager</code> which updates the task list based on this predicate.
 This will extract all tasks saved in the data file <code>addressbook.xml</code>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="listing-current-month-tasks"><a class="link" href="#listing-current-month-tasks">Listing Current Month Tasks</a></h5>
+<h5 id="listing-current-month-tasks"><a class="link" href="#listing-current-month-tasks">Listing current month tasks</a></h5>
 <div class="paragraph">
 <p>The execution of <code>listCurrentTask</code> command parses the predicate argument PREDICATE_SHOW_ALL_CURRENT_TASK to <code>Model</code>. <code>ModelManager</code> then updates the task list based on this predicate.
 This is similar to Listing tasks but it will only extract tasks with deadlines due in the current month.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="sorting-tasks"><a class="link" href="#sorting-tasks">Sorting Tasks</a></h5>
+<h5 id="sorting-tasks"><a class="link" href="#sorting-tasks">Sorting tasks</a></h5>
 <div class="paragraph">
 <p><code>Task</code> class implements Java <code>Comparable&lt;&gt;</code> class which enables sorting without writing the actual sorting algorithm. Thus,the execution of <code>sortTask</code> command relies on it.
 <code>Model</code> then calls <code>AddressBook</code> which sorts the tasks in <code>UniqueTaskList</code>.</p>
@@ -2190,7 +2091,7 @@ This is similar to Listing tasks but it will only extract tasks with deadlines d
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-consideration"><a class="link" href="#design-consideration">5.8.2. Design Consideration</a></h4>
+<h4 id="design-consideration"><a class="link" href="#design-consideration">5.6.2. Design consideration</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-code-edittaskcommand-code-executes"><a class="link" href="#aspect-how-code-edittaskcommand-code-executes">Aspect: How <code>EditTaskCommand</code> executes</a></h5>
 <div class="ulist">
@@ -2227,14 +2128,111 @@ This is similar to Listing tasks but it will only extract tasks with deadlines d
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">5.9. Logging</a></h3>
+<h3 id="tasks-on-calendar-view"><a class="link" href="#tasks-on-calendar-view">5.7. Tasks on calendar view</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>This feature allows the user to see the calendar on the UI and see the scheduled <code>Task</code> deadlines on the calendar.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">5.7.1. Current implementation</a></h4>
+<div class="paragraph">
+<p>The user will enter a command <code>addTask title/TITLE desc/DESCRIPTION by/DEADLINE priority/PRIORITY</code> to the application. The application will then rely on <code>AddressBookparser</code> and
+parse the argument. The argument will be passed into the AddTaskCommand to be executed. From there, it will create a new <code>Task</code> object that will be
+added to the <code>calendarList</code> of the <code>UniqueTaskList</code> which in turn will be displayed on the date of the deadline, on the calendar.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">5.7.2. Design considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-link-specific-tasks-to-the-correct-calendar-nodes"><a class="link" href="#aspect-how-to-link-specific-tasks-to-the-correct-calendar-nodes">Aspect: How to link specific tasks to the correct calendar nodes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a 7 by 32, 2D <code>Array</code> to store the tasks to be added into the calendar.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Separate from the Task list (less prone to bugs). Faster run time (does not need to iterate through all tasks).</p>
+</li>
+<li>
+<p>Cons: Higher memory usage constraint, can only schedule tasks up to 6 months in advance to prevent high memory usage that will affect the speed and performance of the app.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use the task list itself to be displayed in the calendar.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to program and less memory usage (only 1 task list is used without another 2D array for the calendar), tasks can be scheduled as far ahead as desired.</p>
+</li>
+<li>
+<p>Cons: Needs to iterate through the entire task list for every calendar node when loading the calendar view (slows performance when dealing with tasks).</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-viewing-the-calendar-only-by-month"><a class="link" href="#aspect-viewing-the-calendar-only-by-month">Aspect: Viewing the calendar only by month</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a monthly only calendar view.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy view of the current tasks that are due on that month.</p>
+</li>
+<li>
+<p>Cons: Not much choice for the user as only the monthly view is provided.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Give the user a choice to switch between weekly, monthly or yearly, e.g. <em>calendarfx</em>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User has more choice and freedom to control their UI.</p>
+</li>
+<li>
+<p>Cons: Difficult to implement, also if 3rd party programs such at <em>calendarfx</em> is used, certain features in those programs are redundant (e.g. map) and would only slow the app down.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="future-enhancements-coming-in-v2-0-4"><a class="link" href="#future-enhancements-coming-in-v2-0-4">5.7.3. Future enhancements (Coming in v2.0)</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Link specific key-press or select actions to the todo list such that a click on either side will display the selected task on the other.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">5.8. Logging</a></h3>
 <div class="paragraph">
 <p>We utilize <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class manages the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file. (See <a href="#Implementation-Configuration">Section 5.10, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file. (See <a href="#Implementation-Configuration">Section 5.9, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level.</p>
@@ -2265,13 +2263,13 @@ This is similar to Listing tasks but it will only extract tasks with deadlines d
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.10. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.9. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g app name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="data-encryption-coming-in-v2-0"><a class="link" href="#data-encryption-coming-in-v2-0">5.11. Data encryption (coming in v2.0)</a></h3>
+<h3 id="data-encryption-coming-in-v2-0"><a class="link" href="#data-encryption-coming-in-v2-0">5.10. Data encryption (coming in v2.0)</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
@@ -2530,8 +2528,10 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect1">
-<h2 id="product-scope"><a class="link" href="#product-scope">Appendix A: Product Scope</a></h2>
+<h2 id="product-scope-and-features"><a class="link" href="#product-scope-and-features">Appendix A: Product Scope and Features</a></h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="product-scope"><a class="link" href="#product-scope">A.1. Product scope</a></h3>
 <div class="paragraph">
 <p><strong>Target user profile</strong>: Tech-Savvy University Teachers/Tutors</p>
 </div>
@@ -2558,8 +2558,9 @@ b. Require developers to download those libraries manually (this creates extra w
 <p><strong>Value proposition</strong>: manage contacts faster than a typical mouse/GUI driven app, includes to-do
     list features (with prioritization, etc.) and scheduling (with calendar)</p>
 </div>
+</div>
 <div class="sect2">
-<h3 id="feature-contribution"><a class="link" href="#feature-contribution">A.1. Feature contribution</a></h3>
+<h3 id="feature-contribution"><a class="link" href="#feature-contribution">A.2. Feature contribution</a></h3>
 <div class="paragraph">
 <p><strong>Wu Di</strong></p>
 </div>
@@ -3159,8 +3160,8 @@ These instructions only provide a starting point for testers to work on; testers
 </div>
 <div class="sect2">
 <h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">F.1. Launch and shutdown</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
 <p>Initial launch</p>
 <div class="ulist">
@@ -3197,15 +3198,15 @@ Expected: The most recent window size and location is retained.</p>
 </ul>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </div>
 <div class="sect2">
 <h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">F.2. Deleting a person</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>Deleting a person while all persons are listed.</p>
+<p>Deleting a person while all persons are listed</p>
 <div class="ulist">
 <ul>
 <li>
@@ -3221,7 +3222,7 @@ Expected: First contact is deleted from the list. Details of the deleted contact
 Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size)<br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
@@ -3230,13 +3231,16 @@ Expected: Similar to previous.</p>
 </ul>
 </div>
 </li>
-</ol>
+</ul>
+</div>
+<div class="paragraph">
+<p>The corresponding display picture image to the person deleted is expected to be deleted upon next application start up and log in (to same account).</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="adding-participation-marks-for-a-person"><a class="link" href="#adding-participation-marks-for-a-person">F.3. Adding participation marks for a person</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
 <p>Adding participation marks to a person while all persons are listed.</p>
 <div class="ulist">
@@ -3293,13 +3297,13 @@ Expected: No marks are added to anyone. Error details shown in the status messag
 </ul>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-display-picture-to-a-person"><a class="link" href="#adding-display-picture-to-a-person">F.4. Adding display picture to a person</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
+<h3 id="adding-updating-display-picture-for-a-person"><a class="link" href="#adding-updating-display-picture-for-a-person">F.4. Adding/Updating display picture for a person</a></h3>
+<div class="ulist">
+<ul>
 <li>
 <p>Adding display picture when adding a new (non-duplicate) person while all persons are listed.</p>
 <div class="ulist">
@@ -3325,27 +3329,119 @@ Expected: John Doe is added with the specified details and has the default displ
 </ul>
 </div>
 </li>
+<li>
+<p>Adding display picture to an already existing person while all persons are listed.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Assumptions: There is a valid image file at the specified location.<br></p>
+</li>
+<li>
+<p>Test case: <code>updateDP 1 dp/C:\Users\Hello\Desktop\picture.jpg</code><br>
+Expected: First person&#8217;s display picture is updated with the image. Success message shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>updateDP 1 dp/</code><br>
+Expected: First person&#8217;s display picture is updated to the default display picture. Success message shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
 </ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
 <h3 id="saving-and-loading-of-the-image-files"><a class="link" href="#saving-and-loading-of-the-image-files">F.5. Saving and loading of the image files</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Deleting image files while the application is still running.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Prerequisites: There exists some persons already added and are utilizing a display picture.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: Delete all images from the <code>data/displayPic</code> folder.<br>
+Expected: Upon next refresh of the list that causes changes, the affected persons will be reset back to the default profile picture.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Checking proper deletion of image files</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Prerequisites: None of the existing persons in Your TA have a display picture.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting image files while the application is still running.</p>
+<p>Adding multiple images using the <code>updateDP</code> or <code>edit</code> command. E.g executing <code>updateDP 1 dp/C:\Users\Hello\Desktop\picture.jpg</code> twice.</p>
+</li>
+<li>
+<p>Open the <code>data/displayPic</code> folder to note that there are 2 image files created.</p>
+</li>
+<li>
+<p>Close and restart the application and log back in to the same account.<br>
+Expected: Unused image files will be deleted, only one image file remains.</p>
 </li>
 </ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
 <h3 id="adding-a-task-2"><a class="link" href="#adding-a-task-2">F.6. Adding a Task</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Deleting image files while the application is not running.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Prerequisites: There exists some persons already added and are utilizing a display picture.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: Delete all images from the <code>data/displayPic</code> folder.<br>
+Expected: Upon loading up the application, the affected persons will be reset back to the default profile picture.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
 <p>Adding a task while all tasks are listed.</p>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
 <li>
 <p>Prerequisites: List all tasks using the <code>listTask</code> command. Multiple tasks in the list.</p>
 <div class="olist loweralpha">
@@ -3361,17 +3457,17 @@ Expected: No task is added. Error details shown in the status message. Status ba
 <li>
 <p>Other incorrect addTask commands to try: <code>addTask title/meeting priority/1</code>, <code>addTask by/20-04-2018 priority/3</code>
 Expected: similar to previous.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a task while current month tasks are listed.</p>
 </li>
 </ol>
 </div>
 </li>
-</ul>
+</ol>
 </div>
 </li>
-<li>
-<p>Adding a task while current month tasks are listed.</p>
-<div class="ulist">
-<ul>
 <li>
 <p>Prerequisites: List all current month tasks using the <code>listCurrentTask</code> command. Multiple tasks in the list.</p>
 <div class="olist loweralpha">
@@ -3392,9 +3488,6 @@ Expected: similar to previous.</p>
 </div>
 </li>
 </ul>
-</div>
-</li>
-</ol>
 </div>
 </div>
 <div class="sect2">
@@ -3463,32 +3556,12 @@ Expected: similar to previous.</p>
 </ol>
 </div>
 </div>
-<div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">F.9. Saving data</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Dealing with missing/corrupted data files</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
-</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 08:31:29 UTC
+Last updated 2018-04-15 09:52:49 UTC
 </div>
 </div>
 </body>

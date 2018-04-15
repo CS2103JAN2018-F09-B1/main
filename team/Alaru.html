@@ -44,12 +44,12 @@ Your TA is written in Java and has about 10 kLoC.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: It allows the user to save a display picture to any student in the application.</p>
+<p>What it does: It allows the user to save a display picture to any student in the application. It also allows the tutor to have a quick glance to check if the student has been participating enough.</p>
 </li>
 <li>
 <p>Justification: This feature provides the tutor with a visual stimulus on how the student looks. This way, the tutor would be able to quickly associate the student&#8217;s name and their face
 which in turn allow the tutor to remember their students better. This would encourage a more holistic environment for teaching and learning as it would make it more
-personal between the tutor and the student. Additionally, it also contains a drop shadow frame which shows whether the student has at least participated sufficiently in classes.</p>
+personal between the tutor and the student. It utilizes a drop shadow frame which shows whether the student has at least participated sufficiently in classes.</p>
 </li>
 <li>
 <p>Highlights: This enhancement fully supports the existing undo and redo even though image files are stored outside the <code>AddressBook</code> memory.
@@ -82,16 +82,13 @@ The existing commands (add, edit, delete and clear) were also updated to support
 <p>Managed releases <code>v1.3</code> - <code>v1.4</code> (2 releases) on GitHub</p>
 </li>
 <li>
-<p>Managed the Issue Tracker, assigned issues and added labels to the issues.</p>
+<p>Managed the Issue Tracker, assigned issues and created/added labels to the issues. Also managed the milestones.</p>
 </li>
 <li>
-<p>Help resolve merge conflicts.</p>
+<p>Help resolve merge conflict for teammate. (PR <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/104">#104</a>)</p>
 </li>
 <li>
 <p>Set up Travis for the organization repo.</p>
-</li>
-<li>
-<p>Help update README (PR <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/66">#66</a>), changed application icon and name.</p>
 </li>
 </ul>
 </div>
@@ -101,10 +98,16 @@ The existing commands (add, edit, delete and clear) were also updated to support
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the screenshots used in the User Guide: <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/57">#57</a></p>
+<p>Help update README (PR <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/66">#66</a>), changed application icon (PR <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/108">#108</a>) and name (PR <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/123">#123</a>).</p>
 </li>
 <li>
-<p>Edited the developer guide for english, added prefaces, updated images, made explanations clearer and added manual testing cases.</p>
+<p>Updated screenshots used in the User Guide: (PR <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/57">#57</a>, PR <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/130">#130</a>)</p>
+</li>
+<li>
+<p>Edited the developer guide for English usage, added prefaces, updated images, made explanations clearer (PR <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/123">#123</a>) and added manual testing cases.</p>
+</li>
+<li>
+<p>Sequence diagram was added (PR <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/108">#108</a>) and was edited and used by teammate (PR <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/124">#124</a>).</p>
 </li>
 </ul>
 </div>
@@ -207,7 +210,7 @@ Adds 70 marks to the 1st person in the results of the <code>find</code> command,
 <div class="content">
 <img src="../images/markPartupdateDavid.png" alt="markPartupdateDavid" width="300">
 </div>
-<div class="title">Figure 4. David&#8217;s marks updated</div>
+<div class="title">Figure 4. David&#8217;s marks updated, frame updated</div>
 </div>
 </div>
 <div class="sect2">
@@ -227,7 +230,7 @@ Format: <code>updateDP INDEX dp/[IMAGE PATH]</code></p>
 <p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
-<p>Do note that unused display pictures will be deleted upon the next application startup.</p>
+<p>Do note that unused display pictures will be deleted upon the next application startup when logging in to the same account that created it.</p>
 </li>
 <li>
 <p>You can reset a person&#8217;s display picture to default by typing <code>dp/</code> with no [IMAGE PATH] written after it.</p>
@@ -256,7 +259,7 @@ Do refrain from using high resolution images as display pictures, the optimum re
 </div>
 <div class="paragraph">
 <p>Command(s) entered: <code>list</code><br>
-Lists all people in Your TA (Figure 20).<br></p>
+Lists all people in Your TA (Figure 20). We can see that Alex Yeoh has a display picture.<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -292,7 +295,7 @@ Updates the display picture of the 1st person, in this case Betsy, to the pictur
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. Additional manual test cases were also added. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
 </tr>
 </tbody>
 </table>
@@ -738,7 +741,7 @@ will be the SHA-256 hash of the previous image filename.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 08:31:29 UTC
+Last updated 2018-04-15 09:52:49 UTC
 </div>
 </div>
 </body>
