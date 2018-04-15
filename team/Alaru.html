@@ -143,26 +143,27 @@ The existing commands (add, edit, delete and clear) were also updated to support
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="adding-participation-marks-code-markpart-code"><a class="link" href="#adding-participation-marks-code-markpart-code">Adding Participation Marks : <code>markPart</code></a></h3>
+<h3 id="adding-participation-marks-code-markpart-code"><a class="link" href="#adding-participation-marks-code-markpart-code">Adding participation marks: <code>markPart</code></a></h3>
 <div class="paragraph">
-<p>Adds to the participation marks of a person. The maximum limit for participation marks is 100
-and the maximum amount that can be added per execution of the command is 100.</p>
+<p>Adds to the participation marks of a person (student). The maximum limit for participation marks is 100
+and the maximum amount that can be added per execution of the command is 100.<br>
+i.e. if someone has 90 marks and you add 20, the participation marks will be capped at 100.</p>
 </div>
 <div class="paragraph">
-<p>If the marks is below 50, there will be a red frame. If the person has 50 or more marks, the colored frame around the user will change to green.</p>
+<p>If the marks is below 50, there will be a red frame surrounding the person&#8217;s profile picture. If the person has 50 or more marks, the colored frame around the user will change to green.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>markPart INDEX marks/DIGITS</code></p>
+<p>Format: <code>markPart</code> <code>INDEX</code> <code>marks/DIGITS</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The index refers to the index number shown in the most recent listing.</p>
+<p>The <code>INDEX</code> refers to the index number shown in the most recent listing.</p>
 </li>
 <li>
-<p>The marks to be added <strong>must be a positive integer</strong> between 0 and 100 inclusive.</p>
+<p>The marks to be added must be a <strong>positive integer</strong> between 0 and 100 inclusive.</p>
 </li>
 </ul>
 </div>
@@ -172,29 +173,34 @@ and the maximum amount that can be added per execution of the command is 100.</p
 <p>Examples:</p>
 </div>
 <div class="paragraph">
-<p>Command(s) entered: <code>list</code><br>
-Lists all people in the address book (Figure 16).</p>
+<p>Command entered: <code>list</code><br></p>
+</div>
+<div class="paragraph">
+<p>Result: Lists all people in the application (see Figure 16).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/markPartlist.png" alt="markPartlist" width="300">
 </div>
-<div class="title">Figure 1. Listing everyone in Your TA</div>
+<div class="title">Figure 1. All People Listed</div>
 </div>
 <div class="paragraph">
-<p><code>markPart 1 marks/50</code><br>
-Adds 50 participation marks to the 1st person in Your TA (Figure 17).</p>
+<p>Command entered: <code>markPart</code> <code>1</code> <code>marks/50</code><br></p>
+</div>
+<div class="paragraph">
+<p>Result: Adds 50 participation marks to the 1st person in Your TA (see Figure 17).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/markPartadd50.png" alt="markPartadd50" width="300">
 </div>
-<div class="title">Figure 2. Adds 50 marks to Alex, note that the frame turns green</div>
+<div class="title">Figure 2. Adds 50 Marks to Alex, Frame turns Green</div>
 </div>
 <div class="paragraph">
-<p>Command(s) entered:<br>
-<code>find David</code><br>
-Returns David as a result (Figure 18).<br></p>
+<p>Command entered: <code>find</code> <code>David</code><br></p>
+</div>
+<div class="paragraph">
+<p>Result: Returns David as a result (see Figure 18).<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -203,34 +209,39 @@ Returns David as a result (Figure 18).<br></p>
 <div class="title">Figure 3. Find command returns David</div>
 </div>
 <div class="paragraph">
-<p><code>markPart 1 marks/70</code><br>
-Adds 70 marks to the 1st person in the results of the <code>find</code> command, in this case, David. We note that it has exceeded the cap of 100, hence the marks was set to 100 (Figure 19).</p>
+<p>Command entered: <code>markPart</code> <code>1</code> <code>marks/70</code><br></p>
+</div>
+<div class="paragraph">
+<p>Result: Adds 70 marks to the 1st person in the results of the <code>find</code> command, in this case, David.<br>
+Note that it has exceeded the cap of 100, hence the marks was set to 100 (see Figure 19).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/markPartupdateDavid.png" alt="markPartupdateDavid" width="300">
 </div>
-<div class="title">Figure 4. David&#8217;s marks updated, frame updated</div>
+<div class="title">Figure 4. David&#8217;s Marks Updated, Frame Updated</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="updating-the-display-picture-code-updatedp-code"><a class="link" href="#updating-the-display-picture-code-updatedp-code">Updating the display picture : <code>updateDP</code></a></h3>
+<h3 id="updating-the-display-picture-code-updatedp-code"><a class="link" href="#updating-the-display-picture-code-updatedp-code">Updating the display picture: <code>updateDP</code></a></h3>
 <div class="paragraph">
-<p>Updates a person&#8217;s display picture in the address book.<br>
-Format: <code>updateDP INDEX dp/[IMAGE PATH]</code></p>
+<p>Updates a person&#8217;s display picture in the application.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>updateDP</code> <code>INDEX</code> <code>dp/[IMAGE PATH]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The index refers to the index number shown in the most recent listing.</p>
+<p>The <code>INDEX</code> refers to the index number shown in the most recent listing.</p>
 </li>
 <li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>The index must be a <strong>positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
-<p>Do note that unused display pictures will be deleted upon the next application startup when logging in to the same account that created it.</p>
+<p>Do note that unused display pictures will be deleted upon the next application startup when logging in to the same account.</p>
 </li>
 <li>
 <p>You can reset a person&#8217;s display picture to default by typing <code>dp/</code> with no [IMAGE PATH] written after it.</p>
@@ -258,30 +269,35 @@ Do refrain from using high resolution images as display pictures, the optimum re
 <p>Examples:</p>
 </div>
 <div class="paragraph">
-<p>Command(s) entered: <code>list</code><br>
-Lists all people in Your TA (Figure 20). We can see that Alex Yeoh has a display picture.<br></p>
+<p>Command entered: <code>list</code><br></p>
+</div>
+<div class="paragraph">
+<p>Result: Lists all people in Your TA (see Figure 20).<br>
+We can see that Alex Yeoh has a display picture.<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/updateDPJack1.png" alt="updateDPJack1" width="300">
 </div>
-<div class="title">Figure 5. Listing everyone in Your TA</div>
+<div class="title">Figure 5. All People Listed</div>
 </div>
 <div class="paragraph">
-<p><code>updateDP 1 dp/</code><br>
-Deletes the display picture of the 1st person, turning it back to the default profile picture (Figure 21).</p>
+<p>Command entered: <code>updateDP</code> <code>1</code> <code>dp/</code><br></p>
+</div>
+<div class="paragraph">
+<p>Result: Deletes the display picture of the 1st person, returning it back to the default profile picture (see Figure 21).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/updateDPJack2.png" alt="updateDPJack2" width="300">
 </div>
-<div class="title">Figure 6. Resetting Alex&#8217;s display picture</div>
+<div class="title">Figure 6. Resetting Alex&#8217;s Display Picture</div>
 </div>
 <div class="paragraph">
-<p>Command(s) entered: <code>find Betsy</code><br>
-Returns Betsy as a result. Followed by:<br>
-<code>updateDP 1 dp/C:\Users\Betsy\Desktop\betsy.jpg</code><br>
-Updates the display picture of the 1st person, in this case Betsy, to the picture specified in the <code>dp/</code> field.</p>
+<p>Command(s) entered: <code>find</code> <code>Betsy</code>, <code>updateDP</code> <code>1</code> <code>dp/C:\Users\Betsy\Desktop\betsy.jpg</code><br></p>
+</div>
+<div class="paragraph">
+<p>Result: Returns Betsy as a result and updates the display picture of the 1st person, in this case Betsy, to the picture specified in the <code>dp/</code> field.</p>
 </div>
 </div>
 </div>
@@ -741,7 +757,7 @@ will be the SHA-256 hash of the previous image filename.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 12:19:57 UTC
+Last updated 2018-04-15 13:22:52 UTC
 </div>
 </div>
 </body>
