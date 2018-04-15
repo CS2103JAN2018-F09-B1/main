@@ -104,7 +104,7 @@ The existing commands (add, edit, delete and clear) were also updated to support
 <p>Updated screenshots used in the User Guide: (PR <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/57">#57</a>, PR <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/130">#130</a>)</p>
 </li>
 <li>
-<p>Edited the developer guide for English usage, added prefaces, updated images, made explanations clearer (PR <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/123">#123</a>) and added manual testing cases.</p>
+<p>Edited the developer guide for English usage, added prefaces, updated images, made explanations clearer (PR <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/123">#123</a>) and added manual testing cases (PR <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/130">#130</a>).</p>
 </li>
 <li>
 <p>Sequence diagram was added (PR <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/108">#108</a>) and was edited and used by teammate (PR <a href="https://github.com/CS2103JAN2018-F09-B1/main/pull/124">#124</a>).</p>
@@ -150,7 +150,7 @@ and the maximum amount that can be added per execution of the command is 100.<br
 i.e. if someone has 90 marks and you add 20, the participation marks will be capped at 100.</p>
 </div>
 <div class="paragraph">
-<p>If the marks is below 50, there will be a red frame surrounding the person&#8217;s profile picture. If the person has 50 or more marks, the colored frame around the user will change to green.</p>
+<p>If the marks are below 50, there will be a red frame surrounding the person&#8217;s profile picture. If the person has 50 or more marks, the colored frame around the user will change to green.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>markPart</code> <code>INDEX</code> <code>marks/DIGITS</code></p>
@@ -163,7 +163,7 @@ i.e. if someone has 90 marks and you add 20, the participation marks will be cap
 <p>The <code>INDEX</code> refers to the index number shown in the most recent listing.</p>
 </li>
 <li>
-<p>The marks to be added must be a <strong>positive integer</strong> between 0 and 100 inclusive.</p>
+<p>The marks to be added must be a <strong>integer</strong> between 0 and 100 inclusive.</p>
 </li>
 </ul>
 </div>
@@ -206,7 +206,7 @@ i.e. if someone has 90 marks and you add 20, the participation marks will be cap
 <div class="content">
 <img src="../images/markPart2David.png" alt="markPart2David" width="300">
 </div>
-<div class="title">Figure 3. Find command returns David</div>
+<div class="title">Figure 3. <code>find</code> Command returns David</div>
 </div>
 <div class="paragraph">
 <p>Command entered: <code>markPart</code> <code>1</code> <code>marks/70</code><br></p>
@@ -241,7 +241,7 @@ Note that it has exceeded the cap of 100, hence the marks was set to 100 (see Fi
 <p>The index must be a <strong>positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
-<p>Do note that unused display pictures will be deleted upon the next application startup when logging in to the same account.</p>
+<p>Do note that unused display pictures will be deleted upon the next application startup when logging in to the same account that updated the display picture.</p>
 </li>
 <li>
 <p>You can reset a person&#8217;s display picture to default by typing <code>dp/</code> with no [IMAGE PATH] written after it.</p>
@@ -260,7 +260,7 @@ Note that it has exceeded the cap of 100, hence the marks was set to 100 (see Fi
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Do refrain from using high resolution images as display pictures, the optimum resolution is 300 x 300 pixels.
+Do refrain from using high resolution images as display pictures, the optimum resolution is 500 x 500 pixels.
 </td>
 </tr>
 </table>
@@ -327,7 +327,7 @@ This utilizes the <code>MarkCommand</code> command to update the participation m
 <p>The user will input a command, <code>markPart INDEX marks/DIGITS</code>, to the application to update the marks.</p>
 </div>
 <div class="paragraph">
-<p>The following figure 12 and paragraph below shows the sequence of how the <code>MarkCommand</code> command functions:</p>
+<p>The following figure 13 and paragraph below shows the sequence of how the <code>MarkCommand</code> command functions:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -442,7 +442,7 @@ This utilizes the <code>MarkCommand</code> command to update the participation m
 <h3 id="display-picture"><a class="link" href="#display-picture">Display picture</a></h3>
 <div class="paragraph">
 <p>Users are able to add a display picture for any person within the application. The user can utilise 3 different commands (<code>add</code>, <code>edit</code> and <code>updateDP</code>) to create and specify a display image for the person.
-It fully supports the <code>undo</code> and <code>redo</code> commands. It adds a drop shadow around the frame to indicate the level of participation (see above section 5.3) of the person.</p>
+It fully supports the <code>undo</code> and <code>redo</code> commands. It adds a drop shadow around the frame to indicate the level of participation (see above <a href="#participation">section 5.4 Participation</a>) of the person.</p>
 </div>
 <div class="paragraph">
 <p>This feature allows the user to enter a path to their selected image file when entering any of the above 3 commands and copies the image into the <code>data/displayPic</code> folder.</p>
@@ -452,7 +452,7 @@ It fully supports the <code>undo</code> and <code>redo</code> commands. It adds 
 </div>
 <div class="paragraph">
 <p>It also makes use of the <code>Participation</code> feature to display a colored shadow around the display picture.
-This image will be shown in the application next to the details of the person as seen in figure 13 below.</p>
+This image will be shown in the application next to the details of the person as seen in figure 14 below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -496,7 +496,7 @@ It will then proceed to duplicate the image. After duplicating the image, the va
 The implementation of the UpdateDisplayCommand (<code>updateDP</code>) command closely follows the <code>edit</code> command, hence we will only showcase the implementation of the <code>UpdateDP</code> command.</p>
 </div>
 <div class="paragraph">
-<p>The following figure 14 is the sequence diagram of the <code>updateDP</code> command to show how it functions:</p>
+<p>The following figure 15 is the sequence diagram of the <code>updateDP</code> command to show how it functions:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -527,7 +527,7 @@ The implementation of the UpdateDisplayCommand (<code>updateDP</code>) command c
 <p>To fully support the <code>undo</code> and <code>redo</code> commands, image files cannot be immediately deleted when it is not in use by the <code>UI</code>.</p>
 </div>
 <div class="paragraph">
-<p>To work around this, a new class <code>UniqueItemList</code> was added to the model of the <code>AddressBook</code> as seen below in Figure 15.</p>
+<p>To work around this, a new class <code>UniqueItemList</code> was added to the model of the <code>AddressBook</code> as seen below in Figure 16.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -589,7 +589,7 @@ If a valid path to an image is provided, the image will be processed and copied 
 </div>
 <div class="paragraph">
 <p>The filename of the image copied over will be a <a href="#sha-256">SHA-256</a> hash. This hash is calculated over the <code>Person</code> object&#8217;s details (i.e Name, Phone and Email) to ensure a unique filename.
-The following activity diagram in Figure 16 shows how the files are saved:</p>
+The following activity diagram in Figure 17 shows how the files are saved:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -757,7 +757,7 @@ will be the SHA-256 hash of the previous image filename.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 14:35:01 UTC
+Last updated 2018-04-15 14:54:43 UTC
 </div>
 </div>
 </body>
