@@ -22,7 +22,7 @@ import seedu.address.model.task.Task;
  * Panel containing the list of tasks shown in TodoList.
  */
 public class  TodoListPanel extends UiPart<Region> {
-    private static final String FXML = "todoListPanel.fxml";
+    private static final String FXML = "TodoListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(TodoListPanel.class);
 
     @FXML
