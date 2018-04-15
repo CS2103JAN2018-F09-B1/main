@@ -115,6 +115,7 @@ public class UniqueTaskList implements Iterable<Task> {
         }
     }
 
+    //@@author Wu Di
     public void setTasks(List<Task> tasks) {
         requireAllNonNull(tasks);
         final UniqueTaskList replacement = new UniqueTaskList();

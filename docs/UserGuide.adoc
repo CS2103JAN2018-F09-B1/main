@@ -108,7 +108,10 @@ Format: `add n/NAME m/MATRICULATION NUMBER p/PHONE_NUMBER e/EMAIL a/ADDRESS dp/[
 Both the display picture and tags fields are optional, and a person can have any number of tags (including zero).
 
 [NOTE]
-The tags "lecturer", "TA" "student" and "T1" will appear red, yellow, blue and green respectively.
+====
+** The tags "lecturer", "TA" "student" and "T1" will appear red, yellow, blue and green respectively.
+** Do refrain from using high resolution images as display pictures, the optimum resolution is 300 x 300 pixels.
+====
 
 [WARNING]
 The name field of Your TA will not allow duplicate names to be stored. However the matriculation number field allows duplicates.
@@ -218,6 +221,9 @@ Format: `edit INDEX [n/NAME] [m/MATRICULATION NUMBER] [p/PHONE] [e/EMAIL] [a/ADD
 * You can remove all the person's tags by typing `t/` without specifying any tags after it.
 ****
 
+[NOTE]
+Do refrain from using high resolution images as display pictures, the optimum resolution is 300 x 300 pixels.
+
 Examples:
 
 Address book starts with the following as shown in Figure 10:
@@ -244,7 +250,9 @@ image::SecondEdit.png[width="800"]
 === Adding Participation Marks : `markPart`
 
 Adds to the participation marks of a person. The maximum limit for participation marks is 100
-and the maximum amount that can be added with one execution of the command is 100.
+and the maximum amount that can be added per execution of the command is 100.
+
+If the marks is below 50, there will be a red frame. If the person has 50 or more marks, the colored frame around the user will change to green.
 
 Format: `markPart INDEX marks/DIGITS`
 
@@ -257,15 +265,30 @@ Examples:
 
 Command(s) entered: +
 `list` +
-Lists all people in the address book. Followed by: +
-`markPart 2 marks/50` +
-Adds 50 participation marks to the 2nd person in the address book.
+Lists all people in the address book.
+
+.Listing everyone in Your TA
+image::markPartlist.png[width="300"]
+
+`markPart 1 marks/50` +
+Adds 50 participation marks to the 1st person in Your TA.
+
+.Adds 50 marks to Alex, note that the frame turns green
+image::markPartadd50.png[width="300"]
 
 Command(s) entered: +
-`find Betsy` +
-Returns Betsy as a result. Followed by: +
+`find David` +
+Returns David as a result. +
+
+.Find command returns David
+image::markPart2David.png[width="300"]
+
+
 `markPart 1 marks/70` +
-Adds 70 marks to the 1st person in the results of the `find` command, in this case, Betsy.
+Adds 70 marks to the 1st person in the results of the `find` command, in this case, David. We note that it has exceeded the cap of 100, hence the marks was set to 100.
+
+.David's marks updated
+image::markPartupdateDavid.png[width="300"]
 
 // end::participation[]
 
@@ -279,26 +302,37 @@ Format: `updateDP INDEX dp/[IMAGE PATH]`
 ****
 * The index refers to the index number shown in the most recent listing.
 * The index *must be a positive integer* 1, 2, 3, ...
+* Do note that unused display pictures will be deleted upon the next application startup.
 * You can reset a person's display picture to default by typing `dp/` with no [IMAGE PATH] written after it.
-* The aspect ratio of the image will be used to fill a circle, thus using an image with a ratio close to 1:1 pixels would be optimal.
+* The aspect ratio of the image will be used to fill a circle for the display picture, thus using an image with an aspect ratio close to 1:1 pixels would be optimal.
 ****
 
-[WARNING]
-The application does not support reading image files from a folder named `dp` due to the nature of how the application parses the prefixes.
+[NOTE]
+Do refrain from using high resolution images as display pictures, the optimum resolution is 300 x 300 pixels.
+
 
 Examples:
 
 Command(s) entered: +
 `list` +
-Lists all people in the address book. Followed by: +
-`updateDP 2 dp/` +
-Deletes the display picture of the 2nd person, turning it back to the default profile picture.
+Lists all people in Your TA. +
+
+.Listing everyone in Your TA
+image::updateDPJack1.png[width="300"]
+
+`updateDP 1 dp/` +
+Deletes the display picture of the 1st person, turning it back to the default profile picture.
+
+.Resetting Alex's display picture
+image::updateDPJack2.png[width="300"]
 
 Command(s) entered: +
 `find Betsy` +
 Returns Betsy as a result. Followed by: +
 `updateDP 1 dp/C:\Users\Betsy\Desktop\betsy.jpg` +
 Updates the display picture of the 1st person, in this case Betsy, to the picture specified in the `dp/` field.
+
+
 
 // end::display[]
 
@@ -312,7 +346,11 @@ Format: `delete INDEX`
 * Deletes the person at the specified `INDEX`.
 * The index refers to the index number shown in the most recent listing.
 * The index *must be a positive integer* 1, 2, 3, ...
+* The display picture (if the person has one) will be deleted upon the next application start up.
 ****
+
+[NOTE]
+The display picture that is stored on your hard disk will only be removed upon the next start up of Your TA.
 
 Examples:
 
@@ -331,9 +369,6 @@ image::FirstDelete.png[width="800"]
 Command(s) entered: +
 `find Betsy`,`delete 1`: +
 The 1st person in the results of the `find` command is deleted, in this case, Betsy is deleted (Figure 15).
-
-[NOTE]
-The display picture that is stored on your hard disk will only be removed upon the next start up of Your TA.
 
 .1st Person from `find` Command Deleted. +
 image::SecondDelete.png[width="800"]
@@ -376,6 +411,11 @@ image::SecondSelect.png[width="800"]
 
 To see how the task scheduling feature works on the `Todo List` and `Calendar`, select the `Todo List` tab located right beside the `Person List` tab.
 
+Figure below shows where the `Todo List` and `Calendar` are located
+
+.Todo List and Calendar
+image::TodoListandCalendar.PNG[width = "800"]
+
 === Adding a task: `addTask`
 
 Adds a task to the address book. +
@@ -386,18 +426,12 @@ New tasks will be added into the *To-do list* and *Calendar*. +
 
 [NOTE]
 ====
-`DEADLINE` must be in the format of dd-MM-YYYY.
-====
-
-[NOTE]
-Deadline has to be a date that exists.
-
-[NOTE]
-The month value has to be a month no more than 6 months after the current month (Start counting to 6 from the next month).
-
-[NOTE]
-Tasks do not need to be unique (in any field title, description, dealine or priority). Duplicate tasks are allow.
+* `DEADLINE` must be in the format of dd-MM-YYYY.
+* Deadline has to be a date that exists.
+* The month value has to be a month no more than 6 months after the current month (Start counting to 6 from the next month).
+* Tasks do not need to be unique (in any field title, description, dealine or priority). Duplicate tasks are allow.
 Examples:
+====
 
 Current date: 03-04-2018 +
 The application initially starts with no tasks as displayed in Figure 2:
@@ -437,7 +471,7 @@ Format: `deleteTask INDEX`
 
 The specified indexed task will be deleted from the *Todo List* and *Calendar*.
 
-// tag::dispalyTask[]
+// tag::displayTask[]
 === Listing all tasks: `listTask`
 
 Shows a list of all tasks in application. +
@@ -452,14 +486,18 @@ Shows a list of tasks that have deadline in the current month. +
 Alias: `lct` +
 Format: `listCurrentTask`
 
-Only the tasks due within current month will be listed in the *Todo List*
+Only the tasks due within current month will be listed in the *Todo List*.
+
+Figure below illustrate the display change of tasks after listCurrentTask is entered.
+
+.Behavior of executing listCurrentTask
+image::listTasks.PNG[width = '800']
 
 === Sorting tasks: `sortTask`
 
 Sorts all entries displayed in *Todo List* in date order. +
 Alias: `stt`
 Format: `sortTask`
-
 // end::displayTask[]
 
 [[otherCommands]]
@@ -549,7 +587,7 @@ Alias: `c` +
 Format: `clear`
 
 [NOTE]
-This command clears ALL the data from the application (both people and tasks). +
+This command clears ALL the data from the application (both people and tasks). The display pictures files will be cleared as well upon the next application startup.
 
 === Importing data from another file : `import`
 
@@ -565,10 +603,14 @@ Command entered: +
 // tag::switchTab[]
 === Switching between tabs: `switchTab`
 
-Switches between the *Person List* tab and *Todo List* tab.
-Alias: `swt`
+Switches between the *Person List* tab and *Todo List* tab. +
+Alias: `swt` +
 Format: `switchTab`
 
+Figure below shows the result of entering command `switchTab` switching from Person List to Todo List and the display of command result.
+
+.Switches between tabs with command result displayed.
+image::switchTabs.PNG[width="800"]
 // end::switchTab[]
 
 === Sorting all entries : `sort`
@@ -671,7 +713,7 @@ e.g. `edit 2 n/James Lee e/jameslee@example.com`
 e.g. `find James Jake`
 * *List* : `list`
 * *MarkParticipation* : `markPart INDEX marks/DIGIT`
-e.g `markpart 1 marks/50`
+e.g `markPart 1 marks/50`
 * *Select* : `select INDEX` +
 e.g.`select 2`
 * *UpdateDP* : `updateDP INDEX dp/[IMAGE PATH]` +
@@ -679,15 +721,17 @@ e.g `updateDP 1 dp/C:\Users\Betsy\Desktop\betsy.jpg`
 
 === Tasks, To-do list and Calendar commands
 
-*Add Task*: `addTask desc/TASK DESCRIPTION by/DEADLINE priority/PRIORITY` +
+* *Add Task* : `addTask desc/TASK DESCRIPTION by/DEADLINE priority/PRIORITY` +
 e.g. `addTask title/Grade Exams desc/Grade mid-terms by/04-04-2018 priority/2`
-*Delete Task*: `deleteTask INDEX` +
+* *Delete Task* : `deleteTask INDEX` +
 e.g. `deleteTask 1`
+* *Edit Task* : `editTask INDEX [title/TASK TITLE] [desc/TASK DESCRIPTION] [by/DEADLINE] [priority/PRIORITY]`
+e.g. `editTask 1 title/Eat Dinner`
 *Edit Task*: `editTask INDEX [title/TASK TITLE] [desc/TASK DESCRIPTION] [by/DEADLINE] [priority/PRIORITY]`
 e.g. `editTask 1 title/Eat Dinner` +
-*List Task*: `listTask` +
-*List Current month tasks*: `listCurrentTask` +
-*Sort tasks by date*: `sortTask`
+* *List Task*: `listTask` +
+* *List Current month tasks*: `listCurrentTask` +
+* *Sort tasks by date*: `sortTask`
 
 === Miscellaneous Commands
 

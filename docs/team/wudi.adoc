@@ -11,17 +11,21 @@
 Your TA is a desktop application designed to meet the needs of university tutors. It helps them to keep track of their students and schedule their tasks that they have to do.
 Your TA uses a graphical user interface built using JavaFX and the user interacts with the application mostly through a command line interface.
 Your TA is written in Java and has about 10 kLoC.
+
 Your TA is build upon https://github.com/se-edu/addressbook-level4[AddressBook - Level 4].
 
 == Summary of contributions
 
 * *Major enhancement*: Added Todo List that displays tasks in a list view in the application.
-** What it does: It allows users to schedule tasks that they need to do and take a glance of what they need to do in the application.
+** What it does: It allows users to schedule tasks that they need to do and enables a glance view of tasks what they need to do in the application.
 
-** Justification: This feature provides the tutor with a visual stimulus on how many tasks they had in hand. This way, the tutors would be able to do their time management in a easier way.
+** Justification: This feature provides the tutor a quick view on how many tasks they have in hand. This way, the tutors would be better assisted with their time management and organization.
+
 *** Additionally, it can also assist the teaching of tutors to arrange help with the more needy students.
-** Highlights: This enhancement fully supports the implemented undo and redo feature.
-The existing commands were also updated to support the adding, deleting and editing tasks.
+
+** Highlights: This enhancement well supports the implemented undo and redo feature.
+
+The existing commands are also updated to support the adding, deleting and editing tasks.
 
 * *Minor enhancement*: added a import command that enhances the mobility of users' data. Thus, with the data along it can be used anywhere with the application downloaded.
 
@@ -30,13 +34,14 @@ The existing commands were also updated to support the adding, deleting and edit
 * *Other contributions*:
 
 ** Project management:
-*** Managed releases `v1.1` - `v1.2` (2 releases) on GitHub
-*** Manage and set up the organization repo, assigned issues and mange Pull Requests.
+*** Managed releases `v1.2` and `v1.5rc`(2 releases) on GitHub
+*** Manage and set up the organization repo, assigned issues and manage Pull Requests.
 *** Set up Coverall for the organization repo.
 ** Documentation:
 *** Updated the screenshots used in the User Guide: https://github.com/CS2103JAN2018-F09-B1/main/pull/57[#57]
+*** Updated the images and added the Task List section in the Developer Guide:
 ** Community:
-*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com/CS2103JAN2018-F12-B2/main/issues/83[1], https://github.com/CS2103JAN2018-F12-B2/main/issues/80[2], https://github.com/CS2103JAN2018-F12-B2/main/issues/76[3])
+*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com/CS2103JAN2018-T15-B4/main/issues/125[1])
 
 == Contributions to the User Guide
 
@@ -45,9 +50,8 @@ The existing commands were also updated to support the adding, deleting and edit
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-include::../UserGuide.adoc[tag=undoredo]
-
-include::../UserGuide.adoc[tag=dataencryption]
+include::../UserGuide.adoc[tag=displayTask]
+include::../UserGuide.adoc[tag=switchTab]
 
 == Contributions to the Developer Guide
 
@@ -55,13 +59,4 @@ include::../UserGuide.adoc[tag=dataencryption]
 |_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
 |===
 
-include::../DeveloperGuide.adoc[tag=undoredo]
-
-include::../DeveloperGuide.adoc[tag=dataencryption]
-
-
-== PROJECT: PowerPointLabs
-
----
-
-_{Optionally, you may include other projects in your portfolio.}_
+include::../DeveloperGuide.adoc[tag=task]

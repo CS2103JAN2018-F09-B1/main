@@ -59,9 +59,10 @@ public class AddCommand extends UndoableCommand {
     public CommandResult executeUndoableCommand() throws CommandException {
         requireNonNull(model);
         try {
+            String uniqueImageName = toAdd.getDisplayPic().getSaveDisplay(toAdd.getDetails());
             model.addPerson(toAdd);
             //Only save the display picture here
-            toAdd.getDisplayPic().saveDisplay(toAdd.getDetails());
+            toAdd.getDisplayPic().saveDisplay(uniqueImageName);
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         } catch (DuplicatePersonException e) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);

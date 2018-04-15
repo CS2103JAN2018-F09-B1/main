@@ -27,6 +27,8 @@ public class HashUtil {
 
     /**
      * Turns a byte array into a string hex code
+     * toHex() code referenced from:
+     * https://stackoverflow.com/questions/36162622/how-do-i-generate-a-hash-code-with-hash-sha256-in-java
      * @param hashValue is a byte array
      * @return A hex encode of a byte array
      */

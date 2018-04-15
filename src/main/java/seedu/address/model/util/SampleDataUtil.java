@@ -1,5 +1,7 @@
 package seedu.address.model.util;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,11 +17,24 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.task.Deadline;
+import seedu.address.model.task.Priority;
+import seedu.address.model.task.Task;
+import seedu.address.model.task.TaskDescription;
+import seedu.address.model.task.Title;
 
 /**
- * Contains utility methods for populating {@code AddressBook} with sample data.
+ * Contains utility methods for populating {@code AddressBook} with sample data persons.
  */
 public class SampleDataUtil {
+
+    private static LocalDate now = LocalDate.now();
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    private static String tutorialDeadline = now.plusDays(5).format(formatter);
+    private static String assignmentDeadline = now.plusDays(6).format(formatter);
+    private static String reviseDeadline = now.plusDays(20).format(formatter);
+    private static String biddingDeadline = now.plusMonths(1).format(formatter);
+
     public static Person[] getSamplePersons() {
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new MatriculationNumber("A1234567X"),
@@ -55,11 +70,32 @@ public class SampleDataUtil {
         };
     }
 
+    /**
+     * Contains utility methods for populating {@code AddressBook} with sample data tasks.
+     */
+    public static Task[] getSampleTasks() {
+        return new Task[] {
+            new Task(new Title("Prepare Tut"), new TaskDescription("Prepare tutorial contents for friday Tutorial"),
+                new Deadline(tutorialDeadline), new Priority("1")),
+            new Task(new Title("2106 assignment"), new TaskDescription("Start doing CS2106 term assignment"),
+                new Deadline(assignmentDeadline), new Priority("3")),
+            new Task(new Title("Sem report"), new TaskDescription("Prepare for end of semester report"),
+                new Deadline(tutorialDeadline), new Priority("3")),
+            new Task(new Title("Bidding"), new TaskDescription("Prepare for bidding modules for the coming semester"),
+                new Deadline(biddingDeadline), new Priority("3")),
+            new Task(new Title("Revise 2010"), new TaskDescription("Revise the contents for CS2010"),
+                new Deadline(reviseDeadline), new Priority("2"))
+        };
+    }
+
     public static ReadOnlyAddressBook getSampleAddressBook() {
         try {
             AddressBook sampleAb = new AddressBook();
             for (Person samplePerson : getSamplePersons()) {
                 sampleAb.addPerson(samplePerson);
+            }
+            for (Task sampleTask : getSampleTasks()) {
+                sampleAb.addTask(sampleTask);
             }
             return sampleAb;
         } catch (DuplicatePersonException e) {

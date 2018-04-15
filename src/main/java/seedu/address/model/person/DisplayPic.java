@@ -22,10 +22,11 @@ public class DisplayPic {
     public static final String MESSAGE_DISPLAY_PIC_NO_EXTENSION =
             "The filepath should point to a file with an extension.";
 
+    public final String originalFilePath;
     private String value;
 
     public DisplayPic() {
-        this.value = DEFAULT_DISPLAY_PIC;
+        value = originalFilePath = DEFAULT_DISPLAY_PIC;
     }
 
     /**
@@ -38,19 +39,32 @@ public class DisplayPic {
         checkArgument(DisplayPicStorage.isValidPath(filePath), MESSAGE_DISPLAY_PIC_NONEXISTENT_CONSTRAINTS);
         checkArgument(DisplayPicStorage.hasValidExtension(filePath), MESSAGE_DISPLAY_PIC_NO_EXTENSION);
         checkArgument(DisplayPicStorage.isValidImage(filePath), MESSAGE_DISPLAY_PIC_NOT_IMAGE);
-        this.value = filePath;
+        value = originalFilePath = filePath;
+    }
+
+    /**
+     * Creates the duplicated image filename.
+     */
+    public String getSaveDisplay(String personDetails) throws IllegalValueException {
+        if (value.equals(DEFAULT_DISPLAY_PIC)) {
+            return value;
+        }
+        String fileType = FileUtil.getFileType(value);
+        String uniqueFileName = DisplayPicStorage.generateDisplayPicName(personDetails, value, fileType);
+        value = DEFAULT_IMAGE_LOCATION + uniqueFileName + '.' + fileType;
+        return uniqueFileName;
     }
 
     /**
      * Saves the display picture to the specified storage location.
      */
-    public void saveDisplay(String personDetails) throws IllegalValueException {
+    public void saveDisplay(String uniqueName) throws IllegalValueException {
         if (value.equals(DEFAULT_DISPLAY_PIC)) {
             return;
         }
         String fileType = FileUtil.getFileType(value);
-        String uniqueFileName = DisplayPicStorage.saveDisplayPic(personDetails, value, fileType);
-        this.value = DEFAULT_IMAGE_LOCATION + uniqueFileName + '.' + fileType;
+        DisplayPicStorage.saveDisplayPic(uniqueName, originalFilePath, fileType);
+        value = DEFAULT_IMAGE_LOCATION + uniqueName + '.' + fileType;
     }
 
     public void updateToDefault() {

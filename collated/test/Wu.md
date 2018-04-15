@@ -1,5 +1,4 @@
 # Wu
-<<<<<<< HEAD
 ###### \java\guitests\guihandles\TodoCardHandle.java
 ``` java
 public class TodoCardHandle extends NodeHandle<Node> {
@@ -65,13 +64,13 @@ public class TodoListPanelHandle extends NodeHandle<ListView<TodoCard>> {
      * @throws AssertionError if no card is selected, or more than 1 card is selected.
      */
     public TodoCardHandle getHandleToSelectedCard() {
-        List<TodoCard> uniqueTaskList = getRootNode().getSelectionModel().getSelectedItems();
+        List<TodoCard> taskList = getRootNode().getSelectionModel().getSelectedItems();
 
-        if (uniqueTaskList.size() != 1) {
+        if (taskList.size() != 1) {
             throw new AssertionError("Person list size expected 1.");
         }
 
-        return new TodoCardHandle(uniqueTaskList.get(0).getRoot());
+        return new TodoCardHandle(taskList.get(0).getRoot());
     }
 
     /**
@@ -276,6 +275,11 @@ public class AddTaskCommandTest {
         }
 
         @Override
+        public void sortTasks() {
+            fail("This method should not be called");
+        }
+
+        @Override
         public ObservableList<Person> getFilteredPersonList() {
             fail("This method should not be called.");
             return null;
@@ -302,17 +306,12 @@ public class AddTaskCommandTest {
         }
 
         @Override
-        public void addDeleteItem(String filepath) {
-        }
-
-        @Override
         public List<String> getItemList() {
             return null;
         }
 
         @Override
         public void clearDeleteItems() {
-
         }
     }
 
@@ -376,9 +375,44 @@ public class CommandTaskTestUtil {
     }
 
     /**
-     * Deletes the first person in {@code model}'s filtered list from {@code model}'s address book.
+     * Executes the given {@code command}, confirms that <br>
+     * - the result message matches {@code expectedMessage} <br>
+     * - the {@code actualModel} matches {@code expectedModel}
      */
-    public static void deleteTaskPerson(Model model) {
+    public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
+                                            Model expectedModel) {
+        try {
+            CommandResult result = command.execute();
+            assertEquals(expectedMessage, result.feedbackToUser);
+        } catch (CommandException ce) {
+            throw new AssertionError("Execution of command should not fail.", ce);
+        }
+    }
+
+    /**
+     * Executes the given {@code command}, confirms that <br>
+     * - a {@code CommandException} is thrown <br>
+     * - the CommandException message matches {@code expectedMessage} <br>
+     * - the address book and the filtered task list in the {@code actualModel} remain unchanged
+     */
+    public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {
+        // we are unable to defensively copy the model for comparison later, so we can
+        // only do so by copying its components.
+        AddressBook expectedAddressBook = new AddressBook(actualModel.getAddressBook());
+        List<Task> expectedFilteredList = new ArrayList<>(actualModel.getFilteredTaskList());
+
+        try {
+            command.execute();
+            fail("The expected CommandException was not thrown.");
+        } catch (CommandException e) {
+            assertEquals(expectedMessage, e.getMessage());
+        }
+    }
+
+    /**
+     * Deletes the first task in {@code model}'s filtered list from {@code model}'s address book.
+     */
+    public static void deleteFirstTask(Model model) {
         Task firstTask = model.getFilteredTaskList().get(0);
         try {
             model.deleteTask(firstTask);
@@ -847,24 +881,149 @@ public class ImportCommandTest {
     public static final String VALID_IMPORT_FILE_PATH = "src/data/ValidImport.xml";
     public static final String INVALID_IMPORT_FILE_PATH = "src/data/InValidImport.txt";
 
-=======
-###### /java/seedu/address/logic/parser/ImportCommandParserTest.java
-``` java
-public class ImportCommandParserTest {
->>>>>>> 8120314b1b5ecce7cb60b6c03090396164741055
     @Rule
     public TemporaryFolder testFolder = new TemporaryFolder();
+    @Rule
+    public final EventsCollectorRule eventsCollectorRule = new EventsCollectorRule();
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
-    private ImportCommandParser parser = new ImportCommandParser();
+    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private StorageManager storageManager;
+
+    @Before
+    public void setUp() {
+        XmlAddressBookStorage addressBookStorage = new XmlAddressBookStorage(getTempFilePath("ab"));
+        JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
+        storageManager = new StorageManager(addressBookStorage, userPrefsStorage);
+    }
+
+    private String getTempFilePath(String fileName) {
+        return testFolder.getRoot().getPath() + fileName;
+    }
 
     @Test
-    public void parse_noFile_throwsParseException() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, ImportCommand.MESSAGE_USAGE);
-        assertParseFailure(parser, "   ", expectedMessage);
+    public void fileNotFound() {
+        ImportCommand importCommand = pathInCommand(INVALID_FILE);
+        assertCommandFailure(importCommand, model, ImportCommand.MESSAGE_INVALID_PATH);
+    }
+
+    /**
+     * Returns an {@code ImportCommand} with parameters {@code filePath}
+     */
+    private ImportCommand pathInCommand(String filePath) {
+        ImportCommand testCommand = new ImportCommand(filePath);
+        testCommand.setData(model, new CommandHistory(), new UndoRedoStack());
+        return testCommand;
     }
 }
 ```
-###### /java/seedu/address/logic/parser/AddressBookParserTest.java
+###### \java\seedu\address\logic\commands\ListCurrentTaskCommandTest.java
+``` java
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for ListCurrentTaskCommand.
+ */
+public class ListCurrentTaskCommandTest {
+
+    private Model model;
+    private Model expectedModel;
+    private ListCurrentTaskCommand listCurrentTaskCommand;
+
+    @Before
+    public void setUp() {
+        model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+
+        listCurrentTaskCommand = new ListCurrentTaskCommand();
+        listCurrentTaskCommand.setData(model, new CommandHistory(), new UndoRedoStack());
+    }
+
+    @Test
+    public void execute_listIsNotFiltered_showsSameList() {
+        assertCommandSuccess(listCurrentTaskCommand, model, ListCurrentTaskCommand.MESSAGE_SUCCESS, expectedModel);
+    }
+
+    @Test
+    public void execute_listIsFiltered_showsEverything() {
+        new ListTaskCommand();
+        assertCommandSuccess(listCurrentTaskCommand, model, ListCurrentTaskCommand.MESSAGE_SUCCESS, expectedModel);
+    }
+}
+```
+###### \java\seedu\address\logic\commands\ListTaskCommandTest.java
+``` java
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for ListTaskCommand.
+ */
+public class ListTaskCommandTest {
+
+    private Model model;
+    private Model expectedModel;
+    private ListTaskCommand listTaskCommand;
+
+    @Before
+    public void setUp() {
+        model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+
+        listTaskCommand = new ListTaskCommand();
+        listTaskCommand.setData(model, new CommandHistory(), new UndoRedoStack());
+    }
+
+    @Test
+    public void execute_listIsNotFiltered_showsSameList() {
+        assertCommandSuccess(listTaskCommand, model, ListTaskCommand.MESSAGE_SUCCESS, expectedModel);
+    }
+
+    @Test
+    public void execute_listIsFiltered_showsEverything() {
+        new ListCurrentTaskCommand();
+        assertCommandSuccess(listTaskCommand, model, ListTaskCommand.MESSAGE_SUCCESS, expectedModel);
+    }
+}
+```
+###### \java\seedu\address\logic\commands\SortTaskCommandTest.java
+``` java
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for ListTaskCommand.
+ */
+public class SortTaskCommandTest {
+
+    private Model model;
+    private Model expectedModel;
+    private SortTaskCommand sortTaskCommand;
+
+    @Before
+    public void setUp() {
+        model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+
+        sortTaskCommand = new SortTaskCommand();
+        sortTaskCommand.setData(model, new CommandHistory(), new UndoRedoStack());
+    }
+
+    @Test
+    public void execute_listIsNotFiltered_sortsList() {
+        assertCommandSuccess(sortTaskCommand, model, SortTaskCommand.MESSAGE_SUCCESS, expectedModel);
+    }
+
+    @Test
+    public void execute_listIsFiltered_sortsList() {
+        assertCommandSuccess(sortTaskCommand, model, SortTaskCommand.MESSAGE_SUCCESS, expectedModel);
+    }
+
+    @Test
+    public void execute_listIsFiltered_sortsEverything() {
+        assertCommandSuccess(sortTaskCommand, model, SortTaskCommand.MESSAGE_SUCCESS, expectedModel);
+    }
+
+    @Test
+    public void execute_nullList_sortsList() {
+        assertCommandSuccess(sortTaskCommand, model, SortTaskCommand.MESSAGE_SUCCESS, expectedModel);
+    }
+}
+```
+###### \java\seedu\address\logic\parser\AddressBookParserTest.java
 ``` java
     @Test
     public void parseCommand_add_alias() throws Exception {
@@ -883,7 +1042,7 @@ public class ImportCommandParserTest {
     }
 
 ```
-###### /java/seedu/address/logic/parser/AddressBookParserTest.java
+###### \java\seedu\address\logic\parser\AddressBookParserTest.java
 ``` java
     @Test
     public void parseCommand_clear_alias() throws Exception {
@@ -899,7 +1058,7 @@ public class ImportCommandParserTest {
     }
 
 ```
-###### /java/seedu/address/logic/parser/AddressBookParserTest.java
+###### \java\seedu\address\logic\parser\AddressBookParserTest.java
 ``` java
     @Test
     public void parseCommand_delete_alias() throws Exception {
@@ -916,7 +1075,7 @@ public class ImportCommandParserTest {
     }
 
 ```
-###### /java/seedu/address/logic/parser/AddressBookParserTest.java
+###### \java\seedu\address\logic\parser\AddressBookParserTest.java
 ``` java
     @Test
     public void parseCommand_redoCommandAlias_returnsRedoCommand() throws Exception {
@@ -925,7 +1084,7 @@ public class ImportCommandParserTest {
     }
 
 ```
-###### /java/seedu/address/logic/parser/AddressBookParserTest.java
+###### \java\seedu\address\logic\parser\AddressBookParserTest.java
 ``` java
     @Test
     public void parseCommand_undoCommandAlias_returnsUndoCommand() throws Exception {
@@ -948,7 +1107,6 @@ public class ImportCommandParserTest {
     }
 }
 ```
-<<<<<<< HEAD
 ###### \java\seedu\address\logic\parser\AddTaskCommandParserTest.java
 ``` java
 public class AddTaskCommandParserTest {
@@ -1052,286 +1210,17 @@ public class DeleteTaskCommandParserTest {
 }
 ```
 ###### \java\seedu\address\logic\parser\ImportCommandParserTest.java
-=======
-###### /java/seedu/address/logic/commands/ImportCommandTest.java
->>>>>>> 8120314b1b5ecce7cb60b6c03090396164741055
 ``` java
-/**
- * Contains integration tests (interaction with the Model) and unit tests for
- * {@code ImportCommand}.
- */
-public class ImportCommandTest {
-
-    public static final String VALID_IMPORT_FILE_PATH = "src/data/ValidImport.xml";
-    public static final String INVALID_IMPORT_FILE_PATH = "src/data/InValidImport.txt";
-
+public class ImportCommandParserTest {
     @Rule
     public TemporaryFolder testFolder = new TemporaryFolder();
-    @Rule
-    public final EventsCollectorRule eventsCollectorRule = new EventsCollectorRule();
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
 
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-    private StorageManager storageManager;
-
-    @Before
-    public void setUp() {
-        XmlAddressBookStorage addressBookStorage = new XmlAddressBookStorage(getTempFilePath("ab"));
-        JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
-        storageManager = new StorageManager(addressBookStorage, userPrefsStorage);
-    }
-
-    private String getTempFilePath(String fileName) {
-        return testFolder.getRoot().getPath() + fileName;
-    }
+    private ImportCommandParser parser = new ImportCommandParser();
 
     @Test
-    public void fileNotFound() {
-        ImportCommand importCommand = pathInCommand(INVALID_FILE);
-        assertCommandFailure(importCommand, model, ImportCommand.MESSAGE_INVALID_PATH);
-    }
-
-    /**
-     * Returns an {@code ImportCommand} with parameters {@code filePath}
-     */
-    private ImportCommand pathInCommand(String filePath) {
-        ImportCommand testCommand = new ImportCommand(filePath);
-        testCommand.setData(model, new CommandHistory(), new UndoRedoStack());
-        return testCommand;
-    }
-}
-```
-###### /java/seedu/address/logic/commands/AddTaskCommandTest.java
-``` java
-public class AddTaskCommandTest {
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
-    @Test
-    public void constructor_nullTask_throwNullPointerException() {
-        thrown.expect(NullPointerException.class);
-        new AddTaskCommand(null);
-    }
-
-    @Test
-    public void execute_taskAcceptedByModel_addTaskSuccessful() throws Exception {
-        ModelStubAcceptingTaskAdded modelStub = new ModelStubAcceptingTaskAdded();
-        Task validTask = new TaskBuilder().build();
-
-        CommandResult commandResult = getAddTaskCommandForTask(validTask, modelStub).execute();
-
-        assertEquals(String.format(AddTaskCommand.MESSAGE_SUCCESS, validTask), commandResult.feedbackToUser);
-        assertEquals(Arrays.asList(validTask), modelStub.tasksAdded);
-    }
-
-    @Test
-    public void equals() {
-        Task meeting = new TaskBuilder().withTitle("Meeting").build();
-        Task assignment = new TaskBuilder().withTitle("Assignment").build();
-        AddTaskCommand addMeetingCommand = new AddTaskCommand(meeting);
-        AddTaskCommand addAssignmentCommand = new AddTaskCommand(assignment);
-
-        // same object -> returns true
-        assertTrue(addMeetingCommand.equals(addMeetingCommand));
-
-        // same values -> returns true
-        AddTaskCommand addMeetingCommandCopy = new AddTaskCommand(meeting);
-        assertTrue(addMeetingCommand.equals(addMeetingCommandCopy));
-
-        // different types -> returns false
-        assertFalse(addMeetingCommand.equals(1));
-
-        // null -> returns false
-        assertFalse(addMeetingCommand.equals(null));
-
-        // different person -> returns false
-        assertFalse(addMeetingCommand.equals(addAssignmentCommand));
-    }
-
-    private AddTaskCommand getAddTaskCommandForTask(Task task, Model model) {
-        AddTaskCommand command = new AddTaskCommand(task);
-        command.setData(model, new CommandHistory(), new UndoRedoStack());
-        return command;
-    }
-
-    /**
-     * A default model stub that have all of the methods failing.
-     */
-    private class ModelStub implements Model {
-        @Override
-        public void addPerson(Person person) throws DuplicatePersonException {
-            fail("This method should not be called.");
-        }
-
-        @Override
-        public void addTask(Task task) {
-        }
-
-        @Override
-        public void deleteTask(Task target) throws TaskNotFoundException {
-        }
-
-        @Override
-        public void updateTask(Task target, Task editedTask) throws TaskNotFoundException {
-        }
-
-        @Override
-        public void resetData(ReadOnlyAddressBook newData) {
-            fail("This method should not be called.");
-        }
-
-        @Override
-        public ReadOnlyAddressBook getAddressBook() {
-            fail("This method should not be called.");
-            return null;
-        }
-
-        @Override
-        public void deletePerson(Person target) throws PersonNotFoundException {
-            fail("This method should not be called.");
-        }
-
-        @Override
-        public void updatePerson(Person target, Person editedPerson)
-                throws DuplicatePersonException {
-            fail("This method should not be called.");
-        }
-
-        @Override
-        public void sortPersons() {
-            fail("This method should not be called");
-        }
-
-        @Override
-        public ObservableList<Person> getFilteredPersonList() {
-            fail("This method should not be called.");
-            return null;
-        }
-
-        @Override
-        public ObservableList<Task> getFilteredTaskList() {
-            return null;
-        }
-
-        @Override
-        public ObservableList<Task>[][] getCalendarTaskLists() {
-            return new ObservableList[0][];
-        }
-
-        @Override
-        public void updateFilteredPersonList(Predicate<Person> predicate) {
-            fail("This method should not be called.");
-        }
-
-        @Override
-        public void updateFilteredTaskList(Predicate<Task> predicate) {
-
-        }
-
-        @Override
-        public void addDeleteItem(String filepath) {
-        }
-
-        @Override
-        public List<String> getItemList() {
-            return null;
-        }
-
-        @Override
-        public void clearDeleteItems() {
-
-        }
-    }
-
-    /**
-     * A Model stub that always accept the task being added.
-     */
-    private class ModelStubAcceptingTaskAdded extends ModelStub {
-        final ArrayList<Task> tasksAdded = new ArrayList<>();
-
-        @Override
-        public void addTask(Task task) {
-            requireNonNull(task);
-            tasksAdded.add(task);
-        }
-
-        @Override
-        public ReadOnlyAddressBook getAddressBook() {
-            return new AddressBook();
-        }
-    }
-}
-```
-###### /java/seedu/address/testutil/TaskBuilder.java
-``` java
-/**
- * A utility class to help with building Task objects.
- */
-public class TaskBuilder {
-
-    public static final String DEFAULT_TITLE = "Dance";
-    public static final String DEFAULT_DESC = "Dance till I drop";
-    public static final String DEFAULT_DEALINE = "03-08-2018";
-    public static final String DEFAULT_PRIORITY = "3";
-
-    private Title title;
-    private TaskDescription desc;
-    private Deadline deadline;
-    private Priority priority;
-
-    public TaskBuilder() {
-        title = new Title(DEFAULT_TITLE);
-        desc = new TaskDescription(DEFAULT_DESC);
-        deadline = new Deadline(DEFAULT_DEALINE);
-        priority = new Priority(DEFAULT_PRIORITY);
-    }
-
-    /**
-     * Initializes the TaskBuilder with the data of {@code taskToCopy}
-     */
-    public TaskBuilder(Task taskToCopy) {
-        title = taskToCopy.getTitle();
-        desc = taskToCopy.getTaskDesc();
-        deadline = taskToCopy.getDeadline();
-        priority = taskToCopy.getPriority();
-    }
-
-    /**
-     * Sets the {@code Title} of the {@code Task} that we are building
-     */
-    public TaskBuilder withTitle (String title) {
-        this.title = new Title(title);
-        return this;
-    }
-
-    /**
-     * Sets the {@code TaskDescription} of the {@code Task} that we are building.
-     */
-    public TaskBuilder withDesc(String desc) {
-        this.desc = new TaskDescription(desc);
-        return this;
-    }
-
-    /**
-     * Sets the {@code Deadline} of the {@code Task} that we are building.
-     */
-    public TaskBuilder withDeadline(String deadline) {
-        this.deadline = new Deadline(deadline);
-        return this;
-    }
-
-    /**
-     * Sets the {@code Priority} of the {@code Task} that we are building.
-     */
-    public TaskBuilder withPriority(String priority) {
-        this.priority = new Priority(priority);
-        return this;
-    }
-
-    public Task build() {
-        return new Task(title, desc, deadline, priority);
+    public void parse_noFile_throwsParseException() {
+        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, ImportCommand.MESSAGE_USAGE);
+        assertParseFailure(parser, "   ", expectedMessage);
     }
 }
 ```
